@@ -12,6 +12,7 @@ import markdown
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSE = "Applied Thermodynamics"
+DISCLAIMER = "These notes are not endorsed by NPTEL and are not associated with NPTEL in any way."
 COURSE_URL = "https://nptel.ac.in/courses/112106314"
 EXTENDED_COURSE_URL = "https://nptel.ac.in/courses/112106419"
 PLAYLIST = "https://www.youtube.com/playlist?list=PLbMVogVj5nJRgXRZ0xEoBfWELmSo6JvvZ"
@@ -211,6 +212,7 @@ def page(title, description, main, chapters, current=None, toc="", math=False):
     sources_current = ' aria-current="page"' if title == "Source map" else ""
     references_current = ' aria-current="page"' if title == "References" else ""
     lab_current = ' aria-current="page"' if title == "Numerical lab" else ""
+    footer_disclaimer = f" {DISCLAIMER}" if title != COURSE else ""
     return f"""<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
@@ -245,7 +247,7 @@ def page(title, description, main, chapters, current=None, toc="", math=False):
   {sidebar}
   <main id="main">
     {main}
-    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.{footer_disclaimer}</footer>
   </main>
 </div>
 </body>
@@ -282,6 +284,7 @@ def home(chapters, inventory):
       <p class="eyebrow">NPTEL · IIT Madras</p>
       <h1>{COURSE}</h1>
       <p class="lead">Independent study notes following the IIT Madras lectures by Babu Viswanathan and the accompanying tutorials, including V. Raghavan.</p>
+      <p>{DISCLAIMER}</p>
       <p><a href="{COURSE_URL}">Original course</a> · <a href="{EXTENDED_COURSE_URL}">Expanded course</a> · <a href="{PLAYLIST}">Lecture playlist</a></p>
     </header>
     <section aria-labelledby="chapters">

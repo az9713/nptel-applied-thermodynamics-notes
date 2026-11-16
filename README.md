@@ -2,6 +2,8 @@
 
 Independent study notes for NPTEL Applied Thermodynamics at IIT Madras. The notes follow Prof. Babu Viswanathan’s lectures and the accompanying tutorials, including those taught by Prof. V. Raghavan.
 
+These notes are not endorsed by NPTEL and are not associated with NPTEL in any way.
+
 [Read the book](https://az9713.github.io/nptel-applied-thermodynamics-notes/) · [Source map](source-map.html) · [Numerical lab](code-lab.html) · [References](references.html)
 
 [![Preview of the dark-mode Applied Thermodynamics reader](assets/site-preview.png)](https://az9713.github.io/nptel-applied-thermodynamics-notes/)
