@@ -214,14 +214,31 @@ pre {
   line-height: 1.5;
   overflow-wrap: normal;
 }
-.math-display, mjx-container[display="true"] { display: block; max-width: 100%; overflow-x: auto; }
-.math-display { white-space: pre-wrap; }
+.math-display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: pre-wrap;
+}
+.math-display::-webkit-scrollbar { display: none; }
+.math-display mjx-container[display="true"] {
+  display: flex;
+  justify-content: safe center;
+}
+.math-display mjx-container[display="true"] > svg { flex-shrink: 0; }
 .math-inline {
   display: inline-block;
   max-width: 100%;
-  overflow-x: auto;
-  vertical-align: middle;
-  white-space: nowrap;
+}
+.math-inline mjx-container > svg {
+  max-width: 100%;
+  height: auto;
+}
+.math-inline mjx-assistive-mml {
+  /* Keep the screen-reader layer from extending the page past the SVG. */
+  width: 1px !important;
+  height: 1px !important;
 }
 .table-wrap, .prose table { display: block; max-width: 100%; overflow-x: auto; }
 caption { text-align: left; padding: .5rem 0; font-weight: 650; }

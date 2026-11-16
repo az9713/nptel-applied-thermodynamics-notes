@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 def inspect_page(page, filename, width):
     page.goto((ROOT / filename).as_uri(), wait_until="load")
     assert page.locator("main h1").count() == 1, f"{filename}: expected one chapter heading"
-    assert page.evaluate("document.documentElement.scrollWidth") <= width, f"{filename}: viewport overflow"
     source_math = page.locator(".math-inline, .math-display").count()
     if source_math:
         page.evaluate("async () => await window.MathJax.startup.promise.then(() => true)")
@@ -21,6 +20,17 @@ def inspect_page(page, filename, width):
         assert not errors, f"{filename}: MathJax errors: {errors}"
         unrendered = page.locator(".math-inline:not(:has(mjx-container)), .math-display:not(:has(mjx-container))")
         assert unrendered.count() == 0, f"{filename}: {unrendered.count()} equations did not render"
+        assert page.locator(".math-inline").evaluate_all("""spans => spans.every(span => {
+            const style = getComputedStyle(span);
+            const equation = span.querySelector('mjx-container > svg');
+            return style.overflowX === 'visible' && style.overflowY === 'visible' &&
+                equation.getBoundingClientRect().width <= span.clientWidth + 1;
+        })"""), f"{filename}: inline equation should fit without scrolling"
+        assert page.locator(".math-display").evaluate_all("""blocks => blocks.every(block =>
+            getComputedStyle(block).scrollbarWidth === 'none' &&
+            getComputedStyle(block.querySelector('mjx-container')).overflowX === 'visible'
+        )"""), f"{filename}: unexpected display equation scrollbar"
+    assert page.evaluate("document.documentElement.scrollWidth") <= width, f"{filename}: viewport overflow"
     return source_math
 
 
