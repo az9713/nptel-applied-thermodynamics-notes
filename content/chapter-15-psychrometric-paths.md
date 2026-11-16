@@ -18,6 +18,8 @@ $$
 
 The $\phi=1$ curve is the saturation boundary of single-phase moist air. Intersect a horizontal line through a state with this curve to find the constant-pressure dew point. Using the dry-air enthalpy correlation from Chapter 14, an isenthalpic line satisfies $\omega=[h^*-1.006t]/(2501+1.86t)$. The denominator varies slowly near ambient temperatures, so these lines appear nearly straight. Constant wet-bulb lines are close to isenthalpic lines because the make-up liquid enthalpy in the adiabatic saturation balance is usually a small correction. Pressure enters both humidity ratio and specific volume. Read the chart at its specified pressure. [Psychrometry Part 5 · Chart construction](https://www.youtube.com/watch?v=IVz3N68fF1c&t=320)
 
+Substituting $p_v=p\omega/(0.622+\omega)$ into $v^*=R_aT/(p-p_v)$ gives $v^*=(R_aT/p)(1+\omega/0.622)$, with $T$ in kelvin. To follow a constant-volume-per-kg line, hold the product $T(1+\omega/0.622)$ fixed. For sensible heating at fixed pressure and with no moisture added, follow a horizontal line to the right. To find the dry-air mass flow from an inlet volume flow, read $v^*$ at the inlet and divide the volume flow by it. [Psychrometry Part 5 · Specific-volume and process lines](https://www.youtube.com/watch?v=IVz3N68fF1c&t=420)
+
 ## Cool, drain, and reheat
 
 Take air at 35 °C and 80% relative humidity, at 101.325 kPa. As an idealized coil model, let the outlet be saturated at 15 °C and the condensate leave at 15 °C. The inlet and outlet humidity ratios are 0.0289 and 0.01065 kg/kg dry air, using saturation pressures of 5.628 and 1.705 kPa. Let $q$ denote heat entering per kg dry air. With negligible shaft work and changes in kinetic and potential energy, separate water and energy balances give
@@ -28,6 +30,8 @@ q_{\rm coil}=h_2^*-h_1^*+(\omega_1-\omega_2)h_\ell(15).
 $$
 
 Here $h_\ell(15)\approx62.7$ kJ/kg liquid on the same reference. The drain carries about 0.0183 kg/kg dry air and the coil extracts about 66.3 kJ/kg dry air. Heating from 15 to 24 °C at fixed $\omega_2$ takes roughly 9.23 kJ/kg dry air. At 24 °C, the vapor pressure stays 1.705 kPa and the relative humidity is about 57%. The cooling step changes humidity ratio after saturation is reached. The reheating step changes relative humidity by raising $p_{\rm sat}$. A real coil can deliver unsaturated outlet air due to bypass and surface-temperature variation. [Psychrometry Part 6 · Cooling and reheat](https://www.youtube.com/watch?v=689t3mWiPy0&t=680)
+
+The lecture also solves the design in reverse. For supply at 22 °C and 40% relative humidity, take $p_{\rm sat}(22)\approx2.645$ kPa. The supply vapor pressure must be $0.40(2.645)=1.058$ kPa. Sensible reheat at the same pressure preserves $\omega$ and therefore $p_v$. The idealized saturated coil outlet must be at the dew point of that vapor pressure, about 7.8 °C by saturation data. This is close to the lecture's chart reading of 7.5 °C. [Psychrometry Part 6 · Outlet design](https://www.youtube.com/watch?v=689t3mWiPy0&t=680)
 
 ## Mix on a dry-air flow basis
 

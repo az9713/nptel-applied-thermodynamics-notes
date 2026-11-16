@@ -50,11 +50,26 @@ $$
 w_{\min}=q_C\left(\frac{T_H}{T_C}-1\right).
 $$
 
-If the hot sink is the reference environment, this minimum work is the exergy of the cooling service. The exergetic efficiency at fixed load and boundary temperatures is $\mathrm{COP}_R/\mathrm{COP}_{R,\rm rev}$. A cycle taking heat reversibly from 268.15 K to 303.15 K would have $\mathrm{COP}_{R,\rm rev}=7.66$, so the running cycle converts approximately 63.1% of the compressor work into the minimum-work equivalent of cooling against these reference reservoir temperatures. When the heat source or sink sits at a different temperature from the corresponding refrigerant saturation temperature, calculate the reversible ceiling using the external reservoirs. For a component with both streams inside an insulated boundary, use their entropy changes to see where finite temperature differences generate entropy. [MIT Unified Engineering, thermodynamics cycle notes](https://web.mit.edu/course/16/16.unified/www/FALL/thermodynamics/notes/notes.html)
+If the hot sink is the reference environment, this minimum work is the exergy of the cooling service. The corresponding exergetic efficiency is $\mathrm{COP}_R/\mathrm{COP}_{R,\rm rev}$. A cycle taking heat reversibly from 268.15 K to 303.15 K would have $\mathrm{COP}_{R,\rm rev}=7.66$. With those reservoir temperatures and $T_0=T_H$, the running case has an exergetic efficiency of about 63.1%. When a source or sink sits at a different temperature from the corresponding refrigerant saturation temperature, use the external temperatures for the reversible ceiling.
+
+For each steady component and its thermal contact with a reservoir, write the entropy produced per kg of circulating refrigerant as $s_{\rm out}-s_{\rm in}-q/T_b$, where $q$ enters the component and $T_b$ is the reservoir temperature. Thus
+
+$$
+s_{{\rm gen},c}=s_2-s_1,\quad
+s_{{\rm gen},\mathrm{cond}}=s_3-s_2+\frac{q_H}{T_H},\quad
+s_{{\rm gen},v}=s_4-s_3,\quad
+s_{{\rm gen},e}=s_1-s_4-\frac{q_C}{T_C}.
+$$
+
+Here the subscripts $c$, $\mathrm{cond}$, $v$, and $e$ identify the compressor, condenser, valve, and evaporator. Multiply each by $T_0\dot m$ for the corresponding exergy destruction rate. The sum of the entropy terms reduces to $q_H/T_H-q_C/T_C$ because every refrigerant state appears once as an inlet and once as an outlet. Condenser desuperheating, the cooling of discharge vapor before it reaches saturation, can generate entropy even when the condensation temperature equals $T_H$. [Lecture 38 · 17:20](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=1040) [MIT Unified Engineering, thermodynamics cycle notes](https://web.mit.edu/course/16/16.unified/www/FALL/thermodynamics/notes/notes.html)
+
+The lecture instead specifies a compressor suction volume flow of 0.004 m³/s and $\eta_c=0.73$. With the R-134a properties used here, the saturated suction density is about 12.08 kg/m³, so $\dot m=0.04831$ kg/s. At the same evaporating and condensing temperatures, this gives 7.44 kW cooling, 1.58 kW shaft input and 9.02 kW heat rejection. With $T_0=T_H=303.15$ K, the compressor, condenser and valve destroy about 0.415, 0.014 and 0.183 kW of exergy, respectively. The idealized evaporator operates at $T_C$ throughout and its term is zero. This property-model recalculation closes the energy balance and makes the compressor the largest source of exergy destruction for these assumptions. [Lecture 38 · 11:40](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=700)
 
 ## Finite approaches and liquid subcooling [Lecture 38 · 21:00](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=1260)
 
 To remove heat from an enclosure, the refrigerant evaporates below enclosure temperature. To deliver heat to surroundings, the refrigerant condenses above the effective sink temperature. These finite approaches usually increase the compressor lift. They allow heat to flow through finite exchanger surfaces and cause irreversibility. Suction-line superheat, liquid subcooling, and exchanger pressure losses also move the states away from saturation endpoints. Compressor suction superheat inside the cooled enclosure contributes heat pickup. Heat pickup from a warm pipe outside the enclosure raises suction enthalpy without contributing the same useful process duty.
+
+The lecture's wider-lift example changes the evaporator and condenser pressures to 200 and 900 kPa, respectively, and includes suction superheat and liquid subcooling. It reports a shaft demand of about 2.177 kW and a capacity of 2.184 tons of refrigeration, or about 7.68 kW. The cooling COP is about 3.53, approximately 25% below the lecture's saturation-endpoint benchmark of 4.70. Cooling capacity and COP can move in opposite directions when work per kg rises. [Lecture 38 · 23:00](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=1380)
 
 Return to the 10 kW case. Suppose a separate source of cooling reduces condenser-exit liquid enthalpy to 233.13 kJ/kg while suction and discharge pressures and compressor inlet state stay fixed. The valve outlet enthalpy then also falls to 233.13. The cooling effect rises to 162.53 kJ/kg, lowering flow to 0.06153 kg/s and shaft input to 1.961 kW. The modeled COP rises to 5.10. A whole-plant comparison must count any purchased power or useful sink capacity required to provide the subcooling. If cooling for subcooling comes from a suction-liquid exchanger, the suction state and compressor work also change. [Lecture 38 · 23:40](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=1420)
 

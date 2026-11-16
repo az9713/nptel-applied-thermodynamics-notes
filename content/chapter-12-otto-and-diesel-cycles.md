@@ -48,9 +48,24 @@ For the backup candidate let $p_1=100$ kPa, $T_1=300$ K, $T_3=1800$ K, $c_v=0.71
 
 ![Pressure versus volume for equal-compression Otto and Diesel cycles, with a common compression curve, vertical Otto heat addition, and horizontal Diesel heat addition. Both axes are logarithmic.](figures/chapter-12-heating-paths.png)
 
-The two designs at $r=10$ have different peak pressures as well as different heat inputs. Otto heat addition raises pressure throughout the constant-volume leg. Diesel heat addition begins and ends at compressor discharge pressure. The higher-compression Diesel candidate requires less heat per kg at the same peak temperature than the lower-compression Diesel candidate, so its increase in efficiency compensates for lower input. Its MEP still falls because the net work is spread over a larger specific swept volume. A cycle with part constant-volume and part constant-pressure heat addition is called a dual cycle. Its heat input is $c_v\Delta T$ on the first leg and $c_p\Delta T$ on the second. This model can better approximate a finite pressure rise during combustion. [Lecture 37 · 9:40](https://www.youtube.com/watch?v=e2Savvr_Za8&t=580)
+The two designs at $r=10$ have different peak pressures as well as different heat inputs. Otto heat addition raises pressure throughout the constant-volume leg. Diesel heat addition holds pressure at its end-of-compression value. The higher-compression Diesel candidate requires less heat per kg at the same peak temperature than the lower-compression Diesel candidate, so its increase in efficiency compensates for lower input. Its MEP still falls because the net work is spread over a larger specific swept volume. A cycle with part constant-volume and part constant-pressure heat addition is called a dual cycle. Its heat input is $c_v\Delta T$ on the first leg and $c_p\Delta T$ on the second. This model can better approximate a finite pressure rise during combustion. [Lecture 37 · 9:40](https://www.youtube.com/watch?v=e2Savvr_Za8&t=580)
 
 The efficiency here converts heat added to the modeled gas into indicated boundary work. Comparisons of real fuel consumption or emissions also depend on combustion, pumping, mechanical losses, aftertreatment, duty cycle, and upstream processes included in the accounting. If heat enters from one reservoir at $T_H$, the exergy input relative to $T_0$ is $(1-T_0/T_H)q_H$. Fuel chemical exergy is required for direct analysis of combustion as an internal process. [Lecture 35 · 23:20](https://www.youtube.com/watch?v=RPXchZmvO0A&t=1400)
+
+## Reconstruct the cycles with variable specific heats
+
+At high temperatures, use tabulated ideal-gas air properties to follow how the specific heats change. From $ds=c_v(T)dT/T+R\,dv/v$, the isentropic volume ratio obeys
+
+$$
+\frac{v_b}{v_a}=\frac{v_r(T_b)}{v_r(T_a)},\qquad
+v_r(T)=C\exp\!\left[-\frac{1}{R}\int_{T_*}^{T}\frac{c_v(\theta)}{\theta}\,d\theta\right].
+$$
+
+The positive reference constant $C$ and reference temperature $T_*$ cancel in the ratio. Given $T_1$, obtain $v_r(T_2)=v_r(T_1)/r$ and invert the table for $T_2$. In the Otto cycle, use the specified $T_3$ and solve $v_r(T_4)=r\,v_r(T_3)$. In the Diesel cycle, set $T_3=\rho T_2$ and solve $v_r(T_4)=(r/\rho)v_r(T_3)$. Use $u_3-u_2$ for Otto heat input, $h_3-h_2$ for Diesel heat input, and $u_4-u_1$ for heat rejected in either cycle.
+
+In the lecture's Otto example, air starts at 298 K and 100 kPa, with $r=9$ and $T_3=2200$ K. The table gives $v_r(T_1)\approx631.9$, so the compression ends at the temperature corresponding to $v_r(T_2)\approx70.2$. The reported heat inputs and rejections are about 1361 and 646 kJ/kg, giving roughly 715 kJ/kg net work and 52.5% efficiency. The cold-air expression at $r=9$ with $\gamma=1.4$ gives 58.5%. In the lecture's Diesel example at $r=18.75$ and $\rho=2.4283$, the variable-property calculation gives about $867.75/1564.5=55.5\%$, compared with 61.9% from the constant-$\gamma$ expression. [Lecture 35 · 28:00](https://www.youtube.com/watch?v=RPXchZmvO0A&t=1680) [Lecture 37 · 0:00](https://www.youtube.com/watch?v=e2Savvr_Za8&t=0)
+
+The lecture's second-law accounting credits exergy delivered on the expansion side and charges exergy supplied on the compression and heating side. With $w_{\rm comp}=u_2-u_1>0$, $w_{\rm out}=w_{\rm net}+w_{\rm comp}$, and ambient pressure $p_0$, the ratio is $[w_{\rm out}-p_0(v_1-v_2)]/[w_{\rm comp}-p_0(v_1-v_2)+(1-T_0/T_H)q_H]$. In the Diesel case $w_{\rm out}$ includes displacement work during heating. For a boundary around the whole cycle, the ambient displacement terms cancel, and the ratio of net work to thermal exergy input is $w_{\rm net}/[(1-T_0/T_H)q_H]$ when rejection is to $T_0$. State which accounting convention is used when comparing second-law efficiencies. [Lecture 35 · 36:20](https://www.youtube.com/watch?v=RPXchZmvO0A&t=2180) [Lecture 37 · 8:40](https://www.youtube.com/watch?v=e2Savvr_Za8&t=520)
 
 ## Numerical laboratory
 

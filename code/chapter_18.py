@@ -30,3 +30,14 @@ if __name__ == "__main__":
     print(f"Actual decane air-fuel ratio: {air_mass_ratio:.2f} kg/kg")
     predicted_dry_total = 10 + supplied_oxygen - stoichiometric + 3.76 * supplied_oxygen
     assert isclose(10 / predicted_dry_total, dry_co2, rel_tol=1e-4)
+
+    # Lecture analysis on a 100 mol dry-products basis, including measured CO.
+    dry_co2, dry_co, dry_oxygen, dry_nitrogen = 10.56, 0.92, 4.91, 83.61
+    decane = (dry_co2 + dry_co) / 10
+    water = 11 * decane
+    oxygen_from_nitrogen = dry_nitrogen / 3.76
+    oxygen_from_oxygen = (2 * dry_co2 + dry_co + 2 * dry_oxygen + water) / 2
+    assert isclose(oxygen_from_nitrogen, oxygen_from_oxygen, abs_tol=0.01)
+    phi = stoichiometric * decane / oxygen_from_nitrogen
+    print(f"Lecture decane equivalence ratio: {phi:.4f}")
+    print(f"Lecture decane wet CO2: {dry_co2 / (100 + water):.4%}")

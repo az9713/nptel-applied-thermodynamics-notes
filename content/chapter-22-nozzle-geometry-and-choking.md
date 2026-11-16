@@ -38,6 +38,8 @@ $$
 
 With $\gamma=1.4$ and $A/A^*=2$, the two Mach roots are 0.30590 and 2.19720. Their static pressures are respectively 0.93716 and 0.09393 times $p_t$. Once the actual throat is sonic, its area $A_t$ equals $A^*$ for the upstream isentrope. With fixed upstream total state, the mass flow is choked and further lowering back pressure cannot increase it. The choked mass flux at $p_t=300$ kPa and $T_t=300$ K is 700.07 kg/(m² s) for $R=287$ J/(kg K). [NASA Glenn, mass flow choking](https://www.grc.nasa.gov/www/BGH/mflchk.html)
 
+For a fixed flow on one isentrope, the flux limit requires $A\ge A^*$ at every section. An interior sonic section has $A=A^*$, which rules out a strict local area maximum even though both a minimum and a maximum could have $dA=0$. If the flow never reaches Mach 1, its hypothetical sonic area is smaller than the geometric throat. [Part 7 · Sonic reference area](https://www.youtube.com/watch?v=ttqqNQSlHZU&t=1520s)
+
 ![The area–Mach curve has its minimum at Mach 1. An area ratio of 2 crosses it below and above Mach 1.](figures/area-mach.png)
 
 ## Select the operating regime of a convergent nozzle [Part 8 · 0:00](https://www.youtube.com/watch?v=YnNOu_jKw0U&t=0s)
@@ -55,6 +57,8 @@ For $\gamma=1.4$ this ratio is 0.52828, so with $p_t=300$ kPa the first sonic ou
 At first choking, the throat is sonic and the divergent segment follows the subsonic root. The pressure there rises from the throat to the exit as velocity falls. With $A_e/A_t=2$ this gives $p_b/p_t=0.93716$, exceeding the throat pressure ratio 0.52828. A model that applies the convergent nozzle's critical ratio to the downstream boundary of this geometry would select the wrong operating point.
 
 When the back pressure falls below the first-choking value, one steady idealized solution accelerates beyond the throat, then crosses a normal shock, and leaves subsonically. The shock raises static pressure and lowers stagnation pressure. As back pressure falls further, it moves downstream until it reaches the exit. With the divergent section entirely supersonic, the ideal exit state follows the supersonic root for $A_e/A_t$. At $A_e/A_t=2$ it gives $p_e/p_t=0.09393$. The jet is overexpanded when $p_e<p_b$, correctly expanded when the two agree, and underexpanded when $p_e>p_b$. Strongly overexpanded nozzles can separate from the wall, making a uniform one-dimensional exit and planar shock poor approximations. [Part 9 · 4:40](https://www.youtube.com/watch?v=YdRVgLekod8&t=280s) · [Part 9 · 16:40](https://www.youtube.com/watch?v=YdRVgLekod8&t=1000s)
+
+In the internal-shock regime, weak disturbances from the exit can move upstream through the subsonic segment behind the shock. Their laboratory-frame characteristic speed there is $C-a<0$. The sonic throat has $C-a=0$, so reducing back pressure in the choked regime can shift the shock without changing the flow through the convergent section. Once the internal flow is supersonic to the exit, both acoustic characteristics there point downstream. In the ideal model, further changes of back pressure alter the external jet while the internal isentropic exit state stays at its design value. [Part 9 · Propagation and the choked throat](https://www.youtube.com/watch?v=YdRVgLekod8&t=160s)
 
 ## Numerical laboratory
 

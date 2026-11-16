@@ -36,6 +36,15 @@ Superheat moves the turbine inlet above the saturation temperature at boiler pre
 
 For a single heat source at absolute temperature $T_H$, its exergy input per kg is $(1-T_0/T_H)q_H$ relative to an environment at $T_0$. Changing the source temperature changes that denominator even at fixed heat duty. Thermal efficiency and exergetic efficiency can move in different directions. A plant with distributed heat sources must sum or integrate their separate exergy transfers.
 
+The lecture also calculates the working fluid's entropy-weighted mean heat-addition temperature. Along the ideal isobar $dh=T\,ds$, so $\bar T_H=q_H/(s_3-s_2)$. The boiler receives $q_H/T_H$ of entropy per unit mass from the source. For a boundary including the heat path from that source, the increase of entropy in the water gives
+
+$$
+b_{\mathrm{dest,boiler}}=T_0\left(s_3-s_2-\frac{q_H}{T_H}\right)
+=T_0q_H\left(\frac1{\bar T_H}-\frac1{T_H}\right).
+$$
+
+The saturated-inlet example in Lecture 27 uses a 16 MPa boiler and reports $q_H=2375.63$ kJ/kg, a mean fluid temperature of about 243 °C and a source at 347.4 °C. At $T_0=298.15$ K the rounded values give about 231 kJ/kg of boiler exergy destruction. The mean fluid temperature describes the water along its path. Use the source temperature in the incoming heat exergy. The ideal pump and turbine have zero destruction. An isothermal condenser at fluid temperature $T_C$ also has zero destruction if the ideal sink is at that same temperature. A colder sink destroys exergy across the temperature difference. [Lecture 27 · 11:00](https://www.youtube.com/watch?v=TJVk37kchOA&t=660)
+
 ## Open and closed feedwater heating [Lecture 28 · 3:40](https://www.youtube.com/watch?v=yE58JznEXT0&t=220)
 
 Bleed a fraction $y$ of each kg leaving the boiler at an intermediate turbine pressure. An open heater mixes this bleed stream at enthalpy $h_b$ with $(1-y)$ kg of condensed feedwater at enthalpy $h_c$, also pumped to that pressure. Let $h_m$ be the mixed outlet enthalpy, usually chosen as saturated liquid at the heater pressure in the ideal model. An adiabatic heater with no shaft work gives
@@ -52,6 +61,8 @@ A closed feedwater heater transfers heat across a wall. The condensate and feedw
 ## Reheat and the actual plant layout [Lecture 29 · 7:20](https://www.youtube.com/watch?v=BI8wXzaq1C0&t=440)
 
 Reheat sends intermediate-pressure steam from the high-pressure turbine back through a heater, then to a low-pressure turbine. Call its intermediate enthalpy $h_a$, reheated enthalpy $h_r$, and actual final exhaust enthalpy $h'_4$. For a simple turbine train without bleed, $w_t=(h_3-h_a)+(h_r-h'_4)$ and $q_H=(h_3-h_2)+(h_r-h_a)$. The reheat duty must appear in the denominator. If a bleed upstream of the reheater removes fraction $y$, multiply each downstream term by $1-y$. After reheat, the low-pressure turbine starts at higher entropy when the heater pressure is unchanged. At the same final pressure and ideal expansion, this raises exhaust vapor fraction in the two-phase region.
+
+Lectures 28 and 29 show the work tradeoff for a common superheated main inlet and open heater. The example bleeds about 0.313 kg per kg of main steam at 40 bar. Without reheat the regenerative cycle produces about 1079 kJ/kg at 45.66% thermal efficiency. Reheating the remaining steam increases net work to 1280.99 kJ/kg and brings total heat input to 2728.44 kJ/kg. Dividing gives 46.95%. At fixed shaft power, the required boiler flow falls by roughly $1-1079/1280.99=15.8\%$ in this example. [Lecture 28 · 10:40](https://www.youtube.com/watch?v=yE58JznEXT0&t=640) · [Lecture 29 · 12:40](https://www.youtube.com/watch?v=BI8wXzaq1C0&t=760)
 
 At the plant scale, multiple turbine casings and different bleed pressures let designers match the temperatures and pressures encountered in heating and expansion. The economizer heats liquid feedwater ahead of evaporation, the superheater raises inlet steam temperature, and the reheater serves the interstage steam path. A deaerator removes dissolved gases from the feedwater train. The 100 MW design can therefore use reheating to address its exhaust constraint and feedwater heating to lower boiler demand, while recalculating required mass flow from the new net specific work. [Lecture 29 · 19:20](https://www.youtube.com/watch?v=BI8wXzaq1C0&t=1160)
 

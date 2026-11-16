@@ -3,7 +3,7 @@
 from math import isclose, sqrt
 
 from chapter_21 import normal_shock
-from chapter_22 import mach_from_area, pressure_ratio
+from chapter_22 import mach_from_area, pressure_ratio, sonic_flux
 
 
 def trial_shock(area_to_throat, exit_to_throat, gamma=1.4):
@@ -59,6 +59,13 @@ def main():
     a_shock = locate_shock(0.5, area_ratio)
     ratio, mach_exit, mach_a = trial_shock(a_shock, area_ratio)
     assert isclose(ratio, 0.5, rel_tol=1e-12)
+    gamma, gas_constant, total_temperature = 1.4, 287.0, 500.0
+    exit_pressure = 500_000.0
+    exit_flux = sonic_flux(1_000_000, total_temperature) / area_ratio
+    # Infer exit Mach independently from known exit pressure and mass flux.
+    scale = (exit_flux / exit_pressure)**2 * gas_constant * total_temperature / gamma
+    direct_mach = sqrt(2 * scale / (1 + sqrt(1 + 2 * (gamma - 1) * scale)))
+    assert isclose(direct_mach, mach_exit, rel_tol=1e-12)
     print(f"Isentropic supersonic exit: M={mach_sup:.4f}, p/p_t={p_sup:.5f}")
     print(f"Shock at exit: p_b/p_t={p_shock_exit:.5f}; "
           f"first choking: {p_choke:.5f}")

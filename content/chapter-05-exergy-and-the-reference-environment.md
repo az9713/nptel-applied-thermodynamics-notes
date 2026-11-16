@@ -33,6 +33,16 @@ For $r>0$, $\ln r\le r-1$, with equality only at $r=1$. This establishes nonnega
 
 The lecture also studies compressed air at ambient temperature. For an ideal gas at $T_0$, define pressure ratio $r_p=p/p_0$ and specific gas constant $R$. Then $E-E_0=0$, $p_0(V-V_0)=mRT_0(1/r_p-1)$ and $S-S_0=-mR\ln r_p$. Hence $B=mRT_0(\ln r_p+1/r_p-1)$. Differentiating the bracket gives $(r_p-1)/r_p^2$ and therefore a global minimum at $r_p=1$. A pressure below ambient also permits work in the reversible construction. [Part 2, compressed air at ambient temperature](https://www.youtube.com/watch?v=Q4M_IjgkyL0&t=460s)
 
+The lecture's 10 m³ tank starts at 1 MPa and 298 K, with the environment at 100 kPa and the same temperature. Treat the air inventory as a closed mass in the reversible work calculation. Since $mRT_0=pV=10{,}000\,\mathrm{kJ}$ and $r_p=10$, the initial availability is $10{,}000(\ln 10+0.1-1)=14.026\,\mathrm{MJ}$. Isothermal reversible expansion supplies $mRT_0\ln 10$ of total work. Displacing the atmosphere over the 90 m³ volume increase consumes 9 MJ, leaving the useful work above. A rigid tank discharging through a turbine is a different control-volume process. Stopping its discharge at ambient pressure can leave a cold residual inventory with work potential. [Part 2, tank setup and comparison](https://www.youtube.com/watch?v=Q4M_IjgkyL0&t=340s)
+
+The positive thermal and volume contributions also explain the exergy contours around the dead state. Consider ideal air with constant specific heat at fixed volume $c_v$, specific volume $v=V/m$, and dead-state specific volume $v_0=RT_0/p_0$. With kinetic and gravitational energy omitted, $u-u_0=c_v(T-T_0)$ and $s-s_0=c_v\ln(T/T_0)+R\ln(v/v_0)$. Write $\theta=T/T_0$ and $\nu=v/v_0$. Substitution into closed-system exergy gives
+
+$$
+\frac{B}{m}=c_vT_0(\theta-1-\ln\theta)+RT_0(\nu-1-\ln\nu).
+$$
+
+Each term has its minimum at a ratio of one. At fixed volume, differentiating with respect to $T$ gives $c_v(1-T_0/T)$, so warming from below ambient decreases availability until the dead-state temperature is reached. At fixed temperature, compressing from $v>v_0$ can similarly reduce availability. The work that comes in across this boundary and the exergy destroyed inside it enter the balance as separate terms. [Part 2, availability contours](https://www.youtube.com/watch?v=Q4M_IjgkyL0&t=1240s)
+
 ## Track exergy carried by heat and useful work
 
 At a boundary with absolute temperature $T_b$, an incremental heat input $\delta Q$ carries incremental exergy $(1-T_0/T_b)\delta Q$. To obtain the factor, operate a reversible engine between source $T_b$ and ambient $T_0$. Entropy balance fixes rejected heat to $(T_0/T_b)\delta Q$, and the first law gives the work difference. For heat entering at $T_b<T_0$, the multiplier is negative. Adding heat to a cold body while it remains below ambient can reduce its work potential. Evaluate the factor locally when temperature varies.
@@ -43,7 +53,13 @@ $$
 \Delta B=\int(1-T_0/T_b)\,\delta Q-W_u-T_0S_{\mathrm{gen}}.
 $$
 
-Insert the energy and entropy balances into $\Delta B=\Delta E+p_0\Delta V-T_0\Delta S$ to derive the result. If no heat or useful work crosses the boundary, $\Delta B=-T_0S_{\mathrm{gen}}\le0$ even though energy is conserved. Part 3 extends the accounting to flowing mass and connects recovered exergy to second-law efficiency. Define a useful product and its supplying resource before taking their ratio. [Part 3, heat and useful work](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=20s) · [Part 3, mass transfer](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1000s) · [Part 3, balance](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1040s)
+Insert the energy and entropy balances into $\Delta B=\Delta E+p_0\Delta V-T_0\Delta S$ to derive the result. In an isolated composite of fixed total volume, $\Delta E=\Delta V=0$ and $\Delta S=S_{\mathrm{gen}}$, so $\Delta B=-T_0S_{\mathrm{gen}}\le0$. Energy is conserved while exergy is destroyed. [Part 2, isolated system](https://www.youtube.com/watch?v=Q4M_IjgkyL0&t=880s) · [Part 3, balance](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1040s)
+
+## Compare work output and input with their reversible benchmarks
+
+Call the exergy input with heat $B_Q=\int(1-T_0/T_b)\,\delta Q$. For fixed end states and fixed $B_Q$, the balance gives $W_u=W_{u,\mathrm{rev}}-B_{\mathrm{dest}}$, with $W_{u,\mathrm{rev}}=B_1-B_2+B_Q$. For a device delivering positive useful work, its second-law efficiency is $W_u/W_{u,\mathrm{rev}}=1-B_{\mathrm{dest}}/W_{u,\mathrm{rev}}$. For a work-consuming device the reversible input magnitude is $-W_{u,\mathrm{rev}}$ and the actual input is $-W_u=-W_{u,\mathrm{rev}}+B_{\mathrm{dest}}$. Its efficiency uses the reversible magnitude in the numerator and the actual magnitude in the denominator. Both ratios attain one when generation vanishes under the stated comparison.
+
+For a steady mixing or heat-transfer device with no shaft power, a work ratio supplies no useful comparison. Specify the useful increase or recovery of stream exergy and the exergy supplied to deliver it. [Chapter 6](chapter-06-flow-exergy-and-the-exergy-balance.html) applies that rule to flow devices. [Part 3, second-law efficiencies](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1580s)
 
 ## Exercises and worked solutions
 

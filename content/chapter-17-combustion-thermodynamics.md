@@ -11,7 +11,7 @@ A stack analyzer reports carbon dioxide and oxygen on a dry basis. A heat balanc
 
 For complete oxidation of a gas containing carbon, hydrogen, and oxygen, one mole of $\mathrm{C}_{x}\mathrm{H}_{y}\mathrm{O}_{z}$ needs $\nu_{\mathrm{O_2,st}}=x+y/4-z/2$ moles of oxygen to form $x$ moles $\mathrm{CO_2}$ and $y/2$ moles $\mathrm{H_2O}$. This follows by matching the two sources of oxygen atoms to the product requirement $2x+y/2$. Approximate dry air by $\mathrm{O_2}+3.76\,\mathrm{N_2}$ per mole of oxygen supplied. This approximation groups the inert gases into nitrogen.
 
-Let $\lambda$ be actual divided by stoichiometric dry-air supply, for fixed fuel. The fuel–air equivalence ratio is $\phi=1/\lambda$. In a lean complete-combustion model for methane using 20% excess air, the reaction is
+Let $\lambda$ be actual divided by stoichiometric dry-air supply, for fixed fuel. The fuel–air equivalence ratio is $\phi=1/\lambda$. Percent theoretical air is $100\lambda$, and percent excess air is $100(\lambda-1)$. With $\lambda<1$ the supplied oxygen cannot form only $\mathrm{CO_2}$ and water from the fuel. A rich calculation requires a product-species model or measured composition. In a lean complete-combustion model for methane using 20% excess air, the reaction is
 
 $$
 \mathrm{CH_4}+2.4(\mathrm{O_2}+3.76\,\mathrm{N_2})
@@ -19,6 +19,8 @@ $$
 $$
 
 The dry mole fraction of $\mathrm{O_2}$ is $0.4/10.424=3.84\%$. On a wet basis, it is $0.4/12.424=3.22\%$. At 101.325 kPa the product vapor partial pressure is $101.325(2/12.424)=16.31$ kPa. Compare it with saturation pressure to predict condensation during constant-pressure cooling, under the ideal gas and water phase-equilibrium assumptions. Inlet air humidity adds water to the product side and changes this dew point even at unchanged dry-air supply. [Lecture 50 · Stoichiometry and exhaust dew point](https://www.youtube.com/watch?v=zn4DDSNWeUA&t=980)
+
+The same balances can recover air supply from measured dry exhaust. The lecture reports 9.00% $\mathrm{CO_2}$, 2.00% $\mathrm{CO}$, 2.11% $\mathrm{O_2}$, and 86.89% $\mathrm{N_2}$ from methane burned with dry air. On a basis of 100 mol dry products, carbon balance requires $9+2=11$ mol methane and hydrogen balance requires 22 mol water. Oxygen balance gives $(2\times9+2+2\times2.11+22)/2=23.11$ mol oxygen supplied. The nitrogen check gives $3.76(23.11)\approx86.89$ mol. Complete oxidation of that fuel would need 22 mol oxygen, so $\lambda=23.11/22=1.0505$, corresponding to 5.05% excess air and $\phi\approx0.952$. The measured carbon monoxide is consistent with incomplete oxidation despite overall excess air. At 100 kPa, $p_v=100(22/122)\approx18.03$ kPa, giving a dew point near 58 °C. [Lecture 50 · Inverting a dry analysis](https://www.youtube.com/watch?v=zn4DDSNWeUA&t=980)
 
 ## Retain enthalpy of formation when species change
 
@@ -45,7 +47,24 @@ $$
 
 If the product species and amounts are specified, the unknown is temperature. When equilibrium determines the hot-product composition, the temperature and composition satisfy the enthalpy and element constraints together. High-temperature dissociation often reduces temperature relative to a complete-oxidation estimate at the same initial state. Excess air carries product sensible enthalpy and generally lowers temperature on the lean side at fixed inlet conditions.
 
-For the steady entropy balance, use standard absolute entropies and, for ideal gas species, the correction $-\bar R\ln(p_i/p^\circ)$ at each actual partial pressure $p_i$. Here $\bar R$ is the universal molar gas constant. The entropy generation per mole fuel is product entropy minus reactant entropy minus the entropy transfer by heat. Adiabatic operation sets the heat term to zero, while chemical reaction and mixing can still generate entropy. [Lecture 53 · Flame temperature and entropy](https://www.youtube.com/watch?v=F14AY9ge4F0&t=220) · [Cantera equilibrium example](https://www.cantera.org/3.2/userguide/flame-temperature.html)
+In the lecture's stoichiometric methane example, both reactants enter at 298.15 K. Under complete oxidation with all product water vapor, subtract the product formation enthalpies from both sides to get
+
+$$
+\Delta\bar h_{\mathrm{CO_2}}(T)+2\Delta\bar h_{\mathrm{H_2O}}(T)
++7.52\Delta\bar h_{\mathrm{N_2}}(T)=802.3\ \mathrm{kJ/mol_{fuel}},
+$$
+
+where $\Delta\bar h_i(T)$ is each species' molar sensible enthalpy rise from 298.15 K. With positive heat capacities and frozen product amounts, the left side increases with temperature. The lecture brackets the solution with property-table entries at 2300 and 2400 K and interpolates to about 2330 K. The same equation with temperature-dependent equilibrium species replaces this complete-combustion estimate when dissociation matters. [Lecture 53 · Adiabatic flame temperature](https://www.youtube.com/watch?v=F14AY9ge4F0&t=400) · [Cantera equilibrium example](https://www.cantera.org/3.2/userguide/flame-temperature.html)
+
+For the steady entropy balance, the third-law reference supplies absolute species entropies. For an ideal-gas species $i$, the molar identity $T\,d\bar s_i=d\bar h_i-\bar v_i\,dp_i$, with $\bar v_i=\bar RT/p_i$, integrates to
+
+$$
+\bar s_i(T,p_i)=\bar s_i^\circ(T_{\rm ref})
++\int_{T_{\rm ref}}^T\frac{\bar c_{p,i}(\theta)}{\theta}\,d\theta
+-\bar R\ln\frac{p_i}{p^\circ}.
+$$
+
+Here $\bar R$ is the universal molar gas constant and $p_i$ is the species' actual partial pressure in its own stream. A pure ideal-gas inlet uses its full stream pressure. With each $n_i$ expressed per mole fuel, steady entropy generation is $\sum_{\rm out}n_i\bar s_i-\sum_{\rm in}n_i\bar s_i-\sum_j q_j/T_j$, where $q_j$ is heat entering per mole fuel across a boundary at temperature $T_j$. Adiabatic operation sets the heat term to zero. Chemical reaction and mixing can still generate entropy and destroy exergy in the amount $T_0s_{\rm gen}$ per mole fuel, where $T_0$ is the environment temperature. [Lecture 53 · Absolute entropy and entropy generation](https://www.youtube.com/watch?v=F14AY9ge4F0&t=780)
 
 ## Numerical laboratory
 

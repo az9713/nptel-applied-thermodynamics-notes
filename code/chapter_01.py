@@ -1,4 +1,4 @@
-"""Check entropy accounts for the ideal-gas mixer and upstream throttle."""
+"""Check the mixer, upstream throttle, and saturated-liquid discharge."""
 
 from math import isclose, log
 
@@ -12,6 +12,29 @@ def entropy_change(t_initial, p_initial, t_final, p_final):
     return CP_AIR * log(t_final / t_initial) - R_AIR * log(
         p_final / p_initial
     )
+
+
+def check_draining_tank():
+    pressure = 2000.0  # kPa
+    tank_volume, initial_mass, reservoir_temperature = 0.600, 8.0, 523.15
+    # IF97 saturation properties at 2 MPa, with h in kJ/kg and v in m³/kg.
+    v_f, v_g = 0.00117675024425, 0.09958054416890
+    h_f, h_g, t_sat = 908.62185113646, 2798.38414024152, 485.53453531849
+    x_initial = (tank_volume / initial_mass - v_f) / (v_g - v_f)
+    final_mass = tank_volume / v_g
+    vapor_gain = initial_mass * (1 - x_initial) * v_f / v_g
+    heat = vapor_gain * (h_g - h_f)
+    u_initial = h_f + x_initial * (h_g - h_f)
+    u_initial -= pressure * tank_volume / initial_mass
+    u_final = h_g - pressure * v_g
+    outflow = initial_mass - final_mass
+    full_balance = final_mass * u_final - initial_mass * u_initial
+    full_balance += outflow * h_f
+    assert isclose(heat, full_balance, rel_tol=1e-10)
+    generation = heat * (1 / t_sat - 1 / reservoir_temperature)
+    assert 0 < generation
+    print(f"Draining tank: {outflow:.5f} kg out, {heat:.2f} kJ in, "
+          f"{1000 * generation:.2f} J/K generated")
 
 
 def main():
@@ -58,6 +81,7 @@ def main():
     print(f"Mixer entropy generation: {chamber_generation:.5f} kW/K")
     print(f"Throttle entropy generation: {throttle_generation:.5f} kW/K")
     print(f"Combined entropy generation: {combined_generation:.5f} kW/K")
+    check_draining_tank()
 
 
 if __name__ == "__main__":

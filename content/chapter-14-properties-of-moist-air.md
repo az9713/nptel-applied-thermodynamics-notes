@@ -21,7 +21,7 @@ The humidity ratio $\omega$ is in kg water vapor per kg dry air. The vapor mass 
 
 ## Find the onset of condensation
 
-For cooling at constant total pressure and fixed humidity ratio up to saturation, the dew point satisfies $p_{\rm sat}(T_{\rm dp})=p_v$. Use a saturation table or invert a vapor-pressure relation. At 30 °C, 101.325 kPa and $\phi=0.50$, take $p_{\rm sat}=4.246$ kPa. Then $p_v=2.123$ kPa, $\omega=0.01331$ kg/kg dry air, and $T_{\rm dp}\approx18.5$ °C. At unchanged pressure, any further equilibrium cooling rejects liquid.
+For cooling at constant total pressure and fixed humidity ratio up to saturation, the dew point satisfies $p_{\rm sat}(T_{\rm dp})=p_v$. Use a saturation table or invert a vapor-pressure relation. At 30 °C, 101.325 kPa and $\phi=0.50$, take $p_{\rm sat}=4.246$ kPa. Then $p_v=2.123$ kPa, $\omega=0.01331$ kg/kg dry air, and $T_{\rm dp}\approx18.5$ °C. Below the dew point, some vapor condenses if the stable condensed phase is liquid.
 
 The volume constraint changes the calculation in a rigid tank. For a sealed 1.00 m³ tank starting at the same state, the initial vapor mass is $p_{v,1}V/(R_vT_1)=0.01517$ kg. At 10 °C, saturation gives $p_{v,2}\simeq1.228$ kPa and $m_{v,2}=0.00940$ kg. About 5.8 g of liquid remains in the tank. A test for condensation is to calculate the hypothetical $p_{v,2}=m_{v,1}R_vT_2/V$ with all water still in vapor form, then compare it with $p_{\rm sat}(T_2)$. This test retains the rigid-volume constraint. [Lecture 40 · Worked examples](https://www.youtube.com/watch?v=ewtFkNDw-5c&t=0) · [IAPWS saturation properties](https://www.iapws.org/relguide/Supp-sat.html)
 
@@ -36,6 +36,8 @@ $$
 
 Here $h_v$ is expressed per kg vapor and includes the reference latent enthalpy. The volume per kg dry air is $v^*=R_aT/(p-p_v)$. Multiplying $h^*$ by $\dot m_a$ gives the enthalpy flow carried by the air stream, and dividing the inlet volumetric flow by $v^*$ gives $\dot m_a$. For a sealed tank use internal energy in the closed-system balance, counting the remaining liquid separately. [Lecture 41 · Closed and steady-flow balances](https://www.youtube.com/watch?v=xyJWx-HbXyI&t=0)
 
+For a sealed charge, $\Delta U=m_a\Delta u_a+\Delta(m_v u_v+m_\ell u_\ell)$. In the lecture's isothermal compression, air at 25 °C starts at 25% relative humidity, and its volume falls to one-fifth of the original value. With liquid volume negligible, the all-vapor trial gives $p_{v,2}=5p_{v,1}=1.25p_{\rm sat}(25\,{}^\circ\mathrm C)$. Saturation limits the remaining vapor mass to $m_{v,2}/m_{v,1}=1/(5\times0.25)=0.80$. The other 20% condenses. Since $T$ stays fixed, the ideal-gas internal energies per kg stay fixed, and $\Delta U=-m_{\ell,2}(u_v-u_\ell)$. With work positive out of the charge, $Q=\Delta U+W$. Computing $Q$ requires the compression path for $W=\int p\,dV$ when boundary work is the only work and compression is quasistatic. [Lecture 41 · Isothermal compression](https://www.youtube.com/watch?v=xyJWx-HbXyI&t=440)
+
 ## Distinguish dry bulb, dew point, and wet bulb
 
 For an insulated steady-flow adiabatic saturator ultimately leaving saturated at $t_s$, take the make-up water at $t_s$. The water balance gives added liquid per kg dry air as $\omega_s-\omega_1$. The energy balance gives
@@ -45,7 +47,14 @@ h_1^*+(\omega_s-\omega_1)h_\ell(t_s)=h_s^*,\qquad
 \omega_s=\omega_{\rm sat}(t_s,p).
 $$
 
-The two terms on the left are the incoming gas and liquid enthalpies. Solve the equation for $t_s$ using the saturation relation. A ventilated wet-bulb thermometer uses evaporation from a wetted sensor. Its reading approximates the thermodynamic wet bulb for ordinary air–water mixtures under suitable airflow and radiation conditions. At saturation the dry bulb, thermodynamic wet bulb, and dew point coincide. [Lecture 42 · Wet bulb and adiabatic saturation](https://www.youtube.com/watch?v=kSMMgwBP11c&t=1020)
+The two terms on the left are the incoming gas and liquid enthalpies. Solve the equation for $t_s$ using the saturation relation. A ventilated wet-bulb thermometer uses evaporation from a wetted sensor. Its reading approximates the thermodynamic wet bulb for ordinary air–water mixtures under suitable airflow and radiation conditions. For ordinary unsaturated air with liquid water in the saturator, the dew point is below the thermodynamic wet bulb, which is below the dry-bulb temperature $t_1$. At saturation all three coincide. If $t_s$ is known, expand the incoming air term as $h_a(t_1)+\omega_1 h_v(t_1)$ and solve directly for
+
+$$
+\omega_1=\frac{h_s^*-h_a(t_1)-\omega_s h_\ell(t_s)}
+{h_v(t_1)-h_\ell(t_s)}.
+$$
+
+This converts a measured dry-bulb and approximate wet-bulb pair into the vapor inventory. [Lecture 42 · Wet bulb and adiabatic saturation](https://www.youtube.com/watch?v=kSMMgwBP11c&t=1020)
 
 ## Numerical laboratory
 

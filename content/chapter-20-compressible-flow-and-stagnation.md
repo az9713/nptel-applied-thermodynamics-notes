@@ -11,6 +11,8 @@ An air test stand has a pressure tap in the wall and a forward-facing probe. The
 
 Let $p$ be absolute pressure, $T$ absolute temperature, $\rho$ mass per unit volume, and $s$ entropy per unit mass. The isentropic compressibility $\kappa_s=(1/\rho)(\partial\rho/\partial p)_s$ is the fractional density response per unit pressure during a fixed-entropy perturbation. The isothermal compressibility $\kappa_T$ uses a constant-temperature derivative. For an ideal gas with specific gas constant $R$, the equation of state $p=\rho RT$ gives $\kappa_T=1/p$. For the calorically perfect gas model, specific heats at constant pressure and volume, $c_p$ and $c_v$, are constants with $c_p-c_v=R$. Their ratio $\gamma=c_p/c_v$ is greater than 1.
 
+Let $v=1/\rho$ and define the thermal expansion coefficient $\beta=(1/v)(\partial v/\partial T)_p$. The total differential $dv/v=-\kappa_T\,dp+\beta\,dT$ separates the effects of pressure and temperature on density. For an ideal gas $\beta=1/T$, so $d\rho/\rho=dp/p-dT/T$. An isobaric heating process can thus change density even if the flow is slow. [Part 1 · Volume differential](https://www.youtube.com/watch?v=QC2PLN5D3wo&t=300s)
+
 A compressible fluid can flow with small relative density changes if the pressure changes are small and heat or species changes are negligible. Let $a$ be the acoustic speed and $C$ the local flow speed. With $a^2=(\partial p/\partial\rho)_s$, derived below, we have $\kappa_s=1/(\rho a^2)$. A pressure change of order $\rho C^2/2$ then produces a fractional density change of order $M^2/2$, where $M=C/a$ is the Mach number. The estimate motivates screening near $M=0.3$, at which the exact ideal-air isentropic density increase upon stopping is $4.56\%$. A flow with low inlet Mach can accelerate above the screening value in a restriction. Heating, composition changes, and pressure variation unrelated to local motion can also change density. [Part 1 · 18:20](https://www.youtube.com/watch?v=QC2PLN5D3wo&t=1100s)
 
 ## Conservation laws and a weak pressure wave [Part 2 · 0:40](https://www.youtube.com/watch?v=sYF4Kb647mY&t=40s)
@@ -47,13 +49,17 @@ $$
 
 The second formula integrates the isentropic entropy relation along the hypothetical path. For real steam, obtain the stagnation state from the pair $(h_t,s)$ with an appropriate property formulation. The constant-$c_p$ temperature formula only applies to the calorically perfect model. [Part 3 · 11:20](https://www.youtube.com/watch?v=tCt7uXNYhzg&t=680s) · [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
 
+Combining the ideal-gas temperature and pressure ratios gives $\rho_t/\rho=(T_t/T)^{1/(\gamma-1)}$. With $\gamma=1.4$ and $M=0.3$, this is $(1+0.2(0.3)^2)^{2.5}=1.04561$. The sonic temperature, pressure and density ratios relative to the same stagnation state follow by setting $M=1$: $T^*/T_t=2/(\gamma+1)$, $p^*/p_t=(T^*/T_t)^{\gamma/(\gamma-1)}$, and $\rho^*/\rho_t=(T^*/T_t)^{1/(\gamma-1)}$. The sonic and stagnation states can be read from the same isentrope even when neither is realized in the actual stream.
+
 ## Change the observer [Part 3 · 24:20](https://www.youtube.com/watch?v=tCt7uXNYhzg&t=1460s)
+
+In the lecture's acoustic limit, a wave travels through quiescent air at 300 K and 100 kPa. For the stationary observer the air ahead of the wave has zero velocity, so its total state equals its static state. In the frame traveling with the wave the same air approaches at the sound speed, so $M=1$. The hypothetical stop in that frame gives $T_t=300(1.2)=360$ K and $p_t=100(1.2)^{3.5}=189.29$ kPa. Both stops refer to air ahead of the wave.
 
 For a stationary probe at 250 m/s relative to the stream, the test stand example gives 331.11 K and 141.25 kPa at the stagnation state. For an observer moving downstream at 100 m/s, the relative speed is 150 m/s. The static pressure and temperature are unchanged, while the total values become 311.20 K and 113.69 kPa. Each value refers to stopping the parcel in the named frame. The probe interpretation assumes accurate local sampling and an effectively isentropic stop. A normal shock ahead of a probe used in supersonic flow reduces stagnation pressure before the fluid reaches the port.
 
 ## Numerical laboratory
 
-The [Python laboratory](code/chapter_20.py) accepts static temperature, static pressure, relative velocity, and ideal-gas constants. It evaluates the three states above with a stationary and a moving observer, and verifies the signed-velocity symmetry, energy balance, and zero-speed case. It requires only the Python standard library.
+The [Python laboratory](code/chapter_20.py) accepts static temperature, static pressure, relative velocity, and ideal-gas constants. It evaluates the test-stand static state and the two observer-dependent stagnation states, and verifies signed-velocity symmetry, energy balance, and the zero-speed case. It requires only the Python standard library.
 
 ## Problems with worked solutions
 

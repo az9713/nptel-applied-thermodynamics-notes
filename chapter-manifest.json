@@ -16,7 +16,7 @@
       "source": "https://www.youtube.com/watch?v=h_LAfSgddUw",
       "file": "chapter-01-control-volume-entropy.html",
       "content": "content/chapter-01-control-volume-entropy.md",
-      "sha256": "610161f29192bd27e0a0a311048f90bc257d6a39b482fc26fae395b1b6e7f82d"
+      "sha256": "fad31eb76dfae3402b3b204753788b637b33ce06fe9be842c3b700d9f2095467"
     },
     {
       "number": 2,
@@ -31,7 +31,7 @@
       "source": "https://www.youtube.com/watch?v=rLxnEV4MLps",
       "file": "chapter-02-reversible-steady-flow-work.html",
       "content": "content/chapter-02-reversible-steady-flow-work.md",
-      "sha256": "07f98e79f8df03479f87a386387f104148a1b1d74761aa99628b1087242652f1"
+      "sha256": "961374c56ed219eff01d4eea74a228b9fadbc59e3539202dea93a701b9335457"
     },
     {
       "number": 3,
@@ -46,7 +46,7 @@
       "source": "https://www.youtube.com/watch?v=-lDtRFxhCuM",
       "file": "chapter-03-entropy-balances-in-thermal-equipment.html",
       "content": "content/chapter-03-entropy-balances-in-thermal-equipment.md",
-      "sha256": "8ef1d26704c01c8fecf319b4ce529bcc333c6757e0036ff5e85df9fa5ef9c182"
+      "sha256": "180c96cbcdb6b3dcd51b00f3b4149c2e1b27e01fc05254a8de14c7d0a4eadb04"
     },
     {
       "number": 4,
@@ -61,7 +61,7 @@
       "source": "https://www.youtube.com/watch?v=L3pg5PPob_I",
       "file": "chapter-04-work-and-irreversibility-tutorials.html",
       "content": "content/chapter-04-work-and-irreversibility-tutorials.md",
-      "sha256": "6ee9c07316fb79892ed95d41ba09ae79c461374a6d19e40e58eac837dc78eb56"
+      "sha256": "f85448d3d3f40626d0df03fe3b9877338cd5c75b7923de00623469a7b73aa2e0"
     },
     {
       "number": 5,
@@ -76,7 +76,7 @@
       "source": "https://www.youtube.com/watch?v=vvBkCJtw1rI",
       "file": "chapter-05-exergy-and-the-reference-environment.html",
       "content": "content/chapter-05-exergy-and-the-reference-environment.md",
-      "sha256": "4cf499fd025287c79277d405cae96d5f3e0aa684bfdbd29f231e9d56e7063dde"
+      "sha256": "105169161ee734c02303899975ffa83d3bfd3f4309a4c804e608fd96cc4686b3"
     },
     {
       "number": 6,
@@ -90,7 +90,7 @@
       "source": "https://www.youtube.com/watch?v=M2PWao2pvsI",
       "file": "chapter-06-flow-exergy-and-the-exergy-balance.html",
       "content": "content/chapter-06-flow-exergy-and-the-exergy-balance.md",
-      "sha256": "de6d7f5dcef415b1f856fa8d720f91ae91fc9e00a3074aa4614629ab8b96d1cb"
+      "sha256": "36f8a1f8153471a2fcc12f70cb564c77dca81caf81f478073035e9e1f2be2dab"
     },
     {
       "number": 7,
@@ -107,7 +107,7 @@
       "source": "https://www.youtube.com/watch?v=8unoXVZtbdg",
       "file": "chapter-07-exergy-of-closed-systems.html",
       "content": "content/chapter-07-exergy-of-closed-systems.md",
-      "sha256": "7176f38bcbf03f1d2ae115ce1184f1fd6408415c6784c628b1e693ba0622360b"
+      "sha256": "ef6c0d50561e7deb320b1014b6b62be97b51af6338a48b76ed3e93c0c49db007"
     },
     {
       "number": 8,
@@ -122,7 +122,7 @@
       "source": "https://www.youtube.com/watch?v=Y2AbiUZc4wg",
       "file": "chapter-08-exergy-of-control-volumes.html",
       "content": "content/chapter-08-exergy-of-control-volumes.md",
-      "sha256": "9b1e97675d8ac8649482905d9c282ea75304284ba328e9999bf0869ca6a3f9fc"
+      "sha256": "91e80157547cd71ff89cc6b0db3394f116e473fab8592308cc367a915cd609ae"
     },
     {
       "number": 9,
@@ -137,7 +137,7 @@
       "source": "https://www.youtube.com/watch?v=TJVk37kchOA",
       "file": "chapter-09-rankine-cycles.html",
       "content": "content/chapter-09-rankine-cycles.md",
-      "sha256": "63e9abd8fc596e8813a02241a31230042712211782ce77807be6d9c99589bb44"
+      "sha256": "7f30beb3d44eadaa55c8e6c19e64b1f7e8ff1ca8fc1c1ceaa8126811f67d38db"
     },
     {
       "number": 10,
@@ -152,7 +152,7 @@
       "source": "https://www.youtube.com/watch?v=0HNZF9aFC1o",
       "file": "chapter-10-brayton-cycles.html",
       "content": "content/chapter-10-brayton-cycles.md",
-      "sha256": "06756c4d035fb3f46b3f091efd7e43bb705b70f634f15178c9e7d75a7e473ba5"
+      "sha256": "a402a3191dfe89fb43b1c819f67a0236a36edc2550b173d63fee522715ea14ad"
     },
     {
       "number": 11,
@@ -166,7 +166,7 @@
       "source": "https://www.youtube.com/watch?v=tbbWu9G-9MY",
       "file": "chapter-11-modified-brayton-cycles.html",
       "content": "content/chapter-11-modified-brayton-cycles.md",
-      "sha256": "00e203fe77e18520b6f1c1f5e2118fc42c3fd846171e4fe411269f795cda7eff"
+      "sha256": "7db212fb7cf0f5959d1a4d4a1168f3b6f55fd19516bc21f96672b5a45382fa60"
     },
     {
       "number": 12,
@@ -181,7 +181,7 @@
       "source": "https://www.youtube.com/watch?v=RPXchZmvO0A",
       "file": "chapter-12-otto-and-diesel-cycles.html",
       "content": "content/chapter-12-otto-and-diesel-cycles.md",
-      "sha256": "ad68670ebd537641f0f1bd4fbbf543d63d118ae4d7b63b82d3cebee59427b10a"
+      "sha256": "234d0f90a8e6847a92de4f85e7bea041cf4e4260bef06d3e62cdc315efdb7ea0"
     },
     {
       "number": 13,
@@ -194,7 +194,7 @@
       "source": "https://www.youtube.com/watch?v=zl-D7nlr_NY",
       "file": "chapter-13-vapor-compression-refrigeration.html",
       "content": "content/chapter-13-vapor-compression-refrigeration.md",
-      "sha256": "a28acf00f0a4ac3b7f76edea3be1c1524552882e84d0effda93cd9b3d5b7e441"
+      "sha256": "918fb44068c91b8fc9f3619c6afe5af6916d2c8359952de314ddd3a3cbab4683"
     },
     {
       "number": 14,
@@ -210,7 +210,7 @@
       "source": "https://www.youtube.com/watch?v=es-2LA2bsu4",
       "file": "chapter-14-properties-of-moist-air.html",
       "content": "content/chapter-14-properties-of-moist-air.md",
-      "sha256": "973558eb66a3c64d56731417baaecc5ce06ebfdc38df99b7e627fa61b8201f8c"
+      "sha256": "0623de3d9c5e4e3cc925e89b49159ff7834cfda5aa08ff71f850e7352aab96e9"
     },
     {
       "number": 15,
@@ -225,7 +225,7 @@
       "source": "https://www.youtube.com/watch?v=IVz3N68fF1c",
       "file": "chapter-15-psychrometric-paths.html",
       "content": "content/chapter-15-psychrometric-paths.md",
-      "sha256": "1ceec1af0937830e3e4a0d37f3cf92d0417984b60be61251c564d441687df965"
+      "sha256": "962bad6e5c0932c37806dc65a32644efba57860ac9bd34a2b39246824496670c"
     },
     {
       "number": 16,
@@ -241,7 +241,7 @@
       "source": "https://www.youtube.com/watch?v=srqc4eXwM8Y",
       "file": "chapter-16-air-conditioning-tutorials.html",
       "content": "content/chapter-16-air-conditioning-tutorials.md",
-      "sha256": "97dee6c7d8dfd9cb9763ed7df0f06eca22024324d9eddc549842d6cdfc7dd857"
+      "sha256": "654af46efde8174f6cd4e8a4ef4c2489738c0700f26c125413832ad24f867aa1"
     },
     {
       "number": 17,
@@ -257,7 +257,7 @@
       "source": "https://www.youtube.com/watch?v=zn4DDSNWeUA",
       "file": "chapter-17-combustion-thermodynamics.html",
       "content": "content/chapter-17-combustion-thermodynamics.md",
-      "sha256": "ff7e16f63581e83159f0ff3aeae5f6d2b2d64e395aaffc4da24c5e61a63a6398"
+      "sha256": "2d92db5ec92e12be5511114df5f9094023d23c215fbe1948467da9ba6b00ce35"
     },
     {
       "number": 18,
@@ -271,7 +271,7 @@
       "source": "https://www.youtube.com/watch?v=ml1fhdGuMc0",
       "file": "chapter-18-combustion-stoichiometry-tutorials.html",
       "content": "content/chapter-18-combustion-stoichiometry-tutorials.md",
-      "sha256": "df4dc2562f895a142bfa3e7fc0bf8d2f7ad0c0b3f81425e6c1255f57c211c482"
+      "sha256": "5c8aef915d85b1c2df124ad9703991daa1b50842efeae8cff9a76667f358a09c"
     },
     {
       "number": 19,
@@ -288,7 +288,7 @@
       "source": "https://www.youtube.com/watch?v=32K6nWIdvwc",
       "file": "chapter-19-combustion-energy-tutorials.html",
       "content": "content/chapter-19-combustion-energy-tutorials.md",
-      "sha256": "f675fc3c8d5d6f07ed3b7296961c9e4664d7e9d399441ef7a11fdd0b1ba604f6"
+      "sha256": "09395dd35f6e0c39f4f3f0b4dfaaf39c7528e32544d880648f2a01bbf18f0d56"
     },
     {
       "number": 20,
@@ -303,7 +303,7 @@
       "source": "https://www.youtube.com/watch?v=QC2PLN5D3wo",
       "file": "chapter-20-compressible-flow-and-stagnation.html",
       "content": "content/chapter-20-compressible-flow-and-stagnation.md",
-      "sha256": "ebc2585a6a15e9f12bb1bab7df5aaec9bf985a01089eb9ae10f0e3b110acf0cc"
+      "sha256": "196766bd1a3c3c3ab456530f9e4d2589f0a5bcb74b0534b327871e12fce88f09"
     },
     {
       "number": 21,
@@ -318,7 +318,7 @@
       "source": "https://www.youtube.com/watch?v=PNRiUi9Brtw",
       "file": "chapter-21-stagnation-pressure-and-shocks.html",
       "content": "content/chapter-21-stagnation-pressure-and-shocks.md",
-      "sha256": "d95c1db9e97ffd02ff8bc8a8c1efeb405aa7c53d279d085ef1ef059b7e24fad3"
+      "sha256": "d0411bc3b14508bb16055ab3c7da6224d05a6f43bc999c4f91ff29e2cec83252"
     },
     {
       "number": 22,
@@ -333,7 +333,7 @@
       "source": "https://www.youtube.com/watch?v=ttqqNQSlHZU",
       "file": "chapter-22-nozzle-geometry-and-choking.html",
       "content": "content/chapter-22-nozzle-geometry-and-choking.md",
-      "sha256": "0eee4babbbe4d024fe08c47cdd26d50c652cf67f63b9dd2aca183e55effa39bf"
+      "sha256": "970a0d31e3a4839a532a287603000e23113c63f4095a73c25690f45e24358b83"
     },
     {
       "number": 23,
@@ -348,7 +348,7 @@
       "source": "https://www.youtube.com/watch?v=HqYbWMEqE-4",
       "file": "chapter-23-air-and-steam-nozzle-calculations.html",
       "content": "content/chapter-23-air-and-steam-nozzle-calculations.md",
-      "sha256": "5ece61a740c6b0c283b4a1c9a17d66858d2a0e742d2baa6786045c10106a1e14"
+      "sha256": "c0caa3effd274bfb04614dd8e559f9b2fc7e5ccd795920e910e323062754fa98"
     }
   ]
 }

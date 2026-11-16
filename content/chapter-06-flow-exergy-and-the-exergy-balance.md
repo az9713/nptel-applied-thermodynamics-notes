@@ -27,17 +27,28 @@ For unsteady operation subtract the rate of physical exergy accumulation inside 
 
 ## Choose the product before defining an efficiency
 
-**Compression.** In the Part 5 example, air enters at ambient state and receives shaft work. For heat exchanged only with the ambient, the useful stream gain is $\dot m(\psi_e-\psi_i)$, and shaft input is the resource. Their ratio is second-law efficiency. An original case with $8\,\mathrm{kW}$ input, $5\,\mathrm{kW}$ stream gain and no other exergy transfer has $3\,\mathrm{kW}$ destruction and efficiency $0.625$.
+**Compression.** In the Part 5 example, 2.1 kg/min of air enters at ambient state and an 8 kW compressor raises it to 650 kPa and 187 °C. For an extended boundary whose heat reaches ambient, shaft input is the sole exergy resource and the stream exergy gain is the product. The lecture's energy balance gives about 2.27 kW of heat rejection. Its entropy balance yields about 1.21 kW of destruction, leaving a 6.79 kW stream exergy gain and $6.79/8\approx84.9\%$ second-law efficiency. With its own temperature, pressure and mass-flow inputs, the lab checks the same identity between the energy–entropy residual and the work-minus-stream-gain calculation. [Part 5, compressor](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=20s)
 
 **Turbine.** The stream exergy decrease supplies shaft production. With heat ultimately exchanged only with ambient, the second-law efficiency is $\dot W/\{\dot m(\psi_i-\psi_e)\}$. At fixed inlet and exit states with matched external thermal constraints, the stream decrease is the reversible work benchmark. It is distinct from an isentropic-efficiency calculation in which the actual and isentropic exits can have different enthalpies. [Part 5, turbine](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=220s)
 
 **Feedwater heater.** Part 5 assigns steam as the resource and heated feedwater as the product. In a direct mixer the steam eventually joins the outlet. To define the product, track the inlet feedwater mass and compare its outlet-equivalent exergy at the mixed state with its inlet exergy. Compare the inlet steam mass's exergy decrease to that same mixed reference state. That convention uses both mass fractions without adding a second outlet stream. With negligible kinetic or gravitational changes and only ambient heat rejection, the difference between resource and product equals destruction. [Part 5, feedwater heater](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=380s)
 
-**Heat engine.** For a cyclic engine receiving $Q_H>0$ at $T_H$ and rejecting heat only to $T_0$, the resource is $(1-T_0/T_H)Q_H$ and the product is net work. If heat is rejected at a temperature distinct from ambient, the rejected stream of heat can still carry exergy. How to credit it depends on whether it is a useful coproduct or a loss. [Part 5, cyclical engine](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=940s)
+**Heat engine.** For a cyclic engine receiving $Q_H>0$ at $T_H$ and rejecting $Q_C>0$ at $T_C$, energy conservation gives $W=Q_H-Q_C$. Part 5 counts the rejected heat as a recovered exergy stream when $T_H>T_C\ge T_0$. The entropy balance over the cycle, including both reservoir contacts, gives $S_{\mathrm{gen}}=Q_C/T_C-Q_H/T_H$. Write thermal efficiency as $\eta_{\mathrm{th}}=W/Q_H$ and Carnot efficiency as $\eta_C=1-T_C/T_H$. Substituting $Q_C=Q_H(1-\eta_{\mathrm{th}})$ in the recovered-to-supplied ratio gives
+
+$$
+\eta_{\mathrm{II}}=\frac{W+(1-T_0/T_C)Q_C}{(1-T_0/T_H)Q_H}
+=1-\frac{(T_0/T_C)(\eta_C-\eta_{\mathrm{th}})}{1-T_0/T_H}.
+$$
+
+At $T_C=T_0$, the heat rejection term vanishes and $\eta_{\mathrm{II}}=\eta_{\mathrm{th}}/\eta_C$. For a plant whose product is shaft work alone, leave exported heat exergy outside the product even when the sink is warmer than ambient. [Part 5, cyclic engine](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=940s)
 
 ## Connect the closed-system examples
 
 The first three worked examples explain where a prescribed work or heat interaction enters the exergy account. In polytropic air compression $pV^n$ is constant. Integrate $p\,dV$ for boundary work, subtract $p_0\Delta V$ for useful work, and use endpoint entropy to get destruction once the heat source is specified. For rigid stirred refrigerant, volume work vanishes, but the stirrer supplies work and dissipates it internally. For a piston initially resting on stops, first use a constant-volume segment, then a moving boundary at the lift pressure. Sum the heat-exergy integrals for all segments and avoid treating the total heat as reversible work. [Part 4, polytropic compression](https://www.youtube.com/watch?v=M2PWao2pvsI&t=0s) · [Part 4, stirred refrigerant](https://www.youtube.com/watch?v=M2PWao2pvsI&t=240s) · [Part 4, piston on stops](https://www.youtube.com/watch?v=M2PWao2pvsI&t=580s)
+
+In the polytropic example, 2 kg of air starts at 100 kPa and 300 K and reaches 800 kPa with $n=1.27$. The volume relation gives $V_2=V_1(100/800)^{1/1.27}$. The boundary-work integral is $(p_2V_2-p_1V_1)/(1-n)$. Using the lecture’s rounded work of −357.11 kJ and $p_0\Delta V=-139.50$ kJ gives useful work out of −217.61 kJ. At 300 K, generation of 0.08056 kJ/K destroys 24.17 kJ of exergy. The reversible comparison requires 193.44 kJ of useful input, so the efficiency is $193.44/217.61\approx88.9\%$.
+
+The stirred-vessel example starts with 5 kg of saturated R134a vapor at −15 °C and ends at the 30 °C ambient temperature. Because the vessel is rigid, the 500 kJ of stirrer input is entirely useful work crossing the boundary, with the outward sign $W_u=-500$ kJ. The lecture finds about 1.70 kJ/K of generation, equivalent to about 514 kJ of destruction at ambient. The reversible comparison at the same endpoints and with heat exchanged only with ambient gives about $-500+514=14$ kJ of useful output. The process consumes work even though the specified state change reduces stored exergy. The reversible-to-actual input ratio used for the compressor has no useful interpretation here.
 
 ## Exercises and worked solutions
 

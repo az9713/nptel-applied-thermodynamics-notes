@@ -15,9 +15,11 @@ $$
 s_2-s_1=c_p\ln(T_{t2}/T_{t1})-R\ln(p_{t2}/p_{t1}).
 $$
 
-Here $p_t$ and $T_t$ are stagnation pressure and absolute temperature. At fixed $T_t$, positive entropy generation lowers $p_t$. A turbine can lower total pressure by reversible work extraction even while its entropy stays constant. A compressor can raise total pressure while generating entropy if the temperature term dominates. Total pressure alone diagnoses loss only under the accompanying energy and entropy constraints.
+Here $p_t$ and $T_t$ are stagnation pressure and absolute temperature. In a single-stream adiabatic device, the steady entropy balance gives $s_2-s_1=s_{\rm gen}$, the entropy generated per kilogram. If $T_t$ also stays fixed, positive entropy generation lowers $p_t$. A turbine can lower total pressure by reversible work extraction even while its entropy stays constant. A compressor can raise total pressure while generating entropy if the temperature term dominates. Total pressure alone diagnoses loss only under the accompanying energy and entropy constraints.
 
 On a temperature–entropy diagram an isentropic stop moves vertically to a higher temperature. Along a passive adiabatic duct without shaft work, $T_t$ is constant. That fixes a common sonic temperature $2T_t/(\gamma+1)$, with $\gamma=c_p/(c_p-R)$. A local temperature below the sonic value corresponds to supersonic motion. Across a shock this sonic temperature remains common while the pressure of the sonic reference state changes. On a pressure–specific-volume plot, $p=\text{constant}/v$ for a fixed-temperature ideal gas, with slope $-p/v$. The isentropic slope is $-\gamma p/v$ from $pv^\gamma=\text{constant}$. For real steam use $h_t$ and $s$, with properties read from a fluid model. [Part 4 · 5:00](https://www.youtube.com/watch?v=PNRiUi9Brtw&t=300s) · [Part 4 · 22:40](https://www.youtube.com/watch?v=PNRiUi9Brtw&t=1360s)
+
+At fixed pressure $ds=c_p\,dT/T$, so an isobar has slope $(dT/ds)_p=T/c_p$. At fixed specific volume, $ds=c_v\,dT/T$, so an isochore has the steeper slope $T/c_v$ at the same state. For a constant-$c_p$ gas, the vertical separation from the static state to its isentropic stagnation state is $C^2/(2c_p)$. Thus a pair of points on that diagram can encode velocity as well as the static and stagnation temperatures. [Part 4 · Diagram slopes and stagnation states](https://www.youtube.com/watch?v=PNRiUi9Brtw&t=340s)
 
 ## Derive the compressive jump [Part 5 · 4:40](https://www.youtube.com/watch?v=6lq2dfFuQ0Q&t=280s)
 
@@ -54,6 +56,8 @@ This derivative is positive for $z>1$. The entropy increase vanishes at $z=1$ an
 ## Recover pressure at the cost of total pressure [Part 6 · 2:40](https://www.youtube.com/watch?v=P6HLJKGw2SI&t=160s)
 
 For air with $\gamma=1.4$ and $M_1=2$, the shock gives $M_2=0.57735$, $p_2/p_1=4.5$, $\rho_2/\rho_1=2.66667$, and $T_2/T_1=1.6875$. The two total temperatures agree by the energy balance. To find the total pressures, compute independently on the two sides $p_{tk}=p_k[1+(\gamma-1)M_k^2/2]^{\gamma/(\gamma-1)}$, where $k$ denotes the side. This yields $p_{t2}/p_{t1}=0.72087$ and $s_2-s_1=-R\ln(0.72087)=93.93$ J/(kg K) for $R=287$ J/(kg K).
+
+Take the lecture's 100 kPa and 300 K inlet and its rounded Mach number of 2. The upstream speed is $2\sqrt{1.4(287)(300)}\simeq694.4$ m/s with this gas constant. The downstream speed is $C_2=C_1v_2/v_1\simeq260.4$ m/s. The static state downstream is 450 kPa and 506.25 K, while $T_{t1}=T_{t2}=540$ K. The inlet total pressure is $100(1.8)^{3.5}\simeq782.4$ kPa, giving an outlet total pressure of about 564.0 kPa.
 
 A shock can deliver a large static pressure rise with a short compression distance. An ideal smooth diffuser preserves more of the inlet stagnation pressure for later recovery. A real diffuser introduces wall losses and geometric constraints of its own. Evaluate available length and required total pressure separately. The normal-shock calculation assumes a stationary plane. Real shock structures can depart from it when the flow separates or the shock is oblique. [Part 6 · 8:40](https://www.youtube.com/watch?v=P6HLJKGw2SI&t=520s)
 

@@ -76,18 +76,21 @@ For $\dot Q=12\,\mathrm{kW}$, $T_H=600\,\mathrm{K}$ and $T_C=400\,\mathrm{K}$, t
 
 ## Extend the boundary to include the surroundings
 
-Part 2 works with both a device boundary and an enclosing balance with an isothermal ambient reservoir. Let $T_0$ denote that reservoir's absolute temperature. Suppose all heat leaving the device ultimately reaches this reservoir and the connecting region stores neither energy nor entropy during steady operation. The reservoir gains heat at rate $-\dot Q$ when $\dot Q$ is the total rate of heat into the device. The entropy generation rate of the device plus heat-transfer path is therefore
+Part 2 works with both a device boundary and an enclosing balance with an isothermal ambient reservoir. Let $T_0$ denote that reservoir's absolute temperature. Suppose the device exchanges heat only with this reservoir, through a region with negligible storage. Set $\dot Q$ positive for net heat entering the device. The reservoir then gains entropy at rate $-\dot Q/T_0$. Adding that term to the material-system entropy change derived above and dividing by $dt$ gives
 
 $$
 \dot S_{\mathrm{gen,total}}
-=\sum_e\dot m_e s_e-\sum_i\dot m_i s_i-\frac{\dot Q}{T_0}.
+=\frac{dS_{\mathrm{CV}}}{dt}
++\sum_e\dot m_e s_e-\sum_i\dot m_i s_i-\frac{\dot Q}{T_0}.
 $$
 
-The difference from device-only generation is $\sum_j \dot Q_j/T_j-\dot Q/T_0$. This replacement is justified by the enlarged boundary. A device with some heat entering through a cold region and other heat leaving through a hot region can have a small net $\dot Q$ and substantial irreversible heat transfer. Even $\dot Q=0$ in the aggregate does not make the device adiabatic if local heat flows cancel. With multiple thermal reservoirs, specify each reservoir and its heat transfer separately.
+In steady operation the storage term vanishes. The difference from device-only generation is $\sum_j \dot Q_j/T_j-\dot Q/T_0$. A device with some heat entering through a cold region and other heat leaving through a hot region can have a small net $\dot Q$ and substantial irreversible heat transfer. Local heat flows can cancel while each transfers entropy. With multiple thermal reservoirs, specify each reservoir and its heat transfer separately. [Part 2, reservoir entropy account](https://www.youtube.com/watch?v=be69wsZFyuM&t=720s)
 
 **Original compressor example.** At steady operation an insulated compressor would equate shaft input with the stream's enthalpy rise if kinetic and gravitational energy changes were negligible. Suppose actual shaft input is $23\,\mathrm{kW}$, the enthalpy rise of the stream is $20\,\mathrm{kW}$ on a rate basis, and the outlet stream carries $0.004\,\mathrm{kW/K}$ more entropy than the inlet stream. Shaft input delivers energy to the region, so $\dot Q=20-23=-3\,\mathrm{kW}$. If the rejected heat reaches a $300\,\mathrm{K}$ reservoir, total generation is $0.004-(-3/300)=0.014\,\mathrm{kW/K}$. The device-only value requires the actual boundary heat-flux and temperature distribution or additional assumptions.
 
-The recording applies the same architecture to a heat exchanger, an insulated steam turbine, a nonadiabatic refrigerant compressor, and a turbine that rejects heat to ambient. Turbine and compressor enthalpies are specific quantities, in $\mathrm{kJ/kg}$. Their product with mass flow gives power, in $\mathrm{kW}$. The caption track contains questionable transcriptions of some numerical values and units. The worked numbers here are independently constructed. [Part 2, heat exchanger and turbine](https://www.youtube.com/watch?v=be69wsZFyuM&t=300s) · [Part 2, surrounding reservoir and compressor](https://www.youtube.com/watch?v=be69wsZFyuM&t=720s) · [Part 2, turbine losing heat](https://www.youtube.com/watch?v=be69wsZFyuM&t=1200s)
+For the lecture's R-134a compressor, inlet volume flow is $0.001\,\mathrm{m^3/s}$ and inlet specific volume is $0.1461\,\mathrm{m^3/kg}$, giving $\dot m=0.006845\,\mathrm{kg/s}$. The slide's inlet and outlet enthalpies are 246.4 and 358.9 kJ/kg, and shaft input is 1.0 kW. Hence $\dot Q=\dot m(358.9-246.4)-1.0=-0.2300\,\mathrm{kW}$. The specific entropy rises from 0.9724 to 1.192 kJ/(kg K). The enlarged boundary at $T_0=300.15\,\mathrm K$ gives $\dot S_{\mathrm{gen,total}}\approx2.27\,\mathrm{W/K}$. Recovering the inside-device value would require the local wall temperatures and heat fluxes. The turbine that loses heat uses the same balance with the shaft work directed outward. [Part 2, compressor states](https://www.youtube.com/watch?v=be69wsZFyuM&t=880s) · [Part 2, turbine losing heat](https://www.youtube.com/watch?v=be69wsZFyuM&t=1240s)
+
+The insulated intercooler illustrates a separate feasibility check. The lecture's numbers give an overall entropy residual of $0.0181(0.8312-0.4365)+0.01924(-0.3327)=0.000743\,\mathrm{kW/K}$. Its drawing also pairs an air outlet at 300 K with a cooling-water inlet at 30 °C, or 303.15 K. A passive counterflow exchanger driven by sensible heat transfer can approach the cold inlet temperature from above. Cooling the air below it would require an additional mechanism or different inlet data. A positive overall residual alone cannot certify that these end states are realizable in the pictured device. [Part 2, intercooler](https://www.youtube.com/watch?v=be69wsZFyuM&t=280s)
 
 ## Solve the running mixer problem
 
@@ -119,7 +122,13 @@ One stream loses entropy while warming the colder stream. Their sum is positive.
 
 Now feed hot air at $200\,\mathrm{kPa}$ through an upstream adiabatic throttle that drops it to $100\,\mathrm{kPa}$. Under the ideal-gas and negligible velocity-change assumptions the throttle leaves its temperature at $400\,\mathrm K$. It adds $(1\,\mathrm{kg/s})R\ln(2)=0.19893\,\mathrm{kW/K}$. The chamber alone still generates $0.02072\,\mathrm{kW/K}$. The larger region generates $0.21966\,\mathrm{kW/K}$ when rounded after addition. One calculation using just the external inlet and exit states reproduces the sum because the internal stream that joins the throttle to the chamber cancels.
 
-Part 3 begins with a steady mixing chamber in which steam heats liquid water and a small heat leak reaches ambient. The inlet steam flow follows from the enthalpy balance. Total entropy generation then follows from the stream entropy rates and the ambient heat term. Unlike the same-species ideal-gas example, this calculation needs water/steam properties at each pressure and temperature and includes phase change. [Part 3, steam and water mixer](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=5s)
+Part 3 begins with a second mixing chamber. All ports are at 200 kPa. Liquid water enters at 30 °C and 5 kg/s, steam enters at 200 °C, and the outlet is liquid at 80 °C. Heat rejection to the 27 °C surroundings is 10 kW. Write $h_w,h_s,h_e$ for the water, steam and outlet specific enthalpies. The outlet flow is $5+\dot m_s$ in kg/s, so the steady energy balance with negligible kinetic and gravitational energy changes gives
+
+$$
+\dot m_s=\frac{10+5(h_e-h_w)}{h_s-h_e}.
+$$
+
+Evaluating the three states with IAPWS-IF97 gives $h_w=125.924$, $h_s=2870.779$, and $h_e=335.070$ kJ/kg. The required steam flow is $0.41635\,\mathrm{kg/s}$. The corresponding specific entropies are $s_w=0.436733$, $s_s=7.508113$, and $s_e=1.075291$ kJ/(kg K). Inserting these in $(5+\dot m_s)s_e-5s_w-\dot m_s s_s+10/300.15$ gives $0.54782\,\mathrm{kW/K}$ for the enlarged region. The lecture slide uses a different steam entropy at the stated pressure and temperature and reports about $0.538\,\mathrm{kW/K}$. The recalculation uses one consistent property formulation for all ports. [Part 3, steam and water mixer](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=5s) · [IAPWS-IF97](https://iapws.org/technical-guidance/release/IF97-Rev)
 
 ## Retain entropy storage during a transient
 
@@ -147,7 +156,14 @@ S_{\mathrm{gen,total}}
 =m_2s_2-m_1s_1+(m_1-m_2)s_f-\frac{Q}{T_0}.
 $$
 
-Using the final vapor entropy for the discharged liquid would confuse two different streams. The entropy carried across the outlet is a transport term. A transient or a loss of stored mass alone does not establish an irreversible mechanism. The reservoir-to-tank temperature difference can generate entropy even when the fluid bulk stays near equilibrium. [Part 3, heated air discharge](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=300s) · [Part 3, draining a two-phase tank](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=540s)
+The constant pressure and fixed volume give a useful simplification. The total enthalpy change equals the total internal energy change because $pV$ is constant. Write each inventory as liquid plus vapor. The saturated liquid withdrawn cancels the corresponding liquid term in the inventory change. If $\Delta m_g$ is the gain in vapor mass and $h_g$ denotes saturated-vapor enthalpy, then $Q=\Delta m_g(h_g-h_f)$. The same decomposition gives $m_2s_2-m_1s_1+(m_1-m_2)s_f=\Delta m_g(s_g-s_f)$, where $s_g$ is saturated-vapor entropy. At liquid–vapor equilibrium the specific Gibbs energies are equal, so $h_g-h_f=T_{\mathrm{sat}}(s_g-s_f)$ for saturation temperature $T_{\mathrm{sat}}$. The enlarged balance becomes
+
+$$
+S_{\mathrm{gen,total}}
+=Q\left(\frac{1}{T_{\mathrm{sat}}}-\frac{1}{T_0}\right).
+$$
+
+In the lecture's 0.600 m³ tank with 8.00 kg initially at 20 bar, use the saturation specific volumes $v_f=0.00117675$ and $v_g=0.09958054\,\mathrm{m^3/kg}$. The initial vapor mass fraction is $(0.600/8.00-v_f)/(v_g-v_f)=0.75021$. Final mass is $0.600/v_g=6.02527$ kg, so $1.97473$ kg of liquid leaves. The small increase in vapor mass takes $44.63$ kJ at $T_{\mathrm{sat}}=485.53$ K. With the reservoir at $523.15$ K the calculated total generation is $6.61$ J/K using IAPWS-IF97. The shorter expression avoids subtracting large rounded inventory terms. It describes the equilibrium tank and its thermal path. Downstream pressure loss after saturated liquid crosses the selected outlet can add generation outside it. [Part 3, heated air discharge](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=300s) · [Part 3, draining a two-phase tank](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=560s)
 
 ## Read the captions against the balances
 
@@ -158,17 +174,18 @@ Using the final vapor entropy for the discharged liquid would confuse two differ
 | Entropy, Part 2 | [00:03](https://www.youtube.com/watch?v=be69wsZFyuM&t=3s) insulated mixer, [02:01](https://www.youtube.com/watch?v=be69wsZFyuM&t=121s) refrigerant throttle, [05:02](https://www.youtube.com/watch?v=be69wsZFyuM&t=302s) intercooler, [09:01](https://www.youtube.com/watch?v=be69wsZFyuM&t=541s) insulated turbine, [12:01](https://www.youtube.com/watch?v=be69wsZFyuM&t=721s) surroundings, [14:00](https://www.youtube.com/watch?v=be69wsZFyuM&t=840s) compressor, [20:01](https://www.youtube.com/watch?v=be69wsZFyuM&t=1201s) heat-losing turbine | Device and expanded boundaries. An adiabatic steady throttle with no shaft work and negligible kinetic and gravitational energy changes is isenthalpic by energy conservation even when specific volume changes appreciably. Positive generation makes it irreversible. |
 | Entropy, Part 3 | [00:05](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=5s) nonadiabatic steam mixer, [04:02](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=242s) storage and mass balance, [05:02](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=302s) electrically heated air tank, [09:00](https://www.youtube.com/watch?v=bvY3LzTDqMk&t=540s) constant-pressure two-phase discharge | Integrated balances and boundary-specific interpretation |
 
-The timed English captions supplied topic order. Equations were reconstructed and cross-checked against the cited technical references. Caption errors can change signs and transcribe a unit or numerical value incorrectly. A reviewer inspected the introduction's opening title frame and sampled the first entropy lecture's topic and derivation slides. Other board and slide material did not receive complete visual review. The ideal-gas mixer, heater wall and compressor numerical examples are original teaching constructions.
+The timed English captions supplied topic order. Selected slides confirm the displayed states and balances for the control-volume derivation, refrigerant compressor, intercooler and water examples. The ideal-gas mixer, heater wall and 23 kW compressor are original teaching examples.
 
 ## Numerical lab
 
-Run the [standalone Python program](code/chapter_01.py) with Python 3. It checks the first-law residual for the mixer, calculates the steady entropy generation from each boundary, and verifies that removing the internal stream from the combined balance preserves the total.
+Run the [standalone Python program](code/chapter_01.py) with Python 3. It checks the first-law residual for the air mixer and verifies that removing the internal stream from the combined entropy balance preserves the total. For the draining tank it checks that the latent-heat form reproduces the full energy balance with consistent properties.
 
 ```text
 Outlet temperature: 350.0 K
 Mixer entropy generation: 0.02072 kW/K
 Throttle entropy generation: 0.19893 kW/K
 Combined entropy generation: 0.21966 kW/K
+Draining tank: 1.97473 kg out, 44.63 kJ in, 6.61 J/K generated
 ```
 
 ## Problems with worked solutions

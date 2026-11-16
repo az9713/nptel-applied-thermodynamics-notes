@@ -29,6 +29,8 @@ $$
 
 For fixed product $r_p^{-a}$, the same sum-of-squares argument shows that equal stage ratios maximize this work. With $T_h=1500$ K, equal stages at total ratio 10 each exhaust at 1079.53 K. The second stage contributes a separate enthalpy drop made available by heat added between stages. Reheat also warms the ultimate exhaust relative to the single-stage expansion. Its effect on efficiency depends on both external heating and rejection.
 
+For $n$ equal expansion stages each starting at $T_h$, the work is $n c_pT_h(1-r_p^{-a/n})$. Letting $n$ grow at fixed overall ratio gives $RT_h\ln r_p$, the reversible isothermal expansion output. The limit requires heat supplied all along the expansion. With a finite number of stages the heat enters between turbines and the last stage exhaust remains below $T_h$.
+
 Use $X=r_p^{a/2}$ for the compression temperature factor per stage. In the model combining full intercooling with full reheat, the positive magnitudes are
 
 $$
@@ -56,6 +58,17 @@ s_{\rm gen}=c_p\ln(T_{f,o}/T_f)+c_p\ln(T_{e,o}/T_e).
 $$
 
 Recovered heat and destroyed exergy are different quantities. The entire plant can consume less external exergy while the new regenerator itself generates entropy. The ideal calculation also excludes exhaust-side and compressor-side pressure loss. These losses can change turbine output and compressor input, and can overturn the calculated economic benefit. When absolute temperatures are fixed, a simple ideal Brayton cycle has $T_e=T_h/r_p^a$ and $T_f=T_c r_p^a$. Its temperature gate closes exactly at the simple-cycle maximum-work ratio. With intercooled compression and reheated expansion the two corresponding temperature factors are $\sqrt{r_p^a}$, increasing the range where useful recovery is possible. [Lecture 34 · 17:40](https://www.youtube.com/watch?v=2EDD3tBhzcI&t=1060)
+
+The lecture follows the 300–1300 K, pressure-ratio-30 air-table example from Chapter 10. In the basic case the compressor discharge is about 770 K and the turbine exhaust is cooler, so heat recovery cannot preheat the air. Intercooling lowers the compressor discharge and reheat raises the exhaust. The lecture compares their separate effects and then combines them with heat recovery. Its second-law column uses the gross convention from Chapter 10, with turbine work as product and compressor input plus source heat exergy as resources. [Lecture 33 · 5:00](https://www.youtube.com/watch?v=tbbWu9G-9MY&t=300) · [Lecture 34 · 18:20](https://www.youtube.com/watch?v=2EDD3tBhzcI&t=1100)
+
+| Air-table cycle | Net work (kJ/kg) | Thermal efficiency | Second-law efficiency |
+| --- | ---: | ---: | ---: |
+| Basic | 362.70 | 59.8% | 89.1% |
+| Intercooling alone | 474.72 | 52.3% | 79.2% |
+| Reheat alone | 548.12 | 48.7% | 76.56% |
+| Intercooling, reheat and regeneration | 660.14 | 61.36% | 86.1% |
+
+For the last row, use the enthalpy form $q_{\mathrm{rec}}=\varepsilon(h_e-h_f)$ for identical streams with the same mass flow and $h_e>h_f$. This includes variable heat capacities. In the lossless pressure model the recovery does not change the work of either turbine or compressor. The net work of 660.14 kJ/kg divided by external heat input of 1075.92 kJ/kg gives 61.36%.
 
 ## Numerical laboratory
 

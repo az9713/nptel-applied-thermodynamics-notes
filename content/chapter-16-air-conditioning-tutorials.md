@@ -21,7 +21,7 @@ In a simple heating duct with no moisture transfer, $\omega_2=\omega_1$ when all
 
 Take the tutorial geometry of a 0.50 m diameter duct with 18 m/s inlet speed. For a uniform inlet profile the volumetric flow is $\dot V=\pi D^2 U/4=3.534$ m³/s. Let the inlet state be 30 °C, 100 kPa, 30% relative humidity. Then $p_v=1.274$ kPa, $\omega=0.00802$, and $v^*\approx0.8814$ m³/kg dry air. The dry-air mass rate is about 4.01 kg/s.
 
-For a teaching variant, let the coil leave the gas at 25 °C at about the same pressure and with negligible velocity change. With the trial $p_{v,2}=p_{v,1}$, the relative humidity is $1.274/3.170=40.2\%$, so no condensation is needed to reach the bulk outlet state. The inlet dew point is about 10.6 °C. Assume the entire coil surface stays above it to rule out local condensation. The duty is
+The tutorial gives a heat-removal rate of 1227 kJ/min, or 20.45 kW. With the chapter's constant-heat-capacity approximation and negligible velocity change, the dry-coil trial gives $t_2=t_1-20.45/[\dot m_a(1.006+1.86\omega)]\approx25.0$ °C. With $p_{v,2}=p_{v,1}$, the relative humidity is $1.274/3.170=40.2\%$, so no condensation is needed to reach the bulk outlet state. The inlet dew point is about 10.6 °C. Assume the entire coil surface stays above it to rule out local condensation. Checking the duty with the rounded outlet temperature gives
 
 $$
 \dot Q=\dot m_a(1.006+1.86\omega)(25-30)\approx-20.5\ \mathrm{kW}.
@@ -39,11 +39,20 @@ $$
 
 For water cool enough that the right-side correction is small, treating $h^*$ as constant is a useful first estimate. At the outlet, check that $\omega_2\leq\omega_{\rm sat}(t_2,p)$ and that $\omega_2\geq\omega_1$ for net water addition. A specified outlet cooler than the adiabatic saturation point cannot be obtained by an ideal saturator with its feed water at the outlet temperature.
 
-For a tower with $\dot m_a=180$ kg/s and humidity-ratio rise 0.0106 kg/kg dry air, evaporation is 1.91 kg/s. A recirculation rate of hundreds of kg/s would not change that vapor balance. Drift and blowdown add to make-up and must be counted if present. The tower approach temperature is the cold-water temperature above entering-air wet-bulb temperature; it differs from the hot-to-cold water temperature range. [Tutorial 8 Part 4 · Evaporative cooler and cooling tower](https://www.youtube.com/watch?v=oJgpYsLNJh0&t=1280)
+Steam injection follows the same water balance but brings vapor enthalpy into the humidifier. In the lecture's heating and humidification example, air enters at 10 °C and 70% relative humidity, at 100 kPa and 50 m³/min. It leaves at 20 °C and 60% relative humidity. The inlet and final humidity ratios are 0.00539 and 0.00885 kg/kg dry air. The inlet $v^*$ gives $\dot m_a=1.016$ kg/s, so the rate of injecting saturated steam at 50 °C is $1.016(0.00885-0.00539)\approx0.00352$ kg/s. The heater outlet has $\omega_2=\omega_1$. The adiabatic humidifier balance gives $h_2^*=h_3^*-(\omega_3-\omega_1)h_g(50)\approx33.62$ kJ/kg dry air using $h_g(50)\approx2592$ kJ/kg. Inverting at $\omega_1$ gives $t_2\approx19.8$ °C. Taking the difference $\dot m_a(h_2^*-h_1^*)$ across the heater gives about 10.1 kW. [Tutorial 8 Part 4 · Steam injection](https://www.youtube.com/watch?v=oJgpYsLNJh0&t=20)
+
+In the lecture's wet-tower problem, 90 kg/s of recirculating water cools from 40 to 25 °C. Make-up enters at 25 °C. Air enters at 23 °C and 60% relative humidity and leaves saturated at 32 °C, at approximately one atmosphere. Neglect heat losses, fan work, liquid drift and blowdown. The make-up rate is $\dot m_{\rm make}=\dot m_a\Delta\omega$, where $\Delta\omega$ is the outlet minus inlet humidity ratio. The recirculating stream loses $90[h_\ell(40)-h_\ell(25)]$ kW. The air gains $\dot m_a\Delta h^*$, and make-up supplies $\dot m_{\rm make}h_\ell(25)$. Eliminating make-up from the energy balance gives
+
+$$
+\dot m_a=\frac{90[h_\ell(40)-h_\ell(25)]}
+{\Delta h^*-\Delta\omega\,h_\ell(25)}.
+$$
+
+The correlations give $\Delta\omega\approx0.0201$ kg/kg dry air, $\Delta h^*\approx60.8$ kJ/kg dry air, and $\dot m_a\approx96$ kg/s, so make-up is about 1.94 kg/s. Values read from a chart give a slightly different result. The tower approach temperature is the cold-water temperature above entering-air wet-bulb temperature. The range is the hot-to-cold water temperature drop, here 15 °C. [Tutorial 8 Part 4 · Cooling tower](https://www.youtube.com/watch?v=oJgpYsLNJh0&t=1860)
 
 ## Numerical laboratory
 
-Run the [Python laboratory](code/chapter_16.py) to calculate the duct flow, the saturation test at the trial outlet, and heat duty. It also checks that a colder trial outlet crosses the dew point.
+Run the [Python laboratory](code/chapter_16.py) to calculate the duct airflow and dry-coil outlet at the tutorial's heat duty. It checks that a colder trial crosses the dew point and solves the tower make-up balance.
 
 ## Exercises and worked solutions
 
@@ -57,7 +66,7 @@ For the duct inlet above, test a 5 °C outlet using $p_{\rm sat}(5)=0.872$ kPa.
 
 Add drift of 0.10 kg/s and blowdown of 0.30 kg/s to the tower example. Find the make-up rate at steady inventory.
 
-**Solution.** Makeup balances evaporation and both outgoing liquid streams, giving $1.91+0.10+0.30=2.31$ kg/s. The air-side water measurement identifies the vapor loss and leaves the liquid losses to separate measurements.
+**Solution.** At the same air flow and states, make-up balances evaporation and both outgoing liquid streams, giving $1.94+0.10+0.30=2.34$ kg/s. The air-side water balance identifies the vapor loss. The energy balance would also require the liquid outlet enthalpies if the air flow were unknown.
 
 ### Judge a partially bypassed coil
 

@@ -40,7 +40,7 @@
       <code>python code/chapter_01.py</code>. Some labs import routines from
       earlier chapters in the same directory.</p>
     </header>
-    <ol class="chapter-list"><li><span class="chapter-number">01</span><div><h3><a href="chapter-01-control-volume-entropy.html">Entropy balances for open systems</a></h3><p><a href="code/chapter_01.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check entropy accounts for the ideal-gas mixer and upstream throttle.&quot;&quot;&quot;
+    <ol class="chapter-list"><li><span class="chapter-number">01</span><div><h3><a href="chapter-01-control-volume-entropy.html">Entropy balances for open systems</a></h3><p><a href="code/chapter_01.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check the mixer, upstream throttle, and saturated-liquid discharge.&quot;&quot;&quot;
 
 from math import isclose, log
 
@@ -54,6 +54,29 @@ def entropy_change(t_initial, p_initial, t_final, p_final):
     return CP_AIR * log(t_final / t_initial) - R_AIR * log(
         p_final / p_initial
     )
+
+
+def check_draining_tank():
+    pressure = 2000.0  # kPa
+    tank_volume, initial_mass, reservoir_temperature = 0.600, 8.0, 523.15
+    # IF97 saturation properties at 2 MPa, with h in kJ/kg and v in m³/kg.
+    v_f, v_g = 0.00117675024425, 0.09958054416890
+    h_f, h_g, t_sat = 908.62185113646, 2798.38414024152, 485.53453531849
+    x_initial = (tank_volume / initial_mass - v_f) / (v_g - v_f)
+    final_mass = tank_volume / v_g
+    vapor_gain = initial_mass * (1 - x_initial) * v_f / v_g
+    heat = vapor_gain * (h_g - h_f)
+    u_initial = h_f + x_initial * (h_g - h_f)
+    u_initial -= pressure * tank_volume / initial_mass
+    u_final = h_g - pressure * v_g
+    outflow = initial_mass - final_mass
+    full_balance = final_mass * u_final - initial_mass * u_initial
+    full_balance += outflow * h_f
+    assert isclose(heat, full_balance, rel_tol=1e-10)
+    generation = heat * (1 / t_sat - 1 / reservoir_temperature)
+    assert 0 &lt; generation
+    print(f&quot;Draining tank: {outflow:.5f} kg out, {heat:.2f} kJ in, &quot;
+          f&quot;{1000 * generation:.2f} J/K generated&quot;)
 
 
 def main():
@@ -100,6 +123,7 @@ def main():
     print(f&quot;Mixer entropy generation: {chamber_generation:.5f} kW/K&quot;)
     print(f&quot;Throttle entropy generation: {throttle_generation:.5f} kW/K&quot;)
     print(f&quot;Combined entropy generation: {combined_generation:.5f} kW/K&quot;)
+    check_draining_tank()
 
 
 if __name__ == &quot;__main__&quot;:
@@ -141,9 +165,28 @@ def main():
 
 if __name__ == &quot;__main__&quot;:
     main()
-</code></pre></details></div></li><li><span class="chapter-number">03</span><div><h3><a href="chapter-03-entropy-balances-in-thermal-equipment.html">Entropy balances in thermal equipment</a></h3><p><a href="code/chapter_03.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Solve the ideal-gas mixer with a specified circular outlet.&quot;&quot;&quot;
+</code></pre></details></div></li><li><span class="chapter-number">03</span><div><h3><a href="chapter-03-entropy-balances-in-thermal-equipment.html">Entropy balances in thermal equipment</a></h3><p><a href="code/chapter_03.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Solve a restricted ideal-gas mixer and the vortex-tube energy balance.&quot;&quot;&quot;
 
 from math import isclose, log, pi, sqrt
+
+
+def check_vortex_tube():
+    gas_constant = 287.0
+    cp = 1.4 * gas_constant / (1.4 - 1)
+    t_in, t_hot = 293.15, 389.15
+    c_in, c_hot, c_cold = 1.0, 100.0, 200.0
+    t_cold = 2 * t_in - t_hot
+    t_cold += (c_in**2 - (c_hot**2 + c_cold**2) / 2) / cp
+    energy_in = cp * t_in + c_in**2 / 2
+    energy_out = cp * (t_hot + t_cold) / 2 + (c_hot**2 + c_cold**2) / 4
+    assert isclose(energy_in, energy_out, rel_tol=1e-12)
+    pressure_ratio = 101.3 / 1000
+    generation = (
+        cp * (log(t_hot / t_in) + log(t_cold / t_in)) / 2
+        - gas_constant * log(pressure_ratio)
+    )
+    assert generation &gt; 0
+    print(f&quot;Vortex tube cold exit: {t_cold:.2f} K, {generation:.2f} W/K generated&quot;)
 
 
 def main():
@@ -170,6 +213,7 @@ def main():
     assert generation &gt; 0
     print(f&quot;Outlet: {temperature:.2f} K, {speed:.2f} m/s&quot;)
     print(f&quot;Generation: {generation:.2f} W/K&quot;)
+    check_vortex_tube()
 
 
 if __name__ == &quot;__main__&quot;:
@@ -574,16 +618,16 @@ if __name__ == &quot;__main__&quot;:
         enthalpy(inlet, initial_humidity) + coil + reheat,
         enthalpy(supply, final_humidity) + condensate * drain_enthalpy,
     )
-</code></pre></details></div></li><li><span class="chapter-number">16</span><div><h3><a href="chapter-16-air-conditioning-tutorials.html">Air-Conditioning Tutorials</a></h3><p><a href="code/chapter_16.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Duct flow, trial saturation state and dry-coil heat duty.&quot;&quot;&quot;
+</code></pre></details></div></li><li><span class="chapter-number">16</span><div><h3><a href="chapter-16-air-conditioning-tutorials.html">Air-Conditioning Tutorials</a></h3><p><a href="code/chapter_16.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Dry-coil outlet and wet-tower make-up from psychrometric balances.&quot;&quot;&quot;
 
-from math import pi
+from math import isclose, pi
 
 from chapter_14 import dew_point, saturation_pressure
 from chapter_15 import enthalpy, humidity_ratio
 
 
 if __name__ == &quot;__main__&quot;:
-    inlet, outlet, minimum_coil_temperature, trial_condensing_outlet = 30.0, 25.0, 20.0, 5.0
+    inlet, minimum_coil_temperature, trial_condensing_outlet = 30.0, 20.0, 5.0
     pressure, relative_humidity = 100.0, 0.30
     diameter, speed = 0.50, 18.0
     volume_flow = pi * diameter**2 * speed / 4
@@ -591,17 +635,32 @@ if __name__ == &quot;__main__&quot;:
     vapor_pressure = relative_humidity * saturation_pressure(inlet)
     specific_volume = 0.287 * (inlet + 273.15) / (pressure - vapor_pressure)
     dry_air_flow = volume_flow / specific_volume
+    duty = -1227.0 / 60
+    heat_capacity = enthalpy(inlet + 1, initial_humidity) - enthalpy(inlet, initial_humidity)
+    outlet = inlet + duty / (dry_air_flow * heat_capacity)
     outlet_relative_humidity = vapor_pressure / saturation_pressure(outlet)
     if minimum_coil_temperature &lt; dew_point(vapor_pressure) or outlet_relative_humidity &gt; 1:
         raise ValueError(&quot;Trial coil may condense water; use a wet-coil balance&quot;)
-    duty = dry_air_flow * (enthalpy(outlet, initial_humidity) - enthalpy(inlet, initial_humidity))
     condensing_humidity = humidity_ratio(trial_condensing_outlet, pressure, 1.0)
     print(f&quot;Dry-air flow: {dry_air_flow:.3f} kg/s&quot;)
+    print(f&quot;Trial outlet temperature: {outlet:.2f} °C&quot;)
     print(f&quot;Trial outlet relative humidity: {outlet_relative_humidity:.2%}&quot;)
     print(f&quot;Heat into dry coil control volume: {duty:.2f} kW&quot;)
     print(f&quot;Condensate if cooled to 5 °C: {dry_air_flow * (initial_humidity - condensing_humidity):.4f} kg/s&quot;)
     assert condensing_humidity &lt; initial_humidity &lt; humidity_ratio(outlet, pressure, 1.0)
-    assert duty &lt; 0
+    assert isclose(duty, dry_air_flow * (enthalpy(outlet, initial_humidity) - enthalpy(inlet, initial_humidity)))
+
+    ambient_humidity = humidity_ratio(23, 101.325, 0.60)
+    exhaust_humidity = humidity_ratio(32, 101.325, 1.0)
+    tower_humidity_rise = exhaust_humidity - ambient_humidity
+    tower_enthalpy_rise = enthalpy(32, exhaust_humidity) - enthalpy(23, ambient_humidity)
+    makeup_enthalpy = 4.18 * 25
+    water_cooling = 90 * 4.18 * (40 - 25)
+    tower_dry_air_flow = water_cooling / (tower_enthalpy_rise - tower_humidity_rise * makeup_enthalpy)
+    makeup = tower_dry_air_flow * tower_humidity_rise
+    print(f&quot;Wet-tower dry-air flow: {tower_dry_air_flow:.1f} kg/s&quot;)
+    print(f&quot;Wet-tower make-up: {makeup:.2f} kg/s&quot;)
+    assert isclose(tower_dry_air_flow * tower_enthalpy_rise, water_cooling + makeup * makeup_enthalpy)
 </code></pre></details></div></li><li><span class="chapter-number">17</span><div><h3><a href="chapter-17-combustion-thermodynamics.html">Combustion Thermodynamics</a></h3><p><a href="code/chapter_17.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Methane atom balances, exhaust composition and reference heating values.&quot;&quot;&quot;
 
 from math import isclose
@@ -669,9 +728,20 @@ if __name__ == &quot;__main__&quot;:
     print(f&quot;Actual decane air-fuel ratio: {air_mass_ratio:.2f} kg/kg&quot;)
     predicted_dry_total = 10 + supplied_oxygen - stoichiometric + 3.76 * supplied_oxygen
     assert isclose(10 / predicted_dry_total, dry_co2, rel_tol=1e-4)
+
+    # Lecture analysis on a 100 mol dry-products basis, including measured CO.
+    dry_co2, dry_co, dry_oxygen, dry_nitrogen = 10.56, 0.92, 4.91, 83.61
+    decane = (dry_co2 + dry_co) / 10
+    water = 11 * decane
+    oxygen_from_nitrogen = dry_nitrogen / 3.76
+    oxygen_from_oxygen = (2 * dry_co2 + dry_co + 2 * dry_oxygen + water) / 2
+    assert isclose(oxygen_from_nitrogen, oxygen_from_oxygen, abs_tol=0.01)
+    phi = stoichiometric * decane / oxygen_from_nitrogen
+    print(f&quot;Lecture decane equivalence ratio: {phi:.4f}&quot;)
+    print(f&quot;Lecture decane wet CO2: {dry_co2 / (100 + water):.4%}&quot;)
 </code></pre></details></div></li><li><span class="chapter-number">19</span><div><h3><a href="chapter-19-combustion-energy-tutorials.html">Combustion Energy Tutorials</a></h3><p><a href="code/chapter_19.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Frozen flame temperature and ideal oxygen equilibrium screening models.&quot;&quot;&quot;
 
-from math import isclose, sqrt
+from math import exp, isclose, sqrt
 
 from chapter_17 import methane_heating_values, methane_products
 
@@ -705,6 +775,23 @@ if __name__ == &quot;__main__&quot;:
     assert isclose(residual_lean, 0, abs_tol=1e-10)
     assert high_pressure &lt; low_pressure
     assert isclose(4 * low_pressure**2 / (1 - low_pressure**2), kp)
+
+    oxygen = 15.5 / 1.25
+    kp_shift = exp(-30.260 / (0.008314 * 2200))
+    # With b moles CO, the atom balances give CO2=10-b,
+    # H2O=4.8+b, and H2=6.2-b. Use the smaller quadratic root.
+    linear = 16.2 + 4.8 * kp_shift
+    constant = 62.0
+    discriminant = linear**2 - 4 * (1 - kp_shift) * constant
+    co = 2 * constant / (linear + sqrt(discriminant))
+    co2, water, hydrogen = 10 - co, 4.8 + co, 6.2 - co
+    assert 0 &lt; co &lt; 6.2
+    assert isclose(co2 * hydrogen / (co * water), kp_shift)
+    assert isclose(co + co2, 10)
+    assert isclose(2 * (water + hydrogen), 22)
+    assert isclose(co + 2 * co2 + water, 2 * oxygen)
+    print(f&quot;Rich decane CO, CO2, H2O, H2: {co:.4f}, {co2:.4f}, &quot;
+          f&quot;{water:.4f}, {hydrogen:.4f} mol per mol fuel&quot;)
 </code></pre></details></div></li><li><span class="chapter-number">20</span><div><h3><a href="chapter-20-compressible-flow-and-stagnation.html">Compressible flow and the stagnation state</a></h3><p><a href="code/chapter_20.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compute local acoustic and stagnation quantities for an ideal gas.&quot;&quot;&quot;
 
 from math import isclose, sqrt
@@ -861,7 +948,7 @@ if __name__ == &quot;__main__&quot;:
 from math import isclose, sqrt
 
 from chapter_21 import normal_shock
-from chapter_22 import mach_from_area, pressure_ratio
+from chapter_22 import mach_from_area, pressure_ratio, sonic_flux
 
 
 def trial_shock(area_to_throat, exit_to_throat, gamma=1.4):
@@ -917,6 +1004,13 @@ def main():
     a_shock = locate_shock(0.5, area_ratio)
     ratio, mach_exit, mach_a = trial_shock(a_shock, area_ratio)
     assert isclose(ratio, 0.5, rel_tol=1e-12)
+    gamma, gas_constant, total_temperature = 1.4, 287.0, 500.0
+    exit_pressure = 500_000.0
+    exit_flux = sonic_flux(1_000_000, total_temperature) / area_ratio
+    # Infer exit Mach independently from known exit pressure and mass flux.
+    scale = (exit_flux / exit_pressure)**2 * gas_constant * total_temperature / gamma
+    direct_mach = sqrt(2 * scale / (1 + sqrt(1 + 2 * (gamma - 1) * scale)))
+    assert isclose(direct_mach, mach_exit, rel_tol=1e-12)
     print(f&quot;Isentropic supersonic exit: M={mach_sup:.4f}, p/p_t={p_sup:.5f}&quot;)
     print(f&quot;Shock at exit: p_b/p_t={p_shock_exit:.5f}; &quot;
           f&quot;first choking: {p_choke:.5f}&quot;)

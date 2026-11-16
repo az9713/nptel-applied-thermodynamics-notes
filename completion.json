@@ -3,11 +3,11 @@
   "reader": {
     "chapter_count": 23,
     "html_pages_checked": 27,
-    "internal_links_checked": 1330,
+    "internal_links_checked": 1338,
     "source_positions": 73,
     "source_positions_mapped": 72,
     "full_source_coverage_checked": true,
-    "timestamp_links_checked": 172,
+    "timestamp_links_checked": 213,
     "public_recordings_with_timestamps": 72,
     "passed": true,
     "errors": []
@@ -16,7 +16,7 @@
     {
       "width_px": 1440,
       "pages_checked": 27,
-      "equations_checked": 1611,
+      "equations_checked": 2114,
       "offline_file_url": true,
       "reader_controls_checked": true,
       "passed": true
@@ -24,7 +24,7 @@
     {
       "width_px": 390,
       "pages_checked": 8,
-      "equations_checked": 399,
+      "equations_checked": 510,
       "offline_file_url": true,
       "reader_controls_checked": true,
       "passed": true
@@ -45,7 +45,38 @@
     "visual_inspection": "Selected source frames were inspected to verify slide content and numerical readings. Extraction count is not inspection count."
   },
   "technical_review": {
-    "coverage": "All chapter groups received a non-author review of selected derivations, assumptions, numerical calculations, and evidence links. Chapter depth and source-visual inspection vary.",
-    "scope_limit": "No full audiovisual or claim-by-claim transcription audit. Some tutorial cases reconstruct the analytical procedure using stated property values or independently constructed examples."
+    "pass": 2,
+    "baseline_commit": "2e5e74aa1150f719d3574f1bb0b907aa016a66f0",
+    "chapters_reviewed_against_retained_transcripts": 23,
+    "public_recordings_reviewed": 72,
+    "coverage": "A non-author reviewed each chapter against its mapped transcript material. The reviewers compared governing equations, assumptions, numerical examples and substantive omissions and checked selected retained frames where they helped resolve uncertainties.",
+    "scope_limit": "The pass used transcript text and selected retained frames. Some calculations use consistent property models in place of values rounded on the slides.",
+    "revised_chapter_sha256": {
+      "content/chapter-01-control-volume-entropy.md": "fad31eb76dfae3402b3b204753788b637b33ce06fe9be842c3b700d9f2095467",
+      "content/chapter-02-reversible-steady-flow-work.md": "961374c56ed219eff01d4eea74a228b9fadbc59e3539202dea93a701b9335457",
+      "content/chapter-03-entropy-balances-in-thermal-equipment.md": "180c96cbcdb6b3dcd51b00f3b4149c2e1b27e01fc05254a8de14c7d0a4eadb04",
+      "content/chapter-04-work-and-irreversibility-tutorials.md": "f85448d3d3f40626d0df03fe3b9877338cd5c75b7923de00623469a7b73aa2e0",
+      "content/chapter-05-exergy-and-the-reference-environment.md": "105169161ee734c02303899975ffa83d3bfd3f4309a4c804e608fd96cc4686b3",
+      "content/chapter-06-flow-exergy-and-the-exergy-balance.md": "36f8a1f8153471a2fcc12f70cb564c77dca81caf81f478073035e9e1f2be2dab",
+      "content/chapter-07-exergy-of-closed-systems.md": "ef6c0d50561e7deb320b1014b6b62be97b51af6338a48b76ed3e93c0c49db007",
+      "content/chapter-08-exergy-of-control-volumes.md": "91e80157547cd71ff89cc6b0db3394f116e473fab8592308cc367a915cd609ae",
+      "content/chapter-09-rankine-cycles.md": "7f30beb3d44eadaa55c8e6c19e64b1f7e8ff1ca8fc1c1ceaa8126811f67d38db",
+      "content/chapter-10-brayton-cycles.md": "a402a3191dfe89fb43b1c819f67a0236a36edc2550b173d63fee522715ea14ad",
+      "content/chapter-11-modified-brayton-cycles.md": "7db212fb7cf0f5959d1a4d4a1168f3b6f55fd19516bc21f96672b5a45382fa60",
+      "content/chapter-12-otto-and-diesel-cycles.md": "234d0f90a8e6847a92de4f85e7bea041cf4e4260bef06d3e62cdc315efdb7ea0",
+      "content/chapter-13-vapor-compression-refrigeration.md": "918fb44068c91b8fc9f3619c6afe5af6916d2c8359952de314ddd3a3cbab4683",
+      "content/chapter-14-properties-of-moist-air.md": "0623de3d9c5e4e3cc925e89b49159ff7834cfda5aa08ff71f850e7352aab96e9",
+      "content/chapter-15-psychrometric-paths.md": "962bad6e5c0932c37806dc65a32644efba57860ac9bd34a2b39246824496670c",
+      "content/chapter-16-air-conditioning-tutorials.md": "654af46efde8174f6cd4e8a4ef4c2489738c0700f26c125413832ad24f867aa1",
+      "content/chapter-17-combustion-thermodynamics.md": "2d92db5ec92e12be5511114df5f9094023d23c215fbe1948467da9ba6b00ce35",
+      "content/chapter-18-combustion-stoichiometry-tutorials.md": "5c8aef915d85b1c2df124ad9703991daa1b50842efeae8cff9a76667f358a09c",
+      "content/chapter-19-combustion-energy-tutorials.md": "09395dd35f6e0c39f4f3f0b4dfaaf39c7528e32544d880648f2a01bbf18f0d56",
+      "content/chapter-20-compressible-flow-and-stagnation.md": "196766bd1a3c3c3ab456530f9e4d2589f0a5bcb74b0534b327871e12fce88f09",
+      "content/chapter-21-stagnation-pressure-and-shocks.md": "d0411bc3b14508bb16055ab3c7da6224d05a6f43bc999c4f91ff29e2cec83252",
+      "content/chapter-22-nozzle-geometry-and-choking.md": "970a0d31e3a4839a532a287603000e23113c63f4095a73c25690f45e24358b83",
+      "content/chapter-23-air-and-steam-nozzle-calculations.md": "c0caa3effd274bfb04614dd8e559f9b2fc7e5ccd795920e910e323062754fa98"
+    },
+    "retained_caption_and_transcript_files_unchanged": 145,
+    "displayed_lab_programs_match_downloads": 23
   }
 }
