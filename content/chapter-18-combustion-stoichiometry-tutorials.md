@@ -9,7 +9,7 @@ Element conservation fixes how many carbon atoms leave a burner. It cannot by it
 
 ## Close a rich ethanol example
 
-Consider one mole of ethanol, $\mathrm{C}_{2}\mathrm{H}_{5}\mathrm{OH}$, at equivalence ratio $\phi=1.10$. Complete oxidation would require 3 moles $\mathrm{O_2}$. The supplied oxygen is $a=3/1.10=2.72727$ mol. The restricted product model assumes all hydrogen becomes water, all nitrogen remains $\mathrm{N_2}$, and carbon occurs only as $\mathrm{CO_2}$ and $\mathrm{CO}$. There is no residual oxygen in this model. Let $b$ and $c$ be moles of $\mathrm{CO_2}$ and $\mathrm{CO}$. Hydrogen balance fixes water at 3 mol. Then
+Consider one mole of ethanol, $\mathrm{C}_{2}\mathrm{H}_{5}\mathrm{OH}$, at [fuel–air equivalence ratio](chapter-17-combustion-thermodynamics.html#count-elements-on-a-fixed-fuel-basis) $\phi=1.10$. Complete oxidation would require 3 moles $\mathrm{O_2}$. The supplied oxygen is $a=3/1.10=2.72727$ mol. The restricted product model assumes all hydrogen becomes water, all nitrogen remains $\mathrm{N_2}$, and carbon occurs only as $\mathrm{CO_2}$ and $\mathrm{CO}$. There is no residual oxygen in this model. Let $b$ and $c$ be moles of $\mathrm{CO_2}$ and $\mathrm{CO}$. Hydrogen balance fixes water at 3 mol. Then
 
 $$
 b+c=2,\qquad 2b+c+3=1+2a.

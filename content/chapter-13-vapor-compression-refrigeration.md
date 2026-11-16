@@ -9,7 +9,7 @@ The plant needs to remove heat at 10 kW from a process enclosure. Two suppliers 
 
 ## The refrigerant loop [Lecture 38 · 1:20](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=80)
 
-Call the refrigerant states 1 at compressor suction, 2 at compressor discharge, 3 after condensation, and 4 after expansion. Let $h_i$ be specific enthalpy in kJ/kg and $s_i$ specific entropy in kJ/(kg K) at state $i$. For steady components with negligible flow-speed or elevation effects, take the compressor and valve as adiabatic, and ignore pressure drops in the heat exchangers. The evaporator pressure $p_e$ is below the condenser pressure $p_c$. The idealized saturation endpoints are vapor at 1 and liquid at 3. Let $q_C$ be positive heat absorbed per kg, $q_H$ positive heat rejected per kg, and $w_{\rm in}$ positive compressor work per kg.
+Call the refrigerant states 1 at compressor suction, 2 at compressor discharge, 3 after condensation, and 4 after expansion. Let $h_i$ be specific enthalpy in kJ/kg and $s_i$ specific entropy in kJ/(kg K) at state $i$. For steady components with negligible flow-speed or elevation effects, take the compressor and valve as adiabatic, and ignore pressure drops in the heat exchangers. The evaporator pressure $p_{\rm evap}$ is below the condenser pressure $p_{\rm cond}$. The idealized saturation endpoints are vapor at 1 and liquid at 3. Let $q_C$ be positive heat absorbed per kg, $q_H$ positive heat rejected per kg, and $w_{\rm in}$ positive compressor work per kg.
 
 | Device | Pressure and phase behavior | Energy balance in kJ/kg |
 | --- | --- | --- |
@@ -21,14 +21,14 @@ Call the refrigerant states 1 at compressor suction, 2 at compressor discharge, 
 No shaft work, heat input, or material energy accumulation is available to change enthalpy across the valve. An adiabatic throttle can still produce entropy. If the outlet lies in the liquid–vapor region, its vapor mass fraction is
 
 $$
-x_4=\frac{h_3-h_f(p_e)}{h_g(p_e)-h_f(p_e)},
+x_4=\frac{h_3-h_f(p_{\rm evap})}{h_g(p_{\rm evap})-h_f(p_{\rm evap})},
 $$
 
-where $h_f$ and $h_g$ are saturated liquid and vapor enthalpy at $p_e$. Flashing uses part of the liquid's enthalpy to form vapor and brings the remaining liquid to the lower saturation temperature. The mixture formula applies only within the saturation endpoints. On a pressure–enthalpy diagram the valve leg follows a line of constant enthalpy, whereas an ideal expander follows an isentrope and produces shaft work. Two-phase expansion hardware adds complexity, while a valve is simple and regulates refrigerant flow. [Lecture 38 · 7:40](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=460)
+where $h_f$ and $h_g$ are saturated liquid and vapor enthalpy at $p_{\rm evap}$. Flashing uses part of the liquid's enthalpy to form vapor and brings the remaining liquid to the lower saturation temperature. The mixture formula applies only within the saturation endpoints. On a pressure–enthalpy diagram the valve leg follows a line of constant enthalpy, whereas an ideal expander follows an isentrope and produces shaft work. Two-phase expansion hardware adds complexity, while a valve is simple and regulates refrigerant flow. [Lecture 38 · 7:40](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=460)
 
 ## Capacity and compressor efficiency [Lecture 38 · 12:40](https://www.youtube.com/watch?v=zl-D7nlr_NY&t=760)
 
-Use R-134a as a property example. Choose evaporator saturation at $-5$ °C and condenser saturation at $30$ °C. Their approximate pressures are 243 and 770 kPa. On the IIR reference convention, which sets saturated liquid enthalpy to 200 kJ/kg and entropy to 1 kJ/(kg K) at 0 °C, rounded suction vapor enthalpy is $h_1=395.66$ and saturated liquid enthalpy at the condenser exit is $h_3=241.72$ kJ/kg. At $p_c$ and $s=s_1$, the isentropic discharge enthalpy is $h_{2s}=419.56$ kJ/kg. Recompute all of these properties together when changing refrigerant, pressure, or reference convention. Relative enthalpy cancels the arbitrary zero only when all states use one reference. [R-134a property model](https://coolprop.org/fluid_properties/fluids/R134a.html) [NIST fluid properties](https://webbook.nist.gov/chemistry/fluid/index.html.en-us.en)
+Use R-134a as a property example. Choose evaporator saturation at $-5$ °C and condenser saturation at $30$ °C. Their approximate pressures are 243 and 770 kPa. On the IIR reference convention, which sets saturated liquid enthalpy to 200 kJ/kg and entropy to 1 kJ/(kg K) at 0 °C, rounded suction vapor enthalpy is $h_1=395.66$ and saturated liquid enthalpy at the condenser exit is $h_3=241.72$ kJ/kg. At $p_{\rm cond}$ and $s=s_1$, the isentropic discharge enthalpy is $h_{2s}=419.56$ kJ/kg. Recompute all of these properties together when changing refrigerant, pressure, or reference convention. Relative enthalpy cancels the arbitrary zero only when all states use one reference. [R-134a property model](https://coolprop.org/fluid_properties/fluids/R134a.html) [NIST fluid properties](https://webbook.nist.gov/chemistry/fluid/index.html.en-us.en)
 
 Define compressor isentropic efficiency $\eta_c=(h_{2s}-h_1)/(h_2-h_1)$. With $\eta_c=0.75$ the actual discharge is $h_2=427.53$ kJ/kg and work is 31.87 kJ/kg. The cooling effect is $q_C=153.94$ kJ/kg. At required load $\dot Q_C=10$ kW, refrigerant flow is $\dot m=\dot Q_C/q_C=0.06496$ kg/s. Multiplying work by flow gives 2.070 kW of shaft input. The condenser must reject 12.070 kW. This is the rate-form closure $\dot Q_H=\dot Q_C+\dot W_{\rm in}$. A plot or property table with a different enthalpy zero should give the same differences to property-model accuracy.
 
@@ -52,7 +52,7 @@ $$
 
 If the hot sink is the reference environment, this minimum work is the exergy of the cooling service. The corresponding exergetic efficiency is $\mathrm{COP}_R/\mathrm{COP}_{R,\rm rev}$. A cycle taking heat reversibly from 268.15 K to 303.15 K would have $\mathrm{COP}_{R,\rm rev}=7.66$. With those reservoir temperatures and $T_0=T_H$, the running case has an exergetic efficiency of about 63.1%. When a source or sink sits at a different temperature from the corresponding refrigerant saturation temperature, use the external temperatures for the reversible ceiling.
 
-For each steady component and its thermal contact with a reservoir, write the entropy produced per kg of circulating refrigerant as $s_{\rm out}-s_{\rm in}-q/T_b$, where $q$ enters the component and $T_b$ is the reservoir temperature. Thus
+For each steady component and its thermal contact with a reservoir, write the entropy produced per kg of circulating refrigerant as $s_{\rm out}-s_{\rm in}-q/T_b$, where $q$ enters the component and $T_b$ is the temperature at the reservoir boundary. This includes the thermal contact's entropy generation, as in [Chapter 1](chapter-01-control-volume-entropy.html#extend-the-boundary-to-include-the-surroundings). Thus
 
 $$
 s_{{\rm gen},c}=s_2-s_1,\quad

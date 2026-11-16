@@ -7,7 +7,7 @@ source: https://www.youtube.com/watch?v=L3pg5PPob_I
 
 ## A diffuser converts kinetic energy into enthalpy
 
-An insulated diffuser slows a gas so that pressure can rise without a rotating shaft. Let $T,p,C,A$ denote temperature, pressure, flow speed and flow area. Subscripts 1 and 2 denote inlet and exit. For steady, one-dimensional dry air with constant specific heat $c_p$ and gas constant $R$, negligible elevation change, no heat and no shaft work, the energy and mass balances give
+An insulated diffuser slows a gas so that pressure can rise without a rotating shaft. Let $T,p,C,A$ denote absolute temperature, absolute pressure, flow speed, and flow area. Subscripts 1 and 2 denote inlet and exit. For steady, one-dimensional dry air with constant specific heat $c_p$ and gas constant $R$, negligible elevation change, no heat and no shaft work, the energy and mass balances give
 
 $$
 C_2=\sqrt{C_1^2-2c_p(T_2-T_1)},\qquad
@@ -46,7 +46,7 @@ Problem 17 holds a rigid air tank at constant temperature while it discharges. E
 
 The same ideal-gas blowdown also requires $W_{\mathrm{elec,in}}=V(p_1-p_2)=1500\,\mathrm{kJ}$. In the energy balance each kilogram leaving takes enthalpy $h$, while the tank loses stored internal energy $u$. The electrical input supplies the difference $h-u=RT$ per kilogram. This reproduces $T S_{\mathrm{gen}}$ for the stated isothermal model.
 
-Problem 18 instead withdraws saturated liquid from a two-phase tank that receives 5 kJ of heat at constant pressure of 400 kPa. The initial mass is 7.5 kg, and the experiment stops at dry saturated vapor. At that pressure let $v_f,v_g$ be the saturated liquid and vapor specific volumes, $h_{fg}$ the enthalpy of vaporization and $x_1$ the initial vapor mass fraction. Constant tank volume gives $m_2=m_1[x_1+(1-x_1)v_f/v_g]$. The enthalpy form of the balance in [Chapter 1](chapter-01-control-volume-entropy.html) gives $Q=(m_2-m_1x_1)h_{fg}$. Substitute the mass relation to obtain
+Problem 18 instead withdraws saturated liquid from a two-phase tank that receives 5 kJ of heat at constant pressure of 400 kPa. The initial mass is 7.5 kg, and the experiment stops at dry saturated vapor. At that pressure let $v_f,v_g$ be the saturated liquid and vapor specific volumes, $h_{fg}$ the enthalpy of vaporization and $x_1$ the initial vapor mass fraction. Constant tank volume gives $m_2=m_1[x_1+(1-x_1)v_f/v_g]$. The enthalpy form of the balance in [Chapter 1, transient balances](chapter-01-control-volume-entropy.html#retain-entropy-storage-during-a-transient) gives $Q=(m_2-m_1x_1)h_{fg}$. Substitute the mass relation to obtain
 
 $$
 x_1=1-\frac{Qv_g}{m_1v_fh_{fg}}.

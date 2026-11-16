@@ -5,9 +5,9 @@ summary: Close the mass and energy accounts before interpreting the entropy resi
 source: https://www.youtube.com/watch?v=-lDtRFxhCuM
 ---
 
-## A condenser and pump require two different reference temperatures
+## Separate the condenser heat path from pump work
 
-Consider the Tutorial 2 train. Steam condenses at constant pressure, then the liquid flows through an insulated pump. The coolant path ultimately rejects heat to an environment at temperature $T_0$. Let $\dot m$ be the water flow rate, with states 1 at the condenser inlet, 2 at its exit and 3 after the pump. The specific enthalpy $h$ measures internal energy plus the pressure-volume flow term. The specific entropy is $s$. With negligible kinetic and potential energy changes and no shaft work in the condenser, the rate of heat into the train from the environment is $\dot Q=\dot m(h_2-h_1)$. For the pump alone, the required shaft input is $\dot W_{\mathrm{in}}=\dot m(h_3-h_2)$. The ideal pump in the exercise is isentropic, so $s_3=s_2$. Its compression still requires work.
+Consider the Tutorial 2 train. Steam condenses at constant pressure, then the liquid flows through an insulated pump. The coolant path ultimately rejects heat to an environment at temperature $T_0$. Let $\dot m$ be the water flow rate, with states 1 at the condenser inlet, 2 at its exit and 3 after the pump. The specific enthalpy $h$ measures internal energy plus the pressure-volume flow term. The specific entropy is $s$. With negligible kinetic and potential energy changes and no shaft work in the condenser, the signed rate of heat entering at the condenser is $\dot Q=\dot m(h_2-h_1)$. For the pump alone, the required shaft input is $\dot W_{\mathrm{in}}=\dot m(h_3-h_2)$. The ideal pump in the exercise is isentropic, so $s_3=s_2$. Its compression still requires work.
 
 The condenser's wall temperature can vary. For the extended boundary reaching ambient, total generation is $\dot m(s_3-s_1)-\dot Q/T_0$. If condensation supplies nearly all the heat rejection at saturation temperature $T_{\mathrm{sat}}>T_0$, the thermal path contributes approximately $-\dot Q(1/T_0-1/T_{\mathrm{sat}})$. For the tutorial's subcooled outlet at 40 °C and 10 kPa, use the liquid entropy at that state. IAPWS-IF97 gives $h_1=2583.89$ and $h_2=167.54\,\mathrm{kJ/kg}$, so 1 kg/s rejects about 2416.34 kW. The stream entropy change is $0.572429-8.148893=-7.57646\,\mathrm{kJ/(kg\,K)}$. With $T_0=303.15\,\mathrm K$, generation inside the extended boundary is about $0.3943\,\mathrm{kW/K}$.
 
@@ -19,12 +19,12 @@ Problem 8 asks how entropy changes in an ideal-gas mixture with unchanged compos
 
 $$
 \bar s_2-\bar s_1
-=\bar c_{p,\mathrm{mix}}\ln(T_2/T_1)-R_u\ln(p_2/p_1),
+=\bar c_{p,\mathrm{mix}}\ln(T_2/T_1)-\bar R\ln(p_2/p_1),
 $$
 
-where $R_u$ is the universal gas constant in units consistent with the molar flow rate. A gram-mole is a mole. Divide the molar heat capacity by the mixture molar mass to change to a mass basis. If composition varies, the partial-pressure ratios must retain the mole fractions, and the fixed-composition expression no longer applies. [Tutorial 2, Problem 8](https://www.youtube.com/watch?v=-lDtRFxhCuM&t=860s)
+where $\bar R=8.314\,\mathrm{J/(mol\,K)}$ is the universal gas constant on the same molar basis as $\bar c_{p,\mathrm{mix}}$. Divide the molar heat capacity by the mixture molar mass to change to a mass basis. If composition varies, the partial-pressure ratios must retain the mole fractions, and the fixed-composition expression no longer applies. [Tutorial 2, Problem 8](https://www.youtube.com/watch?v=-lDtRFxhCuM&t=860s)
 
-The nitrogen–neon problem slide gives $0.5\,\mathrm{mol/s}$ of each gas. The two molecular masses, 28 and 20 g/mol, therefore give a combined flow of 24 g/s. The quoted heat-capacity ratios $1.4$ and $5/3$ give molar heat capacities $3.5R_u$ and $2.5R_u$, so $\bar c_{p,\mathrm{mix}}=3R_u$. At $T_1=300\,\mathrm K$ and $p_2/p_1=1/8$, setting the entropy change to zero gives $T_{2s}=300(1/8)^{1/3}=150\,\mathrm K$. The stated turbine efficiency of 0.50 gives $T_2=300-0.50(300-150)=225\,\mathrm K$. The actual molar entropy rise is $3R_u\ln(225/300)-R_u\ln(1/8)=10.11\,\mathrm{J/(mol\,K)}$ for $R_u=8.314\,\mathrm{J/(mol\,K)}$. At a total flow of 1 mol/s in the insulated turbine, this produces 10.11 W/K. [Problem 8, inputs and rate conversion](https://www.youtube.com/watch?v=-lDtRFxhCuM&t=880s)
+The nitrogen–neon problem slide gives $0.5\,\mathrm{mol/s}$ of each gas. The two molecular masses, 28 and 20 g/mol, therefore give a combined flow of 24 g/s. The quoted heat-capacity ratios $1.4$ and $5/3$ give molar heat capacities $3.5\bar R$ and $2.5\bar R$, so $\bar c_{p,\mathrm{mix}}=3\bar R$. At $T_1=300\,\mathrm K$ and $p_2/p_1=1/8$, setting the entropy change to zero gives $T_{2s}=300(1/8)^{1/3}=150\,\mathrm K$. The stated turbine efficiency of 0.50 gives $T_2=300-0.50(300-150)=225\,\mathrm K$. The actual molar entropy rise is $3\bar R\ln(225/300)-\bar R\ln(1/8)=10.11\,\mathrm{J/(mol\,K)}$ for $\bar R=8.314\,\mathrm{J/(mol\,K)}$. At a total flow of 1 mol/s in the insulated turbine, this produces 10.11 W/K. [Problem 8, inputs and rate conversion](https://www.youtube.com/watch?v=-lDtRFxhCuM&t=880s)
 
 ## A tight outlet couples energy and continuity
 

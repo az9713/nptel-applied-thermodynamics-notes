@@ -9,7 +9,7 @@ A plant must supply 100 MW of net shaft power from a boiler that can raise steam
 
 ## Four devices and two pressures [Lecture 27 · 5:40](https://www.youtube.com/watch?v=TJVk37kchOA&t=340)
 
-Use state 1 at the condenser outlet, state 2 at the pump discharge, state 3 at the turbine inlet, and state 4 at the turbine exhaust. All properties are per kg of circulating water. Let $h$ be specific enthalpy in kJ/kg, $s$ specific entropy in kJ/(kg K), $v$ specific volume in m³/kg, and $p$ absolute pressure. Neglect changes in flow speed and elevation, and treat the devices as steady. The pump and turbine are adiabatic. Neglect pressure drop in the boiler and condenser. Define $w_p$ and $w_t$ as positive pump input and turbine output, and $q_H$ and $q_L$ as positive boiler heat input and condenser rejection.
+Use state 1 at the condenser outlet, state 2 at the pump discharge, state 3 at the turbine inlet, and state 4 at the turbine exhaust. Specific properties are per kg of water at each state. Cycle work and heat use one kg of main steam as the basis, including when a bleed splits the flow. Let $h$ be specific enthalpy in kJ/kg, $s$ specific entropy in kJ/(kg K), $v$ specific volume in m³/kg, and $p$ absolute pressure. Neglect changes in flow speed and elevation, and treat the devices as steady. The pump and turbine are adiabatic. Neglect pressure drop in the boiler and condenser. Define $w_p$ and $w_t$ as positive pump input and turbine output, and $q_H$ and $q_L$ as positive boiler heat input and condenser rejection.
 
 | Path | Ideal model | Energy per kg |
 | --- | --- | --- |

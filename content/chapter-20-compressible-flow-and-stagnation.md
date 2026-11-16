@@ -38,7 +38,7 @@ With $\gamma=1.4$ and $R=287$ J/(kg K), 300 K air has $a=347.19$ m/s. The test s
 
 ## Sonic and stagnation states [Part 3 · 5:20](https://www.youtube.com/watch?v=tCt7uXNYhzg&t=320s)
 
-The sonic reference state has $M=1$. It may exist at a real constriction or be defined by a hypothetical isentropic continuation of a stream. In the tube's stationary frame, a weak upstream-traveling pressure signal moves at axial speed $C-a$ when the gas moves in the positive direction. The two effects cancel locally at a sonic plane. The nozzle analysis later determines when this condition limits mass flow.
+The sonic reference state has $M=1$. It may exist at a real constriction or be defined by a hypothetical isentropic continuation of a stream. In the tube's stationary frame, a weak upstream-traveling pressure signal moves at axial speed $C-a$ when the gas moves in the positive direction. The two effects cancel locally at a sonic plane. [Chapter 22](chapter-22-nozzle-geometry-and-choking.html#derive-the-areamach-relation-part-7-2140) derives the mass-flow limit at this condition.
 
 The stagnation state is defined by slowing a parcel to zero speed reversibly and adiabatically, with no shaft work and no change in elevation. Its specific enthalpy is $h_t=h+C^2/2$, and its entropy equals the parcel's static entropy $s$. Subscript $t$ denotes this total state. For constant $c_p$, $h_t-h=c_p(T_t-T)$ and $C^2=M^2\gamma RT$. With $c_p=\gamma R/(\gamma-1)$ this yields
 

@@ -9,7 +9,7 @@ An air nozzle with exit-to-throat area ratio 3.5 runs from a reservoir at 1 MPa 
 
 ## Bracket the air-nozzle regime [Part 10 · 0:00](https://www.youtube.com/watch?v=HqYbWMEqE-4&t=0s)
 
-Write $A_t$ for geometric throat area, $A_e$ for exit area, $p_{t1}$ for upstream stagnation pressure, $T_t$ for the common stagnation temperature, and $p_b$ for back pressure. In the one-dimensional, inviscid, adiabatic model with negligible shaft work, use $\gamma=1.4$ for air. The area–Mach relation gives both a subsonic and a supersonic root at the exit for $A_e/A_t=3.5$. The downstream state can also be subsonic following an interior normal shock.
+Write $A_t$ for geometric throat area, $A_e$ for exit area, $p_{t1}$ for upstream stagnation pressure, $T_t$ for the common stagnation temperature, and $p_b$ for back pressure. In the one-dimensional, inviscid, adiabatic model with negligible shaft work, use $\gamma=1.4$ for air. The [area–Mach relation](chapter-22-nozzle-geometry-and-choking.html#derive-the-areamach-relation-part-7-2140) gives both a subsonic and a supersonic root at the exit for $A_e/A_t=3.5$. The downstream state can also be subsonic following an interior normal shock.
 
 There are three useful pressure landmarks. The subsonic isentropic root at the exit of a nozzle with a sonic throat gives first choking at $p_b=980.45$ kPa. The supersonic root is $M_e=2.8000$, giving the design exit pressure $p_e=36.85$ kPa. If the normal shock stands just at the exit, multiply that static pressure by the normal-shock pressure ratio to obtain $p_b=330.91$ kPa. Use the same upstream stagnation state for all three checks.
 
@@ -17,7 +17,7 @@ A back pressure of 20 kPa lies below design pressure. The jet is underexpanded a
 
 ## Locate the internal shock [Part 10 · 9:40](https://www.youtube.com/watch?v=HqYbWMEqE-4&t=580s)
 
-Pick a trial shock section with area $A_s$ between throat and exit. On the upstream isentrope, $A^*=A_t$, where the starred area denotes the area that carries the current mass flow at Mach 1 and the local stagnation state. Invert the supersonic area–Mach branch at $A_s/A_t$ to obtain the Mach number $M_a$ immediately before the jump. The normal-shock relations give the total pressure ratio $\chi=p_{tb}/p_{ta}$, where $a$ and $b$ denote the states before and after the shock.
+Pick a trial shock section with area $A_s$ between throat and exit. On the upstream isentrope, $A^*=A_t$, where the starred area denotes the area that carries the current mass flow at Mach 1 and the local stagnation state. Invert the supersonic area–Mach branch at $A_s/A_t$ to obtain the Mach number $M_a$ immediately before the jump. The [normal-shock relations](chapter-21-stagnation-pressure-and-shocks.html#derive-the-compressive-jump-part-5-440) give the total pressure ratio $\chi=p_{tb}/p_{ta}$, where $a$ and $b$ denote the states before and after the shock.
 
 For the same gas and $T_t$, the choked mass flux is proportional to total pressure. Since mass flow is conserved, the downstream hypothetical sonic area is $A^*_b=A_t/\chi$. Use the subsonic area–Mach root at $A_e/A^*_b=(A_e/A_t)\chi$ to compute the candidate exit Mach number. Then compare the predicted exit pressure with $p_b$:
 
@@ -34,21 +34,21 @@ The lecture also obtains the exit state directly from mass conservation. Because
 
 ## Critical pressure for a steam isentrope [Part 11 · 7:40](https://www.youtube.com/watch?v=xffwQnnoLQw&t=460s)
 
-For a steam reservoir with stagnant enthalpy $h_0$ and specific entropy $s_0$, a smooth equilibrium isentrope through static pressure $p$ gives $h(p,s_0)$ and $v(p,s_0)$, where $v$ is the volume per kilogram. Compute the axial speed and mass flux $G$ with
+For a steam reservoir with stagnation enthalpy $h_t$ and specific entropy $s_t$, a smooth equilibrium isentrope through static pressure $p$ gives $h(p,s_t)$ and $v(p,s_t)$, where $v$ is the volume per kilogram. Compute the axial speed and mass flux $G$ with
 
 $$
-C(p)=\sqrt{2[h_0-h(p,s_0)]},\qquad
-G(p)=\frac{C(p)}{v(p,s_0)}.
+C(p)=\sqrt{2[h_t-h(p,s_t)]},\qquad
+G(p)=\frac{C(p)}{v(p,s_t)}.
 $$
 
-Use J/kg for the enthalpy difference to recover m/s. In a convergent nozzle in this model, the maximum of $G(p)$ along the reservoir isentrope sets the choking pressure. This procedure can use tables or an equation of state. In the two-phase equilibrium region, recover the vapor mass fraction from $s_0=s_f+x(s_g-s_f)$ at the trial pressure, and use the same fraction in the $h$ and $v$ balances. [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
+Use J/kg for the enthalpy difference to recover m/s. In a convergent nozzle in this model, the maximum of $G(p)$ along the reservoir isentrope sets the choking pressure. This procedure can use tables or an equation of state. In the two-phase equilibrium region, recover the vapor mass fraction from $s_t=s_f+x(s_g-s_f)$ at the trial pressure, and use the same fraction in the $h$ and $v$ balances. [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
 
-The extremum criterion is sonic on any smooth isentrope with positive acoustic speed. Since $G=\rho C$ and $C\,dC=-v\,dp$, differentiation yields $(dG/dp)_{s_0}=C/a^2-1/C$ with $a^2=(\partial p/\partial\rho)_s$. An interior stationary point therefore has $C=a$. A numerical search for the maximum along the real-fluid isentrope implements choking without using the perfect-gas pressure ratio.
+The extremum criterion is sonic on any smooth isentrope with positive acoustic speed. Since $G=\rho C$ and $C\,dC=-v\,dp$, differentiation yields $(dG/dp)_{s_t}=C/a^2-1/C$ with $a^2=(\partial p/\partial\rho)_s$. An interior stationary point therefore has $C=a$. A numerical search for the maximum along the real-fluid isentrope implements choking without using the perfect-gas pressure ratio.
 
-The lecture also approximates a segment by $pv^n=p_0v_0^n$, where $p_0$ and $v_0$ are reservoir pressure and specific volume and $n>1$ is a fitted expansion exponent. With $r=p/p_0$, we have $v=v_0r^{-1/n}$. Integrating $dh=v\,dp$ along this model isentrope gives
+The lecture also approximates a segment by $pv^n=p_t v_t^n$, where $p_t$ and $v_t$ are reservoir pressure and specific volume and $n>1$ is a fitted expansion exponent. With $r=p/p_t$, we have $v=v_t r^{-1/n}$. Integrating $dh=v\,dp$ along this model isentrope gives
 
 $$
-h_0-h=\frac{n}{n-1}p_0v_0\left(1-r^{(n-1)/n}\right).
+h_t-h=\frac{n}{n-1}p_t v_t\left(1-r^{(n-1)/n}\right).
 $$
 
 Substitution into the flow expression shows that $G^2$ is proportional to $r^{2/n}(1-r^{(n-1)/n})$. Setting its derivative with respect to $r$ to zero gives $r^{(n-1)/n}=2/(n+1)$. Thus
@@ -61,13 +61,13 @@ At the maximum, substitution gives $C^2=npv$. On the fitted isentrope, $a^2=(\pa
 
 ## Compare an unchoked and a choked steam outlet [Part 12 · 0:00](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=0s)
 
-The lecture's first example gives wet steam in a chest at 600 kPa with vapor mass fraction 0.9 and $v_0=0.2845\,\mathrm{m^3/kg}$. The convergent outlet area is $0.002\,\mathrm{m^2}$. Use $n=1.035+0.1(0.9)=1.125$ for this example. The computed sonic pressure is 347.69 kPa. For a 400 kPa back pressure, the steam leaves at 400 kPa, 367.90 m/s and 1.8037 kg/s using the power-law model. For a 300 kPa back pressure the exit is sonic at 347.69 kPa, 425.14 m/s and 1.8401 kg/s. The free jet adjusts to 300 kPa downstream.
+The lecture's first example gives wet steam in a chest at 600 kPa with vapor mass fraction 0.9 and $v_t=0.2845\,\mathrm{m^3/kg}$. The convergent outlet area is $0.002\,\mathrm{m^2}$. Use $n=1.035+0.1(0.9)=1.125$ for this example. The computed sonic pressure is 347.69 kPa. For a 400 kPa back pressure, the steam leaves at 400 kPa, 367.90 m/s and 1.8037 kg/s using the power-law model. For a 300 kPa back pressure the exit is sonic at 347.69 kPa, 425.14 m/s and 1.8401 kg/s. The free jet adjusts to 300 kPa downstream.
 
-As an equilibrium-property check on the power law, IAPWS-IF97 gives $h_0=2547.58$ kJ/kg and $s_0=6.27636$ kJ/(kg K) at 600 kPa and $x=0.9$. Along that isentrope at 400 kPa it gives $h=2480.06$ kJ/kg and $v=0.40660\,\mathrm{m^3/kg}$, leading to $C=367.48$ m/s and $\dot m=1.8075$ kg/s. Maximizing $C/v$ yields a critical pressure of 347.10 kPa and a choked flow of 1.8449 kg/s for the same area. [Part 12 · Steam-table method](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=200s) · [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
+As an equilibrium-property check on the power law, IAPWS-IF97 gives $h_t=2547.58$ kJ/kg and $s_t=6.27636$ kJ/(kg K) at 600 kPa and $x=0.9$. Along that isentrope at 400 kPa it gives $h=2480.06$ kJ/kg and $v=0.40660\,\mathrm{m^3/kg}$, leading to $C=367.48$ m/s and $\dot m=1.8075$ kg/s. Maximizing $C/v$ yields a critical pressure of 347.10 kPa and a choked flow of 1.8449 kg/s for the same area. [Part 12 · Steam-table method](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=200s) · [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
 
-For the lecture's 500-to-300 kPa convergent nozzle, dry saturated steam already moves at the inlet. Continuity gives $C_1=(A_e/A_1)(v_1/v_e)C_e$. The specified diameters of 0.050 and 0.025 m give $A_e/A_1=0.25$. With $n=1.135$ and $v_1=0.37480\,\mathrm{m^3/kg}$, the power law gives $v_e=v_1(500/300)^{1/n}=0.58785\,\mathrm{m^3/kg}$ and $h_1-h_e=92.88$ kJ/kg. Thus $C_1=0.1594C_e$ and $C_e=\sqrt{2(92880)/(1-0.1594^2)}=436.6$ m/s, giving $C_1=69.6$ m/s. This exit speed is below the modeled acoustic speed $\sqrt{np_e v_e}=447.4$ m/s. The stagnation enthalpy is $h_{t1}=h_1+C_1^2/2$. With $h_{t1}$ and $s_{t1}=s_1$, IAPWS-IF97 gives a stagnation pressure near 506.5 kPa. [Part 12 · 9:20](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=560s)
+For the lecture's 500-to-300 kPa convergent nozzle, dry saturated steam already moves at the inlet. Continuity gives $C_1=(A_e/A_1)(v_1/v_e)C_e$. The specified diameters of 0.050 and 0.025 m give $A_e/A_1=0.25$. With $n=1.135$ and $v_1=0.37480\,\mathrm{m^3/kg}$, the power law gives $v_e=v_1(500/300)^{1/n}=0.58785\,\mathrm{m^3/kg}$ and $h_1-h_e=92.88$ kJ/kg. Thus $C_1=0.1594C_e$ and $C_e=\sqrt{2(92880)/(1-0.1594^2)}=436.6$ m/s, giving $C_1=69.6$ m/s. This exit speed is below the modeled acoustic speed $\sqrt{np_e v_e}=447.4$ m/s. In kJ/kg, the stagnation enthalpy is $h_{t1}=h_1+C_1^2/2000$, with $C_1$ in m/s. With $h_{t1}$ and $s_{t1}=s_1$, IAPWS-IF97 gives a stagnation pressure near 506.5 kPa. [Part 12 · 9:20](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=560s)
 
-In the last calculation, a 700 kPa, 250 °C reservoir supplies $\dot m=0.076$ kg/s and the specified in-nozzle exit pressure is 100 kPa. For the equilibrium isentrope, $h_0=2954.12$ kJ/kg and $s_0=7.10712$ kJ/(kg K). The maximum-flux throat pressure is 380.90 kPa, close to the 382 kPa estimate from $n=1.3$. The saturation crossing satisfies $s_g(p)=s_0$ at about 212 kPa, so the throat is superheated and the exit is a mixture. At the throat, $v=0.53613\,\mathrm{m^3/kg}$ and $C=516.87$ m/s. At 100 kPa, $x=0.95844$, $v=1.62367\,\mathrm{m^3/kg}$ and $C=863.70$ m/s. Using $A=\dot m v/C$ and $D=\sqrt{4A/\pi}$ gives 10.02 mm at the throat and 13.49 mm at the exit. A convergent–divergent nozzle accommodates the supersonic expansion to the specified exit state. An ambient pressure of 100 kPa alone would also allow a convergent nozzle with further expansion in the free jet. [Part 12 · 13:20](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=800s) · [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
+In the last calculation, a 700 kPa, 250 °C reservoir supplies $\dot m=0.076$ kg/s and the specified in-nozzle exit pressure is 100 kPa. For the equilibrium isentrope, $h_t=2954.12$ kJ/kg and $s_t=7.10712$ kJ/(kg K). The maximum-flux throat pressure is 380.90 kPa, close to the 382 kPa estimate from $n=1.3$. The saturation crossing satisfies $s_g(p)=s_t$ at about 212 kPa, so the throat is superheated and the exit is a mixture. At the throat, $v=0.53613\,\mathrm{m^3/kg}$ and $C=516.87$ m/s. At 100 kPa, $x=0.95844$, $v=1.62367\,\mathrm{m^3/kg}$ and $C=863.70$ m/s. Using $A=\dot m v/C$ and $D=\sqrt{4A/\pi}$ gives 10.02 mm at the throat and 13.49 mm at the exit. A convergent–divergent nozzle accommodates the supersonic expansion to the specified exit state. An ambient pressure of 100 kPa alone would also allow a convergent nozzle with further expansion in the free jet. [Part 12 · 13:20](https://www.youtube.com/watch?v=rHRLM_Zpz4E&t=800s) · [IAPWS Industrial Formulation 1997](https://iapws.org/technical-guidance/release/IF97-Rev)
 
 ## Numerical laboratory
 

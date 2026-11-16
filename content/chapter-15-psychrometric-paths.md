@@ -9,14 +9,14 @@ A cooling coil can meet a supply-air moisture target at a temperature below the 
 
 ## Build the chart from equations
 
-At fixed total pressure $p$, put dry-bulb temperature $t$ on the horizontal axis and humidity ratio $\omega$ on the vertical axis. For any relative humidity $\phi$, plot
+At fixed total pressure $p$, put dry-bulb temperature $t$ on the horizontal axis and humidity ratio $\omega$ on the vertical axis. For any relative humidity $\varphi$, plot
 
 $$
-\omega(t,\phi)=\frac{0.622\,\phi\,p_{\rm sat}(t)}
-{p-\phi\,p_{\rm sat}(t)}.
+\omega(t,\varphi)=\frac{0.622\,\varphi\,p_{\rm sat}(t)}
+{p-\varphi\,p_{\rm sat}(t)}.
 $$
 
-The $\phi=1$ curve is the saturation boundary of single-phase moist air. Intersect a horizontal line through a state with this curve to find the constant-pressure dew point. Using the dry-air enthalpy correlation from Chapter 14, an isenthalpic line satisfies $\omega=[h^*-1.006t]/(2501+1.86t)$. The denominator varies slowly near ambient temperatures, so these lines appear nearly straight. Constant wet-bulb lines are close to isenthalpic lines because the make-up liquid enthalpy in the adiabatic saturation balance is usually a small correction. Pressure enters both humidity ratio and specific volume. Read the chart at its specified pressure. [Psychrometry Part 5 · Chart construction](https://www.youtube.com/watch?v=IVz3N68fF1c&t=320)
+The $\varphi=1$ curve is the saturation boundary of single-phase moist air. Intersect a horizontal line through a state with this curve to find the constant-pressure dew point. Using the [moist-air enthalpy per kg of dry air](chapter-14-properties-of-moist-air.html#put-mixture-enthalpy-on-a-dry-air-basis), an isenthalpic line satisfies $\omega=[h^*-1.006t]/(2501+1.86t)$. The denominator varies slowly near ambient temperatures, so these lines appear nearly straight. Constant wet-bulb lines are close to isenthalpic lines because the make-up liquid enthalpy in the adiabatic saturation balance is usually a small correction. Pressure enters both humidity ratio and specific volume. Read the chart at its specified pressure. [Psychrometry Part 5 · Chart construction](https://www.youtube.com/watch?v=IVz3N68fF1c&t=320)
 
 Substituting $p_v=p\omega/(0.622+\omega)$ into $v^*=R_aT/(p-p_v)$ gives $v^*=(R_aT/p)(1+\omega/0.622)$, with $T$ in kelvin. To follow a constant-volume-per-kg line, hold the product $T(1+\omega/0.622)$ fixed. For sensible heating at fixed pressure and with no moisture added, follow a horizontal line to the right. To find the dry-air mass flow from an inlet volume flow, read $v^*$ at the inlet and divide the volume flow by it. [Psychrometry Part 5 · Specific-volume and process lines](https://www.youtube.com/watch?v=IVz3N68fF1c&t=420)
 

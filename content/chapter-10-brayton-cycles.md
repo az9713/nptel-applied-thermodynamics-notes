@@ -5,7 +5,7 @@ summary: Derive the ideal gas-turbine cycle, find its maximum-work pressure rati
 source: https://www.youtube.com/watch?v=0HNZF9aFC1o
 ---
 
-The 100 MW plant is considering a gas-turbine train instead of a steam train. Its compressor takes in air at 300 K, and cooled turbine hardware permits a maximum gas temperature of 1500 K. A larger compressor pressure ratio increases ideal efficiency over the useful range. It can simultaneously reduce the work delivered by each kg of air. Choosing the ratio requires knowing which quantity the plant is trying to improve.
+The 100 MW plant is considering a gas-turbine train instead of the [steam train in Chapter 9](chapter-09-rankine-cycles.html#sizing-the-plant-and-checking-moisture-lecture-27-1920). Its compressor takes in air at 300 K, and cooled turbine hardware permits a maximum gas temperature of 1500 K. A larger compressor pressure ratio increases ideal efficiency over the useful range. It can simultaneously reduce the work delivered by each kg of air. Choosing the ratio requires knowing which quantity the plant is trying to improve.
 
 ## An air-standard gas turbine [Lecture 30 · 11:40](https://www.youtube.com/watch?v=0HNZF9aFC1o&t=700)
 

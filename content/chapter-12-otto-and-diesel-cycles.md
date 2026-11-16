@@ -28,17 +28,17 @@ Mean effective pressure, or MEP, is the net work divided by swept volume. In spe
 
 ## Diesel heat addition and cutoff [Lecture 36 · 9:20](https://www.youtube.com/watch?v=iLSkaG0b-Ts&t=560)
 
-The Diesel idealization supplies heat at constant pressure as the piston moves. Define cutoff ratio $\rho=v_3/v_2$, with $1<\rho<r$ for positive heat addition and expansion. Since $p_3=p_2$, ideal-gas temperature rises to $T_3=\rho T_2$. The gas moves the piston during heat addition. The first law gives $q_H=u_3-u_2+p_2(v_3-v_2)=h_3-h_2=c_p(T_3-T_2)$, where $h$ is specific enthalpy. Heat rejection returns to constant volume at $v_1$ and uses $q_L=c_v(T_4-T_1)$. The expansion ratio is $v_4/v_3=r/\rho$. Therefore $T_4=T_3(\rho/r)^{\gamma-1}=T_1\rho^\gamma$ and
+The Diesel idealization supplies heat at constant pressure as the piston moves. Define cutoff ratio $r_{\rm cut}=v_3/v_2$, with $1<r_{\rm cut}<r$ for positive heat addition and expansion. Since $p_3=p_2$, ideal-gas temperature rises to $T_3=r_{\rm cut} T_2$. The gas moves the piston during heat addition. The first law gives $q_H=u_3-u_2+p_2(v_3-v_2)=h_3-h_2=c_p(T_3-T_2)$, where $h$ is specific enthalpy. Heat rejection returns to constant volume at $v_1$ and uses $q_L=c_v(T_4-T_1)$. The expansion ratio is $v_4/v_3=r/r_{\rm cut}$. Therefore $T_4=T_3(r_{\rm cut}/r)^{\gamma-1}=T_1r_{\rm cut}^\gamma$ and
 
 $$
-\eta_D=1-\frac{1}{r^{\gamma-1}}\frac{\rho^\gamma-1}{\gamma(\rho-1)}.
+\eta_D=1-\frac{1}{r^{\gamma-1}}\frac{r_{\rm cut}^\gamma-1}{\gamma(r_{\rm cut}-1)}.
 $$
 
-At common $r$, the factor multiplying $1/r^{\gamma-1}$ exceeds one for $\rho>1$, since it is the average of $z^{\gamma-1}$ on $1\le z\le\rho$. At a larger compression ratio, a Diesel cycle can nevertheless exceed an Otto cycle's ideal efficiency. Higher attainable geometric compression is one reason a comparison at the same $r$ answers a narrower question than an engine choice. [MIT Unified Engineering, Diesel cycle](https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node27.html) [Lecture 37 · 0:00](https://www.youtube.com/watch?v=e2Savvr_Za8&t=0)
+At common $r$, the factor multiplying $1/r^{\gamma-1}$ exceeds one for $r_{\rm cut}>1$, since it is the average of $z^{\gamma-1}$ on $1\le z\le r_{\rm cut}$. At a larger compression ratio, a Diesel cycle can nevertheless exceed an Otto cycle's ideal efficiency. Higher attainable geometric compression is one reason a comparison at the same $r$ answers a narrower question than an engine choice. [MIT Unified Engineering, Diesel cycle](https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node27.html) [Lecture 37 · 0:00](https://www.youtube.com/watch?v=e2Savvr_Za8&t=0)
 
 ## Holding intake and peak temperatures fixed [Lecture 36 · 15:20](https://www.youtube.com/watch?v=iLSkaG0b-Ts&t=920)
 
-For the backup candidate let $p_1=100$ kPa, $T_1=300$ K, $T_3=1800$ K, $c_v=0.718$ kJ/(kg K), and $\gamma=1.4$. The Diesel cutoff is chosen from $\rho=T_3/T_2$. The three rows therefore hold intake and peak temperature fixed while varying heat duty or compression by design.
+For the backup candidate let $p_1=100$ kPa, $T_1=300$ K, $T_3=1800$ K, $c_v=0.718$ kJ/(kg K), and $\gamma=1.4$. The Diesel cutoff is chosen from $r_{\rm cut}=T_3/T_2$. The three rows therefore hold intake and peak temperature fixed while varying heat duty or compression by design.
 
 | Cycle | $q_H$ (kJ/kg) | $w_{\rm net}$ (kJ/kg) | Efficiency | MEP (kPa) |
 | --- | ---: | ---: | ---: | ---: |
@@ -54,18 +54,18 @@ The efficiency here converts heat added to the modeled gas into indicated bounda
 
 ## Reconstruct the cycles with variable specific heats
 
-At high temperatures, use tabulated ideal-gas air properties to follow how the specific heats change. From $ds=c_v(T)dT/T+R\,dv/v$, the isentropic volume ratio obeys
+At high temperatures, use the [variable-specific-heat air-table method](chapter-10-brayton-cycles.html#variable-heat-capacities-and-the-air-table-lecture-31-820). From $ds=c_v(T)dT/T+R\,dv/v$, the isentropic volume ratio obeys
 
 $$
 \frac{v_b}{v_a}=\frac{v_r(T_b)}{v_r(T_a)},\qquad
 v_r(T)=C\exp\!\left[-\frac{1}{R}\int_{T_*}^{T}\frac{c_v(\theta)}{\theta}\,d\theta\right].
 $$
 
-The positive reference constant $C$ and reference temperature $T_*$ cancel in the ratio. Given $T_1$, obtain $v_r(T_2)=v_r(T_1)/r$ and invert the table for $T_2$. In the Otto cycle, use the specified $T_3$ and solve $v_r(T_4)=r\,v_r(T_3)$. In the Diesel cycle, set $T_3=\rho T_2$ and solve $v_r(T_4)=(r/\rho)v_r(T_3)$. Use $u_3-u_2$ for Otto heat input, $h_3-h_2$ for Diesel heat input, and $u_4-u_1$ for heat rejected in either cycle.
+The positive reference constant $C$ and reference temperature $T_*$ cancel in the ratio. Given $T_1$, obtain $v_r(T_2)=v_r(T_1)/r$ and invert the table for $T_2$. In the Otto cycle, use the specified $T_3$ and solve $v_r(T_4)=r\,v_r(T_3)$. In the Diesel cycle, set $T_3=r_{\rm cut} T_2$ and solve $v_r(T_4)=(r/r_{\rm cut})v_r(T_3)$. Use $u_3-u_2$ for Otto heat input, $h_3-h_2$ for Diesel heat input, and $u_4-u_1$ for heat rejected in either cycle.
 
-In the lecture's Otto example, air starts at 298 K and 100 kPa, with $r=9$ and $T_3=2200$ K. The table gives $v_r(T_1)\approx631.9$, so the compression ends at the temperature corresponding to $v_r(T_2)\approx70.2$. The reported heat inputs and rejections are about 1361 and 646 kJ/kg, giving roughly 715 kJ/kg net work and 52.5% efficiency. The cold-air expression at $r=9$ with $\gamma=1.4$ gives 58.5%. In the lecture's Diesel example at $r=18.75$ and $\rho=2.4283$, the variable-property calculation gives about $867.75/1564.5=55.5\%$, compared with 61.9% from the constant-$\gamma$ expression. [Lecture 35 · 28:00](https://www.youtube.com/watch?v=RPXchZmvO0A&t=1680) [Lecture 37 · 0:00](https://www.youtube.com/watch?v=e2Savvr_Za8&t=0)
+In the lecture's Otto example, air starts at 298 K and 100 kPa, with $r=9$ and $T_3=2200$ K. The table gives $v_r(T_1)\approx631.9$, so the compression ends at the temperature corresponding to $v_r(T_2)\approx70.2$. The reported heat inputs and rejections are about 1361 and 646 kJ/kg, giving roughly 715 kJ/kg net work and 52.5% efficiency. The cold-air expression at $r=9$ with $\gamma=1.4$ gives 58.5%. In the lecture's Diesel example at $r=18.75$ and $r_{\rm cut}=2.4283$, the variable-property calculation gives about $867.75/1564.5=55.5\%$, compared with 61.9% from the constant-$\gamma$ expression. [Lecture 35 · 28:00](https://www.youtube.com/watch?v=RPXchZmvO0A&t=1680) [Lecture 37 · 0:00](https://www.youtube.com/watch?v=e2Savvr_Za8&t=0)
 
-The lecture's second-law accounting credits exergy delivered on the expansion side and charges exergy supplied on the compression and heating side. With $w_{\rm comp}=u_2-u_1>0$, $w_{\rm out}=w_{\rm net}+w_{\rm comp}$, and ambient pressure $p_0$, the ratio is $[w_{\rm out}-p_0(v_1-v_2)]/[w_{\rm comp}-p_0(v_1-v_2)+(1-T_0/T_H)q_H]$. In the Diesel case $w_{\rm out}$ includes displacement work during heating. For a boundary around the whole cycle, the ambient displacement terms cancel, and the ratio of net work to thermal exergy input is $w_{\rm net}/[(1-T_0/T_H)q_H]$ when rejection is to $T_0$. State which accounting convention is used when comparing second-law efficiencies. [Lecture 35 · 36:20](https://www.youtube.com/watch?v=RPXchZmvO0A&t=2180) [Lecture 37 · 8:40](https://www.youtube.com/watch?v=e2Savvr_Za8&t=520)
+The lecture's second-law accounting credits exergy delivered on the expansion side and charges exergy supplied on the compression and heating side. With $w_{\rm comp}=u_2-u_1>0$, $w_{\rm out}=w_{\rm net}+w_{\rm comp}$, with ambient pressure $p_0$, ambient temperature $T_0$, and a hot reservoir at $T_H$, the ratio is $[w_{\rm out}-p_0(v_1-v_2)]/[w_{\rm comp}-p_0(v_1-v_2)+(1-T_0/T_H)q_H]$. In the Diesel case $w_{\rm out}$ includes displacement work during heating. For a boundary around the whole cycle, the ambient displacement terms cancel, and the ratio of net work to thermal exergy input is $w_{\rm net}/[(1-T_0/T_H)q_H]$ when rejection is to $T_0$. State which accounting convention is used when comparing second-law efficiencies. [Lecture 35 · 36:20](https://www.youtube.com/watch?v=RPXchZmvO0A&t=2180) [Lecture 37 · 8:40](https://www.youtube.com/watch?v=e2Savvr_Za8&t=520)
 
 ## Numerical laboratory
 
@@ -77,7 +77,7 @@ Run the [Python laboratory](code/chapter_12.py) with standard Python. It takes a
 
 Compute cutoff and effective expansion ratios for the Diesel cycle at $r=18$.
 
-**Solution.** The compression ends at $T_2=300(18)^{0.4}\approx953.3$ K. Thus $\rho=1800/953.3\approx1.888$ and $r/\rho\approx9.53$. The piston begins expansion at a larger volume than the minimum clearance volume because heat addition has already displaced it.
+**Solution.** The compression ends at $T_2=300(18)^{0.4}\approx953.3$ K. Thus $r_{\rm cut}=1800/953.3\approx1.888$ and $r/r_{\rm cut}\approx9.53$. The piston begins expansion at a larger volume than the minimum clearance volume because heat addition has already displaced it.
 
 ### Peak pressure in the Otto example
 
@@ -93,6 +93,6 @@ At $r=10$, prescribe the same $q_H=751.3$ kJ/kg to the Diesel cycle. What happen
 
 ### Zero-heating limit
 
-Evaluate the Diesel efficiency expression as $\rho\to1$ from above.
+Evaluate the Diesel efficiency expression as $r_{\rm cut}\to1$ from above.
 
-**Solution.** The ratio $(\rho^\gamma-1)/[\gamma(\rho-1)]$ tends to one by differentiation. Thus the efficiency tends to the Otto value at the same $r$. Both Diesel heat input and net work approach zero. A finite limiting efficiency does not provide finite cycle output.
+**Solution.** The ratio $(r_{\rm cut}^\gamma-1)/[\gamma(r_{\rm cut}-1)]$ tends to one by differentiation. Thus the efficiency tends to the Otto value at the same $r$. Both Diesel heat input and net work approach zero. A finite limiting efficiency does not provide finite cycle output.

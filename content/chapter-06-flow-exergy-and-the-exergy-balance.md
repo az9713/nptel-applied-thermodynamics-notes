@@ -14,7 +14,7 @@ $$
 \frac{C^2/2+gz}{1000}.
 $$
 
-Here $h$ is in $\mathrm{kJ/kg}$, $s$ in $\mathrm{kJ/(kg\,K)}$, and gravitational acceleration $g$ in $\mathrm{m/s^2}$. The speed, elevation, and conversion factor use SI. For a fixed flow device, subtract $T_0$ times the steady entropy account from the energy account. The terms attached to each inlet and exit become mass-flow rates multiplying $\psi$. The enthalpy already includes the work needed to push a stream across the port. In a closed system that work is instead accounted for by subtracting ambient displacement from total work.
+Here $h$ is in $\mathrm{kJ/kg}$, $s$ in $\mathrm{kJ/(kg\,K)}$, and gravitational acceleration $g$ in $\mathrm{m/s^2}$. For a parcel with specific volume $v$ and absolute pressure $p$, combine the [closed-system exergy](chapter-05-exergy-and-the-reference-environment.html#derive-physical-exergy) per unit mass $B/m$ with $h=u+pv$ to get $\psi=B/m+(p-p_0)v$. The flowing stream carries port flow work through its enthalpy. The closed parcel's useful-work definition instead removes the displacement work at ambient pressure. For a fixed flow device, subtracting $T_0$ times the steady entropy account from the energy account makes each port term a mass-flow rate multiplying $\psi$.
 
 For a fixed control volume at steady operation, with heat rates $\dot Q_j$ into its surface at temperatures $T_j$, shaft output $\dot W$, and entropy generation inside the boundary $\dot S_{\mathrm{gen}}$,
 
@@ -23,7 +23,7 @@ $$
 +\sum_j(1-T_0/T_j)\dot Q_j-T_0\dot S_{\mathrm{gen}}.
 $$
 
-For unsteady operation subtract the rate of physical exergy accumulation inside the control volume on the right side. For heat rejected to ambient, a boundary expanded to $T_0$ sets the heat-exergy term to zero and includes dissipation along the thermal path in generation. The ambient balance remains useful even when the device-surface temperature is unknown. [Exergy transfer, Part 3](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1340s) · [Part 5, compressor](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=20s)
+For unsteady operation in the same fixed control volume, subtract $dB_{\rm CV}/dt$ on the right. For a fluid of fixed composition, its stored physical exergy is $B_{\rm CV}=E_{\rm CV}+p_0V-T_0S_{\rm CV}-m_{\rm CV}(h_0-T_0s_0)$. Here $E_{\rm CV}$ and $S_{\rm CV}$ are the energy and entropy inventories in volume $V$. Even when $V$ is fixed, the reference term changes with $m_{\rm CV}$. Use the mass balance to cancel that change against the reference parts of the flow exergies. For heat rejected to ambient, expanding the boundary to $T_0$ sets its heat-exergy term to zero and includes the thermal path in entropy generation. [Chapter 1, extended entropy balance](chapter-01-control-volume-entropy.html#extend-the-boundary-to-include-the-surroundings) · [Exergy transfer, Part 3](https://www.youtube.com/watch?v=ovsdDMvXmPw&t=1340s)
 
 ## Choose the product before defining an efficiency
 
@@ -33,10 +33,10 @@ For unsteady operation subtract the rate of physical exergy accumulation inside 
 
 **Feedwater heater.** Part 5 assigns steam as the resource and heated feedwater as the product. In a direct mixer the steam eventually joins the outlet. To define the product, track the inlet feedwater mass and compare its outlet-equivalent exergy at the mixed state with its inlet exergy. Compare the inlet steam mass's exergy decrease to that same mixed reference state. That convention uses both mass fractions without adding a second outlet stream. With negligible kinetic or gravitational changes and only ambient heat rejection, the difference between resource and product equals destruction. [Part 5, feedwater heater](https://www.youtube.com/watch?v=vfdk8-Eiajc&t=380s)
 
-**Heat engine.** For a cyclic engine receiving $Q_H>0$ at $T_H$ and rejecting $Q_C>0$ at $T_C$, energy conservation gives $W=Q_H-Q_C$. Part 5 counts the rejected heat as a recovered exergy stream when $T_H>T_C\ge T_0$. The entropy balance over the cycle, including both reservoir contacts, gives $S_{\mathrm{gen}}=Q_C/T_C-Q_H/T_H$. Write thermal efficiency as $\eta_{\mathrm{th}}=W/Q_H$ and Carnot efficiency as $\eta_C=1-T_C/T_H$. Substituting $Q_C=Q_H(1-\eta_{\mathrm{th}})$ in the recovered-to-supplied ratio gives
+**Heat engine.** For a cyclic engine receiving $Q_H>0$ at $T_H$ and rejecting $Q_L>0$ at $T_C$, energy conservation gives $W=Q_H-Q_L$. Part 5 counts the rejected heat as a recovered exergy stream when $T_H>T_C\ge T_0$. The entropy balance over the cycle, including both reservoir contacts, gives $S_{\mathrm{gen}}=Q_L/T_C-Q_H/T_H$. Write thermal efficiency as $\eta_{\mathrm{th}}=W/Q_H$ and Carnot efficiency as $\eta_C=1-T_C/T_H$. Substituting $Q_L=Q_H(1-\eta_{\mathrm{th}})$ in the recovered-to-supplied ratio gives
 
 $$
-\eta_{\mathrm{II}}=\frac{W+(1-T_0/T_C)Q_C}{(1-T_0/T_H)Q_H}
+\eta_{\mathrm{II}}=\frac{W+(1-T_0/T_C)Q_L}{(1-T_0/T_H)Q_H}
 =1-\frac{(T_0/T_C)(\eta_C-\eta_{\mathrm{th}})}{1-T_0/T_H}.
 $$
 
@@ -48,7 +48,7 @@ The first three worked examples explain where a prescribed work or heat interact
 
 In the polytropic example, 2 kg of air starts at 100 kPa and 300 K and reaches 800 kPa with $n=1.27$. The volume relation gives $V_2=V_1(100/800)^{1/1.27}$. The boundary-work integral is $(p_2V_2-p_1V_1)/(1-n)$. Using the lecture’s rounded work of −357.11 kJ and $p_0\Delta V=-139.50$ kJ gives useful work out of −217.61 kJ. At 300 K, generation of 0.08056 kJ/K destroys 24.17 kJ of exergy. The reversible comparison requires 193.44 kJ of useful input, so the efficiency is $193.44/217.61\approx88.9\%$.
 
-The stirred-vessel example starts with 5 kg of saturated R134a vapor at −15 °C and ends at the 30 °C ambient temperature. Because the vessel is rigid, the 500 kJ of stirrer input is entirely useful work crossing the boundary, with the outward sign $W_u=-500$ kJ. The lecture finds about 1.70 kJ/K of generation, equivalent to about 514 kJ of destruction at ambient. The reversible comparison at the same endpoints and with heat exchanged only with ambient gives about $-500+514=14$ kJ of useful output. The process consumes work even though the specified state change reduces stored exergy. The reversible-to-actual input ratio used for the compressor has no useful interpretation here.
+The stirred-vessel example starts with 5 kg of saturated R-134a vapor at −15 °C and ends at the 30 °C ambient temperature. Because the vessel is rigid, the 500 kJ of stirrer input is entirely useful work crossing the boundary, with the outward sign $W_u=-500$ kJ. The lecture finds about 1.70 kJ/K of generation, equivalent to about 514 kJ of destruction at ambient. The reversible comparison at the same endpoints and with heat exchanged only with ambient gives about $-500+514=14$ kJ of useful output. The process consumes work even though the specified state change reduces stored exergy. The reversible-to-actual input ratio used for the compressor has no useful interpretation here.
 
 ## Exercises and worked solutions
 

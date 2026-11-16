@@ -9,7 +9,7 @@ Air at 30 °C and 50% relative humidity can reach saturation at a temperature we
 
 ## Describe the mixture with two partial pressures
 
-Model moist air as a mixture of ideal gases. Use subscripts $a$ and $v$ for dry air and water vapor, respectively. At mixture pressure $p$, Dalton's law gives $p=p_a+p_v$. Both components occupy the same volume $V$ at absolute temperature $T$. From $pV=mRT$ applied to each component,
+Model moist air as a mixture of ideal gases. Use subscripts $a$ and $v$ for dry air and water vapor, respectively. At mixture pressure $p$, Dalton's law gives $p=p_a+p_v$. Both components occupy the same volume $V$ at absolute temperature $T$. Apply $p_jV=m_jR_jT$ to each component $j$, where $m_j$ is its mass and $R_j$ its specific gas constant:
 
 $$
 \omega=\frac{m_v}{m_a}
@@ -17,11 +17,11 @@ $$
 \simeq 0.622\frac{p_v}{p-p_v}.
 $$
 
-The humidity ratio $\omega$ is in kg water vapor per kg dry air. The vapor mass fraction in the gas mixture is $\omega/(1+\omega)$. If liquid water appears, track its mass separately. In the ideal-mixture model, relative humidity $\phi=p_v/p_{\rm sat}(T)$ compares the actual partial pressure with the saturation pressure above liquid water at temperature $T$. Condensation at elevated pressure can require a model that accounts for nonideal gas and liquid equilibrium. The inverse ideal-mixture relation is $p_v=p\omega/(0.622+\omega)$. At fixed $p$ and $\omega$, $p_v$ is fixed. [Lecture 39 · Mixture definitions](https://www.youtube.com/watch?v=es-2LA2bsu4&t=220)
+The humidity ratio $\omega$ is in kg water vapor per kg dry air. The vapor mass fraction in the gas mixture is $\omega/(1+\omega)$. If liquid water appears, track its mass separately. In the ideal-mixture model, relative humidity $\varphi=p_v/p_{\rm sat}(T)$ compares the actual partial pressure with the saturation pressure above liquid water at temperature $T$. Condensation at elevated pressure can require a model that accounts for nonideal gas and liquid equilibrium. The inverse ideal-mixture relation is $p_v=p\omega/(0.622+\omega)$. At fixed $p$ and $\omega$, $p_v$ is fixed. [Lecture 39 · Mixture definitions](https://www.youtube.com/watch?v=es-2LA2bsu4&t=220)
 
 ## Find the onset of condensation
 
-For cooling at constant total pressure and fixed humidity ratio up to saturation, the dew point satisfies $p_{\rm sat}(T_{\rm dp})=p_v$. Use a saturation table or invert a vapor-pressure relation. At 30 °C, 101.325 kPa and $\phi=0.50$, take $p_{\rm sat}=4.246$ kPa. Then $p_v=2.123$ kPa, $\omega=0.01331$ kg/kg dry air, and $T_{\rm dp}\approx18.5$ °C. Below the dew point, some vapor condenses if the stable condensed phase is liquid.
+For cooling at constant total pressure and fixed humidity ratio up to saturation, the dew point satisfies $p_{\rm sat}(T_{\rm dp})=p_v$. Use a saturation table or invert a vapor-pressure relation. At 30 °C, 101.325 kPa and $\varphi=0.50$, take $p_{\rm sat}=4.246$ kPa. Then $p_v=2.123$ kPa, $\omega=0.01331$ kg/kg dry air, and $T_{\rm dp}\approx18.5$ °C. Below the dew point, some vapor condenses if the stable condensed phase is liquid.
 
 The volume constraint changes the calculation in a rigid tank. For a sealed 1.00 m³ tank starting at the same state, the initial vapor mass is $p_{v,1}V/(R_vT_1)=0.01517$ kg. At 10 °C, saturation gives $p_{v,2}\simeq1.228$ kPa and $m_{v,2}=0.00940$ kg. About 5.8 g of liquid remains in the tank. A test for condensation is to calculate the hypothetical $p_{v,2}=m_{v,1}R_vT_2/V$ with all water still in vapor form, then compare it with $p_{\rm sat}(T_2)$. This test retains the rigid-volume constraint. [Lecture 40 · Worked examples](https://www.youtube.com/watch?v=ewtFkNDw-5c&t=0) · [IAPWS saturation properties](https://www.iapws.org/relguide/Supp-sat.html)
 
@@ -36,7 +36,7 @@ $$
 
 Here $h_v$ is expressed per kg vapor and includes the reference latent enthalpy. The volume per kg dry air is $v^*=R_aT/(p-p_v)$. Multiplying $h^*$ by $\dot m_a$ gives the enthalpy flow carried by the air stream, and dividing the inlet volumetric flow by $v^*$ gives $\dot m_a$. For a sealed tank use internal energy in the closed-system balance, counting the remaining liquid separately. [Lecture 41 · Closed and steady-flow balances](https://www.youtube.com/watch?v=xyJWx-HbXyI&t=0)
 
-For a sealed charge, $\Delta U=m_a\Delta u_a+\Delta(m_v u_v+m_\ell u_\ell)$. In the lecture's isothermal compression, air at 25 °C starts at 25% relative humidity, and its volume falls to one-fifth of the original value. With liquid volume negligible, the all-vapor trial gives $p_{v,2}=5p_{v,1}=1.25p_{\rm sat}(25\,{}^\circ\mathrm C)$. Saturation limits the remaining vapor mass to $m_{v,2}/m_{v,1}=1/(5\times0.25)=0.80$. The other 20% condenses. Since $T$ stays fixed, the ideal-gas internal energies per kg stay fixed, and $\Delta U=-m_{\ell,2}(u_v-u_\ell)$. With work positive out of the charge, $Q=\Delta U+W$. Computing $Q$ requires the compression path for $W=\int p\,dV$ when boundary work is the only work and compression is quasistatic. [Lecture 41 · Isothermal compression](https://www.youtube.com/watch?v=xyJWx-HbXyI&t=440)
+For a sealed charge, let subscript $\ell$ denote liquid water and let $u_j$ be each component's mass-specific internal energy. Then $\Delta U=m_a\Delta u_a+\Delta(m_v u_v+m_\ell u_\ell)$. In the lecture's isothermal compression, air at 25 °C starts at 25% relative humidity, and its volume falls to one-fifth of the original value. With liquid volume negligible, the all-vapor trial gives $p_{v,2}=5p_{v,1}=1.25p_{\rm sat}(25\,{}^\circ\mathrm C)$. Saturation limits the remaining vapor mass to $m_{v,2}/m_{v,1}=1/(5\times0.25)=0.80$. The other 20% condenses. At fixed $T$, the ideal-gas internal energies per kg stay fixed. Approximating saturated liquid water's specific internal energy by its value at this temperature gives $\Delta U=-m_{\ell,2}(u_v-u_\ell)$. With work positive out of the charge, $Q=\Delta U+W$. Computing $Q$ requires the compression path for $W=\int p\,dV$ when boundary work is the only work and compression is quasistatic. [Lecture 41 · Isothermal compression](https://www.youtube.com/watch?v=xyJWx-HbXyI&t=440)
 
 ## Distinguish dry bulb, dew point, and wet bulb
 
@@ -64,7 +64,7 @@ Run the [Python laboratory](code/chapter_14.py) to reproduce the humidity ratio,
 
 ### Warm air without adding water
 
-Heat the 30 °C, 50% air to 40 °C at constant pressure. Use $p_{\rm sat}(40\,^\circ\mathrm C)=7.385$ kPa. What happens to $\phi$ and $T_{\rm dp}$?
+Heat the 30 °C, 50% air to 40 °C at constant pressure. Use $p_{\rm sat}(40\,^\circ\mathrm C)=7.385$ kPa. What happens to $\varphi$ and $T_{\rm dp}$?
 
 **Solution.** With neither vapor nor dry air added, $\omega$ stays constant. With $p$ fixed, $p_v=2.123$ kPa. The relative humidity falls to $2.123/7.385=0.2875$, and the dew point stays about 18.5 °C.
 

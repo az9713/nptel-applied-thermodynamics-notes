@@ -13,7 +13,7 @@ To compare different initial states, specify an environment at fixed absolute te
 
 ## Derive physical exergy
 
-Let $E=U+E_{\mathrm{kin}}+E_{\mathrm{pot}}$ be stored energy of a fixed mass and $S$ its entropy. Subscript $0$ denotes the physical dead state of that same mass. Consider a coupled process that takes the mass from its current state to the dead state, exchanges heat $Q$ only with the reference environment, and delivers useful work. The first law gives $W=E-E_0+Q$. The combined entropy balance gives $S_{\mathrm{gen}}=S_0-S-Q/T_0$. Substitute $Q=T_0(S_0-S-S_{\mathrm{gen}})$ and subtract the ambient displacement work $p_0(V_0-V)$:
+Let $E=U+E_{\mathrm{kin}}+E_{\mathrm{pot}}$ be stored energy of a fixed mass and $S$ its entropy. Subscript $0$ denotes the physical dead state of that same mass. Consider a coupled process that takes the mass from its current state to the dead state, exchanges heat only with the reference environment, and delivers useful work. Take $Q$ as positive into the system. The first law gives $W=E-E_0+Q$. The combined entropy balance gives $S_{\mathrm{gen}}=S_0-S-Q/T_0$. Substitute $Q=T_0(S_0-S-S_{\mathrm{gen}})$ and subtract the ambient displacement work $p_0(V_0-V)$:
 
 $$
 W_u=(E-E_0)+p_0(V-V_0)-T_0(S-S_0)-T_0S_{\mathrm{gen}}.
@@ -45,7 +45,7 @@ Each term has its minimum at a ratio of one. At fixed volume, differentiating wi
 
 ## Track exergy carried by heat and useful work
 
-At a boundary with absolute temperature $T_b$, an incremental heat input $\delta Q$ carries incremental exergy $(1-T_0/T_b)\delta Q$. To obtain the factor, operate a reversible engine between source $T_b$ and ambient $T_0$. Entropy balance fixes rejected heat to $(T_0/T_b)\delta Q$, and the first law gives the work difference. For heat entering at $T_b<T_0$, the multiplier is negative. Adding heat to a cold body while it remains below ambient can reduce its work potential. Evaluate the factor locally when temperature varies.
+At a boundary with absolute temperature $T_b$, an incremental heat input $\delta Q$ carries incremental exergy $(1-T_0/T_b)\delta Q$. To obtain the factor, operate a reversible engine between source $T_b$ and ambient $T_0$. Entropy balance fixes rejected heat to $(T_0/T_b)\delta Q$ when $T_b>T_0$. The first law gives the work difference. For $T_b<T_0$, the reversible device needs work to deliver heat to the environment, so the same multiplier is negative. Adding heat to a cold body while it remains below ambient can reduce its work potential. Evaluate the factor locally when temperature varies.
 
 For a closed system between two arbitrary states with heat input and useful work output,
 

@@ -9,7 +9,7 @@ An air reservoir supplies a duct with a converging entrance, a rounded throat, a
 
 ## Geometry enters the continuity equation [Part 7 · 4:40](https://www.youtube.com/watch?v=ttqqNQSlHZU&t=280s)
 
-Let $A$ be area normal to the stream, $C$ axial speed, $\rho$ mass density, and $p$ absolute pressure. A quasi-one-dimensional model treats these flow quantities as nearly uniform on each cross section and lets them vary along the axis. Use steady, adiabatic, inviscid flow with negligible shaft work and gravity. In smooth flow entropy is constant. The resulting energy equation is $dh+C\,dC=0$, where $h$ is specific enthalpy in J/kg. The thermodynamic identity $dh=T\,ds+dp/\rho$ therefore gives $dp=-\rho C\,dC$ on a smooth isentropic segment.
+Let $A$ be area normal to the stream, $C$ axial speed, $\rho$ mass density, and $p$ absolute pressure. A quasi-one-dimensional model treats these flow quantities as nearly uniform on each cross section and lets them vary along the axis. Use steady, adiabatic, inviscid flow with negligible shaft work and gravity. In smooth flow entropy is constant. The resulting energy equation is $dh+C\,dC=0$, where $h$ is specific enthalpy in J/kg. With $T$ in kelvin and $s$ in J/(kg K), the thermodynamic identity $dh=T\,ds+dp/\rho$ therefore gives $dp=-\rho C\,dC$ on a smooth isentropic segment.
 
 With $\dot m=\rho C A$ constant, differentiate its logarithm to obtain $d\rho/\rho+dC/C+dA/A=0$. Substituting $d\rho=dp/a^2$ with $a^2=(\partial p/\partial\rho)_s$ gives
 
@@ -21,7 +21,7 @@ For $M<1$ a decreasing area accelerates the fluid. For $M>1$ the derivative has 
 
 ## Derive the area–Mach relation [Part 7 · 21:40](https://www.youtube.com/watch?v=ttqqNQSlHZU&t=1300s)
 
-For ideal air with constant specific heat ratio $\gamma$ and specific gas constant $R$, use the stagnation pressure $p_t$ and temperature $T_t$ of the smooth segment. The static temperature is $T=T_t/[1+(\gamma-1)M^2/2]$. The pressure is $p=p_t(T/T_t)^{\gamma/(\gamma-1)}$. Combining these with $\rho=p/(RT)$ and $C=M\sqrt{\gamma RT}$ gives
+For ideal air with constant specific heat ratio $\gamma$ and specific gas constant $R$, use the stagnation pressure $p_t$ and temperature $T_t$ of the smooth segment, with $p_t$ in pascals and $R$ in J/(kg K) in the mass-flux formula. The static temperature is $T=T_t/[1+(\gamma-1)M^2/2]$. The pressure is $p=p_t(T/T_t)^{\gamma/(\gamma-1)}$. Combining these with $\rho=p/(RT)$ and $C=M\sqrt{\gamma RT}$ gives
 
 $$
 \frac{\dot m}{A}

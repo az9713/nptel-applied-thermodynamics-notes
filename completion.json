@@ -3,11 +3,11 @@
   "reader": {
     "chapter_count": 23,
     "html_pages_checked": 27,
-    "internal_links_checked": 1338,
+    "internal_links_checked": 1360,
     "source_positions": 73,
     "source_positions_mapped": 72,
     "full_source_coverage_checked": true,
-    "timestamp_links_checked": 213,
+    "timestamp_links_checked": 212,
     "public_recordings_with_timestamps": 72,
     "passed": true,
     "errors": []
@@ -16,15 +16,15 @@
     {
       "width_px": 1440,
       "pages_checked": 27,
-      "equations_checked": 2114,
+      "equations_checked": 2162,
       "offline_file_url": true,
       "reader_controls_checked": true,
       "passed": true
     },
     {
       "width_px": 390,
-      "pages_checked": 8,
-      "equations_checked": 510,
+      "pages_checked": 27,
+      "equations_checked": 2162,
       "offline_file_url": true,
       "reader_controls_checked": true,
       "passed": true
@@ -77,6 +77,44 @@
       "content/chapter-23-air-and-steam-nozzle-calculations.md": "c0caa3effd274bfb04614dd8e559f9b2fc7e5ccd795920e910e323062754fa98"
     },
     "retained_caption_and_transcript_files_unchanged": 145,
+    "displayed_lab_programs_match_downloads": 23,
+    "reviewed_payload_commit": "99c7778f4fc46ff7a9494cd728df78d6281136aa"
+  },
+  "consistency_review": {
+    "baseline_commit": "2fa16fdc5609410af26b3774efe610eacf8b6121",
+    "chapters_reviewed": 23,
+    "chapters_revised": 23,
+    "scope": [
+      "Notation",
+      "Units and calculation bases",
+      "Model assumptions",
+      "Chapter cross-references"
+    ],
+    "chapter_sha256": {
+      "content/chapter-01-control-volume-entropy.md": "33abf2ce1c0a6eede9f157b9a88cd15ef85d13965d519a7eda44ef7d0e1fb067",
+      "content/chapter-02-reversible-steady-flow-work.md": "51a648383f367116a6b59c5aac7fa3b7dff43cc0e6d104eaf8c23830d87b8d10",
+      "content/chapter-03-entropy-balances-in-thermal-equipment.md": "c7cb53db2871c44a7b7039687af41ccbe5ba478bc729ca027180fd66ea6e8046",
+      "content/chapter-04-work-and-irreversibility-tutorials.md": "218da5a01a73150a44cf8cc1872df2b8807c2a4bec755f8b1af8f16eaa809db6",
+      "content/chapter-05-exergy-and-the-reference-environment.md": "1ca0042a421ca0718bfe230cbcf854ee772911600bcbea01aed5f772419f6bb1",
+      "content/chapter-06-flow-exergy-and-the-exergy-balance.md": "fe0ecfe0da05eec4a65c578ba869f52fd4b9287fadad66955a3d18fd59717443",
+      "content/chapter-07-exergy-of-closed-systems.md": "612cf83be6a18fff7f66c1efefadc91a8ca639bb543c426776199ac64b3d5c61",
+      "content/chapter-08-exergy-of-control-volumes.md": "0e32496f47e2c36c19b78dc1ec545a9115562817bb4da248193e28c5439d2762",
+      "content/chapter-09-rankine-cycles.md": "f083919a56f63dc9072d9a3c4ebf24e8891fd902fa6a8de0a51303512428d782",
+      "content/chapter-10-brayton-cycles.md": "b18fc3a67815324d95fc41814917bacd1bb74c195c3e958f3658c0fa0d3a726e",
+      "content/chapter-11-modified-brayton-cycles.md": "6ca72c14cb209502413f5c24bd99df9fe00eac3f23090f14e7c1dd2e4f442e5f",
+      "content/chapter-12-otto-and-diesel-cycles.md": "79b608f1986dacf00c198ccb67c86f99d84776f8f857ba93f4a64f12cef1a2c2",
+      "content/chapter-13-vapor-compression-refrigeration.md": "ded13f9428a20569c0cd98912f8e0c8b14804cd3e72c4e28647b55cb47a00409",
+      "content/chapter-14-properties-of-moist-air.md": "eeb75994a36c956ffa4d7c583b67be5ef13b11b3de9a58f465f1454d735f63ae",
+      "content/chapter-15-psychrometric-paths.md": "86deca003182eb80fd78f6cf99446d4596e81f49c535f52f4c17a8ef7ca5f377",
+      "content/chapter-16-air-conditioning-tutorials.md": "5ec9a207b5b323e1dd8909693350bdfc609249c50d1206c627d836d53df7c7b2",
+      "content/chapter-17-combustion-thermodynamics.md": "7e93cb6e45d3457d50c6f39936ddac4a7fc78a86b5a9dc475a9402b03fdc025d",
+      "content/chapter-18-combustion-stoichiometry-tutorials.md": "263db40bbd451d2a2bc849cbdf024645dc065a5376b7a497e41f7f4dafbc0eb3",
+      "content/chapter-19-combustion-energy-tutorials.md": "2082b84351c2548cf03bb2f5fd58296fbc346ca1880b65eaaf1ab5a4ea37b121",
+      "content/chapter-20-compressible-flow-and-stagnation.md": "12d49a952d61ec2c0f54d44dd14adfcb5d97054034e853b149f0f722efa2d3b0",
+      "content/chapter-21-stagnation-pressure-and-shocks.md": "7500d4bd1bcc6ec57648eae848d1751e6ce7b16afc6d6f4b017284992ea067d3",
+      "content/chapter-22-nozzle-geometry-and-choking.md": "42783b4d0512ba4418457ce69403e5b90575ef494c1fa947222c062fa1b93faf",
+      "content/chapter-23-air-and-steam-nozzle-calculations.md": "444d676b624a2e8fad4e7d2f238ed237c12d66d850b0904a6576fbc45720f7b7"
+    },
     "displayed_lab_programs_match_downloads": 23
   }
 }
