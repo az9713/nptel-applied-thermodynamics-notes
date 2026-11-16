@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reconstruct a steam power cycle, distinguish moisture and efficiency constraints, and quantify how feedwater heating and reheat change the balance.">
+  <meta name="color-scheme" content="dark light">
+  <title>Rankine Cycles · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#four-devices-and-two-pressures-lecture-27-540">Four devices and two pressures Lecture 27 · 5:40</a></li>
+<li><a href="#sizing-the-plant-and-checking-moisture-lecture-27-1920">Sizing the plant and checking moisture Lecture 27 · 19:20</a></li>
+<li><a href="#open-and-closed-feedwater-heating-lecture-28-340">Open and closed feedwater heating Lecture 28 · 3:40</a></li>
+<li><a href="#reheat-and-the-actual-plant-layout-lecture-29-720">Reheat and the actual plant layout Lecture 29 · 7:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#pump-work-and-units">Pump work and units</a></li>
+<li><a href="#actual-turbine-and-outlet-wetness">Actual turbine and outlet wetness</a></li>
+<li><a href="#audit-an-extraction-calculation">Audit an extraction calculation</a></li>
+<li><a href="#determine-the-value-of-reheat">Determine the value of reheat</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html" aria-current="page"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 09 · Lectures 27–29</p>
+        <h1>Rankine Cycles</h1>
+        <p class="lead">Reconstruct a steam power cycle, distinguish moisture and efficiency constraints, and quantify how feedwater heating and reheat change the balance.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=TJVk37kchOA">27. Thermodynamic cycles -- Rankine cycle - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=yE58JznEXT0">28. Thermodynamic cycles -- Rankine cycle - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=BI8wXzaq1C0">29. Thermodynamic cycles -- Rankine cycle - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>A plant must supply 100 MW of net shaft power from a boiler that can raise steam to 480 °C at 8 MPa. A condenser operating at 10 kPa gives the steam a large expansion range. The plant designer still needs to answer two questions before sizing the equipment. How much steam must circulate, and how much liquid forms during expansion? A smaller condenser pressure can improve the first answer while making the second harder.</p>
+<h2 id="four-devices-and-two-pressures-lecture-27-540">Four devices and two pressures <a href="https://www.youtube.com/watch?v=TJVk37kchOA&amp;t=340">Lecture 27 · 5:40</a></h2>
+<p>Use state 1 at the condenser outlet, state 2 at the pump discharge, state 3 at the turbine inlet, and state 4 at the turbine exhaust. All properties are per kg of circulating water. Let <span class="math-inline">\(h\)</span> be specific enthalpy in kJ/kg, <span class="math-inline">\(s\)</span> specific entropy in kJ/(kg K), <span class="math-inline">\(v\)</span> specific volume in m³/kg, and <span class="math-inline">\(p\)</span> absolute pressure. Neglect changes in flow speed and elevation, and treat the devices as steady. The pump and turbine are adiabatic. Neglect pressure drop in the boiler and condenser. Define <span class="math-inline">\(w_p\)</span> and <span class="math-inline">\(w_t\)</span> as positive pump input and turbine output, and <span class="math-inline">\(q_H\)</span> and <span class="math-inline">\(q_L\)</span> as positive boiler heat input and condenser rejection.</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Ideal model</th>
+<th>Energy per kg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(1\to2\)</span></td>
+<td>Isentropic pumping of liquid</td>
+<td><span class="math-inline">\(w_p=h_2-h_1\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(2\to3\)</span></td>
+<td>High-pressure heating and evaporation</td>
+<td><span class="math-inline">\(q_H=h_3-h_2\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(3\to4\)</span></td>
+<td>Isentropic turbine expansion</td>
+<td><span class="math-inline">\(w_t=h_3-h_4\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(4\to1\)</span></td>
+<td>Low-pressure condensation</td>
+<td><span class="math-inline">\(q_L=h_4-h_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The steady-flow first law yields each table entry. Summing it over the loop cancels all four enthalpies and leaves <span class="math-inline">\(w_{\rm net}=w_t-w_p=q_H-q_L\)</span>. Thus <span class="math-inline">\(\eta=w_{\rm net}/q_H\)</span>. In a temperature–entropy diagram the isentropic paths are vertical. In the idealized fluid path heat equals the integral of <span class="math-inline">\(T\,ds\)</span>, where <span class="math-inline">\(T\)</span> is the fluid temperature in K. The enclosed area gives net work because the loop restores the fluid state. Heat exchange across a finite source-to-fluid temperature difference can still generate entropy outside that fluid path.</p>
+<p>For the liquid pump, <span class="math-inline">\(dh=T\,ds+v\,dp\)</span> and <span class="math-inline">\(ds=0\)</span>. With <span class="math-inline">\(v\)</span> nearly constant, <span class="math-inline">\(w_p\approx v_1(p_2-p_1)\)</span>. Input pressure in kPa gives work in kJ/kg. The same equation explains why replacing liquid with vapor would make compression expensive: the volume passing through the pressure rise would be much larger. At the other end of the cycle, determine state 4 from <span class="math-inline">\(s_4=s_3\)</span> at <span class="math-inline">\(p_4\)</span>. In the saturation region,</p>
+<p><span class="math-display">\[
+x_4=\frac{s_3-s_f}{s_g-s_f},\qquad h_4=h_f+x_4(h_g-h_f).
+\]</span></p>
+<p>Here <span class="math-inline">\(x_4\)</span> is the vapor mass fraction and <span class="math-inline">\(f,g\)</span> denote saturated liquid and vapor at <span class="math-inline">\(p_4\)</span>. A computed <span class="math-inline">\(x_4\)</span> outside <span class="math-inline">\([0,1]\)</span> calls for a single-phase property calculation at the given pressure and entropy. The <a href="https://iapws.org/technical-guidance/release/IF97-Rev">IAPWS-IF97 formulation</a> defines property relations for the saturation endpoints and the superheated state on a consistent reference.</p>
+<h2 id="sizing-the-plant-and-checking-moisture-lecture-27-1920">Sizing the plant and checking moisture <a href="https://www.youtube.com/watch?v=TJVk37kchOA&amp;t=1160">Lecture 27 · 19:20</a></h2>
+<p>In the 8 MPa example take rounded properties <span class="math-inline">\(h_1=191.81\)</span>, <span class="math-inline">\(h_2=199.87\)</span>, <span class="math-inline">\(h_3=3349.53\)</span>, and <span class="math-inline">\(h_4=2109.33\)</span> kJ/kg. The condenser endpoints are approximately <span class="math-inline">\(h_f=191.81\)</span> and <span class="math-inline">\(h_g=2583.89\)</span> kJ/kg. The pump costs 8.06 kJ/kg and the turbine supplies 1240.20 kJ/kg, giving <span class="math-inline">\(w_{\rm net}=1232.14\)</span> and <span class="math-inline">\(q_H=3149.66\)</span> kJ/kg. The efficiency is 39.12% and the steam flow for 100 MW is <span class="math-inline">\(100{,}000/1232.14=81.16\)</span> kg/s. The turbine exhaust is approximately 80.2% vapor by mass. An efficiency calculation alone would have missed nearly 20% liquid by mass at the exit.</p>
+<p>Superheat moves the turbine inlet above the saturation temperature at boiler pressure. An increase in <span class="math-inline">\(s_3\)</span> raises <span class="math-inline">\(x_4\)</span> at a fixed condenser pressure when the exhaust remains in the dome. It also changes both <span class="math-inline">\(w_t\)</span> and <span class="math-inline">\(q_H\)</span>. Their ratio improves when the additional net work per additional boiler heat exceeds the original efficiency. Boiler pressure, condenser pressure, and superheat therefore need a joint search under an exhaust moisture constraint and a materials temperature limit. The NPTEL comparison at fixed boiler pressure follows these changes in work, thermal efficiency, and vapor fraction. <a href="https://www.youtube.com/watch?v=TJVk37kchOA&amp;t=1520">Lecture 27 · 25:20</a></p>
+<p>For a single heat source at absolute temperature <span class="math-inline">\(T_H\)</span>, its exergy input per kg is <span class="math-inline">\((1-T_0/T_H)q_H\)</span> relative to an environment at <span class="math-inline">\(T_0\)</span>. Changing the source temperature changes that denominator even at fixed heat duty. Thermal efficiency and exergetic efficiency can move in different directions. A plant with distributed heat sources must sum or integrate their separate exergy transfers.</p>
+<h2 id="open-and-closed-feedwater-heating-lecture-28-340">Open and closed feedwater heating <a href="https://www.youtube.com/watch?v=yE58JznEXT0&amp;t=220">Lecture 28 · 3:40</a></h2>
+<p>Bleed a fraction <span class="math-inline">\(y\)</span> of each kg leaving the boiler at an intermediate turbine pressure. An open heater mixes this bleed stream at enthalpy <span class="math-inline">\(h_b\)</span> with <span class="math-inline">\((1-y)\)</span> kg of condensed feedwater at enthalpy <span class="math-inline">\(h_c\)</span>, also pumped to that pressure. Let <span class="math-inline">\(h_m\)</span> be the mixed outlet enthalpy, usually chosen as saturated liquid at the heater pressure in the ideal model. An adiabatic heater with no shaft work gives</p>
+<p><span class="math-display">\[
+y h_b+(1-y)h_c=h_m,\qquad
+y=\frac{h_m-h_c}{h_b-h_c}.
+\]</span></p>
+<p>With <span class="math-inline">\(h_b=2650\)</span>, <span class="math-inline">\(h_c=192.31\)</span>, and <span class="math-inline">\(h_m=640.09\)</span> kJ/kg, the illustrative bleed is 18.22%. Every kg expands through the high-pressure turbine stage, and 0.818 kg continues through the low-pressure stage. The condenser and the pump upstream of the mixer handle that smaller mass. The pump downstream of the mixer handles the full kg. Relative to a turbine without bleed at the same stage states, the loss of low-pressure turbine work is <span class="math-inline">\(y(h_b-h_4)\)</span>. Raising feedwater temperature reduces the boiler heat requirement. A fair comparison counts both changes.</p>
+<p>A closed feedwater heater transfers heat across a wall. The condensate and feedwater may operate at different pressures, so mixing does not set the pressure of the feedwater. For idealized negligible heat loss, <span class="math-inline">\(y(h_b-h_d)=h_{\rm fw,out}-h_{\rm fw,in}\)</span> when a full kg of feedwater passes through and the bleed drains at <span class="math-inline">\(h_d\)</span>. Drain routing changes the downstream balances. A trap to a lower pressure retains drain enthalpy and may cause partial flashing. Pumping the drain forward adds shaft input. <a href="https://www.youtube.com/watch?v=BI8wXzaq1C0&amp;t=20">Lecture 29 · 0:20</a></p>
+<h2 id="reheat-and-the-actual-plant-layout-lecture-29-720">Reheat and the actual plant layout <a href="https://www.youtube.com/watch?v=BI8wXzaq1C0&amp;t=440">Lecture 29 · 7:20</a></h2>
+<p>Reheat sends intermediate-pressure steam from the high-pressure turbine back through a heater, then to a low-pressure turbine. Call its intermediate enthalpy <span class="math-inline">\(h_a\)</span>, reheated enthalpy <span class="math-inline">\(h_r\)</span>, and actual final exhaust enthalpy <span class="math-inline">\(h&#x27;_4\)</span>. For a simple turbine train without bleed, <span class="math-inline">\(w_t=(h_3-h_a)+(h_r-h&#x27;_4)\)</span> and <span class="math-inline">\(q_H=(h_3-h_2)+(h_r-h_a)\)</span>. The reheat duty must appear in the denominator. If a bleed upstream of the reheater removes fraction <span class="math-inline">\(y\)</span>, multiply each downstream term by <span class="math-inline">\(1-y\)</span>. After reheat, the low-pressure turbine starts at higher entropy when the heater pressure is unchanged. At the same final pressure and ideal expansion, this raises exhaust vapor fraction in the two-phase region.</p>
+<p>At the plant scale, multiple turbine casings and different bleed pressures let designers match the temperatures and pressures encountered in heating and expansion. The economizer heats liquid feedwater ahead of evaporation, the superheater raises inlet steam temperature, and the reheater serves the interstage steam path. A deaerator removes dissolved gases from the feedwater train. The 100 MW design can therefore use reheating to address its exhaust constraint and feedwater heating to lower boiler demand, while recalculating required mass flow from the new net specific work. <a href="https://www.youtube.com/watch?v=BI8wXzaq1C0&amp;t=1160">Lecture 29 · 19:20</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_09.py">Python laboratory</a> with standard Python. It accepts specific enthalpies in kJ/kg and reports energy balances, efficiency, and open-heater extraction. It checks closure for the cycle and for the mixing heater. Inconsistent enthalpy ordering or nonpositive net work raises a value error. Property flashes, pressure losses, turbine moisture limits, and finite heat-exchanger temperature differences are external to this model.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="pump-work-and-units">Pump work and units</h3>
+<p>Estimate the pump work for liquid with <span class="math-inline">\(v=0.00101\)</span> m³/kg pumped from 10 to 8000 kPa.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The isentropic enthalpy increment is <span class="math-inline">\(v\Delta p=0.00101(7990)=8.07\)</span> kJ/kg. Dividing by 1000 again would lose a factor of 1000 because the product already uses kPa and m³.</p>
+</details><h3 id="actual-turbine-and-outlet-wetness">Actual turbine and outlet wetness</h3>
+<p>Use the running example and a turbine isentropic efficiency of 0.88. Find the actual outlet enthalpy and its vapor fraction.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> At the same end pressure, turbine efficiency is actual divided by isentropic work, giving <span class="math-inline">\(h_{4,a}=3349.53-0.88(1240.20)=2258.15\)</span> kJ/kg. The mixture has <span class="math-inline">\(x=(2258.15-191.81)/(2583.89-191.81)=0.864\)</span>. The actual exhaust is drier here, while turbine work falls 148.82 kJ/kg. The loss appears in a larger outlet enthalpy and a larger condenser burden.</p>
+</details><h3 id="audit-an-extraction-calculation">Audit an extraction calculation</h3>
+<p>What loss of turbine work does the illustrative bleed incur when its downstream exhaust would have been at 2109.33 kJ/kg?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Extraction occurs after the high-pressure stage, which still receives the full flow. The lost downstream work is <span class="math-inline">\(0.1822(2650-2109.33)\approx98.5\)</span> kJ/kg of total boiler flow. This figure describes one change in the balance. Pump work, boiler duty, and condenser duty also change.</p>
+</details><h3 id="determine-the-value-of-reheat">Determine the value of reheat</h3>
+<p>A candidate reheat arrangement adds 350 kJ/kg to boiler duty and produces an additional 160 kJ/kg of net work. Does it improve the 39.12% running-case efficiency?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The incremental ratio is <span class="math-inline">\(160/350=45.71\%\)</span>, above 39.12%. Direct substitution gives <span class="math-inline">\((1232.14+160)/(3149.66+350)=39.78\%\)</span>. This test does not establish a feasible exhaust vapor fraction. Compute it from the reheated-state entropy and the condenser pressure.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-08-exergy-of-control-volumes.html"><span>Previous</span>Exergy of steady and transient control volumes</a><a rel="next" href="chapter-10-brayton-cycles.html"><span>Next</span>Brayton Cycles</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

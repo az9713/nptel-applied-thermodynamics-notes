@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive humidity ratio, dew point, and enthalpy on a dry-air mass basis, then use phase equilibrium to locate condensation.">
+  <meta name="color-scheme" content="dark light">
+  <title>Properties of Moist Air · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#describe-the-mixture-with-two-partial-pressures">Describe the mixture with two partial pressures</a></li>
+<li><a href="#find-the-onset-of-condensation">Find the onset of condensation</a></li>
+<li><a href="#put-mixture-enthalpy-on-a-dry-air-basis">Put mixture enthalpy on a dry-air basis</a></li>
+<li><a href="#distinguish-dry-bulb-dew-point-and-wet-bulb">Distinguish dry bulb, dew point, and wet bulb</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#warm-air-without-adding-water">Warm air without adding water</a></li>
+<li><a href="#know-the-basis-before-applying-a-flow-rate">Know the basis before applying a flow rate</a></li>
+<li><a href="#predict-the-dew-point-of-a-compressed-stream">Predict the dew point of a compressed stream</a></li>
+<li><a href="#recover-humidity-from-an-adiabatic-saturation-state">Recover humidity from an adiabatic saturation state</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html" aria-current="page"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 14 · Lectures 39–42</p>
+        <h1>Properties of Moist Air</h1>
+        <p class="lead">Derive humidity ratio, dew point, and enthalpy on a dry-air mass basis, then use phase equilibrium to locate condensation.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=es-2LA2bsu4">39. Psychrometry - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=ewtFkNDw-5c">40. Psychrometry - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=xyJWx-HbXyI">41. Psychrometry - Part 3</a></li><li><a href="https://www.youtube.com/watch?v=kSMMgwBP11c">42. Psychrometry - Part 4</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>Air at 30 °C and 50% relative humidity can reach saturation at a temperature well above freezing. The same air can be heated with no change in its water content while its relative humidity falls. Both observations follow once the water partial pressure and the water inventory are kept distinct.</p>
+<h2 id="describe-the-mixture-with-two-partial-pressures">Describe the mixture with two partial pressures</h2>
+<p>Model moist air as a mixture of ideal gases. Use subscripts <span class="math-inline">\(a\)</span> and <span class="math-inline">\(v\)</span> for dry air and water vapor, respectively. At mixture pressure <span class="math-inline">\(p\)</span>, Dalton's law gives <span class="math-inline">\(p=p_a+p_v\)</span>. Both components occupy the same volume <span class="math-inline">\(V\)</span> at absolute temperature <span class="math-inline">\(T\)</span>. From <span class="math-inline">\(pV=mRT\)</span> applied to each component,</p>
+<p><span class="math-display">\[
+\omega=\frac{m_v}{m_a}
+=\frac{R_a}{R_v}\frac{p_v}{p-p_v}
+\simeq 0.622\frac{p_v}{p-p_v}.
+\]</span></p>
+<p>The humidity ratio <span class="math-inline">\(\omega\)</span> is in kg water vapor per kg dry air. The vapor mass fraction in the gas mixture is <span class="math-inline">\(\omega/(1+\omega)\)</span>. If liquid water appears, track its mass separately. In the ideal-mixture model, relative humidity <span class="math-inline">\(\phi=p_v/p_{\rm sat}(T)\)</span> compares the actual partial pressure with the saturation pressure above liquid water at temperature <span class="math-inline">\(T\)</span>. Condensation at elevated pressure can require a model that accounts for nonideal gas and liquid equilibrium. The inverse ideal-mixture relation is <span class="math-inline">\(p_v=p\omega/(0.622+\omega)\)</span>. At fixed <span class="math-inline">\(p\)</span> and <span class="math-inline">\(\omega\)</span>, <span class="math-inline">\(p_v\)</span> is fixed. <a href="https://www.youtube.com/watch?v=es-2LA2bsu4&amp;t=220">Lecture 39 · Mixture definitions</a></p>
+<h2 id="find-the-onset-of-condensation">Find the onset of condensation</h2>
+<p>For cooling at constant total pressure and fixed humidity ratio up to saturation, the dew point satisfies <span class="math-inline">\(p_{\rm sat}(T_{\rm dp})=p_v\)</span>. Use a saturation table or invert a vapor-pressure relation. At 30 °C, 101.325 kPa and <span class="math-inline">\(\phi=0.50\)</span>, take <span class="math-inline">\(p_{\rm sat}=4.246\)</span> kPa. Then <span class="math-inline">\(p_v=2.123\)</span> kPa, <span class="math-inline">\(\omega=0.01331\)</span> kg/kg dry air, and <span class="math-inline">\(T_{\rm dp}\approx18.5\)</span> °C. At unchanged pressure, any further equilibrium cooling rejects liquid.</p>
+<p>The volume constraint changes the calculation in a rigid tank. For a sealed 1.00 m³ tank starting at the same state, the initial vapor mass is <span class="math-inline">\(p_{v,1}V/(R_vT_1)=0.01517\)</span> kg. At 10 °C, saturation gives <span class="math-inline">\(p_{v,2}\simeq1.228\)</span> kPa and <span class="math-inline">\(m_{v,2}=0.00940\)</span> kg. About 5.8 g of liquid remains in the tank. A test for condensation is to calculate the hypothetical <span class="math-inline">\(p_{v,2}=m_{v,1}R_vT_2/V\)</span> with all water still in vapor form, then compare it with <span class="math-inline">\(p_{\rm sat}(T_2)\)</span>. This test retains the rigid-volume constraint. <a href="https://www.youtube.com/watch?v=ewtFkNDw-5c&amp;t=0">Lecture 40 · Worked examples</a> · <a href="https://www.iapws.org/relguide/Supp-sat.html">IAPWS saturation properties</a></p>
+<h2 id="put-mixture-enthalpy-on-a-dry-air-basis">Put mixture enthalpy on a dry-air basis</h2>
+<p>In a steady-flow duct with no dry-air source or sink, <span class="math-inline">\(\dot m_a\)</span> is constant even when liquid water enters or leaves. Choose zero dry-air and liquid-water sensible enthalpy at 0 °C. With <span class="math-inline">\(t\)</span> in °C and constant heat capacities near ambient conditions,</p>
+<p><span class="math-display">\[
+h^*=h_a+\omega h_v \simeq 1.006t+\omega(2501+1.86t)
+\qquad [\mathrm{kJ/kg_{dry\,air}}].
+\]</span></p>
+<p>Here <span class="math-inline">\(h_v\)</span> is expressed per kg vapor and includes the reference latent enthalpy. The volume per kg dry air is <span class="math-inline">\(v^*=R_aT/(p-p_v)\)</span>. Multiplying <span class="math-inline">\(h^*\)</span> by <span class="math-inline">\(\dot m_a\)</span> gives the enthalpy flow carried by the air stream, and dividing the inlet volumetric flow by <span class="math-inline">\(v^*\)</span> gives <span class="math-inline">\(\dot m_a\)</span>. For a sealed tank use internal energy in the closed-system balance, counting the remaining liquid separately. <a href="https://www.youtube.com/watch?v=xyJWx-HbXyI&amp;t=0">Lecture 41 · Closed and steady-flow balances</a></p>
+<h2 id="distinguish-dry-bulb-dew-point-and-wet-bulb">Distinguish dry bulb, dew point, and wet bulb</h2>
+<p>For an insulated steady-flow adiabatic saturator ultimately leaving saturated at <span class="math-inline">\(t_s\)</span>, take the make-up water at <span class="math-inline">\(t_s\)</span>. The water balance gives added liquid per kg dry air as <span class="math-inline">\(\omega_s-\omega_1\)</span>. The energy balance gives</p>
+<p><span class="math-display">\[
+h_1^*+(\omega_s-\omega_1)h_\ell(t_s)=h_s^*,\qquad
+\omega_s=\omega_{\rm sat}(t_s,p).
+\]</span></p>
+<p>The two terms on the left are the incoming gas and liquid enthalpies. Solve the equation for <span class="math-inline">\(t_s\)</span> using the saturation relation. A ventilated wet-bulb thermometer uses evaporation from a wetted sensor. Its reading approximates the thermodynamic wet bulb for ordinary air–water mixtures under suitable airflow and radiation conditions. At saturation the dry bulb, thermodynamic wet bulb, and dew point coincide. <a href="https://www.youtube.com/watch?v=kSMMgwBP11c&amp;t=1020">Lecture 42 · Wet bulb and adiabatic saturation</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_14.py">Python laboratory</a> to reproduce the humidity ratio, dew point, and tank condensate. It uses the IAPWS liquid-water saturation-pressure correlation and checks the moisture and phase balances.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="warm-air-without-adding-water">Warm air without adding water</h3>
+<p>Heat the 30 °C, 50% air to 40 °C at constant pressure. Use <span class="math-inline">\(p_{\rm sat}(40\,^\circ\mathrm C)=7.385\)</span> kPa. What happens to <span class="math-inline">\(\phi\)</span> and <span class="math-inline">\(T_{\rm dp}\)</span>?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> With neither vapor nor dry air added, <span class="math-inline">\(\omega\)</span> stays constant. With <span class="math-inline">\(p\)</span> fixed, <span class="math-inline">\(p_v=2.123\)</span> kPa. The relative humidity falls to <span class="math-inline">\(2.123/7.385=0.2875\)</span>, and the dew point stays about 18.5 °C.</p>
+</details><h3 id="know-the-basis-before-applying-a-flow-rate">Know the basis before applying a flow rate</h3>
+<p>The 30 °C inlet state has <span class="math-inline">\(h^*\approx64.2\)</span> kJ/kg dry air. Find its enthalpy per kg of moist gas.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> One kg dry air accompanies 0.01331 kg vapor. Divide by <span class="math-inline">\(1+\omega\)</span> to obtain about <span class="math-inline">\(63.4\)</span> kJ per kg of moist gas. Either basis gives the same enthalpy flow when multiplied by the corresponding mass rate.</p>
+</details><h3 id="predict-the-dew-point-of-a-compressed-stream">Predict the dew point of a compressed stream</h3>
+<p>Double the initial mixture pressure while keeping the air at 30 °C and its humidity ratio unchanged until it reaches equilibrium. How close is the endpoint to condensation?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The vapor fraction on a molar basis is fixed because the two gas masses remain fixed. Thus <span class="math-inline">\(p_v\)</span> doubles to 4.246 kPa, which equals <span class="math-inline">\(p_{\rm sat}(30)\)</span>. An equilibrium gas at this point is saturated. Further compression at 30 °C requires some water to condense.</p>
+</details><h3 id="recover-humidity-from-an-adiabatic-saturation-state">Recover humidity from an adiabatic saturation state</h3>
+<p>An ideal saturator accepts air at 30 °C and 101.325 kPa and produces saturated air at 20 °C. Liquid feed enters at 20 °C. Use <span class="math-inline">\(p_{\rm sat}(20)=2.339\)</span> kPa and <span class="math-inline">\(h_\ell(20)=83.6\)</span> kJ/kg liquid. Find the inlet humidity ratio.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Saturation fixes <span class="math-inline">\(\omega_s=0.622(2.339)/(101.325-2.339)\approx0.01470\)</span>, and <span class="math-inline">\(h_s^*\approx57.43\)</span> kJ/kg dry air. Substitute <span class="math-inline">\(h_1^*=30.18+2556.8\omega_1\)</span> into the saturation balance to obtain <span class="math-inline">\(\omega_1=(57.43-30.18-0.01470(83.6))/(2556.8-83.6)\approx0.0105\)</span> kg/kg dry air. The inlet ratio is below <span class="math-inline">\(\omega_s\)</span>, consistent with adding water.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-13-vapor-compression-refrigeration.html"><span>Previous</span>Vapor-Compression Refrigeration</a><a rel="next" href="chapter-15-psychrometric-paths.html"><span>Next</span>Psychrometric Paths</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

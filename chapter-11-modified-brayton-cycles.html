@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quantify how intercooling, reheat, and regeneration interact at fixed compressor inlet temperature, turbine inlet temperature, and overall pressure ratio.">
+  <meta name="color-scheme" content="dark light">
+  <title>Modified Brayton Cycles · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#intercooling-and-the-optimal-intermediate-pressure-lecture-32-2020-lecture-33-000">Intercooling and the optimal intermediate pressure Lecture 32 · 20:20 Lecture 33 · 0:00</a></li>
+<li><a href="#reheat-and-useful-expansion-work-lecture-33-820">Reheat and useful expansion work Lecture 33 · 8:20</a></li>
+<li><a href="#regeneration-and-the-temperature-gate-lecture-34-420">Regeneration and the temperature gate Lecture 34 · 4:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#intermediate-pressure">Intermediate pressure</a></li>
+<li><a href="#temperature-feasibility">Temperature feasibility</a></li>
+<li><a href="#recover-enough-heat-to-reach-50">Recover enough heat to reach 50%</a></li>
+<li><a href="#end-temperatures-and-entropy-generation">End temperatures and entropy generation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html" aria-current="page"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 11 · Lectures 33–34</p>
+        <h1>Modified Brayton Cycles</h1>
+        <p class="lead">Quantify how intercooling, reheat, and regeneration interact at fixed compressor inlet temperature, turbine inlet temperature, and overall pressure ratio.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=tbbWu9G-9MY">33. Thermodynamic cycles -- Air standard Brayton cycle - Part 4</a></li><li><a href="https://www.youtube.com/watch?v=2EDD3tBhzcI">34. Thermodynamic cycles -- Air standard Brayton cycle - Part 5</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>The gas-turbine candidate for the 100 MW plant has two separate objectives. It needs sufficient net work per kg to keep air handling manageable, and it needs to limit purchased heat. Split compression and expansion can raise the first performance measure while worsening the second. A recuperator, which transfers exhaust heat to compressed air, can improve the second measure when the two streams reach it at useful temperatures.</p>
+<h2 id="intercooling-and-the-optimal-intermediate-pressure-lecture-32-2020-lecture-33-000">Intercooling and the optimal intermediate pressure <a href="https://www.youtube.com/watch?v=XgrDwGKL1FU&amp;t=1220">Lecture 32 · 20:20</a> <a href="https://www.youtube.com/watch?v=tbbWu9G-9MY&amp;t=0">Lecture 33 · 0:00</a></h2>
+<p>Let the overall pressure ratio be <span class="math-inline">\(r_p=p_{\rm high}/p_{\rm low}\)</span>, and let <span class="math-inline">\(r_1,r_2\)</span> be stage ratios whose product is <span class="math-inline">\(r_p\)</span>. For cold air at <span class="math-inline">\(T_c\)</span> in K, assume both compressors are isentropic and that the intercooler returns the air to <span class="math-inline">\(T_c\)</span> before the second stage. Ignore pressure losses, take constant specific heat <span class="math-inline">\(c_p\)</span> and heat-capacity ratio <span class="math-inline">\(\gamma=c_p/c_v\)</span>, and set <span class="math-inline">\(a=(\gamma-1)/\gamma\)</span>. Then the shaft input in kJ/kg is</p>
+<p><span class="math-display">\[
+w_c=c_pT_c(r_1^a+r_2^a-2).
+\]</span></p>
+<p>At a fixed product <span class="math-inline">\(r_1^a r_2^a=r_p^a\)</span>, the sum is smallest when both factors are equal. This follows from <span class="math-inline">\((r_1^{a/2}-r_2^{a/2})^2\ge0\)</span>. Consequently <span class="math-inline">\(r_1=r_2=\sqrt{r_p}\)</span> and the intermediate pressure is the geometric mean of the endpoints. For <span class="math-inline">\(n\)</span> reversible stages with complete intercooling and equal ratios, <span class="math-inline">\(w_c=n c_p T_c(r_p^{a/n}-1)\)</span>. Since <span class="math-inline">\(n(e^{a\ln(r_p)/n}-1)\to a\ln r_p\)</span>, the limiting shaft input is <span class="math-inline">\(RT_c\ln r_p\)</span>, the isothermal compression result when <span class="math-inline">\(R=ac_p\)</span>.</p>
+<p>For the 300 K case with <span class="math-inline">\(r_p=10\)</span>, <span class="math-inline">\(c_p=1.005\)</span> kJ/(kg K), and <span class="math-inline">\(\gamma=1.4\)</span>, two equal stages each exit at approximately 416.85 K. Together they need 234.87 kJ/kg, a reduction of 45.74 kJ/kg from single-stage ideal compression. At fixed turbine inlet temperature, the main heater must now begin from the cooler 416.85 K discharge rather than 579.21 K. Additional heat input can exceed the work gained, lowering thermal efficiency. The intercooler is a real heat exchanger with a finite approach temperature and possibly significant pressure drop. Either effect changes the optimum stage split.</p>
+<h2 id="reheat-and-useful-expansion-work-lecture-33-820">Reheat and useful expansion work <a href="https://www.youtube.com/watch?v=tbbWu9G-9MY&amp;t=500">Lecture 33 · 8:20</a></h2>
+<p>Split the turbine into two stages and restore the temperature to <span class="math-inline">\(T_h\)</span> between them without pressure loss. For stage ratios <span class="math-inline">\(r_1,r_2\)</span> with <span class="math-inline">\(r_1r_2=r_p\)</span>, the isentropic shaft output is</p>
+<p><span class="math-display">\[
+w_t=c_pT_h(2-r_1^{-a}-r_2^{-a}).
+\]</span></p>
+<p>For fixed product <span class="math-inline">\(r_p^{-a}\)</span>, the same sum-of-squares argument shows that equal stage ratios maximize this work. With <span class="math-inline">\(T_h=1500\)</span> K, equal stages at total ratio 10 each exhaust at 1079.53 K. The second stage contributes a separate enthalpy drop made available by heat added between stages. Reheat also warms the ultimate exhaust relative to the single-stage expansion. Its effect on efficiency depends on both external heating and rejection.</p>
+<p>Use <span class="math-inline">\(X=r_p^{a/2}\)</span> for the compression temperature factor per stage. In the model combining full intercooling with full reheat, the positive magnitudes are</p>
+<p><span class="math-display">\[
+w_c=2c_p T_c(X-1),\qquad w_t=2c_p T_h(1-1/X),\qquad
+q_{H,0}=c_p(T_h-T_cX)+c_p(T_h-T_h/X).
+\]</span></p>
+<p>The two terms of <span class="math-inline">\(q_{H,0}\)</span> represent the main heater and the reheater. With the running inputs the model yields 610.3 kJ/kg net work and 1511.1 kJ/kg heat input, or 40.39% efficiency. Compare the simple cycle at the same boundary temperatures and pressure ratio, which gives 446.1 kJ/kg and 48.21%. The modified cycle needs roughly 164 kg/s per 100 MW instead of 224 kg/s, but its external heat requirement per MW rises. Compressor and turbine count, flow capacity, and energy cost are separate engineering criteria.</p>
+<h2 id="regeneration-and-the-temperature-gate-lecture-34-420">Regeneration and the temperature gate <a href="https://www.youtube.com/watch?v=2EDD3tBhzcI&amp;t=260">Lecture 34 · 4:20</a></h2>
+<p>Let <span class="math-inline">\(T_f\)</span> denote the last compressor discharge and <span class="math-inline">\(T_e\)</span> the last turbine exhaust. A passive regenerator can transfer heat to the compressed stream only when <span class="math-inline">\(T_e&gt;T_f\)</span>. For equal mass flow rates and the same constant <span class="math-inline">\(c_p\)</span> on each side, heat exchanger effectiveness <span class="math-inline">\(\varepsilon\)</span> is actual recovery divided by the maximum <span class="math-inline">\(c_p(T_e-T_f)\)</span>. Thus</p>
+<p><span class="math-display">\[
+q_{\rm rec}=\varepsilon c_p\max(0,T_e-T_f),\qquad
+q_H=q_{H,0}-q_{\rm rec}.
+\]</span></p>
+<p>Here <span class="math-inline">\(0\le\varepsilon\le1\)</span>. An inactive or bypassed heat exchanger has zero recovery. When pressure drops are zero and turbine inlet temperatures stay fixed, compressor and turbine work are unchanged. Energy conservation requires that external heat rejection also drop by <span class="math-inline">\(q_{\rm rec}\)</span>. At <span class="math-inline">\(\varepsilon=0.8\)</span> the combined cycle recovers 532.8 kJ/kg, giving <span class="math-inline">\(q_H=978.3\)</span> kJ/kg and <span class="math-inline">\(\eta=62.38\%\)</span>. The second turbine inlet remains at 1500 K because the reheater compensates separately. The main heater alone uses the preheated stream. <a href="https://www.youtube.com/watch?v=2EDD3tBhzcI&amp;t=680">Lecture 34 · 11:20</a></p>
+<p>A regenerator insulated from its surroundings still generates entropy when the streams exchange heat across a finite temperature difference. For the equal-capacity model call their outlet temperatures <span class="math-inline">\(T_{f,o}\)</span> and <span class="math-inline">\(T_{e,o}\)</span>. With negligible pressure drop, the total entropy rise per kg passing each side is</p>
+<p><span class="math-display">\[
+s_{\rm gen}=c_p\ln(T_{f,o}/T_f)+c_p\ln(T_{e,o}/T_e).
+\]</span></p>
+<p>Recovered heat and destroyed exergy are different quantities. The entire plant can consume less external exergy while the new regenerator itself generates entropy. The ideal calculation also excludes exhaust-side and compressor-side pressure loss. These losses can change turbine output and compressor input, and can overturn the calculated economic benefit. When absolute temperatures are fixed, a simple ideal Brayton cycle has <span class="math-inline">\(T_e=T_h/r_p^a\)</span> and <span class="math-inline">\(T_f=T_c r_p^a\)</span>. Its temperature gate closes exactly at the simple-cycle maximum-work ratio. With intercooled compression and reheated expansion the two corresponding temperature factors are <span class="math-inline">\(\sqrt{r_p^a}\)</span>, increasing the range where useful recovery is possible. <a href="https://www.youtube.com/watch?v=2EDD3tBhzcI&amp;t=1060">Lecture 34 · 17:40</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_11.py">Python laboratory</a> with standard Python. Its input is the boundary temperatures in K, the overall pressure ratio, <span class="math-inline">\(\varepsilon\)</span>, and gas constants. It calculates two-stage shaft work, external heat input, internal recovery, and efficiency. It checks that the two external heat transfers differ by the predicted net work and that changing heat recovery alone leaves shaft work unchanged. Invalid efficiencies or a cycle with nonpositive net work raise a value error.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="intermediate-pressure">Intermediate pressure</h3>
+<p>For ambient pressure 100 kPa and exit pressure 1000 kPa, select the ideal split with complete intercooling.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The first compressor ratio is <span class="math-inline">\(\sqrt{10}=3.1623\)</span>, giving 316.23 kPa. The second ratio is <span class="math-inline">\(1000/316.23=3.1623\)</span>. Equal ratios minimize the sum of the two stage temperature rises under the stated assumptions.</p>
+</details><h3 id="temperature-feasibility">Temperature feasibility</h3>
+<p>Can the simple 300–1500 K ideal Brayton cycle at <span class="math-inline">\(r_p=25\)</span> regenerate?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> With <span class="math-inline">\(\gamma=1.4\)</span>, the single-stage ratio factor <span class="math-inline">\(25^{2/7}\approx2.509\)</span>. The cold-side inlet is approximately 753 K, while the hot-side inlet is approximately 598 K. Heat would flow from compressed air to exhaust, defeating the intended duty. The stage calculation must bypass the exchanger or set recovery to zero.</p>
+</details><h3 id="recover-enough-heat-to-reach-50">Recover enough heat to reach 50%</h3>
+<p>Find the minimum <span class="math-inline">\(\varepsilon\)</span> for the running modified cycle to reach 50% efficiency.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> With 610.3 kJ/kg of net work, input must be at most 1220.6 kJ/kg. The required recovery is <span class="math-inline">\(1511.1-1220.6=290.5\)</span> kJ/kg. Since 80% effectiveness gave 532.8 kJ/kg, the reversible upper bound in this model is <span class="math-inline">\(532.8/0.8=666.0\)</span> kJ/kg. Divide to get <span class="math-inline">\(\varepsilon_{\min}\approx0.436\)</span>. Allowing pressure drop would change the required minimum.</p>
+</details><h3 id="end-temperatures-and-entropy-generation">End temperatures and entropy generation</h3>
+<p>Explain whether <span class="math-inline">\(\varepsilon=1\)</span> implies zero regenerator entropy generation in this specific idealization.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Equal capacity rates and zero losses make the two streams exchange inlet temperatures when <span class="math-inline">\(\varepsilon=1\)</span>. The sum <span class="math-inline">\(c_p\ln(T_e/T_f)+c_p\ln(T_f/T_e)\)</span> is then zero. Counterflow can approach that limit as the local temperature difference tends to zero and the required heat-transfer area tends to infinity. At intermediate effectiveness and nonzero inlet temperature difference the two outlet temperatures remain closer together than the two inlets and the total entropy increases.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-10-brayton-cycles.html"><span>Previous</span>Brayton Cycles</a><a rel="next" href="chapter-12-otto-and-diesel-cycles.html"><span>Next</span>Otto and Diesel Cycles</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

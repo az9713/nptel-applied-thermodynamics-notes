@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Read a pressure-specific chart and use water and energy balances for cooling, reheating, mixing, drying, and towers.">
+  <meta name="color-scheme" content="dark light">
+  <title>Psychrometric Paths · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#build-the-chart-from-equations">Build the chart from equations</a></li>
+<li><a href="#cool-drain-and-reheat">Cool, drain, and reheat</a></li>
+<li><a href="#mix-on-a-dry-air-flow-basis">Mix on a dry-air flow basis</a></li>
+<li><a href="#carry-moisture-out-of-a-dryer-or-tower">Carry moisture out of a dryer or tower</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#remove-the-drain-enthalpy-term">Remove the drain enthalpy term</a></li>
+<li><a href="#compare-dryer-moisture-conventions">Compare dryer moisture conventions</a></li>
+<li><a href="#infer-a-mixing-fraction">Infer a mixing fraction</a></li>
+<li><a href="#test-whether-a-supply-target-needs-a-colder-coil">Test whether a supply target needs a colder coil</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html" aria-current="page"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 15 · Lectures 73, 44–45</p>
+        <h1>Psychrometric Paths</h1>
+        <p class="lead">Read a pressure-specific chart and use water and energy balances for cooling, reheating, mixing, drying, and towers.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=IVz3N68fF1c">73. Psychrometry - Part 5</a></li><li><a href="https://www.youtube.com/watch?v=689t3mWiPy0">44. Psychrometry - Part 6</a></li><li><a href="https://www.youtube.com/watch?v=32NLJlrLtTQ">45. Psychrometry - Part 7</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>A cooling coil can meet a supply-air moisture target at a temperature below the delivery target. A reheater then raises the temperature at unchanged humidity ratio. The coil, drain, and reheater each carry terms that a single inlet-to-outlet temperature difference cannot identify.</p>
+<h2 id="build-the-chart-from-equations">Build the chart from equations</h2>
+<p>At fixed total pressure <span class="math-inline">\(p\)</span>, put dry-bulb temperature <span class="math-inline">\(t\)</span> on the horizontal axis and humidity ratio <span class="math-inline">\(\omega\)</span> on the vertical axis. For any relative humidity <span class="math-inline">\(\phi\)</span>, plot</p>
+<p><span class="math-display">\[
+\omega(t,\phi)=\frac{0.622\,\phi\,p_{\rm sat}(t)}
+{p-\phi\,p_{\rm sat}(t)}.
+\]</span></p>
+<p>The <span class="math-inline">\(\phi=1\)</span> curve is the saturation boundary of single-phase moist air. Intersect a horizontal line through a state with this curve to find the constant-pressure dew point. Using the dry-air enthalpy correlation from Chapter 14, an isenthalpic line satisfies <span class="math-inline">\(\omega=[h^*-1.006t]/(2501+1.86t)\)</span>. The denominator varies slowly near ambient temperatures, so these lines appear nearly straight. Constant wet-bulb lines are close to isenthalpic lines because the make-up liquid enthalpy in the adiabatic saturation balance is usually a small correction. Pressure enters both humidity ratio and specific volume. Read the chart at its specified pressure. <a href="https://www.youtube.com/watch?v=IVz3N68fF1c&amp;t=320">Psychrometry Part 5 · Chart construction</a></p>
+<h2 id="cool-drain-and-reheat">Cool, drain, and reheat</h2>
+<p>Take air at 35 °C and 80% relative humidity, at 101.325 kPa. As an idealized coil model, let the outlet be saturated at 15 °C and the condensate leave at 15 °C. The inlet and outlet humidity ratios are 0.0289 and 0.01065 kg/kg dry air, using saturation pressures of 5.628 and 1.705 kPa. Let <span class="math-inline">\(q\)</span> denote heat entering per kg dry air. With negligible shaft work and changes in kinetic and potential energy, separate water and energy balances give</p>
+<p><span class="math-display">\[
+\frac{\dot m_\ell}{\dot m_a}=\omega_1-\omega_2,\qquad
+q_{\rm coil}=h_2^*-h_1^*+(\omega_1-\omega_2)h_\ell(15).
+\]</span></p>
+<p>Here <span class="math-inline">\(h_\ell(15)\approx62.7\)</span> kJ/kg liquid on the same reference. The drain carries about 0.0183 kg/kg dry air and the coil extracts about 66.3 kJ/kg dry air. Heating from 15 to 24 °C at fixed <span class="math-inline">\(\omega_2\)</span> takes roughly 9.23 kJ/kg dry air. At 24 °C, the vapor pressure stays 1.705 kPa and the relative humidity is about 57%. The cooling step changes humidity ratio after saturation is reached. The reheating step changes relative humidity by raising <span class="math-inline">\(p_{\rm sat}\)</span>. A real coil can deliver unsaturated outlet air due to bypass and surface-temperature variation. <a href="https://www.youtube.com/watch?v=689t3mWiPy0&amp;t=680">Psychrometry Part 6 · Cooling and reheat</a></p>
+<h2 id="mix-on-a-dry-air-flow-basis">Mix on a dry-air flow basis</h2>
+<p>For an adiabatic mixer at common pressure without condensation, let <span class="math-inline">\(f=\dot m_{a,1}/(\dot m_{a,1}+\dot m_{a,2})\)</span>. Dry-air conservation gives the outlet base flow. Vapor and energy conservation then give</p>
+<p><span class="math-display">\[
+\omega_3=f\omega_1+(1-f)\omega_2,\qquad
+h_3^*=fh_1^*+(1-f)h_2^*.
+\]</span></p>
+<p>These are exactly linear in <span class="math-inline">\((h^*,\omega)\)</span> coordinates. The chart's <span class="math-inline">\((t,\omega)\)</span> coordinates approximate this straight mixing line because the heat capacity of air per kg dry air varies slightly with <span class="math-inline">\(\omega\)</span>. Invert the enthalpy relation for <span class="math-inline">\(t_3\)</span> and test the result against saturation. If the calculated gas is supersaturated, allow a liquid stream and solve its phase equilibrium, water balance, and enthalpy simultaneously. <a href="https://www.youtube.com/watch?v=32NLJlrLtTQ&amp;t=0">Psychrometry Part 7 · Adiabatic mixing</a></p>
+<h2 id="carry-moisture-out-of-a-dryer-or-tower">Carry moisture out of a dryer or tower</h2>
+<p>In a steady dryer, <span class="math-inline">\(\dot m_a(\omega_{\rm out}-\omega_{\rm in})\)</span> is the water gained from wet solids when air is the only outlet for removed moisture. On a wet basis, moisture fraction <span class="math-inline">\(x_{\rm wb}\)</span> is water per kg wet solid. The ratio of water to dry solid is <span class="math-inline">\(x_{\rm wb}/(1-x_{\rm wb})\)</span>. For 150 kg/h wet feed at one-third moisture by mass, there is 100 kg/h dry solid and 50 kg/h water. A product at 10% wet-basis moisture retains <span class="math-inline">\(100(0.10/0.90)=11.11\)</span> kg/h water. Air picking up 0.007 kg/kg dry air therefore needs about 5556 kg dry air/h.</p>
+<p>A cooling tower likewise exports <span class="math-inline">\(\dot m_a(\omega_{\rm out}-\omega_{\rm in})\)</span> as vapor. At steady inventory the make-up liquid rate must replace that vapor plus any liquid drift and blowdown. Cooling capacity comes from the energy balance, including sensible and latent changes in the air stream and the enthalpy carried by liquid water. A vapor balance alone gives the evaporative loss. <a href="https://www.youtube.com/watch?v=32NLJlrLtTQ&amp;t=800">Psychrometry Part 7 · Drying and cooling tower</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>The <a href="code/chapter_15.py">Python laboratory</a> computes coil duty, condensate, and reheater duty on one dry-air basis. It checks that total heat across both units plus the drain accounts for the change in moist-air enthalpy.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="remove-the-drain-enthalpy-term">Remove the drain enthalpy term</h3>
+<p>How much error in coil duty would result from treating the drain as having zero enthalpy in the stated reference?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The missing term is <span class="math-inline">\(0.0183(62.7)\simeq1.15\)</span> kJ/kg dry air. With the liquid term omitted, calculated heat into the control volume is too negative by that amount, so the coil heat-removal magnitude is too high.</p>
+</details><h3 id="compare-dryer-moisture-conventions">Compare dryer moisture conventions</h3>
+<p>What is the wet-basis fraction for a product with 0.10 kg water per kg dry solid?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The wet solid weighs 1.10 kg per kg dry solid. The wet-basis fraction is <span class="math-inline">\(0.10/1.10=0.0909\)</span>. A target of 10% wet basis instead permits 0.1111 kg water per kg dry solid.</p>
+</details><h3 id="infer-a-mixing-fraction">Infer a mixing fraction</h3>
+<p>Mix two air streams without heat transfer or condensation. One enters with <span class="math-inline">\(\omega_1=0.018\)</span> kg/kg dry air and the second with <span class="math-inline">\(\omega_2=0.006\)</span>. What dry-air flow fraction must the first supply to obtain <span class="math-inline">\(\omega_3=0.009\)</span>?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Solve <span class="math-inline">\(f=(0.009-0.006)/(0.018-0.006)=0.25\)</span>. The first-to-second dry-air mass-flow ratio is 1:3. An energy balance is still needed to find the outlet temperature and confirm the assumption of no condensation.</p>
+</details><h3 id="test-whether-a-supply-target-needs-a-colder-coil">Test whether a supply target needs a colder coil</h3>
+<p>Keep the reheater outlet at 24 °C, but require at most 50% relative humidity. Use <span class="math-inline">\(p_{\rm sat}(24)=2.985\)</span> kPa. Can a 15 °C saturated coil outlet meet this limit with sensible reheat alone?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The supply vapor pressure must be at most <span class="math-inline">\(0.50(2.985)=1.493\)</span> kPa. The coil leaves 1.705 kPa, which sensible reheat at unchanged pressure preserves. A saturated coil outlet needs <span class="math-inline">\(p_{\rm sat}\le1.493\)</span> kPa, corresponding to roughly 13 °C or colder in this idealized model.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-14-properties-of-moist-air.html"><span>Previous</span>Properties of Moist Air</a><a rel="next" href="chapter-16-air-conditioning-tutorials.html"><span>Next</span>Air-Conditioning Tutorials</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

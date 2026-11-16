@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reconstruct a vapor-compression cycle from its enthalpies, quantify compressor and exchanger penalties, and separate refrigeration duty from power.">
+  <meta name="color-scheme" content="dark light">
+  <title>Vapor-Compression Refrigeration · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#the-refrigerant-loop-lecture-38-120">The refrigerant loop Lecture 38 · 1:20</a></li>
+<li><a href="#capacity-and-compressor-efficiency-lecture-38-1240">Capacity and compressor efficiency Lecture 38 · 12:40</a></li>
+<li><a href="#temperature-lift-and-exergy-lecture-38-1720">Temperature lift and exergy Lecture 38 · 17:20</a></li>
+<li><a href="#finite-approaches-and-liquid-subcooling-lecture-38-2100">Finite approaches and liquid subcooling Lecture 38 · 21:00</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#flash-fraction">Flash fraction</a></li>
+<li><a href="#cooling-versus-heating-service">Cooling versus heating service</a></li>
+<li><a href="#gate-the-subcooling-proposal">Gate the subcooling proposal</a></li>
+<li><a href="#refrigeration-capacity-and-temperature-lift">Refrigeration capacity and temperature lift</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html" aria-current="page"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 13 · Lecture 38</p>
+        <h1>Vapor-Compression Refrigeration</h1>
+        <p class="lead">Reconstruct a vapor-compression cycle from its enthalpies, quantify compressor and exchanger penalties, and separate refrigeration duty from power.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=zl-D7nlr_NY">38. Thermodynamic cycles -- Vapor compression refrigeration cycle</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>The plant needs to remove heat at 10 kW from a process enclosure. Two suppliers quote the same cooling duty. One promises a lower electrical load by subcooling the liquid before expansion. To compare the proposals, calculate the cooling effect per kg, how much refrigerant must circulate, and how much work the compressor needs per kg. A change can improve one factor while worsening another.</p>
+<h2 id="the-refrigerant-loop-lecture-38-120">The refrigerant loop <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=80">Lecture 38 · 1:20</a></h2>
+<p>Call the refrigerant states 1 at compressor suction, 2 at compressor discharge, 3 after condensation, and 4 after expansion. Let <span class="math-inline">\(h_i\)</span> be specific enthalpy in kJ/kg and <span class="math-inline">\(s_i\)</span> specific entropy in kJ/(kg K) at state <span class="math-inline">\(i\)</span>. For steady components with negligible flow-speed or elevation effects, take the compressor and valve as adiabatic, and ignore pressure drops in the heat exchangers. The evaporator pressure <span class="math-inline">\(p_e\)</span> is below the condenser pressure <span class="math-inline">\(p_c\)</span>. The idealized saturation endpoints are vapor at 1 and liquid at 3. Let <span class="math-inline">\(q_C\)</span> be positive heat absorbed per kg, <span class="math-inline">\(q_H\)</span> positive heat rejected per kg, and <span class="math-inline">\(w_{\rm in}\)</span> positive compressor work per kg.</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Pressure and phase behavior</th>
+<th>Energy balance in kJ/kg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compressor <span class="math-inline">\(1\to2\)</span></td>
+<td>Raises the pressure of vapor and typically superheats it</td>
+<td><span class="math-inline">\(w_{\rm in}=h_2-h_1\)</span></td>
+</tr>
+<tr>
+<td>Condenser <span class="math-inline">\(2\to3\)</span></td>
+<td>Rejects heat and condenses refrigerant at high pressure</td>
+<td><span class="math-inline">\(q_H=h_2-h_3\)</span></td>
+</tr>
+<tr>
+<td>Expansion valve <span class="math-inline">\(3\to4\)</span></td>
+<td>Lowers pressure at constant enthalpy</td>
+<td><span class="math-inline">\(h_4=h_3\)</span></td>
+</tr>
+<tr>
+<td>Evaporator <span class="math-inline">\(4\to1\)</span></td>
+<td>Absorbs heat and evaporates the remaining liquid</td>
+<td><span class="math-inline">\(q_C=h_1-h_4\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>No shaft work, heat input, or material energy accumulation is available to change enthalpy across the valve. An adiabatic throttle can still produce entropy. If the outlet lies in the liquid–vapor region, its vapor mass fraction is</p>
+<p><span class="math-display">\[
+x_4=\frac{h_3-h_f(p_e)}{h_g(p_e)-h_f(p_e)},
+\]</span></p>
+<p>where <span class="math-inline">\(h_f\)</span> and <span class="math-inline">\(h_g\)</span> are saturated liquid and vapor enthalpy at <span class="math-inline">\(p_e\)</span>. Flashing uses part of the liquid's enthalpy to form vapor and brings the remaining liquid to the lower saturation temperature. The mixture formula applies only within the saturation endpoints. On a pressure–enthalpy diagram the valve leg follows a line of constant enthalpy, whereas an ideal expander follows an isentrope and produces shaft work. Two-phase expansion hardware adds complexity, while a valve is simple and regulates refrigerant flow. <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=460">Lecture 38 · 7:40</a></p>
+<h2 id="capacity-and-compressor-efficiency-lecture-38-1240">Capacity and compressor efficiency <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=760">Lecture 38 · 12:40</a></h2>
+<p>Use R-134a as a property example. Choose evaporator saturation at <span class="math-inline">\(-5\)</span> °C and condenser saturation at <span class="math-inline">\(30\)</span> °C. Their approximate pressures are 243 and 770 kPa. On the IIR reference convention, which sets saturated liquid enthalpy to 200 kJ/kg and entropy to 1 kJ/(kg K) at 0 °C, rounded suction vapor enthalpy is <span class="math-inline">\(h_1=395.66\)</span> and saturated liquid enthalpy at the condenser exit is <span class="math-inline">\(h_3=241.72\)</span> kJ/kg. At <span class="math-inline">\(p_c\)</span> and <span class="math-inline">\(s=s_1\)</span>, the isentropic discharge enthalpy is <span class="math-inline">\(h_{2s}=419.56\)</span> kJ/kg. Recompute all of these properties together when changing refrigerant, pressure, or reference convention. Relative enthalpy cancels the arbitrary zero only when all states use one reference. <a href="https://coolprop.org/fluid_properties/fluids/R134a.html">R-134a property model</a> <a href="https://webbook.nist.gov/chemistry/fluid/index.html.en-us.en">NIST fluid properties</a></p>
+<p>Define compressor isentropic efficiency <span class="math-inline">\(\eta_c=(h_{2s}-h_1)/(h_2-h_1)\)</span>. With <span class="math-inline">\(\eta_c=0.75\)</span> the actual discharge is <span class="math-inline">\(h_2=427.53\)</span> kJ/kg and work is 31.87 kJ/kg. The cooling effect is <span class="math-inline">\(q_C=153.94\)</span> kJ/kg. At required load <span class="math-inline">\(\dot Q_C=10\)</span> kW, refrigerant flow is <span class="math-inline">\(\dot m=\dot Q_C/q_C=0.06496\)</span> kg/s. Multiplying work by flow gives 2.070 kW of shaft input. The condenser must reject 12.070 kW. This is the rate-form closure <span class="math-inline">\(\dot Q_H=\dot Q_C+\dot W_{\rm in}\)</span>. A plot or property table with a different enthalpy zero should give the same differences to property-model accuracy.</p>
+<p>The coefficient of performance for cooling, written <span class="math-inline">\(\mathrm{COP}_R\)</span>, is useful heat removed divided by compressor work. The running case gives</p>
+<p><span class="math-display">\[
+\mathrm{COP}_R=\frac{q_C}{w_{\rm in}}
+=\frac{h_1-h_3}{h_2-h_1}=4.83.
+\]</span></p>
+<p>A value above one is possible because the delivered service is moving existing heat. If the service instead is heating at the condenser, the same loop has <span class="math-inline">\(\mathrm{COP}_{\rm HP}=q_H/w_{\rm in}=\mathrm{COP}_R+1\)</span>. Motor losses and auxiliary inputs such as fans and pumps lower equipment performance relative to these shaft-based values. <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=1000">Lecture 38 · 16:40</a></p>
+<h2 id="temperature-lift-and-exergy-lecture-38-1720">Temperature lift and exergy <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=1040">Lecture 38 · 17:20</a></h2>
+<p>Let <span class="math-inline">\(T_C\)</span> and <span class="math-inline">\(T_H\)</span> be cold and hot reservoir temperatures in K, with <span class="math-inline">\(T_C&lt;T_H\)</span>. For a reversible cycle, cyclic entropy accounting gives <span class="math-inline">\(q_H/T_H=q_C/T_C\)</span>. Substitute into <span class="math-inline">\(w_{\min}=q_H-q_C\)</span> to find</p>
+<p><span class="math-display">\[
+\mathrm{COP}_{R,\rm rev}=\frac{T_C}{T_H-T_C},\qquad
+w_{\min}=q_C\left(\frac{T_H}{T_C}-1\right).
+\]</span></p>
+<p>If the hot sink is the reference environment, this minimum work is the exergy of the cooling service. The exergetic efficiency at fixed load and boundary temperatures is <span class="math-inline">\(\mathrm{COP}_R/\mathrm{COP}_{R,\rm rev}\)</span>. A cycle taking heat reversibly from 268.15 K to 303.15 K would have <span class="math-inline">\(\mathrm{COP}_{R,\rm rev}=7.66\)</span>, so the running cycle converts approximately 63.1% of the compressor work into the minimum-work equivalent of cooling against these reference reservoir temperatures. When the heat source or sink sits at a different temperature from the corresponding refrigerant saturation temperature, calculate the reversible ceiling using the external reservoirs. For a component with both streams inside an insulated boundary, use their entropy changes to see where finite temperature differences generate entropy. <a href="https://web.mit.edu/course/16/16.unified/www/FALL/thermodynamics/notes/notes.html">MIT Unified Engineering, thermodynamics cycle notes</a></p>
+<h2 id="finite-approaches-and-liquid-subcooling-lecture-38-2100">Finite approaches and liquid subcooling <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=1260">Lecture 38 · 21:00</a></h2>
+<p>To remove heat from an enclosure, the refrigerant evaporates below enclosure temperature. To deliver heat to surroundings, the refrigerant condenses above the effective sink temperature. These finite approaches usually increase the compressor lift. They allow heat to flow through finite exchanger surfaces and cause irreversibility. Suction-line superheat, liquid subcooling, and exchanger pressure losses also move the states away from saturation endpoints. Compressor suction superheat inside the cooled enclosure contributes heat pickup. Heat pickup from a warm pipe outside the enclosure raises suction enthalpy without contributing the same useful process duty.</p>
+<p>Return to the 10 kW case. Suppose a separate source of cooling reduces condenser-exit liquid enthalpy to 233.13 kJ/kg while suction and discharge pressures and compressor inlet state stay fixed. The valve outlet enthalpy then also falls to 233.13. The cooling effect rises to 162.53 kJ/kg, lowering flow to 0.06153 kg/s and shaft input to 1.961 kW. The modeled COP rises to 5.10. A whole-plant comparison must count any purchased power or useful sink capacity required to provide the subcooling. If cooling for subcooling comes from a suction-liquid exchanger, the suction state and compressor work also change. <a href="https://www.youtube.com/watch?v=zl-D7nlr_NY&amp;t=1420">Lecture 38 · 23:40</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_13.py">Python laboratory</a> with standard Python. It accepts suction enthalpy, isentropic discharge enthalpy, condenser-exit liquid enthalpy, compressor efficiency, and useful load. It reports mass flow, power, heat rejection, and COP for the basic and subcooled states. It checks energy conservation and the expected ordering of COP and flow. Invalid state ordering, efficiency, or load raises a value error. The lab consumes property inputs and performs no property lookup.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="flash-fraction">Flash fraction</h3>
+<p>At evaporator pressure, use <span class="math-inline">\(h_f=193.32\)</span> and <span class="math-inline">\(h_g=395.66\)</span> kJ/kg to compute the quality after throttling without subcooling.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The valve discharges fluid at <span class="math-inline">\(h_4=h_3=241.72\)</span> kJ/kg. Therefore <span class="math-inline">\(x_4=(241.72-193.32)/(395.66-193.32)=0.239\)</span>. About 24% of the mass reaches the evaporator as vapor. Vaporizing the remaining liquid delivers the useful cooling duty.</p>
+</details><h3 id="cooling-versus-heating-service">Cooling versus heating service</h3>
+<p>Determine the heating COP when condenser rejection is useful and there are no other purchased inputs.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Divide 12.070 kW by the same 2.070 kW of shaft power, giving 5.83. The difference from 4.83 equals one because condenser rejection includes the compressor input.</p>
+</details><h3 id="gate-the-subcooling-proposal">Gate the subcooling proposal</h3>
+<p>How much auxiliary power can the proposed subcooling consume before it ceases to save purchased power, assuming identical compressor motor efficiencies of 100% for this check?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Base and subcooled shaft powers differ by <span class="math-inline">\(2.070-1.961=0.109\)</span> kW. Any auxiliary consumption greater than that cancels the saving. Identical motor efficiencies below unity would rescale the compressor portion of the purchased-power difference.</p>
+</details><h3 id="refrigeration-capacity-and-temperature-lift">Refrigeration capacity and temperature lift</h3>
+<p>Express 10 kW in tons of refrigeration using <span class="math-inline">\(1\ \mathrm{ton}\approx3.517\)</span> kW. Then explain what raising the sink temperature to 313.15 K does to the reversible COP with a 268.15 K cold reservoir.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The capacity is <span class="math-inline">\(10/3.517=2.84\)</span> tons. The reversible COP becomes <span class="math-inline">\(268.15/(313.15-268.15)=5.96\)</span> instead of 7.66. Required reversible shaft power at 10 kW increases from about 1.31 to 1.68 kW. An actual comparison needs the new condenser pressure and compressor performance.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-12-otto-and-diesel-cycles.html"><span>Previous</span>Otto and Diesel Cycles</a><a rel="next" href="chapter-14-properties-of-moist-air.html"><span>Next</span>Properties of Moist Air</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive closed-system availability, distinguish work transfer from energy transfer, and quantify the work lost to entropy generation.">
+  <meta name="color-scheme" content="dark light">
+  <title>Exergy and the reference environment · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#useful-work-excludes-displacement-of-the-environment">Useful work excludes displacement of the environment</a></li>
+<li><a href="#derive-physical-exergy">Derive physical exergy</a></li>
+<li><a href="#show-why-hot-and-cold-bodies-both-offer-work">Show why hot and cold bodies both offer work</a></li>
+<li><a href="#track-exergy-carried-by-heat-and-useful-work">Track exergy carried by heat and useful work</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#piston-load">Piston load</a></li>
+<li><a href="#low-grade-heat">Low-grade heat</a></li>
+<li><a href="#irreversibility-cost">Irreversibility cost</a></li>
+<li><a href="#cold-body-near-ambient">Cold body near ambient</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html" aria-current="page"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 05 · Lectures 14–16</p>
+        <h1>Exergy and the reference environment</h1>
+        <p class="lead">Derive closed-system availability, distinguish work transfer from energy transfer, and quantify the work lost to entropy generation.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=vvBkCJtw1rI">14. Exergy - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=Q4M_IjgkyL0">15. Exergy - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=ovsdDMvXmPw">16. Exergy - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <h2 id="useful-work-excludes-displacement-of-the-environment">Useful work excludes displacement of the environment</h2>
+<p>A piston expands against ambient at pressure <span class="math-inline">\(p_0\)</span> while lifting a load. Let <span class="math-inline">\(W\)</span> be total work out of the gas and <span class="math-inline">\(\Delta V\)</span> the change in its volume. Work <span class="math-inline">\(p_0\Delta V\)</span> goes to displacing the surroundings; useful work received by the load is <span class="math-inline">\(W_u=W-p_0\Delta V\)</span>. If the piston instead compresses the gas, the ambient helps supply work and the same formula holds with <span class="math-inline">\(\Delta V&lt;0\)</span>.</p>
+<p>To compare different initial states, specify an environment at fixed absolute temperature <span class="math-inline">\(T_0\)</span> and pressure <span class="math-inline">\(p_0\)</span>. The <strong>physical dead state</strong> has the same temperature and pressure, zero motion and reference elevation, and preserves the material's composition under the model. Chemical exergy requires additional assumptions about the environment and allowed reactions. A cold object, a vacuum vessel, and a hot object can all have positive physical exergy because each departs from equilibrium with that specified environment. <a href="https://www.youtube.com/watch?v=vvBkCJtw1rI&amp;t=20s">Exergy, Part 1</a></p>
+<h2 id="derive-physical-exergy">Derive physical exergy</h2>
+<p>Let <span class="math-inline">\(E=U+E_{\mathrm{kin}}+E_{\mathrm{pot}}\)</span> be stored energy of a fixed mass and <span class="math-inline">\(S\)</span> its entropy. Subscript <span class="math-inline">\(0\)</span> denotes the physical dead state of that same mass. Consider a coupled process that takes the mass from its current state to the dead state, exchanges heat <span class="math-inline">\(Q\)</span> only with the reference environment, and delivers useful work. The first law gives <span class="math-inline">\(W=E-E_0+Q\)</span>. The combined entropy balance gives <span class="math-inline">\(S_{\mathrm{gen}}=S_0-S-Q/T_0\)</span>. Substitute <span class="math-inline">\(Q=T_0(S_0-S-S_{\mathrm{gen}})\)</span> and subtract the ambient displacement work <span class="math-inline">\(p_0(V_0-V)\)</span>:</p>
+<p><span class="math-display">\[
+W_u=(E-E_0)+p_0(V-V_0)-T_0(S-S_0)-T_0S_{\mathrm{gen}}.
+\]</span></p>
+<p>Define physical exergy <span class="math-inline">\(B=(E-E_0)+p_0(V-V_0)-T_0(S-S_0)\)</span>. Since <span class="math-inline">\(S_{\mathrm{gen}}\ge0\)</span>, <span class="math-inline">\(W_u\le B\)</span>, and the reversible limit realizes the bound when suitable reversible interactions are available. For the same endpoints and the same exergy transfer by heat, the reversible useful work exceeds the actual useful work by <span class="math-inline">\(B_{\mathrm{dest}}=T_0S_{\mathrm{gen}}\)</span>. Heat transfer at <span class="math-inline">\(T_0\)</span> carries zero exergy, so its magnitude can differ between those paths. <a href="https://www.youtube.com/watch?v=Q4M_IjgkyL0&amp;t=20s">Exergy, Part 2</a> · <a href="https://ocw.mit.edu/courses/2-43-advanced-thermodynamics-spring-2024/mit2_43_s24_lec08.pdf">MIT 2.43, forms of availability</a></p>
+<h2 id="show-why-hot-and-cold-bodies-both-offer-work">Show why hot and cold bodies both offer work</h2>
+<p>Let a body of mass <span class="math-inline">\(m\)</span> have constant specific heat <span class="math-inline">\(c\)</span> and negligible volume change. Its thermal energy difference from ambient is <span class="math-inline">\(mc(T-T_0)\)</span> and its entropy difference is <span class="math-inline">\(mc\ln(T/T_0)\)</span>. Denote the absolute temperature ratio by <span class="math-inline">\(r=T/T_0\)</span>. Then</p>
+<p><span class="math-display">\[
+B=mcT_0(r-1-\ln r).
+\]</span></p>
+<p>For <span class="math-inline">\(r&gt;0\)</span>, <span class="math-inline">\(\ln r\le r-1\)</span>, with equality only at <span class="math-inline">\(r=1\)</span>. This establishes nonnegativity even when cooling the environment supplies energy to warm a cold body. Expanding near <span class="math-inline">\(r=1\)</span> gives <span class="math-inline">\(B\approx mc(T-T_0)^2/(2T_0)\)</span> to lowest nonzero order. Thermal energy relative to ambient is linear in the temperature gap. Reversible work potential is quadratic near equilibrium.</p>
+<p>The lecture also studies compressed air at ambient temperature. For an ideal gas at <span class="math-inline">\(T_0\)</span>, define pressure ratio <span class="math-inline">\(r_p=p/p_0\)</span> and specific gas constant <span class="math-inline">\(R\)</span>. Then <span class="math-inline">\(E-E_0=0\)</span>, <span class="math-inline">\(p_0(V-V_0)=mRT_0(1/r_p-1)\)</span> and <span class="math-inline">\(S-S_0=-mR\ln r_p\)</span>. Hence <span class="math-inline">\(B=mRT_0(\ln r_p+1/r_p-1)\)</span>. Differentiating the bracket gives <span class="math-inline">\((r_p-1)/r_p^2\)</span> and therefore a global minimum at <span class="math-inline">\(r_p=1\)</span>. A pressure below ambient also permits work in the reversible construction. <a href="https://www.youtube.com/watch?v=Q4M_IjgkyL0&amp;t=460s">Part 2, compressed air at ambient temperature</a></p>
+<h2 id="track-exergy-carried-by-heat-and-useful-work">Track exergy carried by heat and useful work</h2>
+<p>At a boundary with absolute temperature <span class="math-inline">\(T_b\)</span>, an incremental heat input <span class="math-inline">\(\delta Q\)</span> carries incremental exergy <span class="math-inline">\((1-T_0/T_b)\delta Q\)</span>. To obtain the factor, operate a reversible engine between source <span class="math-inline">\(T_b\)</span> and ambient <span class="math-inline">\(T_0\)</span>. Entropy balance fixes rejected heat to <span class="math-inline">\((T_0/T_b)\delta Q\)</span>, and the first law gives the work difference. For heat entering at <span class="math-inline">\(T_b&lt;T_0\)</span>, the multiplier is negative. Adding heat to a cold body while it remains below ambient can reduce its work potential. Evaluate the factor locally when temperature varies.</p>
+<p>For a closed system between two arbitrary states with heat input and useful work output,</p>
+<p><span class="math-display">\[
+\Delta B=\int(1-T_0/T_b)\,\delta Q-W_u-T_0S_{\mathrm{gen}}.
+\]</span></p>
+<p>Insert the energy and entropy balances into <span class="math-inline">\(\Delta B=\Delta E+p_0\Delta V-T_0\Delta S\)</span> to derive the result. If no heat or useful work crosses the boundary, <span class="math-inline">\(\Delta B=-T_0S_{\mathrm{gen}}\le0\)</span> even though energy is conserved. Part 3 extends the accounting to flowing mass and connects recovered exergy to second-law efficiency. Define a useful product and its supplying resource before taking their ratio. <a href="https://www.youtube.com/watch?v=ovsdDMvXmPw&amp;t=20s">Part 3, heat and useful work</a> · <a href="https://www.youtube.com/watch?v=ovsdDMvXmPw&amp;t=1000s">Part 3, mass transfer</a> · <a href="https://www.youtube.com/watch?v=ovsdDMvXmPw&amp;t=1040s">Part 3, balance</a></p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="piston-load">Piston load</h3>
+<p>A piston delivers 80 kJ of work and expands by 0.25 m³ against 100 kPa ambient. How much useful work is delivered?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> If <span class="math-inline">\(W=80\,\mathrm{kJ}\)</span> while the gas volume increases by <span class="math-inline">\(0.25\,\mathrm{m^3}\)</span> against <span class="math-inline">\(100\,\mathrm{kPa}\)</span>, <span class="math-inline">\(W_u=80-100(0.25)=55\,\mathrm{kJ}\)</span>. Accounting only for the load misses the displacement work needed in the gas energy balance.</p>
+</details><h3 id="low-grade-heat">Low-grade heat</h3>
+<p>Compare reversible work from 100 kJ of heat supplied at 600 K or 330 K to a 300 K environment.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> A heat source at <span class="math-inline">\(600\,\mathrm K\)</span> delivers <span class="math-inline">\(100\,\mathrm{kJ}\)</span> to a reversible engine with a <span class="math-inline">\(300\,\mathrm K\)</span> sink. The engine rejects <span class="math-inline">\(50\,\mathrm{kJ}\)</span> at ambient and produces <span class="math-inline">\(50\,\mathrm{kJ}\)</span> of work. A source at <span class="math-inline">\(330\,\mathrm K\)</span> delivers the same energy with only <span class="math-inline">\(100(1-300/330)=9.09\,\mathrm{kJ}\)</span> of work potential.</p>
+</details><h3 id="irreversibility-cost">Irreversibility cost</h3>
+<p>Compare exergy destruction for 0.20 kJ/K of generation at environments of 300 K and 290 K.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> A process with <span class="math-inline">\(S_{\mathrm{gen}}=0.20\,\mathrm{kJ/K}\)</span> in an environment at <span class="math-inline">\(300\,\mathrm K\)</span> destroys <span class="math-inline">\(60\,\mathrm{kJ}\)</span> of exergy. At <span class="math-inline">\(290\,\mathrm K\)</span> the algebra gives <span class="math-inline">\(58\,\mathrm{kJ}\)</span> only if the entropy generation is held fixed. Changing the environment can change the process and therefore the generation itself.</p>
+</details><h3 id="cold-body-near-ambient">Cold body near ambient</h3>
+<p>Use the quadratic approximation to predict the work available from a body with total heat capacity 4.18 kJ/K at 295 K in an environment at 300 K. Compare with the exact expression.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The quadratic prediction is <span class="math-inline">\(4.18(5)^2/(2\cdot300)=0.17417\,\mathrm{kJ}\)</span>. The exact result <span class="math-inline">\(4.18[295-300-300\ln(295/300)]\)</span> is <span class="math-inline">\(0.17613\,\mathrm{kJ}\)</span>. The difference is about 1.1%, consistent with a small temperature offset.</p>
+<p>The <a href="code/chapter_05.py">standalone exergy lab</a> checks equivalent compressed-gas expressions and shows why an equal hot and cold temperature offset can have unequal exergy. The source lectures supply topic order. The numerical lab and examples use original teaching inputs.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-04-work-and-irreversibility-tutorials.html"><span>Previous</span>Work and irreversibility in flow equipment</a><a rel="next" href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>Next</span>Flow exergy and useful output</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

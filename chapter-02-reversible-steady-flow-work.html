@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive the pressure integral for shaft work, compare compression paths, and use both thermodynamic laws to test real equipment.">
+  <meta name="color-scheme" content="dark light">
+  <title>Reversible Steady-Flow Work · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#shaft-work-and-the-pressure-integral-lecture-5-120">Shaft work and the pressure integral Lecture 5 · 1:20</a></li>
+<li><a href="#comparing-the-paths-at-the-same-back-pressure-lecture-5-600">Comparing the paths at the same back pressure Lecture 5 · 6:00</a></li>
+<li><a href="#a-cooled-throttle-tutorial-1-part-1-020">A cooled throttle Tutorial 1, Part 1 · 0:20</a></li>
+<li><a href="#two-ways-to-close-a-turbine-balance-tutorial-1-part-1-1400">Two ways to close a turbine balance Tutorial 1, Part 1 · 14:00</a></li>
+<li><a href="#check-a-cooled-compressor-tutorial-1-part-2-000">Check a cooled compressor Tutorial 1, Part 2 · 0:00</a></li>
+<li><a href="#heat-exchange-inside-an-insulated-boundary-tutorial-1-part-2-820">Heat exchange inside an insulated boundary Tutorial 1, Part 2 · 8:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#same-end-pressure-and-different-end-state">Same end pressure and different end state</a></li>
+<li><a href="#reverse-the-isothermal-path">Reverse the isothermal path</a></li>
+<li><a href="#check-a-throttle-mixture">Check a throttle mixture</a></li>
+<li><a href="#heat-exchanger-feasibility">Heat exchanger feasibility</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html" aria-current="page"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 02 · Lectures 5–7</p>
+        <h1>Reversible Steady-Flow Work</h1>
+        <p class="lead">Derive the pressure integral for shaft work, compare compression paths, and use both thermodynamic laws to test real equipment.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=rLxnEV4MLps">05. Work interaction of internally reversible steady flow processes</a></li><li><a href="https://www.youtube.com/watch?v=f714NjxTB8A">06. Tutorial 1 -  Entropy change of a control volume - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=R7ovrLScZ8k">07. Tutorial 1 -  Entropy change of a control volume - Part 2</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>A compressor must raise air from 100 to 800 kPa. A cooled machine may need less shaft power than an insulated one, even if both machines are reversible internally. The discharge pressure alone leaves the discharge temperature and the heat exchanged with the surroundings unspecified. The choice of thermal path determines the density during compression and therefore the work.</p>
+<h2 id="shaft-work-and-the-pressure-integral-lecture-5-120">Shaft work and the pressure integral <a href="https://www.youtube.com/watch?v=rLxnEV4MLps&amp;t=80">Lecture 5 · 1:20</a></h2>
+<p>Enclose the compressor in a fixed control volume. Let <span class="math-inline">\(p\)</span> be absolute pressure, <span class="math-inline">\(T\)</span> absolute temperature, <span class="math-inline">\(v\)</span> volume per unit mass, <span class="math-inline">\(h\)</span> specific enthalpy, and <span class="math-inline">\(s\)</span> specific entropy. Use <span class="math-inline">\(q\)</span> for heat entering per kg of fluid and <span class="math-inline">\(w_s\)</span> for shaft work leaving per kg. Consider steady flow with a single inlet and outlet. Assume that changes in kinetic and potential energy can be neglected. The energy balance reads <span class="math-inline">\(q-w_s=h_2-h_1\)</span>, where subscripts 1 and 2 identify the inlet and outlet.</p>
+<p>For a fixed-composition simple compressible substance, the first and second laws applied to a reversible differential change give <span class="math-inline">\(du=T\,ds-p\,dv\)</span>, where <span class="math-inline">\(u\)</span> is specific internal energy. Differentiating the definition <span class="math-inline">\(h=u+pv\)</span> gives</p>
+<p><span class="math-display">\[
+dh=du+p\,dv+v\,dp=T\,ds+v\,dp.
+\]</span></p>
+<p>Here <span class="math-inline">\(pv\)</span> is the flow-work contribution to enthalpy. For an internally reversible adiabatic path, <span class="math-inline">\(q=0\)</span> and entropy generation vanishes. The specific entropy stays constant, leaving <span class="math-inline">\(dh=v\,dp\)</span>. For an internally reversible isothermal path that exchanges heat at the fluid temperature <span class="math-inline">\(T\)</span>, the entropy balance gives <span class="math-inline">\(q=T(s_2-s_1)\)</span>. This cancels the integral of <span class="math-inline">\(T\,ds\)</span> in <span class="math-inline">\(h_2-h_1\)</span>. Both paths give</p>
+<p><span class="math-display">\[
+w_s=-\int_{p_1}^{p_2}v\,dp.
+\]</span></p>
+<p>An increase in pressure makes this work negative, which represents shaft input. At constant pressure the pressure integral vanishes. The expression refers to steady flow through a device. For comparison, a closed mass with reversible pressure work gives <span class="math-inline">\(w_b=\int_1^2 p\,dv\)</span>, since boundary displacement determines its energy transfer. Integration by parts gives <span class="math-inline">\(w_s=w_b-(p_2v_2-p_1v_1)\)</span> for the paths considered here. Flow work accounts for the difference. <a href="https://web.mit.edu/course/16/16.unified/www/FALL/thermodynamics/notes/notes.html">MIT Unified Engineering, thermodynamics notes</a></p>
+<h2 id="comparing-the-paths-at-the-same-back-pressure-lecture-5-600">Comparing the paths at the same back pressure <a href="https://www.youtube.com/watch?v=rLxnEV4MLps&amp;t=360">Lecture 5 · 6:00</a></h2>
+<p>Use an ideal gas with constant <span class="math-inline">\(c_p\)</span>, the specific heat at constant pressure, and <span class="math-inline">\(R\)</span>, the gas constant per unit mass. The ideal-gas law gives <span class="math-inline">\(v=RT/p\)</span>. Combining that relation and <span class="math-inline">\(dh=c_p\,dT\)</span> with the enthalpy differential yields</p>
+<p><span class="math-display">\[
+ds=c_p\,\frac{dT}{T}-R\,\frac{dp}{p}.
+\]</span></p>
+<p>For isothermal compression at <span class="math-inline">\(T_1\)</span>, integrate <span class="math-inline">\(RT_1/p\)</span> with respect to pressure. For isentropic compression, integrate <span class="math-inline">\(ds=0\)</span> to obtain <span class="math-inline">\(T_{2s}=T_1(p_2/p_1)^{R/c_p}\)</span>, where <span class="math-inline">\(2s\)</span> denotes the isentropic outlet. Then use the adiabatic energy balance for the shaft input. Defining <span class="math-inline">\(r_p=p_2/p_1\)</span> gives</p>
+<p><span class="math-display">\[
+w_{\mathrm{in},T}=RT_1\ln r_p,\qquad
+w_{\mathrm{in},s}=c_p T_1(r_p^{R/c_p}-1).
+\]</span></p>
+<p>For <span class="math-inline">\(T_1=300\)</span> K, <span class="math-inline">\(r_p=8\)</span>, <span class="math-inline">\(R=0.287\)</span> kJ/(kg K), and <span class="math-inline">\(c_p=1.005\)</span> kJ/(kg K), the two work inputs are 179.04 and 244.49 kJ/kg. The isentropic discharge is at 543.27 K. The isothermal discharge is at 300 K and requires rejection of 179.04 kJ/kg of heat because ideal-gas enthalpy stays constant. Since <span class="math-inline">\(T\)</span> rises with <span class="math-inline">\(p\)</span> along the isentrope, the isentropic integrand <span class="math-inline">\(RT/p\)</span> exceeds its isothermal counterpart at every intermediate pressure. As <span class="math-inline">\(r_p\)</span> approaches 1, both work inputs approach zero with the same first-order term <span class="math-inline">\(RT_1(r_p-1)\)</span>. <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/isentrophic-compression/">NASA Glenn, isentropic compression</a></p>
+<p>For reversible expansion traversing a pressure drop from a common inlet state, heat addition maintains temperature in the isothermal case. The greater specific volume then yields more work than the isentropic path at the same exit pressure. The comparison assumes the required heat transfer is available. To compare two insulated machines, use the isentropic reference with the common inlet and outlet pressures.</p>
+<h2 id="a-cooled-throttle-tutorial-1-part-1-020">A cooled throttle <a href="https://www.youtube.com/watch?v=f714NjxTB8A&amp;t=20">Tutorial 1, Part 1 · 0:20</a></h2>
+<p>A refrigerant valve has zero shaft work. At steady state with negligible speed and elevation changes, <span class="math-inline">\(h_2=h_1+q\)</span>. With heat loss, <span class="math-inline">\(q\)</span> is negative. If the pressure and enthalpy at the exit put the refrigerant in the saturation region, set <span class="math-inline">\(T_2\)</span> to the saturation temperature at <span class="math-inline">\(p_2\)</span>. The enthalpy fixes the vapor mass fraction <span class="math-inline">\(x_2=(h_2-h_f)/(h_g-h_f)\)</span>. Subscripts <span class="math-inline">\(f\)</span> and <span class="math-inline">\(g\)</span> denote saturated liquid and vapor at the outlet pressure. Use that same mass fraction to compute <span class="math-inline">\(s_2=s_f+x_2(s_g-s_f)\)</span>.</p>
+<p>Take the rounded R-134a teaching inputs <span class="math-inline">\(h_1=93.58\)</span> kJ/kg, <span class="math-inline">\(s_1=0.3479\)</span> kJ/(kg K), and <span class="math-inline">\(q=-0.80\)</span> kJ/kg. At the outlet pressure of 200 kPa the example has <span class="math-inline">\(h_f=38.41\)</span>, <span class="math-inline">\(h_g=244.5\)</span> kJ/kg, <span class="math-inline">\(s_f=0.1545\)</span>, and <span class="math-inline">\(s_g=0.9379\)</span> kJ/(kg K), with saturation temperature <span class="math-inline">\(-10.09\)</span> °C. These properties use one common reference convention. Then <span class="math-inline">\(h_2=92.78\)</span> kJ/kg, <span class="math-inline">\(x_2\approx0.264\)</span>, and <span class="math-inline">\(s_2\approx0.3612\)</span> kJ/(kg K).</p>
+<p>Let <span class="math-inline">\(T_b\)</span> be the absolute temperature where heat crosses the boundary. For a boundary extended to a single environment at <span class="math-inline">\(T_b=298.15\)</span> K, the entropy generated per kg is <span class="math-inline">\(s_2-s_1-q/T_b\approx0.0160\)</span> kJ/(kg K). This choice includes irreversibility outside the valve up to that boundary. A calculation around the valve wall alone requires its heat-transfer-weighted boundary temperature.</p>
+<h2 id="two-ways-to-close-a-turbine-balance-tutorial-1-part-1-1400">Two ways to close a turbine balance <a href="https://www.youtube.com/watch?v=f714NjxTB8A&amp;t=840">Tutorial 1, Part 1 · 14:00</a></h2>
+<p>In the first case the adiabatic turbine takes steam at 6 MPa and 500 °C and discharges at 100 kPa. Its isentropic efficiency is <span class="math-inline">\(\eta_t=(h_1-h_2)/(h_1-h_{2s})=0.77\)</span>. Use <span class="math-inline">\(h_1=3422\)</span> kJ/kg and <span class="math-inline">\(s_1=6.88\)</span> kJ/(kg K) from the slide's rounded tables. At 100 kPa the isentropic reference is inside the saturation dome, with <span class="math-inline">\(x_{2s}=(6.88-1.303)/(7.359-1.303)\)</span>. Interpolate enthalpy between 417.5 and 2675 kJ/kg to obtain <span class="math-inline">\(h_{2s}=2496.44\)</span> kJ/kg. Then <span class="math-inline">\(h_2=2709.32\)</span> kJ/kg, above the saturated-vapor enthalpy at 100 kPa. The actual state lies in the superheated region. With 5 MW output, <span class="math-inline">\(\dot m=5000/(3422-2709.32)=7.016\)</span> kg/s. The tutorial's interpolation gives <span class="math-inline">\(s_2\approx7.445\)</span> kJ/(kg K), hence <span class="math-inline">\(\dot S_{\mathrm{gen}}\approx3.96\)</span> kW/K.</p>
+<p>In the second case the same inlet steam leaves as saturated vapor at 20 kPa with 4 MW output and 25,000 kg/h flow. The steam tables used in the tutorial give <span class="math-inline">\(h_2=2610\)</span> kJ/kg and <span class="math-inline">\(s_2=7.98\)</span> kJ/(kg K). The heat rate into the device is <span class="math-inline">\(4000+(25000/3600)(2610-3422)\approx-1638.89\)</span> kW. Including the thermal path to a 25 °C ambient gives <span class="math-inline">\(\dot S_{\mathrm{gen}}=(25000/3600)(7.98-6.88)-(-1638.89/298.15)\approx13.14\)</span> kW/K using the shown state values. Work output and the specified outlet independently determine the heat rate. <a href="https://www.youtube.com/watch?v=f714NjxTB8A&amp;t=1600s">Tutorial 1, Part 1 · 26:40</a></p>
+<h2 id="check-a-cooled-compressor-tutorial-1-part-2-000">Check a cooled compressor <a href="https://www.youtube.com/watch?v=R7ovrLScZ8k&amp;t=0s">Tutorial 1, Part 2 · 0:00</a></h2>
+<p>The tutorial slide gives 0.4 kg/s of air at 100 kPa and 20 °C, compressed to 1200 kPa and 300 °C. Heat rejection is 15 kW. With the ideal-gas properties above, shaft input is <span class="math-inline">\(0.4(1.005)(300-20)+15=127.56\)</span> kW. At a boundary including the heat path to 20 °C ambient, generation is <span class="math-inline">\(0.4[1.005\ln(573.15/293.15)-0.287\ln(12)]+15/293.15\approx0.03543\)</span> kW/K. The gas's entropy flux falls. The rejected heat carries a larger outward entropy flux, so generation is positive.</p>
+<h2 id="heat-exchange-inside-an-insulated-boundary-tutorial-1-part-2-820">Heat exchange inside an insulated boundary <a href="https://www.youtube.com/watch?v=R7ovrLScZ8k&amp;t=500">Tutorial 1, Part 2 · 8:20</a></h2>
+<p>Wrap the boundary around an insulated heat exchanger carrying water and ethylene glycol in separate channels. Let <span class="math-inline">\(C_g=\dot m_g c_{p,g}\)</span> and <span class="math-inline">\(C_w=\dot m_w c_{p,w}\)</span> be heat capacity rates, in kW/K. Here <span class="math-inline">\(\dot m\)</span> is mass flow in kg/s and <span class="math-inline">\(c_p\)</span> is specific heat. Assume negligible pressure effects on liquid properties and constant specific heats. For glycol flowing at 2.00 kg/s with specific heat 2.56 kJ/(kg K), cooling from 80 to 40 °C releases 204.8 kW. Heating water from 20 to 55 °C with <span class="math-inline">\(c_{p,w}=4.18\)</span> kJ/(kg K) therefore requires <span class="math-inline">\(\dot m_w=204.8/(4.18\times35)\approx1.400\)</span> kg/s.</p>
+<p>The external heat-transfer term is zero. Each liquid contributes a stream entropy change, computed by integrating <span class="math-inline">\(c_p\,dT/T\)</span> at constant pressure. Using the temperatures in kelvin gives</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen}}=
+C_g\ln(313.15/353.15)+C_w\ln(328.15/293.15)
+\approx0.0445\ \mathrm{kW/K}.
+\]</span></p>
+<p>The internal heat exchange contributes to generation because heat flows across a finite temperature difference between the streams. If the boundary follows just one channel, the shared wall appears in that channel’s entropy transfer. The full exchanger balance avoids estimating the wall temperature from inlet and outlet temperatures. Its positive entropy generation is compatible with an energy balance in which the heat rates cancel.</p>
+<p>In a final exercise, steam mixes directly with 2.50 kg/s of 20 °C water at 200 kPa and leaves as 60 °C liquid while losing 20 kW to ambient. With the tutorial's rounded steam, cold water, and mixed enthalpies <span class="math-inline">\(h_s=2769\)</span>, <span class="math-inline">\(h_w=83.94\)</span> and <span class="math-inline">\(h_e=251.1\)</span> kJ/kg, steam supply is <span class="math-inline">\([20+2.5(h_e-h_w)]/(h_s-h_e)\approx0.174\)</span> kg/s. The outlet mass flow is the sum of the two inlets. Use it with the liquid outlet entropy and deduct the two inlet entropy fluxes and the signed heat entropy flux. At 298.15 K ambient the result is about 0.282 kW/K from the slide properties. <a href="https://www.youtube.com/watch?v=R7ovrLScZ8k&amp;t=920">Tutorial 1, Part 2 · 15:20</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_02.py">Python laboratory</a> with a standard Python installation. Its inputs are the compressor inlet temperature, pressure ratio, and ideal-gas constants. It reports the shaft-work inputs and isentropic discharge temperature, then checks the entropy change, the work ordering, and the zero-pressure-rise limit. Unsupported arguments raise a value error. The program uses no network or files.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="same-end-pressure-and-different-end-state">Same end pressure and different end state</h3>
+<p>Explain why the difference of 65.45 kJ/kg between the two compressor work inputs cannot be attributed to irreversibility inside one of the machines.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Both paths were internally reversible. Holding an ideal gas at 300 K during compression requires heat rejection and preserves its enthalpy. Insulation forces all shaft input into the enthalpy rise. Thus the common exit pressure coexists with two different outlet temperatures. At the fixed inlet and pressure ratio, the work difference is <span class="math-inline">\(244.49-179.04=65.45\)</span> kJ/kg.</p>
+</details><h3 id="reverse-the-isothermal-path">Reverse the isothermal path</h3>
+<p>Reverse the reversible isothermal compression from 800 to 100 kPa. State the signs of heat and shaft work in the chosen convention.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Interchanging the integration limits changes the sign, so <span class="math-inline">\(w_s=179.04\)</span> kJ/kg. Since the inlet and outlet enthalpies match, <span class="math-inline">\(q=w_s\)</span>. Heat enters the gas and its entire contribution emerges as shaft work during this open-flow step. Closing the cycle must also restore the inlet pressure.</p>
+</details><h3 id="check-a-throttle-mixture">Check a throttle mixture</h3>
+<p>Use the cooled-valve example to test whether an exit enthalpy of 250 kJ/kg at 200 kPa would permit the same quality calculation.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The saturated-vapor endpoint is 244.5 kJ/kg. At 250 kJ/kg the mixture formula would give <span class="math-inline">\((250-38.41)/(244.5-38.41)\approx1.027\)</span>. No mass fraction exceeds 1. With this pressure and enthalpy, look up the superheated vapor state on the same property reference.</p>
+</details><h3 id="heat-exchanger-feasibility">Heat exchanger feasibility</h3>
+<p>Suppose the same hot stream and water inlet were used in a co-current heat exchanger. Can the streams leave at 40 °C for glycol and 55 °C for water?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> At the inlet, glycol is hotter. In a passive co-current exchanger the local temperature difference drives heat into water. With both heat capacity rates positive, the difference decreases toward zero from above. Integrating the local energy balances for a positive conductance gives exponential decay of the difference along the exchanger. The proposed exit would require the water to be hotter than the glycol at the same end. Counterflow permits these terminal temperatures because water leaving at 55 °C sees glycol entering at 80 °C and water entering at 20 °C sees glycol leaving at 40 °C.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-01-control-volume-entropy.html"><span>Previous</span>Entropy balances for open systems</a><a rel="next" href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>Next</span>Entropy balances in thermal equipment</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

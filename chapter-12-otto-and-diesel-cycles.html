@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare ideal spark-ignition and compression-ignition cycles under shared temperature and compression constraints, then relate work to cylinder displacement.">
+  <meta name="color-scheme" content="dark light">
+  <title>Otto and Diesel Cycles · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#from-four-strokes-to-a-closed-mass-model-lecture-35-140">From four strokes to a closed-mass model Lecture 35 · 1:40</a></li>
+<li><a href="#otto-heat-addition-and-mean-effective-pressure-lecture-35-1140">Otto heat addition and mean effective pressure Lecture 35 · 11:40</a></li>
+<li><a href="#diesel-heat-addition-and-cutoff-lecture-36-920">Diesel heat addition and cutoff Lecture 36 · 9:20</a></li>
+<li><a href="#holding-intake-and-peak-temperatures-fixed-lecture-36-1520">Holding intake and peak temperatures fixed Lecture 36 · 15:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#distinguish-cutoff-and-compression-ratios">Distinguish cutoff and compression ratios</a></li>
+<li><a href="#peak-pressure-in-the-otto-example">Peak pressure in the Otto example</a></li>
+<li><a href="#separate-equal-temperature-and-equal-heat-comparisons">Separate equal temperature and equal heat comparisons</a></li>
+<li><a href="#zero-heating-limit">Zero-heating limit</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html" aria-current="page"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 12 · Lectures 35–37</p>
+        <h1>Otto and Diesel Cycles</h1>
+        <p class="lead">Compare ideal spark-ignition and compression-ignition cycles under shared temperature and compression constraints, then relate work to cylinder displacement.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=RPXchZmvO0A">35. Thermodynamic cycles -- Air standard Otto cycle</a></li><li><a href="https://www.youtube.com/watch?v=iLSkaG0b-Ts">36. Thermodynamic cycles -- Air standard Diesel cycle - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=e2Savvr_Za8">37. Thermodynamic cycles -- Air standard Diesel cycle - Part 2</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>The same plant needs small reciprocating backup units that can start independently of the main generator. The air-standard cycles answer the first sizing question: how much work can a unit extract from a fixed trapped mass at the same intake and permissible peak temperature? Capacity per cylinder also depends on how much work is produced per swept volume. Increasing compression ratio can improve efficiency yet change that second result in the opposite direction.</p>
+<h2 id="from-four-strokes-to-a-closed-mass-model-lecture-35-140">From four strokes to a closed-mass model <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=100">Lecture 35 · 1:40</a></h2>
+<p>A four-stroke engine admits a charge, compresses it, expands the heated gas, and expels combustion products. A spark-ignition engine initiates combustion with a spark, whereas a compression-ignition engine injects fuel into hot compressed air. The air-standard model replaces intake and exhaust with heat rejection, combustion with heat input, and the actual charge with a fixed mass of air. Here the cold-air standard uses constant <span class="math-inline">\(c_v\)</span> and <span class="math-inline">\(c_p\)</span>, the specific heats at constant volume and pressure. Let <span class="math-inline">\(\gamma=c_p/c_v\)</span> and <span class="math-inline">\(R=c_p-c_v\)</span> in consistent mass-specific units.</p>
+<p>Let <span class="math-inline">\(v_1\)</span> be volume per kg at bottom dead center, the maximum cylinder volume, and <span class="math-inline">\(v_2\)</span> its value at top dead center, the minimum. The geometric compression ratio is <span class="math-inline">\(r=v_1/v_2&gt;1\)</span>. States 1, 2, 3, and 4 represent the start of compression, end of compression, end of heat addition, and end of expansion. Use <span class="math-inline">\(T_i\)</span> for the corresponding temperatures in K and <span class="math-inline">\(p_i\)</span> for absolute pressures. Changes in gas speed and elevation are neglected. Compression and expansion are adiabatic and reversible. With <span class="math-inline">\(p v=RT\)</span> and <span class="math-inline">\(du=c_v\,dT\)</span>, the closed-system identity <span class="math-inline">\(du=T\,ds-p\,dv\)</span> gives <span class="math-inline">\(ds=c_v\,dT/T+R\,dv/v\)</span>. On an isentrope, <span class="math-inline">\(Tv^{\gamma-1}\)</span> is constant. The compression raises temperature to <span class="math-inline">\(T_2=T_1r^{\gamma-1}\)</span>.</p>
+<h2 id="otto-heat-addition-and-mean-effective-pressure-lecture-35-1140">Otto heat addition and mean effective pressure <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=700">Lecture 35 · 11:40</a></h2>
+<p>The Otto idealization puts all heat input at <span class="math-inline">\(v_2\)</span> and rejection at <span class="math-inline">\(v_1\)</span>. The boundary work vanishes on these two constant-volume legs. Let <span class="math-inline">\(q_H\)</span> and <span class="math-inline">\(q_L\)</span> be positive specific heat input and rejection, in kJ/kg. Then <span class="math-inline">\(q_H=c_v(T_3-T_2)\)</span> and <span class="math-inline">\(q_L=c_v(T_4-T_1)\)</span>. The isentropic expansion gives <span class="math-inline">\(T_4=T_3/r^{\gamma-1}\)</span>. Therefore <span class="math-inline">\(T_4-T_1=(T_3-T_2)/r^{\gamma-1}\)</span>. The net specific work and efficiency are</p>
+<p><span class="math-display">\[
+w_{\rm net}=q_H-q_L,\qquad
+\eta_O=1-r^{-(\gamma-1)}.
+\]</span></p>
+<p>In a real spark-ignition cylinder, the remaining unburned charge ahead of the flame can autoignite and produce rapid pressure oscillations called knock. Mixture, ignition timing, fuel properties, heat transfer, and cylinder design influence this behavior. The model's gain at high <span class="math-inline">\(r\)</span> describes an ideal thermodynamic relation and supplies no knock boundary. <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=1080">Lecture 35 · 18:00</a></p>
+<p>Mean effective pressure, or MEP, is the net work divided by swept volume. In specific units <span class="math-inline">\(\mathrm{MEP}=w_{\rm net}/(v_1-v_2)\)</span>, with kJ/m³ equal to kPa. It is the hypothetical constant pressure that would yield the same work over the swept volume. It differs from peak pressure. The intake equation of state gives <span class="math-inline">\(\mathrm{MEP}=p_1 w_{\rm net}/[R T_1(1-1/r)]\)</span>. At a fixed cylinder displacement, MEP and cycle frequency determine the indicated power before mechanical losses. The lecture uses variable-property tables for the full Otto worked case. With those tables, replace <span class="math-inline">\(c_v\Delta T\)</span> on an isochore by <span class="math-inline">\(u(T_{\rm end})-u(T_{\rm start})\)</span>. <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=1660">Lecture 35 · 27:40</a> <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=2020">Lecture 35 · 33:40</a></p>
+<h2 id="diesel-heat-addition-and-cutoff-lecture-36-920">Diesel heat addition and cutoff <a href="https://www.youtube.com/watch?v=iLSkaG0b-Ts&amp;t=560">Lecture 36 · 9:20</a></h2>
+<p>The Diesel idealization supplies heat at constant pressure as the piston moves. Define cutoff ratio <span class="math-inline">\(\rho=v_3/v_2\)</span>, with <span class="math-inline">\(1&lt;\rho&lt;r\)</span> for positive heat addition and expansion. Since <span class="math-inline">\(p_3=p_2\)</span>, ideal-gas temperature rises to <span class="math-inline">\(T_3=\rho T_2\)</span>. The gas moves the piston during heat addition. The first law gives <span class="math-inline">\(q_H=u_3-u_2+p_2(v_3-v_2)=h_3-h_2=c_p(T_3-T_2)\)</span>, where <span class="math-inline">\(h\)</span> is specific enthalpy. Heat rejection returns to constant volume at <span class="math-inline">\(v_1\)</span> and uses <span class="math-inline">\(q_L=c_v(T_4-T_1)\)</span>. The expansion ratio is <span class="math-inline">\(v_4/v_3=r/\rho\)</span>. Therefore <span class="math-inline">\(T_4=T_3(\rho/r)^{\gamma-1}=T_1\rho^\gamma\)</span> and</p>
+<p><span class="math-display">\[
+\eta_D=1-\frac{1}{r^{\gamma-1}}\frac{\rho^\gamma-1}{\gamma(\rho-1)}.
+\]</span></p>
+<p>At common <span class="math-inline">\(r\)</span>, the factor multiplying <span class="math-inline">\(1/r^{\gamma-1}\)</span> exceeds one for <span class="math-inline">\(\rho&gt;1\)</span>, since it is the average of <span class="math-inline">\(z^{\gamma-1}\)</span> on <span class="math-inline">\(1\le z\le\rho\)</span>. At a larger compression ratio, a Diesel cycle can nevertheless exceed an Otto cycle's ideal efficiency. Higher attainable geometric compression is one reason a comparison at the same <span class="math-inline">\(r\)</span> answers a narrower question than an engine choice. <a href="https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node27.html">MIT Unified Engineering, Diesel cycle</a> <a href="https://www.youtube.com/watch?v=e2Savvr_Za8&amp;t=0">Lecture 37 · 0:00</a></p>
+<h2 id="holding-intake-and-peak-temperatures-fixed-lecture-36-1520">Holding intake and peak temperatures fixed <a href="https://www.youtube.com/watch?v=iLSkaG0b-Ts&amp;t=920">Lecture 36 · 15:20</a></h2>
+<p>For the backup candidate let <span class="math-inline">\(p_1=100\)</span> kPa, <span class="math-inline">\(T_1=300\)</span> K, <span class="math-inline">\(T_3=1800\)</span> K, <span class="math-inline">\(c_v=0.718\)</span> kJ/(kg K), and <span class="math-inline">\(\gamma=1.4\)</span>. The Diesel cutoff is chosen from <span class="math-inline">\(\rho=T_3/T_2\)</span>. The three rows therefore hold intake and peak temperature fixed while varying heat duty or compression by design.</p>
+<table>
+<thead>
+<tr>
+<th>Cycle</th>
+<th style="text-align: right;"><span class="math-inline">\(q_H\)</span> (kJ/kg)</th>
+<th style="text-align: right;"><span class="math-inline">\(w_{\rm net}\)</span> (kJ/kg)</th>
+<th style="text-align: right;">Efficiency</th>
+<th style="text-align: right;">MEP (kPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Otto, <span class="math-inline">\(r=10\)</span></td>
+<td style="text-align: right;">751.3</td>
+<td style="text-align: right;">452.2</td>
+<td style="text-align: right;">60.19%</td>
+<td style="text-align: right;">583.2</td>
+</tr>
+<tr>
+<td>Diesel, <span class="math-inline">\(r=10\)</span></td>
+<td style="text-align: right;">1051.9</td>
+<td style="text-align: right;">538.4</td>
+<td style="text-align: right;">51.18%</td>
+<td style="text-align: right;">694.3</td>
+</tr>
+<tr>
+<td>Diesel, <span class="math-inline">\(r=18\)</span></td>
+<td style="text-align: right;">851.1</td>
+<td style="text-align: right;">542.1</td>
+<td style="text-align: right;">63.69%</td>
+<td style="text-align: right;">666.1</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Pressure versus volume for equal-compression Otto and Diesel cycles, with a common compression curve, vertical Otto heat addition, and horizontal Diesel heat addition. Both axes are logarithmic." src="figures/chapter-12-heating-paths.png" /></p>
+<p>The two designs at <span class="math-inline">\(r=10\)</span> have different peak pressures as well as different heat inputs. Otto heat addition raises pressure throughout the constant-volume leg. Diesel heat addition begins and ends at compressor discharge pressure. The higher-compression Diesel candidate requires less heat per kg at the same peak temperature than the lower-compression Diesel candidate, so its increase in efficiency compensates for lower input. Its MEP still falls because the net work is spread over a larger specific swept volume. A cycle with part constant-volume and part constant-pressure heat addition is called a dual cycle. Its heat input is <span class="math-inline">\(c_v\Delta T\)</span> on the first leg and <span class="math-inline">\(c_p\Delta T\)</span> on the second. This model can better approximate a finite pressure rise during combustion. <a href="https://www.youtube.com/watch?v=e2Savvr_Za8&amp;t=580">Lecture 37 · 9:40</a></p>
+<p>The efficiency here converts heat added to the modeled gas into indicated boundary work. Comparisons of real fuel consumption or emissions also depend on combustion, pumping, mechanical losses, aftertreatment, duty cycle, and upstream processes included in the accounting. If heat enters from one reservoir at <span class="math-inline">\(T_H\)</span>, the exergy input relative to <span class="math-inline">\(T_0\)</span> is <span class="math-inline">\((1-T_0/T_H)q_H\)</span>. Fuel chemical exergy is required for direct analysis of combustion as an internal process. <a href="https://www.youtube.com/watch?v=RPXchZmvO0A&amp;t=1400">Lecture 35 · 23:20</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_12.py">Python laboratory</a> with standard Python. It takes a choice of cycle, the intake and peak temperatures, compression ratio, and gas constants. It returns heat, work, efficiency, and mean effective pressure as a ratio to intake pressure. It checks the closed-form Otto result and the ordering of efficiencies in the table. An invalid temperature or volume sequence raises a value error.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="distinguish-cutoff-and-compression-ratios">Distinguish cutoff and compression ratios</h3>
+<p>Compute cutoff and effective expansion ratios for the Diesel cycle at <span class="math-inline">\(r=18\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The compression ends at <span class="math-inline">\(T_2=300(18)^{0.4}\approx953.3\)</span> K. Thus <span class="math-inline">\(\rho=1800/953.3\approx1.888\)</span> and <span class="math-inline">\(r/\rho\approx9.53\)</span>. The piston begins expansion at a larger volume than the minimum clearance volume because heat addition has already displaced it.</p>
+</details><h3 id="peak-pressure-in-the-otto-example">Peak pressure in the Otto example</h3>
+<p>Determine the ideal peak pressure at <span class="math-inline">\(r=10\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> State 3 remains at <span class="math-inline">\(v_2=v_1/10\)</span>, so <span class="math-inline">\(p_3/p_1=(T_3/T_1)(v_1/v_2)=6(10)=60\)</span>. The peak is 6000 kPa. The 583.2 kPa mean effective pressure describes the entire net-work loop per swept volume.</p>
+</details><h3 id="separate-equal-temperature-and-equal-heat-comparisons">Separate equal temperature and equal heat comparisons</h3>
+<p>At <span class="math-inline">\(r=10\)</span>, prescribe the same <span class="math-inline">\(q_H=751.3\)</span> kJ/kg to the Diesel cycle. What happens to the Diesel peak temperature?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Both cycles begin heating at <span class="math-inline">\(T_2\approx753.6\)</span> K. The Diesel heat input gives <span class="math-inline">\(T_3=T_2+751.3/(1.4\cdot0.718)\approx1501\)</span> K. During the constant-pressure leg part of the input does boundary work and the required heat per kelvin is <span class="math-inline">\(c_p\)</span>.</p>
+</details><h3 id="zero-heating-limit">Zero-heating limit</h3>
+<p>Evaluate the Diesel efficiency expression as <span class="math-inline">\(\rho\to1\)</span> from above.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The ratio <span class="math-inline">\((\rho^\gamma-1)/[\gamma(\rho-1)]\)</span> tends to one by differentiation. Thus the efficiency tends to the Otto value at the same <span class="math-inline">\(r\)</span>. Both Diesel heat input and net work approach zero. A finite limiting efficiency does not provide finite cycle output.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-11-modified-brayton-cycles.html"><span>Previous</span>Modified Brayton Cycles</a><a rel="next" href="chapter-13-vapor-compression-refrigeration.html"><span>Next</span>Vapor-Compression Refrigeration</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

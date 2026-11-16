@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use explicit species assumptions to solve rich combustion, analyze exhaust composition, and infer an equivalence ratio from mass flows.">
+  <meta name="color-scheme" content="dark light">
+  <title>Combustion Stoichiometry Tutorials · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#close-a-rich-ethanol-example">Close a rich ethanol example</a></li>
+<li><a href="#infer-excess-air-from-dry-exhaust">Infer excess air from dry exhaust</a></li>
+<li><a href="#sum-oxygen-demands-for-a-fuel-mixture">Sum oxygen demands for a fuel mixture</a></li>
+<li><a href="#separate-air-delivery-from-fuel-delivery">Separate air delivery from fuel delivery</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#find-where-the-restricted-model-fails">Find where the restricted model fails</a></li>
+<li><a href="#convert-the-molar-ratio-to-a-mass-ratio">Convert the molar ratio to a mass ratio</a></li>
+<li><a href="#include-an-oxygen-bearing-fuel-blend">Include an oxygen-bearing fuel blend</a></li>
+<li><a href="#recover-a-dry-basis-from-an-analyzer-reading">Recover a dry basis from an analyzer reading</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html" aria-current="page"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 18 · Lectures 54–55</p>
+        <h1>Combustion Stoichiometry Tutorials</h1>
+        <p class="lead">Use explicit species assumptions to solve rich combustion, analyze exhaust composition, and infer an equivalence ratio from mass flows.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=ml1fhdGuMc0">54. Tutorial 9 - Stoichiometry - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=ZLa9RnWKEsc">55. Tutorial 9 - Stoichiometry - Part 2</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>Element conservation fixes how many carbon atoms leave a burner. It cannot by itself allocate them among carbon monoxide, carbon dioxide, soot, and unburned hydrocarbons. A combustion worksheet has to show which species the model permits before a calculation can infer product composition.</p>
+<h2 id="close-a-rich-ethanol-example">Close a rich ethanol example</h2>
+<p>Consider one mole of ethanol, <span class="math-inline">\(\mathrm{C}_{2}\mathrm{H}_{5}\mathrm{OH}\)</span>, at equivalence ratio <span class="math-inline">\(\phi=1.10\)</span>. Complete oxidation would require 3 moles <span class="math-inline">\(\mathrm{O_2}\)</span>. The supplied oxygen is <span class="math-inline">\(a=3/1.10=2.72727\)</span> mol. The restricted product model assumes all hydrogen becomes water, all nitrogen remains <span class="math-inline">\(\mathrm{N_2}\)</span>, and carbon occurs only as <span class="math-inline">\(\mathrm{CO_2}\)</span> and <span class="math-inline">\(\mathrm{CO}\)</span>. There is no residual oxygen in this model. Let <span class="math-inline">\(b\)</span> and <span class="math-inline">\(c\)</span> be moles of <span class="math-inline">\(\mathrm{CO_2}\)</span> and <span class="math-inline">\(\mathrm{CO}\)</span>. Hydrogen balance fixes water at 3 mol. Then</p>
+<p><span class="math-display">\[
+b+c=2,\qquad 2b+c+3=1+2a.
+\]</span></p>
+<p>The final <span class="math-inline">\(1\)</span> accounts for the oxygen atom in the ethanol. The solution is <span class="math-inline">\(b=2a-4=1.45455\)</span> mol, <span class="math-inline">\(c=0.54545\)</span> mol, and <span class="math-inline">\(3.76a=10.25455\)</span> mol nitrogen. A dry analyzer would see <span class="math-inline">\(c/(b+c+3.76a)=4.45\%\)</span> CO in this restricted model. Larger richness eventually makes <span class="math-inline">\(b\)</span> negative, showing the model must expand its product species. If the product set also allows <span class="math-inline">\(\mathrm{H_2}\)</span>, the three element balances and inert nitrogen do not determine all the unknowns. A measured species fraction or an equilibrium relation can supply the missing condition. <a href="https://www.youtube.com/watch?v=ml1fhdGuMc0&amp;t=20">Tutorial 9 Part 1 · Rich product model</a></p>
+<h2 id="infer-excess-air-from-dry-exhaust">Infer excess air from dry exhaust</h2>
+<p>Assume complete, lean combustion of one mole of <span class="math-inline">\(\mathrm{C}_{10}\mathrm{H}_{22}\)</span> with dry air. The carbon dioxide and water coefficients are 10 and 11. Stoichiometric oxygen is <span class="math-inline">\(10+22/4=15.5\)</span>. With <span class="math-inline">\(a\)</span> moles oxygen supplied, the excess oxygen is <span class="math-inline">\(a-15.5\)</span>. Suppose the reported dry mole fractions are 0.12043 <span class="math-inline">\(\mathrm{CO_2}\)</span> and 0.03733 <span class="math-inline">\(\mathrm{O_2}\)</span>, rounded teaching inputs. Their ratio eliminates the unknown dry-product total:</p>
+<p><span class="math-display">\[
+a=15.5+10\frac{y_{\mathrm{O_2,dry}}}{y_{\mathrm{CO_2,dry}}}
+\simeq18.60.
+\]</span></p>
+<p>The inferred excess air is 20%. The nitrogen coefficient is <span class="math-inline">\(3.76a\)</span>, about 69.94 mol. Add 11 mol water to the denominator before computing wet fractions. An oxygen measurement alone attributes all deviation to excess air only if the fuel and assumptions are fixed. If CO is measured, carbon balance scales the sum <span class="math-inline">\(\mathrm{CO_2}+\mathrm{CO}\)</span> under a carbon-only-in-oxides model. Check the oxygen and nitrogen balances against that inferred scaling. <a href="https://www.youtube.com/watch?v=ml1fhdGuMc0&amp;t=540">Tutorial 9 Part 1 · Dry-product analysis</a></p>
+<h2 id="sum-oxygen-demands-for-a-fuel-mixture">Sum oxygen demands for a fuel mixture</h2>
+<p>At ideal-gas conditions volume fraction equals mole fraction. On a one-mole mixture basis, each component contributes its stoichiometric oxygen demand times its mole fraction. For example, 0.10 mol CO, 0.04 mol hydrogen and 0.03 mol methane require <span class="math-inline">\(0.10(0.5)+0.04(0.5)+0.03(2)=0.13\)</span> mol oxygen before counting the remaining components. An oxygen component in the fuel stream offsets the external oxygen requirement. Carbon dioxide and nitrogen in the fuel stream carry mass and sensible energy while contributing no oxygen demand in this complete-oxidation model. <a href="https://www.youtube.com/watch?v=ml1fhdGuMc0&amp;t=1180">Tutorial 9 Part 1 · Fuel gas mixtures</a></p>
+<h2 id="separate-air-delivery-from-fuel-delivery">Separate air delivery from fuel delivery</h2>
+<p>In a flowing premixer with vaporizing liquid fuel, bulk dry-air delivery can be estimated from <span class="math-inline">\(\dot m_{\rm air}=\rho_{\rm air}UA\)</span> for a uniform profile. The evaporated fuel rate depends on the liquid and transport conditions. The resulting mixture has</p>
+<p><span class="math-display">\[
+\phi=\frac{\dot m_f}{\dot m_{\rm air}}\left(\frac{A}{F}\right)_{\rm st}.
+\]</span></p>
+<p>If air delivery rises fivefold and the evaporated fuel rate only doubles, <span class="math-inline">\(\phi\)</span> falls to 40% of its starting value. This conclusion needs rate ratios, without assuming that evaporation scales linearly with speed. When converting a stoichiometric molar air amount to a mass ratio, multiply by the air-species molar masses and divide by fuel molar mass. <a href="https://www.youtube.com/watch?v=ZLa9RnWKEsc&amp;t=200">Tutorial 9 Part 2 · Premixed evaporating fuel</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_18.py">Python laboratory</a>. It solves the restricted rich-ethanol products, verifies element conservation, and recovers excess air from the rounded dry decane analysis.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="find-where-the-restricted-model-fails">Find where the restricted model fails</h3>
+<p>Find where the rich-ethanol formula gives zero carbon dioxide.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Set <span class="math-inline">\(b=2a-4=0\)</span> to find <span class="math-inline">\(a=2\)</span>, so <span class="math-inline">\(\phi=3/2\)</span>. Greater richness would demand negative <span class="math-inline">\(\mathrm{CO_2}\)</span> with three moles water fixed. The modeled species or hydrogen allocation must change.</p>
+</details><h3 id="convert-the-molar-ratio-to-a-mass-ratio">Convert the molar ratio to a mass ratio</h3>
+<p>Calculate actual kg air per kg decane using 18.60 mol <span class="math-inline">\(\mathrm{O_2}\)</span>, accompanying nitrogen, <span class="math-inline">\(M_{\mathrm{O_2}}=31.998\)</span>, <span class="math-inline">\(M_{\mathrm{N_2}}=28.014\)</span>, and <span class="math-inline">\(M_{\rm fuel}=142.286\)</span>, on a consistent molar-mass scale.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The actual mass ratio is <span class="math-inline">\(18.60(31.998+3.76(28.014))/142.286=17.95\)</span> kg air/kg decane. The factor 18.60 includes the excess oxygen and all its accompanying nitrogen.</p>
+</details><h3 id="include-an-oxygen-bearing-fuel-blend">Include an oxygen-bearing fuel blend</h3>
+<p>Find the stoichiometric oxygen requirement for one mole of a gas containing 30% methane, 20% carbon monoxide, 10% oxygen, and 40% nitrogen by mole.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Methane and CO require <span class="math-inline">\(0.30(2)+0.20(0.5)=0.70\)</span> mol oxygen. The blend supplies 0.10 mol. The external oxidizer must supply 0.60 mol oxygen per mol blend, accompanied by 2.256 mol nitrogen in the stated dry-air model. The original 0.40 mol nitrogen also appears in the product.</p>
+</details><h3 id="recover-a-dry-basis-from-an-analyzer-reading">Recover a dry basis from an analyzer reading</h3>
+<p>An exhaust stream contains 10 mol <span class="math-inline">\(\mathrm{CO_2}\)</span> and 11 mol <span class="math-inline">\(\mathrm{H_2O}\)</span>, and its measured dry <span class="math-inline">\(\mathrm{CO_2}\)</span> fraction is 0.12043. Find the wet <span class="math-inline">\(\mathrm{CO_2}\)</span> fraction.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The dry total is <span class="math-inline">\(10/0.12043\approx83.04\)</span> mol. The wet total is <span class="math-inline">\(83.04+11=94.04\)</span> mol. The wet <span class="math-inline">\(\mathrm{CO_2}\)</span> fraction is about <span class="math-inline">\(10/94.04=0.1063\)</span>.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-17-combustion-thermodynamics.html"><span>Previous</span>Combustion Thermodynamics</a><a rel="next" href="chapter-19-combustion-energy-tutorials.html"><span>Next</span>Combustion Energy Tutorials</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

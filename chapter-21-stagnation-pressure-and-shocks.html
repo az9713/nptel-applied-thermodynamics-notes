@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use energy and entropy to explain stagnation-pressure changes and derive the compressive shock solution.">
+  <meta name="color-scheme" content="dark light">
+  <title>Stagnation pressure and normal shocks · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#total-state-changes-diagnose-heat-work-and-entropy-part-4-000">Total-state changes diagnose heat, work, and entropy Part 4 · 0:00</a></li>
+<li><a href="#derive-the-compressive-jump-part-5-440">Derive the compressive jump Part 5 · 4:40</a></li>
+<li><a href="#recover-pressure-at-the-cost-of-total-pressure-part-6-240">Recover pressure at the cost of total pressure Part 6 · 2:40</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#problems-with-worked-solutions">Problems with worked solutions</a><ul>
+<li><a href="#calculate-both-pressures">Calculate both pressures</a></li>
+<li><a href="#find-the-compression-limit">Find the compression limit</a></li>
+<li><a href="#verify-stagnation-enthalpy">Verify stagnation enthalpy</a></li>
+<li><a href="#distinguish-cooling-from-shock-loss">Distinguish cooling from shock loss</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html" aria-current="page"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 21 · Lectures 64–66</p>
+        <h1>Stagnation pressure and normal shocks</h1>
+        <p class="lead">Use energy and entropy to explain stagnation-pressure changes and derive the compressive shock solution.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=PNRiUi9Brtw">64. Compressible flow through nozzles - Part 4</a></li><li><a href="https://www.youtube.com/watch?v=6lq2dfFuQ0Q">65. Compressible flow through nozzles - Part 5</a></li><li><a href="https://www.youtube.com/watch?v=P6HLJKGw2SI">66. Compressible flow through nozzles - Part 6</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>A duct brings an air stream at Mach 2 toward a component that needs subsonic flow. A normal shock, a thin compression layer oriented perpendicular to the stream, can achieve that change within a short distance. It raises the wall pressure while lowering the pressure that a reversible diffuser could recover. These two pressures correspond to different thermodynamic states.</p>
+<h2 id="total-state-changes-diagnose-heat-work-and-entropy-part-4-000">Total-state changes diagnose heat, work, and entropy <a href="https://www.youtube.com/watch?v=PNRiUi9Brtw&amp;t=0s">Part 4 · 0:00</a></h2>
+<p>Let <span class="math-inline">\(C\)</span> denote axial speed, <span class="math-inline">\(h\)</span> static enthalpy per kilogram, and <span class="math-inline">\(h_t=h+C^2/2\)</span> stagnation enthalpy. Take <span class="math-inline">\(q\)</span> as heat into the fluid and <span class="math-inline">\(w_s\)</span> as shaft work leaving the fluid per kilogram. With negligible gravitational energy change the steady energy balance gives <span class="math-inline">\(h_{t2}-h_{t1}=q-w_s\)</span>. The subscript <span class="math-inline">\(t\)</span> indicates an isentropic stop from the local stream state. Its entropy equals the static entropy. For a calorically perfect ideal gas with constant specific heat <span class="math-inline">\(c_p\)</span> and specific gas constant <span class="math-inline">\(R\)</span>, integrating <span class="math-inline">\(ds=c_p\,dT_t/T_t-R\,dp_t/p_t\)</span> between those two total states gives</p>
+<p><span class="math-display">\[
+s_2-s_1=c_p\ln(T_{t2}/T_{t1})-R\ln(p_{t2}/p_{t1}).
+\]</span></p>
+<p>Here <span class="math-inline">\(p_t\)</span> and <span class="math-inline">\(T_t\)</span> are stagnation pressure and absolute temperature. At fixed <span class="math-inline">\(T_t\)</span>, positive entropy generation lowers <span class="math-inline">\(p_t\)</span>. A turbine can lower total pressure by reversible work extraction even while its entropy stays constant. A compressor can raise total pressure while generating entropy if the temperature term dominates. Total pressure alone diagnoses loss only under the accompanying energy and entropy constraints.</p>
+<p>On a temperature–entropy diagram an isentropic stop moves vertically to a higher temperature. Along a passive adiabatic duct without shaft work, <span class="math-inline">\(T_t\)</span> is constant. That fixes a common sonic temperature <span class="math-inline">\(2T_t/(\gamma+1)\)</span>, with <span class="math-inline">\(\gamma=c_p/(c_p-R)\)</span>. A local temperature below the sonic value corresponds to supersonic motion. Across a shock this sonic temperature remains common while the pressure of the sonic reference state changes. On a pressure–specific-volume plot, <span class="math-inline">\(p=\text{constant}/v\)</span> for a fixed-temperature ideal gas, with slope <span class="math-inline">\(-p/v\)</span>. The isentropic slope is <span class="math-inline">\(-\gamma p/v\)</span> from <span class="math-inline">\(pv^\gamma=\text{constant}\)</span>. For real steam use <span class="math-inline">\(h_t\)</span> and <span class="math-inline">\(s\)</span>, with properties read from a fluid model. <a href="https://www.youtube.com/watch?v=PNRiUi9Brtw&amp;t=300s">Part 4 · 5:00</a> · <a href="https://www.youtube.com/watch?v=PNRiUi9Brtw&amp;t=1360s">Part 4 · 22:40</a></p>
+<h2 id="derive-the-compressive-jump-part-5-440">Derive the compressive jump <a href="https://www.youtube.com/watch?v=6lq2dfFuQ0Q&amp;t=280s">Part 5 · 4:40</a></h2>
+<p>In the stationary shock's frame take states 1 and 2 just outside the thin layer. Assume the cross section is constant, both states are uniform and the layer exchanges negligible heat and shaft work. Let <span class="math-inline">\(\rho\)</span> be density, <span class="math-inline">\(v=1/\rho\)</span>, <span class="math-inline">\(M=C/a\)</span> the local Mach number, and <span class="math-inline">\(a^2=\gamma p/\rho\)</span>. Mass conservation gives <span class="math-inline">\(\rho_1 C_1=\rho_2 C_2\)</span>. Define <span class="math-inline">\(y=v_2/v_1=C_2/C_1\)</span>. Momentum conservation then gives</p>
+<p><span class="math-display">\[
+\frac{p_2}{p_1}=1+\gamma M_1^2(1-y).
+\]</span></p>
+<p>Energy conservation gives <span class="math-inline">\(h_2-h_1=(C_1^2-C_2^2)/2\)</span>. With <span class="math-inline">\(h=c_pT\)</span> up to an arbitrary reference, <span class="math-inline">\(T=pv/R\)</span>, and <span class="math-inline">\(c_p/R=\gamma/(\gamma-1)\)</span>, divide through by <span class="math-inline">\(\gamma p_1 v_1\)</span>. The result is</p>
+<p><span class="math-display">\[
+\frac{y[1+\gamma M_1^2(1-y)]-1}{\gamma-1}
+=\frac{M_1^2}{2}(1-y^2).
+\]</span></p>
+<p>Both sides have a factor <span class="math-inline">\(1-y\)</span>. The trivial root <span class="math-inline">\(y=1\)</span> preserves the upstream state. For the nontrivial root cancel that factor and solve the remaining linear equation for <span class="math-inline">\(y\)</span>. The final ratios are</p>
+<p><span class="math-display">\[
+y=\frac{2+(\gamma-1)M_1^2}{(\gamma+1)M_1^2},\qquad
+\frac{T_2}{T_1}=\frac{p_2}{p_1}y,\qquad
+M_2^2=\frac{1+(\gamma-1)M_1^2/2}{\gamma M_1^2-(\gamma-1)/2}.
+\]</span></p>
+<p>For <span class="math-inline">\(M_1&gt;1\)</span>, the qualified root has <span class="math-inline">\(y&lt;1\)</span>, <span class="math-inline">\(p_2&gt;p_1\)</span>, and <span class="math-inline">\(M_2&lt;1\)</span>. Admissibility also follows from entropy. With <span class="math-inline">\(z=M_1^2\)</span> and <span class="math-inline">\(P=p_2/p_1\)</span>, the ideal-gas identity gives <span class="math-inline">\((\gamma-1)(s_2-s_1)/R=\ln P+\gamma\ln y\)</span>. Differentiating this expression with respect to <span class="math-inline">\(z\)</span> gives</p>
+<p><span class="math-display">\[
+\frac{2\gamma(\gamma-1)(z-1)^2}
+{[2\gamma z-(\gamma-1)]\,z\,[2+(\gamma-1)z]}.
+\]</span></p>
+<p>This derivative is positive for <span class="math-inline">\(z&gt;1\)</span>. The entropy increase vanishes at <span class="math-inline">\(z=1\)</span> and is positive above it. Reversing the compressive shock would decrease entropy at zero heat transfer. The smooth weak-wave limit retains the original acoustic state. <a href="https://www.nasa.gov/wp-content/uploads/2023/03/equations-tables-charts-compressibleflow-report-1135.pdf">NACA Report 1135, normal-shock relations</a></p>
+<h2 id="recover-pressure-at-the-cost-of-total-pressure-part-6-240">Recover pressure at the cost of total pressure <a href="https://www.youtube.com/watch?v=P6HLJKGw2SI&amp;t=160s">Part 6 · 2:40</a></h2>
+<p>For air with <span class="math-inline">\(\gamma=1.4\)</span> and <span class="math-inline">\(M_1=2\)</span>, the shock gives <span class="math-inline">\(M_2=0.57735\)</span>, <span class="math-inline">\(p_2/p_1=4.5\)</span>, <span class="math-inline">\(\rho_2/\rho_1=2.66667\)</span>, and <span class="math-inline">\(T_2/T_1=1.6875\)</span>. The two total temperatures agree by the energy balance. To find the total pressures, compute independently on the two sides <span class="math-inline">\(p_{tk}=p_k[1+(\gamma-1)M_k^2/2]^{\gamma/(\gamma-1)}\)</span>, where <span class="math-inline">\(k\)</span> denotes the side. This yields <span class="math-inline">\(p_{t2}/p_{t1}=0.72087\)</span> and <span class="math-inline">\(s_2-s_1=-R\ln(0.72087)=93.93\)</span> J/(kg K) for <span class="math-inline">\(R=287\)</span> J/(kg K).</p>
+<p>A shock can deliver a large static pressure rise with a short compression distance. An ideal smooth diffuser preserves more of the inlet stagnation pressure for later recovery. A real diffuser introduces wall losses and geometric constraints of its own. Evaluate available length and required total pressure separately. The normal-shock calculation assumes a stationary plane. Real shock structures can depart from it when the flow separates or the shock is oblique. <a href="https://www.youtube.com/watch?v=P6HLJKGw2SI&amp;t=520s">Part 6 · 8:40</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>The <a href="code/chapter_21.py">Python laboratory</a> returns the five downstream ratios from an ideal-gas upstream Mach number and <span class="math-inline">\(\gamma\)</span>. It verifies momentum and total temperature across the shock, checks the sonic limit, and calculates the entropy increase. The code is valid for a normal shock in a calorically perfect gas and rejects upstream Mach below 1.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<h3 id="calculate-both-pressures">Calculate both pressures</h3>
+<p>If the Mach-2 shock starts at <span class="math-inline">\(p_1=80\)</span> kPa, compute <span class="math-inline">\(p_2\)</span> and the total-pressure loss as a fraction of <span class="math-inline">\(p_{t1}\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The momentum relation gives <span class="math-inline">\(p_2=4.5(80)=360\)</span> kPa. The pressure reduction at the hypothetical stopped state is <span class="math-inline">\(1-p_{t2}/p_{t1}=1-0.72087=0.27913\)</span>, about 27.9%. Static and total pressures answer different questions, so the signs can differ.</p>
+</details><h3 id="find-the-compression-limit">Find the compression limit</h3>
+<p>What maximum density ratio does the ideal-gas formula approach as <span class="math-inline">\(M_1\)</span> increases for <span class="math-inline">\(\gamma=1.4\)</span>?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Use <span class="math-inline">\(\rho_2/\rho_1=1/y\)</span>. Divide numerator and denominator by <span class="math-inline">\(M_1^2\)</span> to obtain the limiting ratio <span class="math-inline">\((\gamma+1)/(\gamma-1)=6\)</span>. The limiting statement assumes constant <span class="math-inline">\(\gamma\)</span> even as temperature increases. A real gas can enter a regime where variable heat capacity and chemical reactions matter.</p>
+</details><h3 id="verify-stagnation-enthalpy">Verify stagnation enthalpy</h3>
+<p>Check the total-temperature conservation at <span class="math-inline">\(M_1=2\)</span> using <span class="math-inline">\(M_2^2=1/3\)</span> and <span class="math-inline">\(T_2/T_1=1.6875\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The upstream total temperature is <span class="math-inline">\(T_1(1+0.2\times4)=1.8T_1\)</span>. The downstream value is <span class="math-inline">\(1.6875T_1(1+0.2/3)=1.8T_1\)</span>. The static temperature rise draws on kinetic energy as the stream slows.</p>
+</details><h3 id="distinguish-cooling-from-shock-loss">Distinguish cooling from shock loss</h3>
+<p>Give a criterion for deciding whether a measured total pressure drop in a duct can be interpreted by <span class="math-inline">\(s_2-s_1=-R\ln(p_{t2}/p_{t1})\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Measure the stagnation temperatures or justify their equality from negligible heat, shaft work, and elevation change. The stated formula also assumes fixed composition and the ideal-gas entropy relation. If <span class="math-inline">\(T_{t2}\)</span> differs from <span class="math-inline">\(T_{t1}\)</span>, include <span class="math-inline">\(c_p\ln(T_{t2}/T_{t1})\)</span> for constant <span class="math-inline">\(c_p\)</span>. Entropy rise then combines entropy transfer with any generation inside the selected boundary.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-20-compressible-flow-and-stagnation.html"><span>Previous</span>Compressible flow and the stagnation state</a><a rel="next" href="chapter-22-nozzle-geometry-and-choking.html"><span>Next</span>Nozzle geometry, choking, and back pressure</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

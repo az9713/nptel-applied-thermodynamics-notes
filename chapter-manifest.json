@@ -1,0 +1,354 @@
+{
+  "course": "Applied Thermodynamics",
+  "chapter_count": 23,
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Entropy balances for open systems",
+      "summary": "Track entropy carried by heat and flowing matter, identify irreversibility, and test whether a proposed operating state is admissible.",
+      "lectures": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lecture_label": "1, 2, 3, 4",
+      "source": "https://www.youtube.com/watch?v=h_LAfSgddUw",
+      "file": "chapter-01-control-volume-entropy.html",
+      "content": "content/chapter-01-control-volume-entropy.md",
+      "sha256": "610161f29192bd27e0a0a311048f90bc257d6a39b482fc26fae395b1b6e7f82d"
+    },
+    {
+      "number": 2,
+      "title": "Reversible Steady-Flow Work",
+      "summary": "Derive the pressure integral for shaft work, compare compression paths, and use both thermodynamic laws to test real equipment.",
+      "lectures": [
+        5,
+        6,
+        7
+      ],
+      "lecture_label": "5–7",
+      "source": "https://www.youtube.com/watch?v=rLxnEV4MLps",
+      "file": "chapter-02-reversible-steady-flow-work.html",
+      "content": "content/chapter-02-reversible-steady-flow-work.md",
+      "sha256": "07f98e79f8df03479f87a386387f104148a1b1d74761aa99628b1087242652f1"
+    },
+    {
+      "number": 3,
+      "title": "Entropy balances in thermal equipment",
+      "summary": "Close the mass and energy accounts before interpreting the entropy residual in condensers, mixers, nozzles, and coupled devices.",
+      "lectures": [
+        8,
+        9,
+        10
+      ],
+      "lecture_label": "8–10",
+      "source": "https://www.youtube.com/watch?v=-lDtRFxhCuM",
+      "file": "chapter-03-entropy-balances-in-thermal-equipment.html",
+      "content": "content/chapter-03-entropy-balances-in-thermal-equipment.md",
+      "sha256": "8ef1d26704c01c8fecf319b4ce529bcc333c6757e0036ff5e85df9fa5ef9c182"
+    },
+    {
+      "number": 4,
+      "title": "Work and irreversibility in flow equipment",
+      "summary": "Compare actual and reversible reference processes for diffusers, compressors, nozzles, linked shafts, and blowdown.",
+      "lectures": [
+        11,
+        12,
+        13
+      ],
+      "lecture_label": "11–13",
+      "source": "https://www.youtube.com/watch?v=L3pg5PPob_I",
+      "file": "chapter-04-work-and-irreversibility-tutorials.html",
+      "content": "content/chapter-04-work-and-irreversibility-tutorials.md",
+      "sha256": "6ee9c07316fb79892ed95d41ba09ae79c461374a6d19e40e58eac837dc78eb56"
+    },
+    {
+      "number": 5,
+      "title": "Exergy and the reference environment",
+      "summary": "Derive closed-system availability, distinguish work transfer from energy transfer, and quantify the work lost to entropy generation.",
+      "lectures": [
+        14,
+        15,
+        16
+      ],
+      "lecture_label": "14–16",
+      "source": "https://www.youtube.com/watch?v=vvBkCJtw1rI",
+      "file": "chapter-05-exergy-and-the-reference-environment.html",
+      "content": "content/chapter-05-exergy-and-the-reference-environment.md",
+      "sha256": "4cf499fd025287c79277d405cae96d5f3e0aa684bfdbd29f231e9d56e7063dde"
+    },
+    {
+      "number": 6,
+      "title": "Flow exergy and useful output",
+      "summary": "Derive stream availability and apply one exergy account to compressors, turbines, feedwater heaters, and heat engines.",
+      "lectures": [
+        17,
+        18
+      ],
+      "lecture_label": "17–18",
+      "source": "https://www.youtube.com/watch?v=M2PWao2pvsI",
+      "file": "chapter-06-flow-exergy-and-the-exergy-balance.html",
+      "content": "content/chapter-06-flow-exergy-and-the-exergy-balance.md",
+      "sha256": "de6d7f5dcef415b1f856fa8d720f91ae91fc9e00a3074aa4614629ab8b96d1cb"
+    },
+    {
+      "number": 7,
+      "title": "Exergy of closed systems",
+      "summary": "Apply the closed-system exergy balance to compression, phase changes, internal equilibration, and moving pistons, then compare the flow tutorial cases.",
+      "lectures": [
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "lecture_label": "19–23",
+      "source": "https://www.youtube.com/watch?v=8unoXVZtbdg",
+      "file": "chapter-07-exergy-of-closed-systems.html",
+      "content": "content/chapter-07-exergy-of-closed-systems.md",
+      "sha256": "7176f38bcbf03f1d2ae115ce1184f1fd6408415c6784c628b1e693ba0622360b"
+    },
+    {
+      "number": 8,
+      "title": "Exergy of steady and transient control volumes",
+      "summary": "Identify the exergy resource and useful product in heaters, turbines, chillers, and changing-mass vessels.",
+      "lectures": [
+        24,
+        25,
+        26
+      ],
+      "lecture_label": "24–26",
+      "source": "https://www.youtube.com/watch?v=Y2AbiUZc4wg",
+      "file": "chapter-08-exergy-of-control-volumes.html",
+      "content": "content/chapter-08-exergy-of-control-volumes.md",
+      "sha256": "9b1e97675d8ac8649482905d9c282ea75304284ba328e9999bf0869ca6a3f9fc"
+    },
+    {
+      "number": 9,
+      "title": "Rankine Cycles",
+      "summary": "Reconstruct a steam power cycle, distinguish moisture and efficiency constraints, and quantify how feedwater heating and reheat change the balance.",
+      "lectures": [
+        27,
+        28,
+        29
+      ],
+      "lecture_label": "27–29",
+      "source": "https://www.youtube.com/watch?v=TJVk37kchOA",
+      "file": "chapter-09-rankine-cycles.html",
+      "content": "content/chapter-09-rankine-cycles.md",
+      "sha256": "63e9abd8fc596e8813a02241a31230042712211782ce77807be6d9c99589bb44"
+    },
+    {
+      "number": 10,
+      "title": "Brayton Cycles",
+      "summary": "Derive the ideal gas-turbine cycle, find its maximum-work pressure ratio, and quantify how actual components and variable heat capacity change the result.",
+      "lectures": [
+        30,
+        31,
+        32
+      ],
+      "lecture_label": "30–32",
+      "source": "https://www.youtube.com/watch?v=0HNZF9aFC1o",
+      "file": "chapter-10-brayton-cycles.html",
+      "content": "content/chapter-10-brayton-cycles.md",
+      "sha256": "06756c4d035fb3f46b3f091efd7e43bb705b70f634f15178c9e7d75a7e473ba5"
+    },
+    {
+      "number": 11,
+      "title": "Modified Brayton Cycles",
+      "summary": "Quantify how intercooling, reheat, and regeneration interact at fixed compressor inlet temperature, turbine inlet temperature, and overall pressure ratio.",
+      "lectures": [
+        33,
+        34
+      ],
+      "lecture_label": "33–34",
+      "source": "https://www.youtube.com/watch?v=tbbWu9G-9MY",
+      "file": "chapter-11-modified-brayton-cycles.html",
+      "content": "content/chapter-11-modified-brayton-cycles.md",
+      "sha256": "00e203fe77e18520b6f1c1f5e2118fc42c3fd846171e4fe411269f795cda7eff"
+    },
+    {
+      "number": 12,
+      "title": "Otto and Diesel Cycles",
+      "summary": "Compare ideal spark-ignition and compression-ignition cycles under shared temperature and compression constraints, then relate work to cylinder displacement.",
+      "lectures": [
+        35,
+        36,
+        37
+      ],
+      "lecture_label": "35–37",
+      "source": "https://www.youtube.com/watch?v=RPXchZmvO0A",
+      "file": "chapter-12-otto-and-diesel-cycles.html",
+      "content": "content/chapter-12-otto-and-diesel-cycles.md",
+      "sha256": "ad68670ebd537641f0f1bd4fbbf543d63d118ae4d7b63b82d3cebee59427b10a"
+    },
+    {
+      "number": 13,
+      "title": "Vapor-Compression Refrigeration",
+      "summary": "Reconstruct a vapor-compression cycle from its enthalpies, quantify compressor and exchanger penalties, and separate refrigeration duty from power.",
+      "lectures": [
+        38
+      ],
+      "lecture_label": "38",
+      "source": "https://www.youtube.com/watch?v=zl-D7nlr_NY",
+      "file": "chapter-13-vapor-compression-refrigeration.html",
+      "content": "content/chapter-13-vapor-compression-refrigeration.md",
+      "sha256": "a28acf00f0a4ac3b7f76edea3be1c1524552882e84d0effda93cd9b3d5b7e441"
+    },
+    {
+      "number": 14,
+      "title": "Properties of Moist Air",
+      "summary": "Derive humidity ratio, dew point, and enthalpy on a dry-air mass basis, then use phase equilibrium to locate condensation.",
+      "lectures": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "lecture_label": "39–42",
+      "source": "https://www.youtube.com/watch?v=es-2LA2bsu4",
+      "file": "chapter-14-properties-of-moist-air.html",
+      "content": "content/chapter-14-properties-of-moist-air.md",
+      "sha256": "973558eb66a3c64d56731417baaecc5ce06ebfdc38df99b7e627fa61b8201f8c"
+    },
+    {
+      "number": 15,
+      "title": "Psychrometric Paths",
+      "summary": "Read a pressure-specific chart and use water and energy balances for cooling, reheating, mixing, drying, and towers.",
+      "lectures": [
+        73,
+        44,
+        45
+      ],
+      "lecture_label": "73, 44–45",
+      "source": "https://www.youtube.com/watch?v=IVz3N68fF1c",
+      "file": "chapter-15-psychrometric-paths.html",
+      "content": "content/chapter-15-psychrometric-paths.md",
+      "sha256": "1ceec1af0937830e3e4a0d37f3cf92d0417984b60be61251c564d441687df965"
+    },
+    {
+      "number": 16,
+      "title": "Air-Conditioning Tutorials",
+      "summary": "Infer state from dew point, test if a coil can stay dry, and distinguish liquid make-up from total water circulation.",
+      "lectures": [
+        46,
+        47,
+        48,
+        49
+      ],
+      "lecture_label": "46–49",
+      "source": "https://www.youtube.com/watch?v=srqc4eXwM8Y",
+      "file": "chapter-16-air-conditioning-tutorials.html",
+      "content": "content/chapter-16-air-conditioning-tutorials.md",
+      "sha256": "97dee6c7d8dfd9cb9763ed7df0f06eca22024324d9eddc549842d6cdfc7dd857"
+    },
+    {
+      "number": 17,
+      "title": "Combustion Thermodynamics",
+      "summary": "Balance reacting mixtures, compare heating values on a common water reference, and formulate the combustor energy and entropy balances.",
+      "lectures": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "lecture_label": "50–53",
+      "source": "https://www.youtube.com/watch?v=zn4DDSNWeUA",
+      "file": "chapter-17-combustion-thermodynamics.html",
+      "content": "content/chapter-17-combustion-thermodynamics.md",
+      "sha256": "ff7e16f63581e83159f0ff3aeae5f6d2b2d64e395aaffc4da24c5e61a63a6398"
+    },
+    {
+      "number": 18,
+      "title": "Combustion Stoichiometry Tutorials",
+      "summary": "Use explicit species assumptions to solve rich combustion, analyze exhaust composition, and infer an equivalence ratio from mass flows.",
+      "lectures": [
+        54,
+        55
+      ],
+      "lecture_label": "54–55",
+      "source": "https://www.youtube.com/watch?v=ml1fhdGuMc0",
+      "file": "chapter-18-combustion-stoichiometry-tutorials.html",
+      "content": "content/chapter-18-combustion-stoichiometry-tutorials.md",
+      "sha256": "df4dc2562f895a142bfa3e7fc0bf8d2f7ad0c0b3f81425e6c1255f57c211c482"
+    },
+    {
+      "number": 19,
+      "title": "Combustion Energy Tutorials",
+      "summary": "Reconcile heat release with exhaust conditions, estimate frozen flame temperature, and close a reacting equilibrium model.",
+      "lectures": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "lecture_label": "56–60",
+      "source": "https://www.youtube.com/watch?v=32K6nWIdvwc",
+      "file": "chapter-19-combustion-energy-tutorials.html",
+      "content": "content/chapter-19-combustion-energy-tutorials.md",
+      "sha256": "f675fc3c8d5d6f07ed3b7296961c9e4664d7e9d399441ef7a11fdd0b1ba604f6"
+    },
+    {
+      "number": 20,
+      "title": "Compressible flow and the stagnation state",
+      "summary": "Derive the acoustic speed, evaluate density changes, and connect local and stagnation properties.",
+      "lectures": [
+        61,
+        62,
+        63
+      ],
+      "lecture_label": "61–63",
+      "source": "https://www.youtube.com/watch?v=QC2PLN5D3wo",
+      "file": "chapter-20-compressible-flow-and-stagnation.html",
+      "content": "content/chapter-20-compressible-flow-and-stagnation.md",
+      "sha256": "ebc2585a6a15e9f12bb1bab7df5aaec9bf985a01089eb9ae10f0e3b110acf0cc"
+    },
+    {
+      "number": 21,
+      "title": "Stagnation pressure and normal shocks",
+      "summary": "Use energy and entropy to explain stagnation-pressure changes and derive the compressive shock solution.",
+      "lectures": [
+        64,
+        65,
+        66
+      ],
+      "lecture_label": "64–66",
+      "source": "https://www.youtube.com/watch?v=PNRiUi9Brtw",
+      "file": "chapter-21-stagnation-pressure-and-shocks.html",
+      "content": "content/chapter-21-stagnation-pressure-and-shocks.md",
+      "sha256": "d95c1db9e97ffd02ff8bc8a8c1efeb405aa7c53d279d085ef1ef059b7e24fad3"
+    },
+    {
+      "number": 22,
+      "title": "Nozzle geometry, choking, and back pressure",
+      "summary": "Derive the area–Mach relation and determine how back pressure selects among nozzle flow regimes.",
+      "lectures": [
+        67,
+        68,
+        69
+      ],
+      "lecture_label": "67–69",
+      "source": "https://www.youtube.com/watch?v=ttqqNQSlHZU",
+      "file": "chapter-22-nozzle-geometry-and-choking.html",
+      "content": "content/chapter-22-nozzle-geometry-and-choking.md",
+      "sha256": "0eee4babbbe4d024fe08c47cdd26d50c652cf67f63b9dd2aca183e55effa39bf"
+    },
+    {
+      "number": 23,
+      "title": "Air and steam nozzle calculations",
+      "summary": "Locate a normal shock from back pressure and adapt the nozzle balances to steam properties.",
+      "lectures": [
+        70,
+        71,
+        72
+      ],
+      "lecture_label": "70–72",
+      "source": "https://www.youtube.com/watch?v=HqYbWMEqE-4",
+      "file": "chapter-23-air-and-steam-nozzle-calculations.html",
+      "content": "content/chapter-23-air-and-steam-nozzle-calculations.md",
+      "sha256": "5ece61a740c6b0c283b4a1c9a17d66858d2a0e742d2baa6786045c10106a1e14"
+    }
+  ]
+}

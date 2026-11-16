@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reconcile heat release with exhaust conditions, estimate frozen flame temperature, and close a reacting equilibrium model.">
+  <meta name="color-scheme" content="dark light">
+  <title>Combustion Energy Tutorials · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#separate-chemical-and-sensible-contributions">Separate chemical and sensible contributions</a></li>
+<li><a href="#estimate-a-flame-temperature-without-dissociation">Estimate a flame temperature without dissociation</a></li>
+<li><a href="#solve-dissociation-with-dimensionless-activities">Solve dissociation with dimensionless activities</a></li>
+<li><a href="#supply-the-missing-equation-in-a-rich-product-model">Supply the missing equation in a rich-product model</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#change-the-pressure-at-fixed-temperature">Change the pressure at fixed temperature</a></li>
+<li><a href="#know-when-the-pressure-factor-cancels">Know when the pressure factor cancels</a></li>
+<li><a href="#compare-equal-temperature-rigid-and-flow-endpoints">Compare equal-temperature rigid and flow endpoints</a></li>
+<li><a href="#solve-a-fixed-temperature-watergas-shift-teaching-model">Solve a fixed-temperature water–gas shift teaching model</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html" aria-current="page"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 19 · Lectures 56–60</p>
+        <h1>Combustion Energy Tutorials</h1>
+        <p class="lead">Reconcile heat release with exhaust conditions, estimate frozen flame temperature, and close a reacting equilibrium model.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=32K6nWIdvwc">56. Tutorial 10 - Heat and temperature calculations in combustion - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=lJIyU7cwtQ8">57. Tutorial 10 - Heat and temperature calculations in combustion - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=kXMpQ7zVwvw">58. Tutorial 10 - Heat and temperature calculations in combustion - Part 3</a></li><li><a href="https://www.youtube.com/watch?v=TZAhb1KaZPs">59. Tutorial 10 - Heat and temperature calculations in combustion - Part 4</a></li><li><a href="https://www.youtube.com/watch?v=dW7RnzgzEi0">60. Tutorial 10 - Heat and temperature calculations in combustion - Part 5</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>At fixed fuel input, a hot stack can deliver less recovered heat than a cooler stack. The comparison also depends on how much chemical energy remains in species such as carbon monoxide. The same enthalpy balance exposes both effects once the species amounts and phases are fixed.</p>
+<h2 id="separate-chemical-and-sensible-contributions">Separate chemical and sensible contributions</h2>
+<p>Using the rich ethanol products of Chapter 18, substitute the computed amounts into the steady-flow enthalpy sum. At inlet and outlet reference conditions, the result is the reaction enthalpy for those products. If the outlet is hotter, add each product's sensible rise to that reference result. If the product contains CO, the conversion of some carbon to CO rather than <span class="math-inline">\(\mathrm{CO_2}\)</span> leaves about <span class="math-inline">\(282.98\)</span> kJ per mole CO of potential further heat release at 298.15 K with oxygen available. This number is the magnitude of <span class="math-inline">\(\Delta_f\bar h^\circ_{\mathrm{CO_2}}-\Delta_f\bar h^\circ_{\mathrm{CO}}\)</span> using <span class="math-inline">\(-393.51\)</span> and <span class="math-inline">\(-110.53\)</span> kJ/mol. It isolates the contribution of those carbon species. <a href="https://www.youtube.com/watch?v=32K6nWIdvwc&amp;t=20">Tutorial 10 Part 1 · Rich ethanol and hot products</a> · <a href="https://webbook.nist.gov/cgi/cbook.cgi?ID=C630080&amp;Mask=1">NIST carbon monoxide</a></p>
+<p>For a rigid closed vessel, use <span class="math-inline">\(Q=U_2-U_1\)</span> if all work is zero and external energy changes are negligible. As a reference-temperature example, react 2 kmol graphite with 2 kmol <span class="math-inline">\(\mathrm{O_2}\)</span> to form 2 kmol <span class="math-inline">\(\mathrm{CO_2}\)</span>. Assuming ideal gases and negligible <span class="math-inline">\(pV\)</span> of graphite, <span class="math-inline">\(U=H-n_g\bar RT\)</span> for conversion between total energy and enthalpy at each endpoint. The gas mole number and temperature match at the endpoints, so <span class="math-inline">\(Q\simeq-787.02\)</span> MJ. For other reactions or endpoint temperatures, retain the <span class="math-inline">\(n_g\bar RT\)</span> correction. For adiabatic steady-flow dilution, instead use the enthalpies of the fuel and oxidizer at their own inlet temperatures and constrain the product temperature to solve for the needed air rate. <a href="https://www.youtube.com/watch?v=lJIyU7cwtQ8&amp;t=20">Tutorial 10 Part 2 · Rigid vessel and air requirement</a></p>
+<h2 id="estimate-a-flame-temperature-without-dissociation">Estimate a flame temperature without dissociation</h2>
+<p>For a transparent approximation, take methane and dry air at 298.15 K, complete combustion at <span class="math-inline">\(\lambda\ge1\)</span>, all product water vapor, and positive mean molar heat capacities. For <span class="math-inline">\(\mathrm{CO_2}\)</span>, <span class="math-inline">\(\mathrm{H_2O}\)</span>, <span class="math-inline">\(\mathrm{N_2}\)</span> and <span class="math-inline">\(\mathrm{O_2}\)</span> take 0.054, 0.044, 0.034 and 0.035 kJ/(mol K). These are stipulated approximations for this exercise. Then</p>
+<p><span class="math-display">\[
+T_{\rm out}=298.15+
+\frac{802.3}{0.054+2(0.044)+7.52\lambda(0.034)+2(\lambda-1)(0.035)}.
+\]</span></p>
+<p>The temperatures are about 2316 K at <span class="math-inline">\(\lambda=1\)</span> and 1730 K at <span class="math-inline">\(\lambda=1.5\)</span>. The model keeps product composition frozen at the assumed complete-combustion amounts and spreads the same chemical energy over more gas at the higher air rate. An accurate calculation uses species enthalpy functions and admits equilibrium dissociation where appropriate. A sealed adiabatic rigid vessel instead holds total internal energy constant. <a href="https://www.youtube.com/watch?v=kXMpQ7zVwvw&amp;t=620">Tutorial 10 Part 3 · Flame-temperature models</a></p>
+<h2 id="solve-dissociation-with-dimensionless-activities">Solve dissociation with dimensionless activities</h2>
+<p>At fixed <span class="math-inline">\(T\)</span> and <span class="math-inline">\(p\)</span>, start with one mole <span class="math-inline">\(\mathrm{O_2}\)</span>. Let <span class="math-inline">\(\alpha\)</span> be the fraction dissociated in <span class="math-inline">\(\mathrm{O_2}\rightleftharpoons2\mathrm O\)</span>. The mixture has <span class="math-inline">\(1-\alpha\)</span> moles <span class="math-inline">\(\mathrm{O_2}\)</span> and <span class="math-inline">\(2\alpha\)</span> moles <span class="math-inline">\(\mathrm O\)</span>, for total <span class="math-inline">\(1+\alpha\)</span>. For ideal gases let each activity be <span class="math-inline">\(y_i p/p^\circ\)</span> with reference pressure <span class="math-inline">\(p^\circ\)</span>. Use <span class="math-inline">\(\Delta_r\bar g^\circ\)</span> for the standard molar Gibbs energy change of the reaction at <span class="math-inline">\(T\)</span>, evaluated for the stated stoichiometry. The dimensionless equilibrium constant <span class="math-inline">\(K_p\)</span> then satisfies</p>
+<p><span class="math-display">\[
+K_p=\exp[-\Delta_r\bar g^\circ/(\bar RT)]
+=\frac{(y_{\mathrm O}p/p^\circ)^2}{y_{\mathrm{O_2}}p/p^\circ}
+=\frac{4\alpha^2}{1-\alpha^2}\frac{p}{p^\circ}.
+\]</span></p>
+<p>With illustrative <span class="math-inline">\(K_p=0.0126\)</span> and <span class="math-inline">\(p=p^\circ\)</span>, <span class="math-inline">\(\alpha=\sqrt{K_p/(4+K_p)}\simeq0.0560\)</span>. The residual molecular-oxygen mole fraction is about 0.894. A higher pressure at the same temperature lowers the dissociated fraction for this reaction, which increases total moles. Factors of <span class="math-inline">\(p/p^\circ\)</span> maintain a dimensionless <span class="math-inline">\(K_p\)</span> and encode the pressure effect. <a href="https://www.youtube.com/watch?v=TZAhb1KaZPs&amp;t=1800">Tutorial 10 Part 4 · Oxygen dissociation</a></p>
+<h2 id="supply-the-missing-equation-in-a-rich-product-model">Supply the missing equation in a rich-product model</h2>
+<p>For a restricted rich decane model permitting <span class="math-inline">\(\mathrm{CO_2}\)</span>, <span class="math-inline">\(\mathrm{CO}\)</span>, <span class="math-inline">\(\mathrm{H_2O}\)</span> and <span class="math-inline">\(\mathrm{H_2}\)</span> plus inert nitrogen, three element balances constrain four reactive species amounts. The water–gas shift relation <span class="math-inline">\(\mathrm{CO+H_2O}\rightleftharpoons\mathrm{CO_2+H_2}\)</span> provides a fourth equation if equilibrium at a specified temperature is assumed. Its ideal-gas equilibrium quotient is <span class="math-inline">\(y_{\mathrm{CO_2}}y_{\mathrm{H_2}}/(y_{\mathrm{CO}}y_{\mathrm{H_2O}})\)</span> because <span class="math-inline">\(\Delta\nu=0\)</span>. Solve inside bounds that keep each species amount nonnegative. The calculated composition depends on the allowed species set, especially when radicals or additional species become appreciable. <a href="https://www.youtube.com/watch?v=dW7RnzgzEi0&amp;t=20">Tutorial 10 Part 5 · Rich combustion equilibrium</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_19.py">Python laboratory</a>. It evaluates the frozen-temperature estimates and solves the oxygen dissociation example, checking the enthalpy and equilibrium residuals.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="change-the-pressure-at-fixed-temperature">Change the pressure at fixed temperature</h3>
+<p>Increase the oxygen dissociation pressure to <span class="math-inline">\(2p^\circ\)</span> and hold <span class="math-inline">\(K_p=0.0126\)</span>. What happens to <span class="math-inline">\(\alpha\)</span>?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Set <span class="math-inline">\(\alpha=\sqrt{0.0126/(8+0.0126)}=0.0397\)</span>. Higher pressure favors the smaller mole-number side, decreasing the dissociation fraction from 5.60% to 3.97%.</p>
+</details><h3 id="know-when-the-pressure-factor-cancels">Know when the pressure factor cancels</h3>
+<p>Can you use the oxygen dissociation quotient and the water–gas shift quotient with every partial pressure measured in kPa and ignore <span class="math-inline">\(p^\circ\)</span>?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> In the ideal water–gas shift quotient, the pressure units and powers of <span class="math-inline">\(p^\circ\)</span> cancel between two gas moles on either side. In oxygen dissociation there is one extra pressure factor in the numerator, so use <span class="math-inline">\(p_i/p^\circ\)</span> with the same units in both. The standard Gibbs energy defines the reference for that dimensionless equilibrium quotient.</p>
+</details><h3 id="compare-equal-temperature-rigid-and-flow-endpoints">Compare equal-temperature rigid and flow endpoints</h3>
+<p>At 298.15 K consider one mole methane and enough oxygen for complete oxidation to <span class="math-inline">\(\mathrm{CO_2(g)+2H_2O(l)}\)</span>. Both the reactants and products are evaluated at that temperature. With ideal gases and negligible liquid volume, compute <span class="math-inline">\(Q_{\rm rigid}-Q_{\rm steady}\)</span> for a rigid closed batch with no other work and a steady-flow device with no shaft work.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The gas inventory drops from 3 to 1 mol, so <span class="math-inline">\(\Delta n_g=-2\)</span>. The batch heat is <span class="math-inline">\(\Delta U=\Delta H-\Delta n_g\bar RT\)</span>. The flow heat is <span class="math-inline">\(\Delta H\)</span>, so <span class="math-inline">\(Q_{\rm rigid}-Q_{\rm steady}=2\bar RT\approx4.96\)</span> kJ/mol fuel. The batch heat entering is less negative, or the released heat has lower magnitude, by that amount.</p>
+</details><h3 id="solve-a-fixed-temperature-watergas-shift-teaching-model">Solve a fixed-temperature water–gas shift teaching model</h3>
+<p>Start with 1 mol CO and 1 mol water vapor. Allow only the water–gas shift reaction and take its dimensionless equilibrium constant in the stated direction to be 4 at the imposed temperature. Find the equilibrium extent.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> At extent <span class="math-inline">\(\xi\)</span>, both reactants have <span class="math-inline">\(1-\xi\)</span> mol and both products have <span class="math-inline">\(\xi\)</span> mol. Total moles and pressure cancel from the quotient, so <span class="math-inline">\(4=\xi^2/(1-\xi)^2\)</span>. On <span class="math-inline">\(0&lt;\xi&lt;1\)</span>, this gives <span class="math-inline">\(\xi=2/3\)</span> mol and keeps every species nonnegative.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-18-combustion-stoichiometry-tutorials.html"><span>Previous</span>Combustion Stoichiometry Tutorials</a><a rel="next" href="chapter-20-compressible-flow-and-stagnation.html"><span>Next</span>Compressible flow and the stagnation state</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

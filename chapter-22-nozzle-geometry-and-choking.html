@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive the area–Mach relation and determine how back pressure selects among nozzle flow regimes.">
+  <meta name="color-scheme" content="dark light">
+  <title>Nozzle geometry, choking, and back pressure · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#geometry-enters-the-continuity-equation-part-7-440">Geometry enters the continuity equation Part 7 · 4:40</a></li>
+<li><a href="#derive-the-areamach-relation-part-7-2140">Derive the area–Mach relation Part 7 · 21:40</a></li>
+<li><a href="#select-the-operating-regime-of-a-convergent-nozzle-part-8-000">Select the operating regime of a convergent nozzle Part 8 · 0:00</a></li>
+<li><a href="#select-the-branch-in-a-convergentdivergent-nozzle-part-9-000">Select the branch in a convergent–divergent nozzle Part 9 · 0:00</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#problems-with-worked-solutions">Problems with worked solutions</a><ul>
+<li><a href="#predict-the-speed-change-without-solving-for-it">Predict the speed change without solving for it</a></li>
+<li><a href="#use-the-throat-as-a-flow-meter">Use the throat as a flow meter</a></li>
+<li><a href="#compare-two-critical-pressures">Compare two critical pressures</a></li>
+<li><a href="#determine-the-sign-of-the-plume-pressure-adjustment">Determine the sign of the plume pressure adjustment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html" aria-current="page"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 22 · Lectures 67–69</p>
+        <h1>Nozzle geometry, choking, and back pressure</h1>
+        <p class="lead">Derive the area–Mach relation and determine how back pressure selects among nozzle flow regimes.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=ttqqNQSlHZU">67. Compressible flow through nozzles - Part 7</a></li><li><a href="https://www.youtube.com/watch?v=YnNOu_jKw0U">68. Compressible flow through nozzles - Part 8</a></li><li><a href="https://www.youtube.com/watch?v=YdRVgLekod8">69. Compressible flow through nozzles - Part 9</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>An air reservoir supplies a duct with a converging entrance, a rounded throat, and a diverging outlet. At high exhaust pressure the diverging section slows the air. Once the throat is sonic, the same section can accelerate air to supersonic speed. Geometry alone cannot determine which result the test stand delivers. The reservoir state and exit boundary select the branch.</p>
+<h2 id="geometry-enters-the-continuity-equation-part-7-440">Geometry enters the continuity equation <a href="https://www.youtube.com/watch?v=ttqqNQSlHZU&amp;t=280s">Part 7 · 4:40</a></h2>
+<p>Let <span class="math-inline">\(A\)</span> be area normal to the stream, <span class="math-inline">\(C\)</span> axial speed, <span class="math-inline">\(\rho\)</span> mass density, and <span class="math-inline">\(p\)</span> absolute pressure. A quasi-one-dimensional model treats these flow quantities as nearly uniform on each cross section and lets them vary along the axis. Use steady, adiabatic, inviscid flow with negligible shaft work and gravity. In smooth flow entropy is constant. The resulting energy equation is <span class="math-inline">\(dh+C\,dC=0\)</span>, where <span class="math-inline">\(h\)</span> is specific enthalpy in J/kg. The thermodynamic identity <span class="math-inline">\(dh=T\,ds+dp/\rho\)</span> therefore gives <span class="math-inline">\(dp=-\rho C\,dC\)</span> on a smooth isentropic segment.</p>
+<p>With <span class="math-inline">\(\dot m=\rho C A\)</span> constant, differentiate its logarithm to obtain <span class="math-inline">\(d\rho/\rho+dC/C+dA/A=0\)</span>. Substituting <span class="math-inline">\(d\rho=dp/a^2\)</span> with <span class="math-inline">\(a^2=(\partial p/\partial\rho)_s\)</span> gives</p>
+<p><span class="math-display">\[
+\frac{dA}{A}=(M^2-1)\frac{dC}{C},\qquad M=C/a.
+\]</span></p>
+<p>For <span class="math-inline">\(M&lt;1\)</span> a decreasing area accelerates the fluid. For <span class="math-inline">\(M&gt;1\)</span> the derivative has the opposite sign. The relation holds for a real-fluid isentrope with a suitable acoustic speed. It does not apply across a shock. At a sonic section with finite derivatives, <span class="math-inline">\(dA=0\)</span>. A smooth transition between the two branches requires a local minimum of area in the ideal-gas model. The geometric minimum can also have subsonic velocity if the downstream load never demands enough flow to reach <span class="math-inline">\(M=1\)</span>. <a href="https://www.youtube.com/watch?v=ttqqNQSlHZU&amp;t=600s">Part 7 · 10:00</a></p>
+<h2 id="derive-the-areamach-relation-part-7-2140">Derive the area–Mach relation <a href="https://www.youtube.com/watch?v=ttqqNQSlHZU&amp;t=1300s">Part 7 · 21:40</a></h2>
+<p>For ideal air with constant specific heat ratio <span class="math-inline">\(\gamma\)</span> and specific gas constant <span class="math-inline">\(R\)</span>, use the stagnation pressure <span class="math-inline">\(p_t\)</span> and temperature <span class="math-inline">\(T_t\)</span> of the smooth segment. The static temperature is <span class="math-inline">\(T=T_t/[1+(\gamma-1)M^2/2]\)</span>. The pressure is <span class="math-inline">\(p=p_t(T/T_t)^{\gamma/(\gamma-1)}\)</span>. Combining these with <span class="math-inline">\(\rho=p/(RT)\)</span> and <span class="math-inline">\(C=M\sqrt{\gamma RT}\)</span> gives</p>
+<p><span class="math-display">\[
+\frac{\dot m}{A}
+=\frac{p_t}{\sqrt{T_t}}\sqrt{\frac{\gamma}{R}}\,
+M\left(1+\frac{\gamma-1}{2}M^2\right)^{-(\gamma+1)/(2(\gamma-1))}.
+\]</span></p>
+<p>At fixed <span class="math-inline">\(p_t,T_t\)</span>, the logarithmic derivative of the Mach-dependent factor equals <span class="math-inline">\((1-M^2)/[M(1+(\gamma-1)M^2/2)]\)</span>. It changes sign at <span class="math-inline">\(M=1\)</span>, giving a maximum mass flux there. Let <span class="math-inline">\(A^*\)</span> denote the area that would carry the same mass flow at Mach 1 on this isentrope, even when such a section is hypothetical. Dividing the sonic mass flux by the flux at <span class="math-inline">\(M\)</span> gives</p>
+<p><span class="math-display">\[
+\frac{A}{A^*}=\frac{1}{M}
+\left[\frac{2+(\gamma-1)M^2}{\gamma+1}\right]^{(\gamma+1)/(2(\gamma-1))}.
+\]</span></p>
+<p>With <span class="math-inline">\(\gamma=1.4\)</span> and <span class="math-inline">\(A/A^*=2\)</span>, the two Mach roots are 0.30590 and 2.19720. Their static pressures are respectively 0.93716 and 0.09393 times <span class="math-inline">\(p_t\)</span>. Once the actual throat is sonic, its area <span class="math-inline">\(A_t\)</span> equals <span class="math-inline">\(A^*\)</span> for the upstream isentrope. With fixed upstream total state, the mass flow is choked and further lowering back pressure cannot increase it. The choked mass flux at <span class="math-inline">\(p_t=300\)</span> kPa and <span class="math-inline">\(T_t=300\)</span> K is 700.07 kg/(m² s) for <span class="math-inline">\(R=287\)</span> J/(kg K). <a href="https://www.grc.nasa.gov/www/BGH/mflchk.html">NASA Glenn, mass flow choking</a></p>
+<p><img alt="The area–Mach curve has its minimum at Mach 1. An area ratio of 2 crosses it below and above Mach 1." src="figures/area-mach.png" /></p>
+<h2 id="select-the-operating-regime-of-a-convergent-nozzle-part-8-000">Select the operating regime of a convergent nozzle <a href="https://www.youtube.com/watch?v=YnNOu_jKw0U&amp;t=0s">Part 8 · 0:00</a></h2>
+<p>Let <span class="math-inline">\(p_b\)</span> denote the back pressure imposed by the receiving region, and <span class="math-inline">\(p_e\)</span> the exit static pressure. A convergent nozzle with a subsonic reservoir-fed stream initially runs subsonic. In the one-dimensional model <span class="math-inline">\(p_e=p_b\)</span>. Lowering <span class="math-inline">\(p_b\)</span> increases <span class="math-inline">\(\dot m\)</span> until sonic speed occurs at the outlet. The critical pressure ratio is</p>
+<p><span class="math-display">\[
+\frac{p^*}{p_t}=\left(\frac{2}{\gamma+1}\right)^{\gamma/(\gamma-1)}.
+\]</span></p>
+<p>For <span class="math-inline">\(\gamma=1.4\)</span> this ratio is 0.52828, so with <span class="math-inline">\(p_t=300\)</span> kPa the first sonic outlet is at 158.48 kPa. At a still lower back pressure the exit remains sonic and <span class="math-inline">\(p_e=p^*&gt;p_b\)</span>. The jet is underexpanded and adjusts outside the nozzle. Alternating regions of expansion and compression can form a visible shock-cell pattern. Varying <span class="math-inline">\(p_t\)</span> at fixed <span class="math-inline">\(p_b\)</span> also drives the flow through these regimes, but even in the choked state the mass-flow formula continues to depend on the changed upstream <span class="math-inline">\(p_t/\sqrt{T_t}\)</span>. <a href="https://www.youtube.com/watch?v=YnNOu_jKw0U&amp;t=720s">Part 8 · 12:00</a></p>
+<h2 id="select-the-branch-in-a-convergentdivergent-nozzle-part-9-000">Select the branch in a convergent–divergent nozzle <a href="https://www.youtube.com/watch?v=YdRVgLekod8&amp;t=0s">Part 9 · 0:00</a></h2>
+<p>At first choking, the throat is sonic and the divergent segment follows the subsonic root. The pressure there rises from the throat to the exit as velocity falls. With <span class="math-inline">\(A_e/A_t=2\)</span> this gives <span class="math-inline">\(p_b/p_t=0.93716\)</span>, exceeding the throat pressure ratio 0.52828. A model that applies the convergent nozzle's critical ratio to the downstream boundary of this geometry would select the wrong operating point.</p>
+<p>When the back pressure falls below the first-choking value, one steady idealized solution accelerates beyond the throat, then crosses a normal shock, and leaves subsonically. The shock raises static pressure and lowers stagnation pressure. As back pressure falls further, it moves downstream until it reaches the exit. With the divergent section entirely supersonic, the ideal exit state follows the supersonic root for <span class="math-inline">\(A_e/A_t\)</span>. At <span class="math-inline">\(A_e/A_t=2\)</span> it gives <span class="math-inline">\(p_e/p_t=0.09393\)</span>. The jet is overexpanded when <span class="math-inline">\(p_e&lt;p_b\)</span>, correctly expanded when the two agree, and underexpanded when <span class="math-inline">\(p_e&gt;p_b\)</span>. Strongly overexpanded nozzles can separate from the wall, making a uniform one-dimensional exit and planar shock poor approximations. <a href="https://www.youtube.com/watch?v=YdRVgLekod8&amp;t=280s">Part 9 · 4:40</a> · <a href="https://www.youtube.com/watch?v=YdRVgLekod8&amp;t=1000s">Part 9 · 16:40</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>The <a href="code/chapter_22.py">Python laboratory</a> inverts <span class="math-inline">\(A/A^*\)</span> on either branch by bracketing and bisection. It checks that substituting each root returns the requested area ratio and that both branches coincide at <span class="math-inline">\(A/A^*=1\)</span>. It also computes the critical pressure ratio and the choked mass flux in SI units. This model describes local equilibrium air with constant specific heats and smooth isentropic segments.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<h3 id="predict-the-speed-change-without-solving-for-it">Predict the speed change without solving for it</h3>
+<p>A nozzle wall turns outward locally. Classify the effect on <span class="math-inline">\(C\)</span> at <span class="math-inline">\(M=0.6\)</span> and <span class="math-inline">\(M=1.6\)</span> before any shock.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The area increment is positive. For <span class="math-inline">\(M=0.6\)</span>, <span class="math-inline">\(M^2-1&lt;0\)</span>, requiring <span class="math-inline">\(dC&lt;0\)</span>. For <span class="math-inline">\(M=1.6\)</span> it is positive, requiring <span class="math-inline">\(dC&gt;0\)</span>. The supersonic stream accelerates as the cross section grows because density decreases enough to preserve mass flux.</p>
+</details><h3 id="use-the-throat-as-a-flow-meter">Use the throat as a flow meter</h3>
+<p>A sonic throat at the 300 kPa, 300 K supply state has an area of <span class="math-inline">\(1.00\,\mathrm{cm^2}\)</span>. Find its mass flow.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Convert area to <span class="math-inline">\(10^{-4}\,\mathrm{m^2}\)</span> and multiply by the sonic mass flux, giving <span class="math-inline">\(0.07001\)</span> kg/s. Halving the throat area at fixed inlet total state halves the choked mass flow in this model.</p>
+</details><h3 id="compare-two-critical-pressures">Compare two critical pressures</h3>
+<p>For <span class="math-inline">\(A_e/A_t=2\)</span> and <span class="math-inline">\(p_t=300\)</span> kPa calculate the convergent–divergent nozzle's exit pressure at first choking. Compare with a convergent nozzle at the same supply pressure.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> In the first case the throat is sonic and the subsonic exit root gives <span class="math-inline">\(p_e=300(0.93716)\approx281.15\)</span> kPa. The convergent exit is itself the throat and gives <span class="math-inline">\(p_e=300(0.52828)=158.48\)</span> kPa. The divergence allows the subsonic stream to decelerate after the geometric throat and recover part of its static pressure.</p>
+</details><h3 id="determine-the-sign-of-the-plume-pressure-adjustment">Determine the sign of the plume pressure adjustment</h3>
+<p>An isentropic supersonic exit at <span class="math-inline">\(A_e/A_t=2\)</span> discharges to an ambient pressure equal to <span class="math-inline">\(0.05p_t\)</span>. What adjustment is required?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The exit pressure <span class="math-inline">\(0.09393p_t\)</span> exceeds the ambient pressure. The jet is underexpanded and initially needs to expand. It adjusts through multidimensional waves, so the downstream jet cannot be modeled as a constant-area one-dimensional extension of the nozzle.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-21-stagnation-pressure-and-shocks.html"><span>Previous</span>Stagnation pressure and normal shocks</a><a rel="next" href="chapter-23-air-and-steam-nozzle-calculations.html"><span>Next</span>Air and steam nozzle calculations</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

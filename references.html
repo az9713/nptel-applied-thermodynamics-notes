@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Course attribution and technical references.">
+  <meta name="color-scheme" content="dark light">
+  <title>References · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html" aria-current="page">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+    <header class="opening"><h1>References</h1><p class="lead">Official course records and technical sources used in the notes.</p></header><div class="prose"><ul>
+<li>The <a href="https://nptel.ac.in/courses/112106314">original NPTEL catalog</a> identifies Applied Thermodynamics at IIT Madras and Prof. Babu Viswanathan. The <a href="https://nptel.ac.in/courses/112106419">expanded catalog</a> credits Prof. V. Raghavan and provides 72 public recordings. The <a href="https://www.youtube.com/playlist?list=PLbMVogVj5nJRgXRZ0xEoBfWELmSo6JvvZ">supplied playlist</a> adds one private slot. The <a href="source-map.html">source map</a> reconciles catalog and playlist order.</li>
+<li><a href="https://web.mit.edu/course/16/16.unified/www/FALL/thermodynamics/notes/notes.html">MIT Unified Engineering, Thermodynamics and Propulsion</a> develops the balances and air-standard cycle models used to check several derivations.</li>
+<li><a href="https://iapws.org/technical-guidance/release/IF97-Rev">IAPWS-IF97</a> defines thermodynamic property relations for fluid water in industrial calculations, including saturation. <a href="https://webbook.nist.gov/chemistry/fluid/index.html.en-us.en">NIST SRD 69</a> provides independent fluid-property lookups. Report the property reference convention with numerical values for enthalpy and entropy.</li>
+<li><a href="https://www.grc.nasa.gov/www/k-12/BGP/brayton.html">NASA Glenn’s ideal Brayton cycle</a> shows the relation between the compressor, turbine, and idealized cycle. The <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/isentrophic-compression/">isentropic-compression derivation</a> is a check for the calorically perfect gas formulas.</li>
+<li><a href="https://www.nasa.gov/wp-content/uploads/2023/03/equations-tables-charts-compressibleflow-report-1135.pdf">NACA Report 1135</a> gives the quasi-one-dimensional compressible flow equations and normal shock ratios for a calorically perfect gas.</li>
+</ul></div>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

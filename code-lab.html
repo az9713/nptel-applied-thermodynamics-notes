@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download and run the chapter calculations.">
+  <meta name="color-scheme" content="dark light">
+  <title>Numerical lab · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html" aria-current="page">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <header class="opening">
+      <h1>Numerical lab</h1>
+      <p class="lead">Run the Python calculations behind the chapters.</p>
+      <p>Keep the programs together in the <code>code</code> directory.
+      Run an individual file from the project root, for example
+      <code>python code/chapter_01.py</code>. Some labs import routines from
+      earlier chapters in the same directory.</p>
+    </header>
+    <ol class="chapter-list"><li><span class="chapter-number">01</span><div><h3><a href="chapter-01-control-volume-entropy.html">Entropy balances for open systems</a></h3><p><a href="code/chapter_01.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check entropy accounts for the ideal-gas mixer and upstream throttle.&quot;&quot;&quot;
+
+from math import isclose, log
+
+
+CP_AIR = 1.005  # kJ/(kg K), constant teaching model
+R_AIR = 0.287  # kJ/(kg K)
+
+
+def entropy_change(t_initial, p_initial, t_final, p_final):
+    &quot;&quot;&quot;Return ideal-gas entropy change in kJ/(kg K); use K and kPa.&quot;&quot;&quot;
+    return CP_AIR * log(t_final / t_initial) - R_AIR * log(
+        p_final / p_initial
+    )
+
+
+def main():
+    hot_temperature, cold_temperature = 400.0, 300.0
+    hot_flow, cold_flow = 1.0, 1.0  # kg/s
+    chamber_pressure, upstream_pressure = 100.0, 200.0  # kPa
+
+    outlet_flow = hot_flow + cold_flow
+    outlet_temperature = (
+        hot_flow * hot_temperature + cold_flow * cold_temperature
+    ) / outlet_flow
+    chamber_generation = hot_flow * entropy_change(
+        hot_temperature, chamber_pressure, outlet_temperature,
+        chamber_pressure,
+    ) + cold_flow * entropy_change(
+        cold_temperature, chamber_pressure, outlet_temperature,
+        chamber_pressure,
+    )
+    throttle_generation = hot_flow * entropy_change(
+        hot_temperature, upstream_pressure, hot_temperature,
+        chamber_pressure,
+    )
+    combined_generation = hot_flow * entropy_change(
+        hot_temperature, upstream_pressure, outlet_temperature,
+        chamber_pressure,
+    ) + cold_flow * entropy_change(
+        cold_temperature, chamber_pressure, outlet_temperature,
+        chamber_pressure,
+    )
+
+    thermal_enthalpy_residual = CP_AIR * (
+        outlet_flow * outlet_temperature
+        - hot_flow * hot_temperature - cold_flow * cold_temperature
+    )
+    assert isclose(thermal_enthalpy_residual, 0.0, abs_tol=1e-12)
+    assert isclose(
+        combined_generation, chamber_generation + throttle_generation,
+        rel_tol=1e-12,
+    )
+    assert 0 &lt; chamber_generation &lt; combined_generation
+    assert entropy_change(350.0, 100.0, 350.0, 100.0) == 0
+
+    print(f&quot;Outlet temperature: {outlet_temperature:.1f} K&quot;)
+    print(f&quot;Mixer entropy generation: {chamber_generation:.5f} kW/K&quot;)
+    print(f&quot;Throttle entropy generation: {throttle_generation:.5f} kW/K&quot;)
+    print(f&quot;Combined entropy generation: {combined_generation:.5f} kW/K&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">02</span><div><h3><a href="chapter-02-reversible-steady-flow-work.html">Reversible Steady-Flow Work</a></h3><p><a href="code/chapter_02.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compare reversible ideal-gas compression paths at fixed end pressures.&quot;&quot;&quot;
+
+from math import isclose, log
+
+
+def compressor_paths(t_in, pressure_ratio, gas_constant, cp):
+    &quot;&quot;&quot;Return (isothermal input, isentropic input, isentropic outlet T).
+
+    Temperatures are in kelvin and work and heat capacities are mass specific,
+    using kJ/kg and kJ/(kg K). Work input is reported as a positive magnitude.
+    The gas is ideal with constant cp, and both paths are internally reversible.
+    &quot;&quot;&quot;
+    if t_in &lt;= 0 or pressure_ratio &lt; 1 or not 0 &lt; gas_constant &lt; cp:
+        raise ValueError(&quot;Require T &gt; 0, pressure ratio &gt;= 1, and cp &gt; R &gt; 0&quot;)
+    t_out_s = t_in * pressure_ratio ** (gas_constant / cp)
+    isothermal = gas_constant * t_in * log(pressure_ratio)
+    isentropic = cp * (t_out_s - t_in)
+    return isothermal, isentropic, t_out_s
+
+
+def main():
+    t_in, pressure_ratio, gas_constant, cp = 300, 8, 0.287, 1.005
+    isothermal, isentropic, t_out_s = compressor_paths(
+        t_in, pressure_ratio, gas_constant, cp
+    )
+    entropy_rise = cp * log(t_out_s / t_in)
+    entropy_rise -= gas_constant * log(pressure_ratio)
+    assert isclose(entropy_rise, 0, abs_tol=1e-12)
+    assert 0 &lt; isothermal &lt; isentropic
+    assert compressor_paths(t_in, 1, gas_constant, cp) == (0, 0, t_in)
+    print(f&quot;Isothermal shaft input: {isothermal:.2f} kJ/kg&quot;)
+    print(f&quot;Isentropic shaft input: {isentropic:.2f} kJ/kg&quot;)
+    print(f&quot;Isentropic outlet temperature: {t_out_s:.2f} K&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">03</span><div><h3><a href="chapter-03-entropy-balances-in-thermal-equipment.html">Entropy balances in thermal equipment</a></h3><p><a href="code/chapter_03.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Solve the ideal-gas mixer with a specified circular outlet.&quot;&quot;&quot;
+
+from math import isclose, log, pi, sqrt
+
+
+def main():
+    cp, gas_constant = 1010.0, 287.0
+    area, outlet_pressure = pi * 0.10**2 / 4, 400_000
+    streams = [(6.0, 473.15, 600_000, 100), (1.0, 373.15, 500_000, 50)]
+    flow = sum(mass for mass, *_ in streams)
+    energy = sum(
+        mass * (cp * temp + speed**2 / 2)
+        for mass, temp, _, speed in streams
+    ) / flow
+    velocity_factor = flow * gas_constant / (outlet_pressure * area)
+    root = sqrt(cp**2 + 2 * velocity_factor**2 * energy)
+    temperature = 2 * energy / (cp + root)
+    speed = velocity_factor * temperature
+    generation = sum(
+        mass * (cp * log(temperature / temp)
+                - gas_constant * log(outlet_pressure / pressure))
+        for mass, temp, pressure, _ in streams
+    )
+    density = outlet_pressure / (gas_constant * temperature)
+    assert isclose(density * area * speed, flow, rel_tol=1e-12)
+    assert isclose(cp * temperature + speed**2 / 2, energy, rel_tol=1e-12)
+    assert generation &gt; 0
+    print(f&quot;Outlet: {temperature:.2f} K, {speed:.2f} m/s&quot;)
+    print(f&quot;Generation: {generation:.2f} W/K&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">04</span><div><h3><a href="chapter-04-work-and-irreversibility-tutorials.html">Work and irreversibility in flow equipment</a></h3><p><a href="code/chapter_04.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check the adiabatic diffuser and heated tank balances.&quot;&quot;&quot;
+
+from math import isclose, log, sqrt
+
+
+def main():
+    cp, r = 1005.0, 287.0
+    t_in, t_out = 330.15, 342.15
+    p_in, p_out = 100.0, 113.0
+    c_in = 200.0
+    c_out = sqrt(c_in**2 - 2 * cp * (t_out - t_in))
+    area_ratio = c_in / c_out * p_in * t_out / (p_out * t_in)
+    delta_s = cp * log(t_out / t_in) - r * log(p_out / p_in)
+    assert isclose(cp * (t_out - t_in), (c_in**2 - c_out**2) / 2)
+    assert isclose(p_out * c_out / t_out * area_ratio,
+                   p_in * c_in / t_in)
+    assert delta_s &gt;= 0
+    generation = 5.0 * (500.0 - 200.0) / 330.15
+    assert isclose(generation * 330.15, 1500.0)
+    print(f&quot;Diffuser: {c_out:.3f} m/s, area ratio {area_ratio:.4f}&quot;)
+    print(f&quot;Specific generation: {delta_s:.4f} J/(kg K)&quot;)
+    print(f&quot;Tank generation: {generation:.4f} kJ/K&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">05</span><div><h3><a href="chapter-05-exergy-and-the-reference-environment.html">Exergy and the reference environment</a></h3><p><a href="code/chapter_05.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compute closed-system physical exergy for simple teaching models.&quot;&quot;&quot;
+
+from math import isclose, log, log1p
+
+
+def thermal_exergy(heat_capacity, temperature, ambient):
+    &quot;&quot;&quot;Use total heat capacity in kJ/K and absolute temperatures in K.&quot;&quot;&quot;
+    relative_gap = (temperature - ambient) / ambient
+    return heat_capacity * ambient * (relative_gap - log1p(relative_gap))
+
+
+def pressure_exergy(mass, gas_constant, temperature, pressure, ambient):
+    &quot;&quot;&quot;Compute physical exergy of ideal gas at ambient temperature.&quot;&quot;&quot;
+    ratio = pressure / ambient
+    return mass * gas_constant * temperature * (log(ratio) + 1 / ratio - 1)
+
+
+def main():
+    hot = thermal_exergy(4.18, 350.0, 300.0)
+    cold = thermal_exergy(4.18, 250.0, 300.0)
+    assert cold &gt; hot &gt; 0
+    assert thermal_exergy(4.18, 300.0, 300.0) == 0
+    reduced = pressure_exergy(1.0, 0.287, 300.0, 200.0, 100.0)
+    volume_change = 0.287 * 300 * (1 / 200 - 1 / 100)
+    entropy_change = -0.287 * log(2)
+    assert isclose(reduced, 100 * volume_change - 300 * entropy_change)
+    print(f&quot;Thermal availability: hot {hot:.3f} kJ, cold {cold:.3f} kJ&quot;)
+    print(f&quot;Compressed 1 kg ideal air: {reduced:.3f} kJ&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">06</span><div><h3><a href="chapter-06-flow-exergy-and-the-exergy-balance.html">Flow exergy and useful output</a></h3><p><a href="code/chapter_06.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check steady compressor exergy destruction by two balances.&quot;&quot;&quot;
+
+from math import isclose, log
+
+
+def main():
+    cp, r = 1.005, 0.287
+    t0, p0 = 300.0, 100.0
+    outlet_t, outlet_p = 450.0, 400.0
+    flow, shaft_input = 0.04, 8.0
+    enthalpy_delta = cp * (outlet_t - t0)
+    entropy_delta = cp * log(outlet_t / t0) - r * log(outlet_p / p0)
+    heat_into_device = flow * enthalpy_delta - shaft_input
+    generation = flow * entropy_delta - heat_into_device / t0
+    product = flow * (enthalpy_delta - t0 * entropy_delta)
+    destruction = shaft_input - product
+    assert isclose(destruction, t0 * generation, rel_tol=1e-12)
+    assert 0 &lt; product &lt; shaft_input
+    engine_resource = 100 * (1 - 300 / 500)
+    assert isclose(30 / engine_resource, 0.75)
+    print(f&quot;Compressor exergy gain: {product:.4f} kW&quot;)
+    print(f&quot;Compressor exergy destruction: {destruction:.4f} kW&quot;)
+    print(f&quot;Compressor second-law efficiency: {product/shaft_input:.2%}&quot;)
+    print(f&quot;Heat engine second-law efficiency: {30/engine_resource:.2%}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">07</span><div><h3><a href="chapter-07-exergy-of-closed-systems.html">Exergy of closed systems</a></h3><p><a href="code/chapter_07.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check closed-system exergy for compression and thermal equilibration.&quot;&quot;&quot;
+
+from math import isclose, log
+
+
+def main():
+    r, gamma = 0.287, 1.4
+    cv = r / (gamma - 1)
+    cp = cv + r
+    p0, t0 = 100.0, 298.15
+    p1, t1, volume1 = p0, t0, 0.002
+    p2, t2, useful_input = 600.0, 423.15, 1.2
+    mass = p1 * volume1 / (r * t1)
+    volume2 = mass * r * t2 / p2
+    delta_u = mass * cv * (t2 - t1)
+    delta_s = mass * (cp * log(t2 / t1) - r * log(p2 / p1))
+    delta_b = delta_u + p0 * (volume2 - volume1) - t0 * delta_s
+    destruction = useful_input - delta_b
+    assert 0 &lt; delta_b &lt; useful_input
+
+    capacity_hot, capacity_cold = 24.0, 418.0
+    t_hot, t_cold, work = 358.15, 293.15, 240.0
+    final = (
+        capacity_hot * t_hot + capacity_cold * t_cold + work
+    ) / (capacity_hot + capacity_cold)
+    assert isclose(capacity_hot * (final - t_hot)
+                   + capacity_cold * (final - t_cold), work)
+    generation = capacity_hot * log(final / t_hot)
+    generation += capacity_cold * log(final / t_cold)
+    assert generation &gt; 0
+    print(f&quot;Compression exergy change: {delta_b:.4f} kJ&quot;)
+    print(f&quot;Compression destruction: {destruction:.4f} kJ&quot;)
+    print(f&quot;Stirred tank: {final:.3f} K, {generation:.5f} kJ/K&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">08</span><div><h3><a href="chapter-08-exergy-of-control-volumes.html">Exergy of steady and transient control volumes</a></h3><p><a href="code/chapter_08.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Check exergy accounts for a two-stream exchanger and freezing.&quot;&quot;&quot;
+
+from math import isclose, log
+
+
+def main():
+    hot_capacity_rate, cold_capacity_rate = 1.9, 2.1
+    hot_in, cold_in, cold_out = 520.0, 300.0, 390.0
+    ambient = 300.0
+    heating_rate = cold_capacity_rate * (cold_out - cold_in)
+    hot_out = hot_in - heating_rate / hot_capacity_rate
+    assert hot_in &gt; cold_out and hot_out &gt; cold_in
+    hot_entropy = hot_capacity_rate * log(hot_out / hot_in)
+    cold_entropy = cold_capacity_rate * log(cold_out / cold_in)
+    hot_resource = heating_rate + ambient * hot_entropy
+    cold_product = heating_rate - ambient * cold_entropy
+    destruction = ambient * (hot_entropy + cold_entropy)
+    assert 0 &lt; cold_product &lt; hot_resource
+    assert isclose(hot_resource - cold_product, destruction)
+
+    fusion_heat, freezing_temperature = 334.0, 273.15
+    exergy_gain = -fusion_heat + ambient * fusion_heat / freezing_temperature
+    assert exergy_gain &gt; 0
+    print(f&quot;Heat exchanger hot outlet: {hot_out:.2f} K&quot;)
+    print(f&quot;Heat exchanger destruction: {destruction:.3f} kW&quot;)
+    print(f&quot;Freezing exergy gain: {exergy_gain:.3f} kJ/kg&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">09</span><div><h3><a href="chapter-09-rankine-cycles.html">Rankine Cycles</a></h3><p><a href="code/chapter_09.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Audit a Rankine cycle from a consistent set of specific enthalpies.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def rankine(h_liquid, h_pump_out, h_turbine_in, h_turbine_out):
+    &quot;&quot;&quot;Return positive net work, boiler heat and efficiency using kJ/kg throughout.&quot;&quot;&quot;
+    if not h_liquid &lt; h_pump_out &lt; h_turbine_in or not h_liquid &lt; h_turbine_out &lt; h_turbine_in:
+        raise ValueError(&quot;Expected physically ordered Rankine enthalpies&quot;)
+    work = (h_turbine_in - h_turbine_out) - (h_pump_out - h_liquid)
+    if work &lt;= 0:
+        raise ValueError(&quot;Expansion must deliver more work than pumping consumes&quot;)
+    heat_in = h_turbine_in - h_pump_out
+    heat_out = h_turbine_out - h_liquid
+    assert isclose(work, heat_in - heat_out)
+    return work, heat_in, work / heat_in
+
+
+def feedwater_bleed(h_cold, h_mixed, h_bleed):
+    &quot;&quot;&quot;Return extracted vapor mass per unit mass leaving an open feedwater heater.&quot;&quot;&quot;
+    if not h_cold &lt; h_mixed &lt; h_bleed:
+        raise ValueError(&quot;Expected cold &lt; mixed &lt; bleed enthalpy&quot;)
+    return (h_mixed - h_cold) / (h_bleed - h_cold)
+
+
+if __name__ == &quot;__main__&quot;:
+    net, heat, efficiency = rankine(191.81, 199.87, 3349.53, 2109.33)
+    bleed = feedwater_bleed(192.31, 640.09, 2650.0)
+    assert isclose((1 - bleed) * 192.31 + bleed * 2650.0, 640.09)
+    assert 0 &lt; efficiency &lt; 1
+    try:
+        rankine(0, 200, 250, 249)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError(&quot;Rejected heat exceeds added heat in the negative-work case&quot;)
+    print(f&quot;Net output {net:.2f} kJ/kg; input {heat:.2f} kJ/kg; efficiency {efficiency:.2%}&quot;)
+    print(f&quot;Example open-heater bleed fraction: {bleed:.2%}&quot;)
+</code></pre></details></div></li><li><span class="chapter-number">10</span><div><h3><a href="chapter-10-brayton-cycles.html">Brayton Cycles</a></h3><p><a href="code/chapter_10.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Sweep gas-turbine pressure ratio at fixed cold and hot temperatures.&quot;&quot;&quot;
+
+from math import isclose, sqrt
+
+
+def brayton(t_cold, t_hot, ratio, eta_c=1.0, eta_t=1.0, cp=1.005, gamma=1.4):
+    &quot;&quot;&quot;Return compressor and turbine exits, net work, and thermal efficiency.&quot;&quot;&quot;
+    if not (0 &lt; t_cold &lt; t_hot and ratio &gt; 1 and cp &gt; 0 and gamma &gt; 1):
+        raise ValueError(&quot;Require a positive temperature range and pressure ratio &gt; 1&quot;)
+    if not (0 &lt; eta_c &lt;= 1 and 0 &lt; eta_t &lt;= 1):
+        raise ValueError(&quot;Device efficiencies must lie in (0, 1]&quot;)
+    a = (gamma - 1) / gamma
+    scale = ratio**a
+    t_out_c = t_cold + t_cold * (scale - 1) / eta_c
+    t_out_t = t_hot - eta_t * t_hot * (1 - 1 / scale)
+    heat_in = cp * (t_hot - t_out_c)
+    heat_out = cp * (t_out_t - t_cold)
+    work = heat_in - heat_out
+    if heat_in &lt;= 0 or work &lt;= 0:
+        raise ValueError(&quot;The specified cycle does not operate as a heat engine&quot;)
+    return t_out_c, t_out_t, work, work / heat_in
+
+
+if __name__ == &quot;__main__&quot;:
+    cold, hot = 300, 1500
+    optimum = sqrt(hot / cold) ** (1.4 / 0.4)
+    best = brayton(cold, hot, optimum)
+    assert isclose(best[0], best[1])
+    assert best[2] &gt; max(brayton(cold, hot, r)[2] for r in (0.93 * optimum, 1.07 * optimum))
+    real = brayton(cold, hot, 10, 0.88, 0.91)
+    assert real[2] &lt; brayton(cold, hot, 10)[2]
+    print(f&quot;Ideal max work: {best[2]:.2f} kJ/kg at pressure ratio {optimum:.3f}&quot;)
+    print(f&quot;At pressure ratio 10 with nonideal components: {real[2]:.2f} kJ/kg, {real[3]:.2%}&quot;)
+</code></pre></details></div></li><li><span class="chapter-number">11</span><div><h3><a href="chapter-11-modified-brayton-cycles.html">Modified Brayton Cycles</a></h3><p><a href="code/chapter_11.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compute a two-stage ideal Brayton cycle with optional heat recovery.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def modified_brayton(cold, hot, ratio, epsilon, cp=1.005, gamma=1.4):
+    &quot;&quot;&quot;Return net work, external heat supplied, recovered heat and efficiency.&quot;&quot;&quot;
+    if not (0 &lt; cold &lt; hot and ratio &gt; 1 and 0 &lt;= epsilon &lt;= 1 and cp &gt; 0 and gamma &gt; 1):
+        raise ValueError(&quot;Invalid temperatures, pressure ratio, effectiveness or gas properties&quot;)
+    stage_scale = ratio ** ((gamma - 1) / (2 * gamma))
+    after_compression = cold * stage_scale
+    after_expansion = hot / stage_scale
+    recovered = epsilon * cp * max(0, after_expansion - after_compression)
+    heat_in = cp * (hot - after_compression + hot - after_expansion) - recovered
+    heat_out = cp * (after_compression - cold + after_expansion - cold) - recovered
+    net_work = 2 * cp * ((hot - after_expansion) - (after_compression - cold))
+    if heat_in &lt;= 0 or net_work &lt;= 0:
+        raise ValueError(&quot;No positive power-cycle solution&quot;)
+    assert isclose(heat_in - heat_out, net_work)
+    return net_work, heat_in, recovered, net_work / heat_in
+
+
+if __name__ == &quot;__main__&quot;:
+    for epsilon in (0, 0.4, 0.8):
+        net, heat, recovery, efficiency = modified_brayton(300, 1500, 10, epsilon)
+        print(f&quot;Effectiveness {epsilon:.1f}: work={net:.1f}, heat={heat:.1f}, recovered={recovery:.1f} kJ/kg, efficiency={efficiency:.2%}&quot;)
+    off = modified_brayton(300, 1500, 10, 0)
+    on = modified_brayton(300, 1500, 10, 0.8)
+    assert isclose(off[0], on[0]) and isclose(off[1] - on[1], on[2])
+    assert on[-1] &gt; off[-1]
+</code></pre></details></div></li><li><span class="chapter-number">12</span><div><h3><a href="chapter-12-otto-and-diesel-cycles.html">Otto and Diesel Cycles</a></h3><p><a href="code/chapter_12.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compare closed Otto and Diesel cycles at common intake and peak temperatures.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def reciprocating(kind, t_intake, t_peak, compression, cv=0.718, gamma=1.4):
+    &quot;&quot;&quot;Return heat received, net work, efficiency, and MEP divided by intake pressure.&quot;&quot;&quot;
+    if kind not in (&quot;Otto&quot;, &quot;Diesel&quot;):
+        raise ValueError(&quot;Cycle must be Otto or Diesel&quot;)
+    if not (0 &lt; t_intake &lt; t_peak and compression &gt; 1 and cv &gt; 0 and gamma &gt; 1):
+        raise ValueError(&quot;Invalid thermal or geometric inputs&quot;)
+    a = gamma - 1
+    t_compressed = t_intake * compression**a
+    cutoff = t_peak / t_compressed if kind == &quot;Diesel&quot; else 1
+    if t_peak &lt;= t_compressed or cutoff &gt;= compression:
+        raise ValueError(&quot;Heat addition and expansion both require positive ranges&quot;)
+    t_expanded = t_peak * (cutoff / compression) ** a
+    c_heat = cv * gamma if kind == &quot;Diesel&quot; else cv
+    heat_in = c_heat * (t_peak - t_compressed)
+    work = heat_in - cv * (t_expanded - t_intake)
+    gas_constant = cv * a
+    mep_ratio = work / (gas_constant * t_intake * (1 - 1 / compression))
+    return heat_in, work, work / heat_in, mep_ratio
+
+
+if __name__ == &quot;__main__&quot;:
+    otto = reciprocating(&quot;Otto&quot;, 300, 1800, 10)
+    diesel = reciprocating(&quot;Diesel&quot;, 300, 1800, 10)
+    diesel_high = reciprocating(&quot;Diesel&quot;, 300, 1800, 18)
+    assert isclose(otto[2], 1 - 10**-0.4)
+    assert diesel[2] &lt; otto[2] &lt; diesel_high[2]
+    for label, (q_in, work, eta, mep_ratio) in zip((&quot;Otto r=10&quot;, &quot;Diesel r=10&quot;, &quot;Diesel r=18&quot;), (otto, diesel, diesel_high)):
+        print(f&quot;{label:12}: heat={q_in:.1f}, work={work:.1f} kJ/kg, efficiency={eta:.2%}, MEP={100*mep_ratio:.1f} kPa at 100 kPa intake&quot;)
+</code></pre></details></div></li><li><span class="chapter-number">13</span><div><h3><a href="chapter-13-vapor-compression-refrigeration.html">Vapor-Compression Refrigeration</a></h3><p><a href="code/chapter_13.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Audit a steady vapor-compression refrigerator using supplied enthalpies.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def refrigeration(h_suction, h_discharge_s, h_liquid, efficiency, load):
+    &quot;&quot;&quot;Return fluid flow, compressor power, rejection rate and COP in kg/s and kW.&quot;&quot;&quot;
+    if not (h_discharge_s &gt; h_suction &gt; h_liquid and 0 &lt; efficiency &lt;= 1 and load &gt; 0):
+        raise ValueError(&quot;Need positive load, refrigeration effect and compression work&quot;)
+    h_discharge = h_suction + (h_discharge_s - h_suction) / efficiency
+    flow = load / (h_suction - h_liquid)
+    power = flow * (h_discharge - h_suction)
+    rejected = flow * (h_discharge - h_liquid)
+    assert isclose(rejected, load + power)
+    return flow, power, rejected, load / power
+
+
+if __name__ == &quot;__main__&quot;:
+    base = refrigeration(395.66, 419.56, 241.72, 0.75, 10)
+    subcooled = refrigeration(395.66, 419.56, 233.13, 0.75, 10)
+    ideal = refrigeration(395.66, 419.56, 241.72, 1, 10)
+    assert subcooled[0] &lt; base[0] and base[-1] &lt; subcooled[-1] &lt; ideal[-1]
+    print(f&quot;Base: flow={base[0]:.5f} kg/s, power={base[1]:.3f} kW, heat rejected={base[2]:.3f} kW, COP={base[3]:.3f}&quot;)
+    print(f&quot;Subcooled: flow={subcooled[0]:.5f} kg/s, power={subcooled[1]:.3f} kW, COP={subcooled[3]:.3f}&quot;)
+</code></pre></details></div></li><li><span class="chapter-number">14</span><div><h3><a href="chapter-14-properties-of-moist-air.html">Properties of Moist Air</a></h3><p><a href="code/chapter_14.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Moist-air state and condensate in a sealed tank, in kPa, kg, m³ and °C.&quot;&quot;&quot;
+
+from math import exp, isclose
+
+
+def saturation_pressure(temperature_c):
+    &quot;&quot;&quot;IAPWS SR1-86(1992) saturation pressure above liquid water, in kPa.&quot;&quot;&quot;
+    temperature = temperature_c + 273.15
+    critical = 647.096
+    if not 0.01 &lt;= temperature_c &lt;= critical - 273.15:
+        raise ValueError(&quot;Temperature outside the liquid-vapor saturation curve&quot;)
+    theta = 1 - temperature / critical
+    coefficients = (-7.85951783, 1.84408259, -11.7866497, 22.6807411, -15.9618719, 1.80122502)
+    powers = (1, 1.5, 3, 3.5, 4, 7.5)
+    logarithm = (critical / temperature) * sum(
+        coefficient * theta**power for coefficient, power in zip(coefficients, powers)
+    )
+    return 22064 * exp(logarithm)
+
+
+def dew_point(vapor_pressure):
+    low, high = 0.01, 60.0
+    if not saturation_pressure(low) &lt;= vapor_pressure &lt;= saturation_pressure(high):
+        raise ValueError(&quot;Vapor pressure outside this ambient-range dew-point calculation&quot;)
+    for _ in range(50):
+        middle = (low + high) / 2
+        if saturation_pressure(middle) &lt; vapor_pressure:
+            low = middle
+        else:
+            high = middle
+    return (low + high) / 2
+
+
+if __name__ == &quot;__main__&quot;:
+    gas_constant_vapor = 0.4615
+    pressure, initial, final, relative_humidity, volume = 101.325, 30.0, 10.0, 0.50, 1.0
+    vapor_pressure = relative_humidity * saturation_pressure(initial)
+    humidity = 0.622 * vapor_pressure / (pressure - vapor_pressure)
+    dew = dew_point(vapor_pressure)
+    initial_vapor = vapor_pressure * volume / (gas_constant_vapor * (initial + 273.15))
+    final_saturated_vapor = saturation_pressure(final) * volume / (gas_constant_vapor * (final + 273.15))
+    final_vapor = min(initial_vapor, final_saturated_vapor)
+    condensate = initial_vapor - final_vapor
+
+    print(f&quot;Humidity ratio: {humidity:.5f} kg/kg dry air&quot;)
+    print(f&quot;Constant-pressure dew point: {dew:.2f} °C&quot;)
+    print(f&quot;Rigid-tank condensate: {condensate * 1000:.2f} g&quot;)
+    assert isclose(saturation_pressure(dew), vapor_pressure, rel_tol=1e-12)
+    assert isclose(final_vapor + condensate, initial_vapor, rel_tol=1e-12)
+    assert 18 &lt; dew &lt; 19 and 0.005 &lt; condensate &lt; 0.006
+</code></pre></details></div></li><li><span class="chapter-number">15</span><div><h3><a href="chapter-15-psychrometric-paths.html">Psychrometric Paths</a></h3><p><a href="code/chapter_15.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Cooling with condensate removal, followed by sensible reheat.&quot;&quot;&quot;
+
+from math import isclose
+
+from chapter_14 import saturation_pressure
+
+
+def humidity_ratio(temperature, pressure, relative_humidity):
+    vapor_pressure = relative_humidity * saturation_pressure(temperature)
+    if not 0 &lt;= relative_humidity &lt;= 1 or not 0 &lt;= vapor_pressure &lt; pressure:
+        raise ValueError(&quot;Expected physical relative humidity and pressure&quot;)
+    return 0.622 * vapor_pressure / (pressure - vapor_pressure)
+
+
+def enthalpy(temperature, humidity):
+    return 1.006 * temperature + humidity * (2501 + 1.86 * temperature)
+
+
+if __name__ == &quot;__main__&quot;:
+    pressure = 101.325
+    inlet, coil_exit, supply = 35.0, 15.0, 24.0
+    initial_humidity = humidity_ratio(inlet, pressure, 0.80)
+    final_humidity = humidity_ratio(coil_exit, pressure, 1.0)
+    condensate = initial_humidity - final_humidity
+    if condensate &lt; 0:
+        raise ValueError(&quot;The assumed saturated coil outlet would require adding water&quot;)
+    drain_enthalpy = 4.18 * coil_exit
+    coil = enthalpy(coil_exit, final_humidity) - enthalpy(inlet, initial_humidity) + condensate * drain_enthalpy
+    reheat = enthalpy(supply, final_humidity) - enthalpy(coil_exit, final_humidity)
+    supply_relative_humidity = saturation_pressure(coil_exit) / saturation_pressure(supply)
+    print(f&quot;Drain: {condensate:.5f} kg/kg dry air&quot;)
+    print(f&quot;Heat into air and drain at coil: {coil:.2f} kJ/kg dry air&quot;)
+    print(f&quot;Reheat: {reheat:.2f} kJ/kg dry air&quot;)
+    print(f&quot;Supply relative humidity: {supply_relative_humidity:.2%}&quot;)
+    assert isclose(final_humidity + condensate, initial_humidity)
+    assert isclose(
+        enthalpy(inlet, initial_humidity) + coil + reheat,
+        enthalpy(supply, final_humidity) + condensate * drain_enthalpy,
+    )
+</code></pre></details></div></li><li><span class="chapter-number">16</span><div><h3><a href="chapter-16-air-conditioning-tutorials.html">Air-Conditioning Tutorials</a></h3><p><a href="code/chapter_16.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Duct flow, trial saturation state and dry-coil heat duty.&quot;&quot;&quot;
+
+from math import pi
+
+from chapter_14 import dew_point, saturation_pressure
+from chapter_15 import enthalpy, humidity_ratio
+
+
+if __name__ == &quot;__main__&quot;:
+    inlet, outlet, minimum_coil_temperature, trial_condensing_outlet = 30.0, 25.0, 20.0, 5.0
+    pressure, relative_humidity = 100.0, 0.30
+    diameter, speed = 0.50, 18.0
+    volume_flow = pi * diameter**2 * speed / 4
+    initial_humidity = humidity_ratio(inlet, pressure, relative_humidity)
+    vapor_pressure = relative_humidity * saturation_pressure(inlet)
+    specific_volume = 0.287 * (inlet + 273.15) / (pressure - vapor_pressure)
+    dry_air_flow = volume_flow / specific_volume
+    outlet_relative_humidity = vapor_pressure / saturation_pressure(outlet)
+    if minimum_coil_temperature &lt; dew_point(vapor_pressure) or outlet_relative_humidity &gt; 1:
+        raise ValueError(&quot;Trial coil may condense water; use a wet-coil balance&quot;)
+    duty = dry_air_flow * (enthalpy(outlet, initial_humidity) - enthalpy(inlet, initial_humidity))
+    condensing_humidity = humidity_ratio(trial_condensing_outlet, pressure, 1.0)
+    print(f&quot;Dry-air flow: {dry_air_flow:.3f} kg/s&quot;)
+    print(f&quot;Trial outlet relative humidity: {outlet_relative_humidity:.2%}&quot;)
+    print(f&quot;Heat into dry coil control volume: {duty:.2f} kW&quot;)
+    print(f&quot;Condensate if cooled to 5 °C: {dry_air_flow * (initial_humidity - condensing_humidity):.4f} kg/s&quot;)
+    assert condensing_humidity &lt; initial_humidity &lt; humidity_ratio(outlet, pressure, 1.0)
+    assert duty &lt; 0
+</code></pre></details></div></li><li><span class="chapter-number">17</span><div><h3><a href="chapter-17-combustion-thermodynamics.html">Combustion Thermodynamics</a></h3><p><a href="code/chapter_17.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Methane atom balances, exhaust composition and reference heating values.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def methane_heating_values():
+    &quot;&quot;&quot;Positive heat release, kJ/mol fuel, at 298.15 K.&quot;&quot;&quot;
+    methane, carbon_dioxide = -74.87, -393.51
+    water_vapor, liquid_water = -241.826, -285.830
+    lhv = methane - (carbon_dioxide + 2 * water_vapor)
+    hhv = methane - (carbon_dioxide + 2 * liquid_water)
+    return lhv, hhv
+
+
+def methane_products(air_ratio):
+    if air_ratio &lt; 1:
+        raise ValueError(&quot;Complete methane oxidation requires at least stoichiometric air&quot;)
+    return {&quot;CO2&quot;: 1.0, &quot;H2O&quot;: 2.0, &quot;O2&quot;: 2 * (air_ratio - 1), &quot;N2&quot;: 7.52 * air_ratio}
+
+
+if __name__ == &quot;__main__&quot;:
+    air_ratio = 1.20
+    products = methane_products(air_ratio)
+    wet_total = sum(products.values())
+    dry_total = wet_total - products[&quot;H2O&quot;]
+    lhv, hhv = methane_heating_values()
+    print(f&quot;Dry exhaust oxygen: {products[&#x27;O2&#x27;] / dry_total:.2%}&quot;)
+    print(f&quot;Wet exhaust oxygen: {products[&#x27;O2&#x27;] / wet_total:.2%}&quot;)
+    print(f&quot;Reference methane LHV: {lhv:.3f} kJ/mol&quot;)
+    print(f&quot;Reference methane HHV: {hhv:.3f} kJ/mol&quot;)
+    assert isclose(products[&quot;CO2&quot;], 1)
+    assert isclose(2 * products[&quot;H2O&quot;], 4)
+    assert isclose(2 * products[&quot;CO2&quot;] + products[&quot;H2O&quot;] + 2 * products[&quot;O2&quot;], 4 * air_ratio)
+    assert isclose(products[&quot;N2&quot;], 3.76 * 2 * air_ratio)
+    assert isclose(hhv - lhv, 2 * (285.830 - 241.826))
+</code></pre></details></div></li><li><span class="chapter-number">18</span><div><h3><a href="chapter-18-combustion-stoichiometry-tutorials.html">Combustion Stoichiometry Tutorials</a></h3><p><a href="code/chapter_18.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Restricted rich ethanol products and an inverse dry-exhaust calculation.&quot;&quot;&quot;
+
+from math import isclose
+
+
+def rich_ethanol_products(equivalence_ratio):
+    if not 1 &lt;= equivalence_ratio &lt;= 1.5:
+        raise ValueError(&quot;The restricted products are valid only for 1 &lt;= phi &lt;= 1.5&quot;)
+    oxygen = 3 / equivalence_ratio
+    carbon_dioxide = 2 * oxygen - 4
+    return oxygen, carbon_dioxide, 2 - carbon_dioxide, 3, 3.76 * oxygen
+
+
+if __name__ == &quot;__main__&quot;:
+    oxygen, co2, co, water, nitrogen = rich_ethanol_products(1.10)
+    print(f&quot;Rich ethanol CO2, CO, H2O, N2: {co2:.5f}, {co:.5f}, {water:.5f}, {nitrogen:.5f} mol&quot;)
+    print(f&quot;Rich ethanol exhaust dry CO: {co / (co2 + co + nitrogen):.2%}&quot;)
+    assert isclose(co2 + co, 2)
+    assert isclose(2 * water, 6)
+    assert isclose(2 * co2 + co + water, 1 + 2 * oxygen)
+    assert isclose(nitrogen, 3.76 * oxygen)
+    assert isclose(rich_ethanol_products(1.5)[1], 0, abs_tol=1e-12)
+
+    stoichiometric = 15.5
+    dry_co2, dry_oxygen = 0.12043, 0.03733
+    supplied_oxygen = stoichiometric + 10 * dry_oxygen / dry_co2
+    excess_air = supplied_oxygen / stoichiometric - 1
+    air_mass_ratio = supplied_oxygen * (31.998 + 3.76 * 28.014) / 142.286
+    print(f&quot;Inverse decane excess air: {excess_air:.2%}&quot;)
+    print(f&quot;Actual decane air-fuel ratio: {air_mass_ratio:.2f} kg/kg&quot;)
+    predicted_dry_total = 10 + supplied_oxygen - stoichiometric + 3.76 * supplied_oxygen
+    assert isclose(10 / predicted_dry_total, dry_co2, rel_tol=1e-4)
+</code></pre></details></div></li><li><span class="chapter-number">19</span><div><h3><a href="chapter-19-combustion-energy-tutorials.html">Combustion Energy Tutorials</a></h3><p><a href="code/chapter_19.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Frozen flame temperature and ideal oxygen equilibrium screening models.&quot;&quot;&quot;
+
+from math import isclose, sqrt
+
+from chapter_17 import methane_heating_values, methane_products
+
+
+def frozen_temperature(air_ratio):
+    heat_capacities = {&quot;CO2&quot;: 0.054, &quot;H2O&quot;: 0.044, &quot;N2&quot;: 0.034, &quot;O2&quot;: 0.035}
+    products = methane_products(air_ratio)
+    product_capacity = sum(products[name] * value for name, value in heat_capacities.items())
+    lhv, _ = methane_heating_values()
+    temperature = 298.15 + lhv / product_capacity
+    residual = product_capacity * (temperature - 298.15) - lhv
+    return temperature, residual
+
+
+def dissociated_fraction(equilibrium_constant, pressure_ratio):
+    if equilibrium_constant &lt; 0 or pressure_ratio &lt;= 0:
+        raise ValueError(&quot;Expected nonnegative equilibrium constant and positive pressure ratio&quot;)
+    return sqrt(equilibrium_constant / (4 * pressure_ratio + equilibrium_constant))
+
+
+if __name__ == &quot;__main__&quot;:
+    stoichiometric, residual_st = frozen_temperature(1)
+    lean, residual_lean = frozen_temperature(1.5)
+    kp = 0.0126
+    low_pressure = dissociated_fraction(kp, 1)
+    high_pressure = dissociated_fraction(kp, 2)
+    print(f&quot;Frozen methane flame temperatures: {stoichiometric:.1f}, {lean:.1f} K&quot;)
+    print(f&quot;O2 fraction dissociated at p° and 2p°: {low_pressure:.3%}, {high_pressure:.3%}&quot;)
+    assert stoichiometric &gt; lean
+    assert isclose(residual_st, 0, abs_tol=1e-10)
+    assert isclose(residual_lean, 0, abs_tol=1e-10)
+    assert high_pressure &lt; low_pressure
+    assert isclose(4 * low_pressure**2 / (1 - low_pressure**2), kp)
+</code></pre></details></div></li><li><span class="chapter-number">20</span><div><h3><a href="chapter-20-compressible-flow-and-stagnation.html">Compressible flow and the stagnation state</a></h3><p><a href="code/chapter_20.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Compute local acoustic and stagnation quantities for an ideal gas.&quot;&quot;&quot;
+
+from math import isclose, sqrt
+
+
+def stagnation(temperature, pressure, speed, gamma=1.4, gas_constant=287.0):
+    &quot;&quot;&quot;Return acoustic speed, Mach number, total temperature and pressure.
+
+    Inputs use K, Pa, m/s and J/(kg K). The returned pressure is in Pa.
+    The gas is calorically perfect and the hypothetical stop is isentropic.
+    &quot;&quot;&quot;
+    if temperature &lt;= 0 or pressure &lt;= 0 or gamma &lt;= 1 or gas_constant &lt;= 0:
+        raise ValueError(&quot;Require positive T, p, R, and gamma &gt; 1&quot;)
+    sound_speed = sqrt(gamma * gas_constant * temperature)
+    mach = abs(speed) / sound_speed
+    temperature_ratio = 1 + (gamma - 1) * mach**2 / 2
+    return (
+        sound_speed, mach, temperature * temperature_ratio,
+        pressure * temperature_ratio ** (gamma / (gamma - 1))
+    )
+
+
+def main():
+    a, mach, total_t, total_p = stagnation(300.0, 100_000.0, 250.0)
+    cp = 1.4 * 287.0 / (1.4 - 1)
+    assert isclose(cp * (total_t - 300.0), 250.0**2 / 2)
+    assert stagnation(300.0, 100_000.0, 0)[1:] == (0, 300, 100_000)
+    assert stagnation(300.0, 100_000.0, -250.0)[1:] == (
+        mach, total_t, total_p
+    )
+    print(f&quot;Sound speed: {a:.2f} m/s; Mach: {mach:.4f}&quot;)
+    print(f&quot;Stagnation state: {total_t:.2f} K, {total_p/1000:.2f} kPa&quot;)
+    _, m2, t2, p2 = stagnation(300.0, 100_000.0, 150.0)
+    print(f&quot;Moving observer: Mach {m2:.4f}, {t2:.2f} K, {p2/1000:.2f} kPa&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">21</span><div><h3><a href="chapter-21-stagnation-pressure-and-shocks.html">Stagnation pressure and normal shocks</a></h3><p><a href="code/chapter_21.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Calorically perfect normal shock and conservation checks.&quot;&quot;&quot;
+
+from math import isclose, log, sqrt
+
+
+def normal_shock(mach_upstream, gamma=1.4):
+    &quot;&quot;&quot;Return downstream Mach and downstream/upstream p, rho, T and p_t.&quot;&quot;&quot;
+    if mach_upstream &lt; 1 or gamma &lt;= 1:
+        raise ValueError(&quot;Require M &gt;= 1 and gamma &gt; 1&quot;)
+    mach_sq = mach_upstream**2
+    pressure_ratio = 1 + 2 * gamma / (gamma + 1) * (mach_sq - 1)
+    density_ratio = (gamma + 1) * mach_sq / ((gamma - 1) * mach_sq + 2)
+    temperature_ratio = pressure_ratio / density_ratio
+    mach_downstream = mach_upstream / density_ratio / sqrt(temperature_ratio)
+    factor = (gamma - 1) / 2
+    total_ratio = pressure_ratio * (
+        (1 + factor * mach_downstream**2) / (1 + factor * mach_sq)
+    ) ** (gamma / (gamma - 1))
+    return (
+        mach_downstream, pressure_ratio, density_ratio, temperature_ratio,
+        total_ratio
+    )
+
+
+def main():
+    gamma, gas_constant, mach = 1.4, 287.0, 2.0
+    mach2, p2, rho2, t2, pt2 = normal_shock(mach, gamma)
+    assert normal_shock(1, gamma) == (1, 1, 1, 1, 1)
+    assert isclose(1 + gamma * mach**2, p2 * (1 + gamma * mach2**2))
+    assert isclose(1 + (gamma - 1) / 2 * mach**2,
+                   t2 * (1 + (gamma - 1) / 2 * mach2**2))
+    assert 0 &lt; pt2 &lt; 1
+    print(f&quot;M2={mach2:.5f}, p2/p1={p2:.5f}, rho2/rho1={rho2:.5f}&quot;)
+    print(f&quot;T2/T1={t2:.5f}, pt2/pt1={pt2:.5f}&quot;)
+    print(f&quot;Entropy increase: {-gas_constant * log(pt2):.2f} J/(kg K)&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">22</span><div><h3><a href="chapter-22-nozzle-geometry-and-choking.html">Nozzle geometry, choking, and back pressure</a></h3><p><a href="code/chapter_22.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Invert the ideal-gas area–Mach relation on a specified flow branch.&quot;&quot;&quot;
+
+from math import isclose, sqrt
+
+
+def area_ratio(mach, gamma=1.4):
+    &quot;&quot;&quot;Return A/A* for positive Mach in a calorically perfect isentrope.&quot;&quot;&quot;
+    if mach &lt;= 0 or gamma &lt;= 1:
+        raise ValueError(&quot;Require M &gt; 0 and gamma &gt; 1&quot;)
+    factor = (2 + (gamma - 1) * mach**2) / (gamma + 1)
+    return factor ** ((gamma + 1) / (2 * (gamma - 1))) / mach
+
+
+def mach_from_area(ratio, supersonic, gamma=1.4):
+    &quot;&quot;&quot;Find the selected Mach root by bisection.&quot;&quot;&quot;
+    if ratio &lt; 1 or gamma &lt;= 1:
+        raise ValueError(&quot;Require A/A* &gt;= 1 and gamma &gt; 1&quot;)
+    if ratio == 1:
+        return 1.0
+
+    if supersonic:
+        lo, hi = 1.0, 2.0
+        while area_ratio(hi, gamma) &lt; ratio:
+            hi *= 2
+    else:
+        lo, hi = 0.5, 1.0
+        while area_ratio(lo, gamma) &lt; ratio:
+            lo /= 2
+
+    for _ in range(70):
+        mid = (lo + hi) / 2
+        area_is_high = area_ratio(mid, gamma) &gt; ratio
+        if area_is_high == supersonic:
+            hi = mid
+        else:
+            lo = mid
+    return (lo + hi) / 2
+
+
+def pressure_ratio(mach, gamma=1.4):
+    &quot;&quot;&quot;Return local static pressure divided by local stagnation pressure.&quot;&quot;&quot;
+    return (1 + (gamma - 1) * mach**2 / 2) ** (-gamma / (gamma - 1))
+
+
+def sonic_flux(total_pressure, total_temperature, gamma=1.4,
+               gas_constant=287.0):
+    &quot;&quot;&quot;Return choked mass flow per unit area in kg/(m² s), using Pa and K.&quot;&quot;&quot;
+    if total_pressure &lt;= 0 or total_temperature &lt;= 0:
+        raise ValueError(&quot;Require positive total pressure and temperature&quot;)
+    factor = (2 / (gamma + 1)) ** ((gamma + 1) / (2 * (gamma - 1)))
+    return (
+        total_pressure / sqrt(total_temperature)
+        * sqrt(gamma / gas_constant) * factor
+    )
+
+
+def main():
+    ratio = 2.0
+    mach_sub = mach_from_area(ratio, False)
+    mach_sup = mach_from_area(ratio, True)
+    assert mach_sub &lt; 1 &lt; mach_sup
+    assert isclose(area_ratio(mach_sub), ratio, rel_tol=1e-12)
+    assert isclose(area_ratio(mach_sup), ratio, rel_tol=1e-12)
+    assert mach_from_area(1, False) == mach_from_area(1, True) == 1
+    print(f&quot;Roots at A/A*=2: {mach_sub:.5f}, {mach_sup:.5f}&quot;)
+    print(f&quot;Static/total pressure on each branch: &quot;
+          f&quot;{pressure_ratio(mach_sub):.5f}, {pressure_ratio(mach_sup):.5f}&quot;)
+    print(f&quot;Critical pressure ratio: {pressure_ratio(1):.5f}&quot;)
+    print(f&quot;Choked mass flux at 300 kPa, 300 K: &quot;
+          f&quot;{sonic_flux(300_000, 300):.2f} kg/(m^2 s)&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li><li><span class="chapter-number">23</span><div><h3><a href="chapter-23-air-and-steam-nozzle-calculations.html">Air and steam nozzle calculations</a></h3><p><a href="code/chapter_23.py" download>Download Python source</a></p><details class="recordings"><summary>View code</summary><pre><code>&quot;&quot;&quot;Locate an ideal internal shock and compare two steam nozzle back pressures.&quot;&quot;&quot;
+
+from math import isclose, sqrt
+
+from chapter_21 import normal_shock
+from chapter_22 import mach_from_area, pressure_ratio
+
+
+def trial_shock(area_to_throat, exit_to_throat, gamma=1.4):
+    &quot;&quot;&quot;Return exit p/p_t1, exit Mach and upstream Mach at a trial shock.&quot;&quot;&quot;
+    if not 1 &lt;= area_to_throat &lt;= exit_to_throat:
+        raise ValueError(&quot;Shock must lie between the throat and exit&quot;)
+    mach_a = mach_from_area(area_to_throat, True, gamma)
+    shock = normal_shock(mach_a, gamma)
+    total_ratio = shock[-1]
+    mach_exit = mach_from_area(max(1.0, exit_to_throat * total_ratio),
+                               False, gamma)
+    return total_ratio * pressure_ratio(mach_exit, gamma), mach_exit, mach_a
+
+
+def locate_shock(back_to_total, exit_to_throat, gamma=1.4):
+    &quot;&quot;&quot;Invert the post-shock exit pressure for a single interior normal shock.&quot;&quot;&quot;
+    lo, hi = 1.0, exit_to_throat
+    high_back = trial_shock(lo, exit_to_throat, gamma)[0]
+    low_back = trial_shock(hi, exit_to_throat, gamma)[0]
+    if not low_back &lt; back_to_total &lt; high_back:
+        raise ValueError(&quot;Back pressure does not select an interior shock&quot;)
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        if trial_shock(mid, exit_to_throat, gamma)[0] &gt; back_to_total:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
+def steam_exit(p_total, v_total, exponent, throat_area, p_back):
+    &quot;&quot;&quot;Power-law steam expansion, p in Pa and v in m³/kg.&quot;&quot;&quot;
+    if not (0 &lt; p_back &lt;= p_total and v_total &gt; 0 and exponent &gt; 1
+            and throat_area &gt; 0):
+        raise ValueError(&quot;Inputs outside the pressure or steam model domain&quot;)
+    ratio_star = (2 / (exponent + 1)) ** (exponent / (exponent - 1))
+    ratio = max(p_back / p_total, ratio_star)
+    v = v_total * ratio ** (-1 / exponent)
+    delta_h = exponent / (exponent - 1) * p_total * v_total * (
+        1 - ratio ** ((exponent - 1) / exponent)
+    )
+    speed = sqrt(2 * delta_h)
+    return p_total * ratio, speed, throat_area * speed / v
+
+
+def main():
+    area_ratio = 3.5
+    mach_sup = mach_from_area(area_ratio, True)
+    p_sup = pressure_ratio(mach_sup)
+    p_shock_exit = trial_shock(area_ratio, area_ratio)[0]
+    p_choke = trial_shock(1, area_ratio)[0]
+    assert 0.02 &lt; p_sup &lt; p_shock_exit &lt; 0.5 &lt; p_choke
+    a_shock = locate_shock(0.5, area_ratio)
+    ratio, mach_exit, mach_a = trial_shock(a_shock, area_ratio)
+    assert isclose(ratio, 0.5, rel_tol=1e-12)
+    print(f&quot;Isentropic supersonic exit: M={mach_sup:.4f}, p/p_t={p_sup:.5f}&quot;)
+    print(f&quot;Shock at exit: p_b/p_t={p_shock_exit:.5f}; &quot;
+          f&quot;first choking: {p_choke:.5f}&quot;)
+    print(f&quot;Internal shock: A/A_t={a_shock:.4f}, &quot;
+          f&quot;M_up={mach_a:.4f}, exit M={mach_exit:.4f}&quot;)
+    for p_back in (400_000, 300_000, 200_000):
+        p, u, mdot = steam_exit(600_000, 0.2845, 1.125, 0.002, p_back)
+        print(f&quot;Steam at p_b={p_back/1000:.0f} kPa: &quot;
+              f&quot;p_e={p/1000:.2f} kPa, u_e={u:.2f} m/s, m_dot={mdot:.4f} kg/s&quot;)
+    assert steam_exit(600_000, 0.2845, 1.125, 0.002, 300_000) == (
+        steam_exit(600_000, 0.2845, 1.125, 0.002, 200_000)
+    )
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></details></div></li></ol>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Balance reacting mixtures, compare heating values on a common water reference, and formulate the combustor energy and entropy balances.">
+  <meta name="color-scheme" content="dark light">
+  <title>Combustion Thermodynamics · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#count-elements-on-a-fixed-fuel-basis">Count elements on a fixed fuel basis</a></li>
+<li><a href="#retain-enthalpy-of-formation-when-species-change">Retain enthalpy of formation when species change</a></li>
+<li><a href="#specify-water-phase-when-reporting-heat-release">Specify water phase when reporting heat release</a></li>
+<li><a href="#couple-flame-temperature-and-entropy-to-product-assumptions">Couple flame temperature and entropy to product assumptions</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#read-excess-oxygen-consistently">Read excess oxygen consistently</a></li>
+<li><a href="#identify-the-latent-energy">Identify the latent energy</a></li>
+<li><a href="#include-water-vapor-in-the-incoming-air">Include water vapor in the incoming air</a></li>
+<li><a href="#derive-the-mixing-entropy-correction">Derive the mixing entropy correction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html" aria-current="page"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 17 · Lectures 50–53</p>
+        <h1>Combustion Thermodynamics</h1>
+        <p class="lead">Balance reacting mixtures, compare heating values on a common water reference, and formulate the combustor energy and entropy balances.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=zn4DDSNWeUA">50. Combustion thermodynamics - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=0TUCq-D4hRw">51. Combustion thermodynamics - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=6GW8hiVuf2o">52. Combustion Thermodynamics - Part 3</a></li><li><a href="https://www.youtube.com/watch?v=F14AY9ge4F0">53. Combustion thermodynamics - Part 4</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>A stack analyzer reports carbon dioxide and oxygen on a dry basis. A heat balance needs the water that this measurement excludes. A useful calculation therefore closes the element balances first, specifies the product phases, and only then assigns energies to the streams.</p>
+<h2 id="count-elements-on-a-fixed-fuel-basis">Count elements on a fixed fuel basis</h2>
+<p>For complete oxidation of a gas containing carbon, hydrogen, and oxygen, one mole of <span class="math-inline">\(\mathrm{C}_{x}\mathrm{H}_{y}\mathrm{O}_{z}\)</span> needs <span class="math-inline">\(\nu_{\mathrm{O_2,st}}=x+y/4-z/2\)</span> moles of oxygen to form <span class="math-inline">\(x\)</span> moles <span class="math-inline">\(\mathrm{CO_2}\)</span> and <span class="math-inline">\(y/2\)</span> moles <span class="math-inline">\(\mathrm{H_2O}\)</span>. This follows by matching the two sources of oxygen atoms to the product requirement <span class="math-inline">\(2x+y/2\)</span>. Approximate dry air by <span class="math-inline">\(\mathrm{O_2}+3.76\,\mathrm{N_2}\)</span> per mole of oxygen supplied. This approximation groups the inert gases into nitrogen.</p>
+<p>Let <span class="math-inline">\(\lambda\)</span> be actual divided by stoichiometric dry-air supply, for fixed fuel. The fuel–air equivalence ratio is <span class="math-inline">\(\phi=1/\lambda\)</span>. In a lean complete-combustion model for methane using 20% excess air, the reaction is</p>
+<p><span class="math-display">\[
+\mathrm{CH_4}+2.4(\mathrm{O_2}+3.76\,\mathrm{N_2})
+\longrightarrow\mathrm{CO_2}+2\,\mathrm{H_2O}+0.4\,\mathrm{O_2}+9.024\,\mathrm{N_2}.
+\]</span></p>
+<p>The dry mole fraction of <span class="math-inline">\(\mathrm{O_2}\)</span> is <span class="math-inline">\(0.4/10.424=3.84\%\)</span>. On a wet basis, it is <span class="math-inline">\(0.4/12.424=3.22\%\)</span>. At 101.325 kPa the product vapor partial pressure is <span class="math-inline">\(101.325(2/12.424)=16.31\)</span> kPa. Compare it with saturation pressure to predict condensation during constant-pressure cooling, under the ideal gas and water phase-equilibrium assumptions. Inlet air humidity adds water to the product side and changes this dew point even at unchanged dry-air supply. <a href="https://www.youtube.com/watch?v=zn4DDSNWeUA&amp;t=980">Lecture 50 · Stoichiometry and exhaust dew point</a></p>
+<h2 id="retain-enthalpy-of-formation-when-species-change">Retain enthalpy of formation when species change</h2>
+<p>Let <span class="math-inline">\(\bar h_i\)</span> denote molar enthalpy of species <span class="math-inline">\(i\)</span>. Choose 298.15 K and standard pressure <span class="math-inline">\(p^\circ=1\)</span> bar as reference, with standard formation enthalpies defined relative to elements in their standard states.</p>
+<p><span class="math-display">\[
+\bar h_i(T)=\Delta_f\bar h_i^\circ+
+\big[\bar h_i(T)-\bar h_i(298.15\,\mathrm K)\big].
+\]</span></p>
+<p>For an ideal gas of fixed composition the bracket is the integral of molar <span class="math-inline">\(\bar c_{p,i}(T)\)</span>. A phase change needs a consistent phase reference. The zero standard formation enthalpies of elemental <span class="math-inline">\(\mathrm{O_2(g)}\)</span> and <span class="math-inline">\(\mathrm{N_2(g)}\)</span> leave their sensible enthalpies in a hot-stream balance. Estimate an enthalpy change with bond energies by breaking reactant bonds and forming product bonds only where data and phase assumptions justify that estimate. Tabulated species formation enthalpies provide the needed reference values directly. <a href="https://www.youtube.com/watch?v=0TUCq-D4hRw&amp;t=320">Lecture 51 · Formation and sensible enthalpy</a></p>
+<h2 id="specify-water-phase-when-reporting-heat-release">Specify water phase when reporting heat release</h2>
+<p>For a steady-flow reaction with no shaft work and negligible changes in speed and elevation, the heat entering per mole of fuel is total product enthalpy minus total reactant enthalpy on the same fuel basis. At 298.15 K use, in kJ/mol, <span class="math-inline">\(\Delta_f\bar h^\circ_{\mathrm{CH_4(g)}}=-74.87\)</span>, <span class="math-inline">\(\Delta_f\bar h^\circ_{\mathrm{CO_2(g)}}=-393.51\)</span>, <span class="math-inline">\(\Delta_f\bar h^\circ_{\mathrm{H_2O(g)}}=-241.826\)</span>, and <span class="math-inline">\(\Delta_f\bar h^\circ_{\mathrm{H_2O(l)}}=-285.830\)</span>. Complete methane oxidation gives a lower heating value of about 802.3 kJ/mol with vapor products and a higher heating value of about 890.3 kJ/mol with liquid water, both expressed as positive heat release. Their difference, 88.0 kJ/mol fuel, corresponds to condensing two moles of water at the reference state. The heating value differs from heat recoverable when exhaust leaves hot. <a href="https://www.youtube.com/watch?v=6GW8hiVuf2o&amp;t=740">Lecture 52 · Methane heating value</a> · <a href="https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&amp;Mask=1">NIST methane</a> · <a href="https://webbook.nist.gov/cgi/cbook.cgi?ID=C124389&amp;Mask=1">NIST carbon dioxide</a> · <a href="https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&amp;Mask=3">NIST water</a></p>
+<h2 id="couple-flame-temperature-and-entropy-to-product-assumptions">Couple flame temperature and entropy to product assumptions</h2>
+<p>For steady adiabatic combustion with no shaft work, solve</p>
+<p><span class="math-display">\[
+\sum_{\rm out}n_i\bar h_i(T_{\rm out})=\sum_{\rm in}n_i\bar h_i(T_{\rm in}).
+\]</span></p>
+<p>If the product species and amounts are specified, the unknown is temperature. When equilibrium determines the hot-product composition, the temperature and composition satisfy the enthalpy and element constraints together. High-temperature dissociation often reduces temperature relative to a complete-oxidation estimate at the same initial state. Excess air carries product sensible enthalpy and generally lowers temperature on the lean side at fixed inlet conditions.</p>
+<p>For the steady entropy balance, use standard absolute entropies and, for ideal gas species, the correction <span class="math-inline">\(-\bar R\ln(p_i/p^\circ)\)</span> at each actual partial pressure <span class="math-inline">\(p_i\)</span>. Here <span class="math-inline">\(\bar R\)</span> is the universal molar gas constant. The entropy generation per mole fuel is product entropy minus reactant entropy minus the entropy transfer by heat. Adiabatic operation sets the heat term to zero, while chemical reaction and mixing can still generate entropy. <a href="https://www.youtube.com/watch?v=F14AY9ge4F0&amp;t=220">Lecture 53 · Flame temperature and entropy</a> · <a href="https://www.cantera.org/3.2/userguide/flame-temperature.html">Cantera equilibrium example</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>The <a href="code/chapter_17.py">Python laboratory</a> checks methane product atom balances, dry and wet fractions, and the difference between heating values.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="read-excess-oxygen-consistently">Read excess oxygen consistently</h3>
+<p>For the stated methane model, how much oxygen remains when the excess-air percentage doubles from 20% to 40%?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> At 40% excess air, oxygen fed is <span class="math-inline">\(2(1.4)=2.8\)</span> mol/mol fuel. The remaining oxygen is 0.8 mol, double the 20% excess result. Its measured mole fraction rises by less than a factor of two because the total product inventory also increases.</p>
+</details><h3 id="identify-the-latent-energy">Identify the latent energy</h3>
+<p>How do heating values change between vapor and liquid water products if one mole of fuel forms three moles of water at the reference temperature?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The higher value exceeds the lower value by <span class="math-inline">\(3(285.830-241.826)\simeq132.0\)</span> kJ/mol fuel. This relation uses the same reactant state, complete oxidation and reference temperature in both heating-value definitions.</p>
+</details><h3 id="include-water-vapor-in-the-incoming-air">Include water vapor in the incoming air</h3>
+<p>One mole of water vapor enters with the reactants in the stated methane model. Assume it passes through and all water remains vapor. What does the ideal-gas oxygen analyzer read on wet and dry bases?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The oxygen amount remains 0.4 mol and the dry product total remains 10.424 mol. The wet total rises to <span class="math-inline">\(12.424+1=13.424\)</span>. The dry reading stays 3.84%, while the wet reading falls to <span class="math-inline">\(0.4/13.424=2.98\%\)</span>. The same dry oxygen measurement can therefore coexist with different exhaust dew points.</p>
+</details><h3 id="derive-the-mixing-entropy-correction">Derive the mixing entropy correction</h3>
+<p>At fixed temperature and total pressure equal to <span class="math-inline">\(p^\circ\)</span>, form an ideal 50:50 molar mixture from two pure ideal-gas streams at the same temperature and pressure. Find the entropy change per mole of mixture.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> In the mixture <span class="math-inline">\(p_i/p^\circ=1/2\)</span> for either species, so each species gains <span class="math-inline">\(-\bar R\ln(1/2)\)</span>. Weighting by the two mole fractions gives <span class="math-inline">\(\bar R\ln2\approx5.76\)</span> J/(mol K) of mixture. A reversible means of mixing could exchange work or entropy with surroundings. A simple insulated free mixer generates this entropy under the stated endpoint conditions.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-16-air-conditioning-tutorials.html"><span>Previous</span>Air-Conditioning Tutorials</a><a rel="next" href="chapter-18-combustion-stoichiometry-tutorials.html"><span>Next</span>Combustion Stoichiometry Tutorials</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

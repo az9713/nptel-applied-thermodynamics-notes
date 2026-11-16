@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive the ideal gas-turbine cycle, find its maximum-work pressure ratio, and quantify how actual components and variable heat capacity change the result.">
+  <meta name="color-scheme" content="dark light">
+  <title>Brayton Cycles · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#an-air-standard-gas-turbine-lecture-30-1140">An air-standard gas turbine Lecture 30 · 11:40</a></li>
+<li><a href="#efficiency-and-maximum-specific-output-lecture-30-1720">Efficiency and maximum specific output Lecture 30 · 17:20</a></li>
+<li><a href="#real-compressor-and-turbine-efficiencies-lecture-31-000">Real compressor and turbine efficiencies Lecture 31 · 0:00</a></li>
+<li><a href="#variable-heat-capacities-and-the-air-table-lecture-31-820">Variable heat capacities and the air table Lecture 31 · 8:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#endpoint-check">Endpoint check</a></li>
+<li><a href="#back-work">Back work</a></li>
+<li><a href="#relative-pressure">Relative pressure</a></li>
+<li><a href="#entropy-check-on-the-actual-compressor">Entropy check on the actual compressor</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html" aria-current="page"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 10 · Lectures 30–32</p>
+        <h1>Brayton Cycles</h1>
+        <p class="lead">Derive the ideal gas-turbine cycle, find its maximum-work pressure ratio, and quantify how actual components and variable heat capacity change the result.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=0HNZF9aFC1o">30. Thermodynamic cycles -- Air standard Brayton cycle - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=WUT-cjnWgNs">31. Thermodynamic cycles -- Air standard Brayton cycle - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=XgrDwGKL1FU">32. Thermodynamic cycles -- Air standard Brayton cycle - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>The 100 MW plant is considering a gas-turbine train instead of a steam train. Its compressor takes in air at 300 K, and cooled turbine hardware permits a maximum gas temperature of 1500 K. A larger compressor pressure ratio increases ideal efficiency over the useful range. It can simultaneously reduce the work delivered by each kg of air. Choosing the ratio requires knowing which quantity the plant is trying to improve.</p>
+<h2 id="an-air-standard-gas-turbine-lecture-30-1140">An air-standard gas turbine <a href="https://www.youtube.com/watch?v=0HNZF9aFC1o&amp;t=700">Lecture 30 · 11:40</a></h2>
+<p>A practical open gas turbine draws ambient air through a compressor, supplies energy in a combustor, expands the products through a turbine, and discharges exhaust. The air-standard model replaces the combustion and exhaust with external heating and cooling of a fixed-composition loop. Label compressor inlet, compressor exit, turbine inlet, and turbine exit as states 1–4. Neglect kinetic and potential energy changes. Treat the heat exchangers as isobaric, with <span class="math-inline">\(p_1=p_4\)</span>, <span class="math-inline">\(p_2=p_3\)</span>. Here <span class="math-inline">\(p_i\)</span> is the absolute pressure at state <span class="math-inline">\(i\)</span>. Set <span class="math-inline">\(r_p=p_2/p_1&gt;1\)</span>.</p>
+<p>Use a calorically perfect ideal gas with constant specific heats <span class="math-inline">\(c_p\)</span> at constant pressure and <span class="math-inline">\(c_v\)</span> at constant volume. Let <span class="math-inline">\(\gamma=c_p/c_v\)</span>, <span class="math-inline">\(R=c_p-c_v\)</span>, and <span class="math-inline">\(a=(\gamma-1)/\gamma=R/c_p\)</span>. The specific enthalpy change is <span class="math-inline">\(c_p\Delta T\)</span>, where <span class="math-inline">\(T\)</span> is absolute temperature. The steady-flow compressor input and turbine output are <span class="math-inline">\(w_c=c_p(T_2-T_1)\)</span> and <span class="math-inline">\(w_t=c_p(T_3-T_4)\)</span>. The heat input magnitude is <span class="math-inline">\(q_H=c_p(T_3-T_2)\)</span> and rejection magnitude is <span class="math-inline">\(q_L=c_p(T_4-T_1)\)</span>, with units kJ/kg. Then <span class="math-inline">\(w_{\rm net}=w_t-w_c=q_H-q_L\)</span>. <a href="https://web.mit.edu/16.unified/www/FALL/thermodynamics/notes/node28.html">MIT Unified Engineering, Brayton cycle</a></p>
+<h2 id="efficiency-and-maximum-specific-output-lecture-30-1720">Efficiency and maximum specific output <a href="https://www.youtube.com/watch?v=0HNZF9aFC1o&amp;t=1040">Lecture 30 · 17:20</a></h2>
+<p>For reversible adiabatic compression and expansion, the entropy differential is <span class="math-inline">\(ds=c_p\,dT/T-R\,dp/p\)</span> and integrates with <span class="math-inline">\(ds=0\)</span>. Define the temperature ratio <span class="math-inline">\(X=r_p^a\)</span>. Then <span class="math-inline">\(T_2=T_1X\)</span> and <span class="math-inline">\(T_4=T_3/X\)</span>. The identities <span class="math-inline">\(T_4-T_1=(T_3-T_1X)/X\)</span> and <span class="math-inline">\(T_3-T_2=T_3-T_1X\)</span> give</p>
+<p><span class="math-display">\[
+\eta_{\rm th}=1-\frac{q_L}{q_H}=1-\frac1X,\qquad
+\frac{w_{\rm net}}{c_p}=T_3\left(1-\frac1X\right)-T_1(X-1).
+\]</span></p>
+<p>At fixed <span class="math-inline">\(T_1\)</span> and <span class="math-inline">\(T_3\)</span>, positive heat input and net output require <span class="math-inline">\(1&lt;X&lt;T_3/T_1\)</span>. At the upper endpoint both heat duties vanish and the cycle has zero area; its formal limiting efficiency describes a vanishing-output engine. The derivative of <span class="math-inline">\(w_{\rm net}/c_p\)</span> with respect to <span class="math-inline">\(X\)</span> is <span class="math-inline">\(T_3/X^2-T_1\)</span> and the second derivative is negative. The unique maximum therefore lies at <span class="math-inline">\(X^*=\sqrt{T_3/T_1}\)</span>, with <span class="math-inline">\(T_2=T_4=\sqrt{T_1T_3}\)</span>. In the running case <span class="math-inline">\(r_p^*=5^{1/(2a)}=16.72\)</span>. With <span class="math-inline">\(c_p=1.005\)</span> kJ/(kg K), the ideal work peaks at 460.65 kJ/kg, giving a flow of 217.1 kg/s per 100 MW. <a href="https://www.youtube.com/watch?v=0HNZF9aFC1o&amp;t=1400">Lecture 30 · 23:20</a></p>
+<p>At <span class="math-inline">\(r_p=10\)</span>, the same gas constants give <span class="math-inline">\(X=1.9307\)</span>, <span class="math-inline">\(T_2=579.2\)</span> K, <span class="math-inline">\(T_4=776.9\)</span> K, <span class="math-inline">\(q_H=925.4\)</span> kJ/kg and <span class="math-inline">\(w_{\rm net}=446.1\)</span> kJ/kg. The efficiency is 48.21%. The nearly flat specific-work curve near its maximum leaves room to select a lower ratio that supplies a hotter exhaust. That exhaust temperature will matter if the plant adds heat recovery.</p>
+<p><img alt="Ideal Brayton net work rises to a maximum near pressure ratio 16.7 and returns toward zero near 280. Thermal efficiency increases across that pressure range." src="figures/chapter-10-brayton-tradeoff.png" /></p>
+<h2 id="real-compressor-and-turbine-efficiencies-lecture-31-000">Real compressor and turbine efficiencies <a href="https://www.youtube.com/watch?v=WUT-cjnWgNs&amp;t=0">Lecture 31 · 0:00</a></h2>
+<p>Let <span class="math-inline">\(T_{2s}\)</span> and <span class="math-inline">\(T_{4s}\)</span> denote the ideal exits at each actual exit pressure and the same respective inlet state. Use positive efficiencies <span class="math-inline">\(\eta_c=w_{c,s}/w_c\)</span> and <span class="math-inline">\(\eta_t=w_t/w_{t,s}\)</span>. The actual component temperatures in the constant-<span class="math-inline">\(c_p\)</span> model are</p>
+<p><span class="math-display">\[
+T_2=T_1+\frac{T_{2s}-T_1}{\eta_c},\qquad
+T_4=T_3-\eta_t(T_3-T_{4s}).
+\]</span></p>
+<p>With <span class="math-inline">\(\eta_c=0.88\)</span> and <span class="math-inline">\(\eta_t=0.91\)</span> at <span class="math-inline">\(r_p=10\)</span>, the net work falls to 342.42 kJ/kg and thermal efficiency to 38.60%. The flow required for 100 MW increases to 292.0 kg/s. The compressor discharge moves to a higher temperature and requires more shaft input. The hotter turbine exhaust carries energy that could have emerged as shaft work with a reversible expansion. Both actual adiabatic devices generate entropy.</p>
+<h2 id="variable-heat-capacities-and-the-air-table-lecture-31-820">Variable heat capacities and the air table <a href="https://www.youtube.com/watch?v=WUT-cjnWgNs&amp;t=500">Lecture 31 · 8:20</a></h2>
+<p>A thermally perfect ideal gas retains <span class="math-inline">\(pv=RT\)</span> and <span class="math-inline">\(h=h(T)\)</span> but allows <span class="math-inline">\(c_p=c_p(T)\)</span>. Let <span class="math-inline">\(s^\circ(T)\)</span> be the entropy at fixed reference pressure <span class="math-inline">\(p^\circ\)</span>. Integrating <span class="math-inline">\(ds=(c_p(T)/T)dT-R\,dp/p\)</span> gives <span class="math-inline">\(s(T,p)=s^\circ(T)-R\ln(p/p^\circ)\)</span>. The isentropic compressor exit solves</p>
+<p><span class="math-display">\[
+s^\circ(T_{2s})=s^\circ(T_1)+R\ln r_p.
+\]</span></p>
+<p>Since <span class="math-inline">\(d s^\circ/dT=c_p(T)/T&gt;0\)</span>, interpolate a table of <span class="math-inline">\(s^\circ\)</span> to invert this relation. Relative pressure <span class="math-inline">\(p_r(T)\)</span> is a scaled tabular representation proportional to <span class="math-inline">\(\exp[s^\circ(T)/R]\)</span>. Its ratio from two temperatures equals the physical pressure ratio on an isentrope. Absolute values of <span class="math-inline">\(p_r\)</span> do not give physical pressure. The actual outlet at the prescribed pressure is found by calculating the enthalpy from device efficiency and then inverting <span class="math-inline">\(h(T)\)</span>. For instance, if tabulated <span class="math-inline">\(h_1=300\)</span> and <span class="math-inline">\(h_{2s}=582\)</span> kJ/kg at a selected pressure, a compressor at 0.88 needs an actual outlet enthalpy of <span class="math-inline">\(300+(582-300)/0.88=620.45\)</span> kJ/kg. The air table or property model gives the associated temperature. <a href="https://www.youtube.com/watch?v=XgrDwGKL1FU&amp;t=20">Lecture 32 · 0:20</a></p>
+<p>The same properties permit a steady entropy balance or a heat-source exergy budget. The first-law result alone does not determine the exergy input. A single source at <span class="math-inline">\(T_H\)</span> would deliver <span class="math-inline">\((1-T_0/T_H)q_H\)</span> relative to <span class="math-inline">\(T_0\)</span>. If the combustion chemistry is represented explicitly, fuel chemical exergy is a different input. The pressure-ratio conclusions also omit pressure losses, ambient variation, turbine cooling flow, and changing gas composition. <a href="https://www.youtube.com/watch?v=XgrDwGKL1FU&amp;t=620">Lecture 32 · 10:20</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_10.py">Python laboratory</a> with standard Python. It accepts temperatures, pressure ratio, specific heat, heat-capacity ratio, and separate component efficiencies. It returns exit temperatures, net work in kJ/kg and thermal efficiency. It rejects inputs that fail to describe a positive-work engine. The checks test the maximum-work condition, neighboring operating points, and the penalty from component losses.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="endpoint-check">Endpoint check</h3>
+<p>Find the formal zero-heat-input pressure ratio for 300 and 1500 K.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Heat addition ends when <span class="math-inline">\(T_2=T_3\)</span> or <span class="math-inline">\(X=5\)</span>. Thus <span class="math-inline">\(r_p=5^{1/a}=5^{3.5}\approx279.5\)</span>. Expansion also returns the gas to <span class="math-inline">\(T_1\)</span>. The formal limiting efficiency approaches 80%, while shaft output and heat input both approach zero.</p>
+</details><h3 id="back-work">Back work</h3>
+<p>At <span class="math-inline">\(r_p=10\)</span> with ideal components, how much of turbine work runs the compressor?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The magnitudes are <span class="math-inline">\(1.005(579.209-300)=280.61\)</span> kJ/kg and <span class="math-inline">\(1.005(1500-776.921)=726.69\)</span> kJ/kg. Their ratio is 38.61%. The difference of 446.09 kJ/kg drives the external load.</p>
+</details><h3 id="relative-pressure">Relative pressure</h3>
+<p>An air table lists <span class="math-inline">\(p_r(T_1)=1.35\)</span> and an outlet candidate with <span class="math-inline">\(p_r=12.15\)</span>. Which isentropic pressure ratio does this candidate represent?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Divide the relative pressures to cancel their arbitrary scale. The ratio is <span class="math-inline">\(12.15/1.35=9.00\)</span>. If physical inlet pressure is 105 kPa, the physical outlet is 945 kPa.</p>
+</details><h3 id="entropy-check-on-the-actual-compressor">Entropy check on the actual compressor</h3>
+<p>At <span class="math-inline">\(r_p=10\)</span>, determine the entropy generated per kg for the insulated compressor at <span class="math-inline">\(\eta_c=0.88\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Its exit is <span class="math-inline">\(300+(579.209-300)/0.88=617.28\)</span> K. With <span class="math-inline">\(R=c_p(0.4/1.4)=0.28714\)</span> kJ/(kg K), the entropy rise is <span class="math-inline">\(1.005\ln(617.28/300)-R\ln 10\approx0.0640\)</span> kJ/(kg K). There is no heat-entropy transfer, so the positive rise equals the internal generation.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-09-rankine-cycles.html"><span>Previous</span>Rankine Cycles</a><a rel="next" href="chapter-11-modified-brayton-cycles.html"><span>Next</span>Modified Brayton Cycles</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

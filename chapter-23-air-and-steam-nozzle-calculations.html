@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Locate a normal shock from back pressure and adapt the nozzle balances to steam properties.">
+  <meta name="color-scheme" content="dark light">
+  <title>Air and steam nozzle calculations · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#bracket-the-air-nozzle-regime-part-10-000">Bracket the air-nozzle regime Part 10 · 0:00</a></li>
+<li><a href="#locate-the-internal-shock-part-10-940">Locate the internal shock Part 10 · 9:40</a></li>
+<li><a href="#critical-pressure-for-a-steam-isentrope-part-11-740">Critical pressure for a steam isentrope Part 11 · 7:40</a></li>
+<li><a href="#compare-an-unchoked-and-a-choked-steam-outlet-part-12-000">Compare an unchoked and a choked steam outlet Part 12 · 0:00</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#problems-with-worked-solutions">Problems with worked solutions</a><ul>
+<li><a href="#distinguish-a-jet-pressure-from-a-boundary-demand">Distinguish a jet pressure from a boundary demand</a></li>
+<li><a href="#compare-the-two-sonic-reference-areas">Compare the two sonic reference areas</a></li>
+<li><a href="#size-a-convergent-outlet-for-wet-steam">Size a convergent outlet for wet steam</a></li>
+<li><a href="#check-the-pressure-at-which-the-property-model-changes">Check the pressure at which the property model changes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html" aria-current="page"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 23 · Lectures 70–72</p>
+        <h1>Air and steam nozzle calculations</h1>
+        <p class="lead">Locate a normal shock from back pressure and adapt the nozzle balances to steam properties.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=HqYbWMEqE-4">70. Compressible flow through nozzles - Part 10</a></li><li><a href="https://www.youtube.com/watch?v=xffwQnnoLQw">71. Compressible flow through nozzles - Part 11</a></li><li><a href="https://www.youtube.com/watch?v=rHRLM_Zpz4E">72. Compressible flow through nozzles - Part 12</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>An air nozzle with exit-to-throat area ratio 3.5 runs from a reservoir at 1 MPa and 500 K. The laboratory can set the back pressure to 20 or 500 kPa. Both settings choke the throat, so both pass the same mass flow. The interior shock occurs at 500 kPa. At 20 kPa the stream expands outside the nozzle. A second nozzle, fed by steam, illustrates which parts of the analysis survive a change of working fluid.</p>
+<h2 id="bracket-the-air-nozzle-regime-part-10-000">Bracket the air-nozzle regime <a href="https://www.youtube.com/watch?v=HqYbWMEqE-4&amp;t=0s">Part 10 · 0:00</a></h2>
+<p>Write <span class="math-inline">\(A_t\)</span> for geometric throat area, <span class="math-inline">\(A_e\)</span> for exit area, <span class="math-inline">\(p_{t1}\)</span> for upstream stagnation pressure, <span class="math-inline">\(T_t\)</span> for the common stagnation temperature, and <span class="math-inline">\(p_b\)</span> for back pressure. In the one-dimensional, inviscid, adiabatic model with negligible shaft work, use <span class="math-inline">\(\gamma=1.4\)</span> for air. The area–Mach relation gives both a subsonic and a supersonic root at the exit for <span class="math-inline">\(A_e/A_t=3.5\)</span>. The downstream state can also be subsonic following an interior normal shock.</p>
+<p>There are three useful pressure landmarks. The subsonic isentropic root at the exit of a nozzle with a sonic throat gives first choking at <span class="math-inline">\(p_b=980.45\)</span> kPa. The supersonic root is <span class="math-inline">\(M_e=2.8000\)</span>, giving the design exit pressure <span class="math-inline">\(p_e=36.85\)</span> kPa. If the normal shock stands just at the exit, multiply that static pressure by the normal-shock pressure ratio to obtain <span class="math-inline">\(p_b=330.91\)</span> kPa. Use the same upstream stagnation state for all three checks.</p>
+<p>A back pressure of 20 kPa lies below design pressure. The jet is underexpanded and the divergent section has the isentropic supersonic exit at 36.85 kPa. By contrast 500 kPa is between the shock-at-exit and first-choking limits, so the ideal model selects an internal shock and a subsonic exit at the imposed 500 kPa. <a href="https://www.youtube.com/watch?v=HqYbWMEqE-4&amp;t=280s">Part 10 · 4:40</a></p>
+<h2 id="locate-the-internal-shock-part-10-940">Locate the internal shock <a href="https://www.youtube.com/watch?v=HqYbWMEqE-4&amp;t=580s">Part 10 · 9:40</a></h2>
+<p>Pick a trial shock section with area <span class="math-inline">\(A_s\)</span> between throat and exit. On the upstream isentrope, <span class="math-inline">\(A^*=A_t\)</span>, where the starred area denotes the area that carries the current mass flow at Mach 1 and the local stagnation state. Invert the supersonic area–Mach branch at <span class="math-inline">\(A_s/A_t\)</span> to obtain the Mach number <span class="math-inline">\(M_a\)</span> immediately before the jump. The normal-shock relations give the total pressure ratio <span class="math-inline">\(\chi=p_{tb}/p_{ta}\)</span>, where <span class="math-inline">\(a\)</span> and <span class="math-inline">\(b\)</span> denote the states before and after the shock.</p>
+<p>For the same gas and <span class="math-inline">\(T_t\)</span>, the choked mass flux is proportional to total pressure. Since mass flow is conserved, the downstream hypothetical sonic area is <span class="math-inline">\(A^*_b=A_t/\chi\)</span>. Use the subsonic area–Mach root at <span class="math-inline">\(A_e/A^*_b=(A_e/A_t)\chi\)</span> to compute the candidate exit Mach number. Then compare the predicted exit pressure with <span class="math-inline">\(p_b\)</span>:</p>
+<p><span class="math-display">\[
+\frac{p_e}{p_{t1}}=\chi
+\left(1+\frac{\gamma-1}{2}M_e^2\right)^{-\gamma/(\gamma-1)}.
+\]</span></p>
+<p>Numerical bisection on <span class="math-inline">\(A_s/A_t\)</span> at <span class="math-inline">\(p_b/p_{t1}=0.5\)</span> yields <span class="math-inline">\(A_s/A_t=2.4118\)</span>, <span class="math-inline">\(M_a=2.4039\)</span>, and <span class="math-inline">\(M_e=0.3272\)</span>. For this smooth diverging section, increasing the trial shock area makes the upstream Mach number larger and the total-pressure ratio smaller. The exit area ratio on the downstream isentrope then decreases, making the subsonic exit Mach larger. Both factors reduce the predicted exit pressure, which makes the residual suitable for bisection. Converting the area ratio into an axial location also requires the nozzle's area profile. <a href="https://www.youtube.com/watch?v=HqYbWMEqE-4&amp;t=780s">Part 10 · 13:00</a> · <a href="https://www.nasa.gov/wp-content/uploads/2023/03/equations-tables-charts-compressibleflow-report-1135.pdf">NACA Report 1135</a></p>
+<p><img alt="The computed exit pressure falls as the trial shock moves into larger sections, crossing the target pressure ratio of 0.5 at a shock area of 2.412 times the throat area." src="figures/shock-pressure.png" /></p>
+<h2 id="critical-pressure-for-a-steam-isentrope-part-11-740">Critical pressure for a steam isentrope <a href="https://www.youtube.com/watch?v=xffwQnnoLQw&amp;t=460s">Part 11 · 7:40</a></h2>
+<p>For a steam reservoir with stagnant enthalpy <span class="math-inline">\(h_0\)</span> and specific entropy <span class="math-inline">\(s_0\)</span>, a smooth equilibrium isentrope through static pressure <span class="math-inline">\(p\)</span> gives <span class="math-inline">\(h(p,s_0)\)</span> and <span class="math-inline">\(v(p,s_0)\)</span>, where <span class="math-inline">\(v\)</span> is the volume per kilogram. Compute the axial speed and mass flux <span class="math-inline">\(G\)</span> with</p>
+<p><span class="math-display">\[
+C(p)=\sqrt{2[h_0-h(p,s_0)]},\qquad
+G(p)=\frac{C(p)}{v(p,s_0)}.
+\]</span></p>
+<p>Use J/kg for the enthalpy difference to recover m/s. In a convergent nozzle in this model, the maximum of <span class="math-inline">\(G(p)\)</span> along the reservoir isentrope sets the choking pressure. This procedure can use tables or an equation of state. In the two-phase equilibrium region, recover the vapor mass fraction from <span class="math-inline">\(s_0=s_f+x(s_g-s_f)\)</span> at the trial pressure, and use the same fraction in the <span class="math-inline">\(h\)</span> and <span class="math-inline">\(v\)</span> balances. <a href="https://iapws.org/technical-guidance/release/IF97-Rev">IAPWS Industrial Formulation 1997</a></p>
+<p>The lecture also approximates a segment by <span class="math-inline">\(pv^n=p_0v_0^n\)</span>, where <span class="math-inline">\(p_0\)</span> and <span class="math-inline">\(v_0\)</span> are reservoir pressure and specific volume and <span class="math-inline">\(n&gt;1\)</span> is a fitted expansion exponent. With <span class="math-inline">\(r=p/p_0\)</span>, we have <span class="math-inline">\(v=v_0r^{-1/n}\)</span>. Integrating <span class="math-inline">\(dh=v\,dp\)</span> along this model isentrope gives</p>
+<p><span class="math-display">\[
+h_0-h=\frac{n}{n-1}p_0v_0\left(1-r^{(n-1)/n}\right).
+\]</span></p>
+<p>Substitution into the flow expression shows that <span class="math-inline">\(G^2\)</span> is proportional to <span class="math-inline">\(r^{2/n}(1-r^{(n-1)/n})\)</span>. Setting its derivative with respect to <span class="math-inline">\(r\)</span> to zero gives <span class="math-inline">\(r^{(n-1)/n}=2/(n+1)\)</span>. Thus</p>
+<p><span class="math-display">\[
+r^*=\left(\frac{2}{n+1}\right)^{n/(n-1)}.
+\]</span></p>
+<p>At the maximum, substitution gives <span class="math-inline">\(C^2=npv\)</span>. On the fitted isentrope, <span class="math-inline">\(a^2=(\partial p/\partial\rho)_s=npv\)</span>, since <span class="math-inline">\(\rho=1/v\)</span>. The maximum therefore corresponds to the model sonic state. The fitted exponent varies with the state range and is a teaching approximation. Real rapid expansions can show delayed condensation and slip between droplets and vapor, which violate the equilibrium, uniform-velocity model. <a href="https://www.youtube.com/watch?v=xffwQnnoLQw&amp;t=680s">Part 11 · 11:20</a></p>
+<h2 id="compare-an-unchoked-and-a-choked-steam-outlet-part-12-000">Compare an unchoked and a choked steam outlet <a href="https://www.youtube.com/watch?v=rHRLM_Zpz4E&amp;t=0s">Part 12 · 0:00</a></h2>
+<p>The lecture's first example gives wet steam in a chest at 600 kPa with vapor mass fraction 0.9 and <span class="math-inline">\(v_0=0.2845\,\mathrm{m^3/kg}\)</span>. The convergent outlet area is <span class="math-inline">\(0.002\,\mathrm{m^2}\)</span>. Use <span class="math-inline">\(n=1.035+0.1(0.9)=1.125\)</span> for this example. The computed sonic pressure is 347.69 kPa. For a 400 kPa back pressure, the steam leaves at 400 kPa, 367.90 m/s and 1.8037 kg/s using the power-law model. For a 300 kPa back pressure the exit is sonic at 347.69 kPa, 425.14 m/s and 1.8401 kg/s. The free jet adjusts to 300 kPa downstream.</p>
+<p>Later examples add two useful changes. First, if the stated inlet of a convergent nozzle is already moving, preserve its kinetic energy. Continuity gives <span class="math-inline">\(C_1=(A_e/A_1)(v_1/v_e)C_e\)</span>, with <span class="math-inline">\(A_1\)</span> the inlet area. Substituting into <span class="math-inline">\(h_1-h_e=(C_e^2-C_1^2)/2\)</span> determines <span class="math-inline">\(C_e\)</span> from the static end states. For the 500-to-300 kPa example the lecture reports about 437 m/s at the exit and 70 m/s at entry. The stagnation enthalpy then follows from <span class="math-inline">\(h_{t1}=h_1+C_1^2/2\)</span>, while <span class="math-inline">\(s_{t1}=s_1\)</span> fixes the stagnation pressure together with <span class="math-inline">\(h_{t1}\)</span>. <a href="https://www.youtube.com/watch?v=rHRLM_Zpz4E&amp;t=560s">Part 12 · 9:20</a></p>
+<p>Second, a 700 kPa, 250 °C reservoir expands to a specified in-nozzle exit state at 100 kPa. With the illustrative superheated-steam exponent <span class="math-inline">\(n=1.3\)</span>, the critical pressure is about 382 kPa. The throat is above the saturation crossing in the lecture's property calculation. Compute the throat using superheated properties, then compute the exit properties using equilibrium tables or a separately checked two-phase approximation. For a given <span class="math-inline">\(\dot m\)</span> the sizing relation is <span class="math-inline">\(A=\dot m v/C\)</span>. Distinguish a specified static exit state from an ambient pressure reached outside the device. <a href="https://www.youtube.com/watch?v=rHRLM_Zpz4E&amp;t=800s">Part 12 · 13:20</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_23.py">Python laboratory</a> in a directory containing its two local dependencies, the <a href="code/chapter_21.py">normal shock routine</a> and <a href="code/chapter_22.py">area–Mach solver</a>. It prints the air-nozzle regime thresholds and internal shock solution, then checks the predicted exit pressure against the target. The steam calculation prints both operating states and verifies that lowering the back pressure further preserves the choked solution. Inputs are in SI units. The lab requires only the Python standard library.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<h3 id="distinguish-a-jet-pressure-from-a-boundary-demand">Distinguish a jet pressure from a boundary demand</h3>
+<p>For the air nozzle, choose the ideal regime at <span class="math-inline">\(p_b=70\)</span> kPa.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The pressure is below the 330.91 kPa shock-at-exit threshold and above the 36.85 kPa design point. The model predicts an internal isentropic supersonic exit at 36.85 kPa. The higher ambient pressure makes this jet overexpanded, so it compresses after leaving the nozzle. A large enough mismatch can introduce separation within a real nozzle.</p>
+</details><h3 id="compare-the-two-sonic-reference-areas">Compare the two sonic reference areas</h3>
+<p>A normal shock leaves 70% of its incoming stagnation pressure. Find <span class="math-inline">\(A^*_b/A_t\)</span> for the choked nozzle.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> With constant mass flow and total temperature, <span class="math-inline">\(p_{ta}A_t=p_{tb}A^*_b\)</span>. Thus <span class="math-inline">\(A^*_b/A_t=1/0.7\approx1.429\)</span>. The downstream reference is a mathematical state associated with the new isentrope. The actual geometric throat is unchanged.</p>
+</details><h3 id="size-a-convergent-outlet-for-wet-steam">Size a convergent outlet for wet steam</h3>
+<p>Keep the 600 kPa steam reservoir and <span class="math-inline">\(n=1.125\)</span>. How much area would pass 0.920 kg/s at a back pressure below 347.69 kPa?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The computed sonic flux is <span class="math-inline">\(1.8401/0.002=920.05\)</span> kg/(m² s). The required area is <span class="math-inline">\(0.920/920.05\approx0.00100\,\mathrm{m^2}\)</span> in the power-law model. This scales linearly with requested flow at fixed reservoir state.</p>
+</details><h3 id="check-the-pressure-at-which-the-property-model-changes">Check the pressure at which the property model changes</h3>
+<p>Assume steam crosses from superheated vapor into the two-phase region at 212 kPa. The approximate sonic pressure is 382 kPa and the specified exit pressure is 100 kPa. Which states require mixture properties?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Pressure falls monotonically from the reservoir on the shock-free expansion considered. At 382 kPa the throat is encountered before the saturation crossing and remains superheated. The 100 kPa exit lies after the crossing and requires mixture properties on the selected isentrope. A single constant exponent across both intervals would require a separate accuracy check.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-22-nozzle-geometry-and-choking.html"><span>Previous</span>Nozzle geometry, choking, and back pressure</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

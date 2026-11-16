@@ -1,0 +1,1417 @@
+{
+  "course": "Applied Thermodynamics",
+  "official_course": "https://nptel.ac.in/courses/112106314",
+  "expanded_course": "https://nptel.ac.in/courses/112106419",
+  "official_playlist": "https://www.youtube.com/playlist?list=PLbMVogVj5nJRgXRZ0xEoBfWELmSo6JvvZ",
+  "lectures": [
+    {
+      "number": 1,
+      "id": "h_LAfSgddUw",
+      "title": "Introduction",
+      "availability": "public",
+      "duration_seconds": 1602,
+      "url": "https://www.youtube.com/watch?v=h_LAfSgddUw",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 1
+        },
+        "112106419": {
+          "week": 1,
+          "lesson": 1
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 2,
+      "id": "TnH4Jt-Wyss",
+      "title": "Entropy change of a control volume - Part 1",
+      "availability": "public",
+      "duration_seconds": 1117,
+      "url": "https://www.youtube.com/watch?v=TnH4Jt-Wyss",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 2
+        },
+        "112106419": {
+          "week": 1,
+          "lesson": 2
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 3,
+      "id": "be69wsZFyuM",
+      "title": "Entropy change of a control volume - Part 2",
+      "availability": "public",
+      "duration_seconds": 1333,
+      "url": "https://www.youtube.com/watch?v=be69wsZFyuM",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 3
+        },
+        "112106419": {
+          "week": 1,
+          "lesson": 3
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 4,
+      "id": "bvY3LzTDqMk",
+      "title": "Entropy change of a control volume - Part 3",
+      "availability": "public",
+      "duration_seconds": 969,
+      "url": "https://www.youtube.com/watch?v=bvY3LzTDqMk",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 4
+        },
+        "112106419": {
+          "week": 1,
+          "lesson": 4
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 5,
+      "id": "rLxnEV4MLps",
+      "title": "Work interaction of internally reversible steady flow processes",
+      "availability": "public",
+      "duration_seconds": 662,
+      "url": "https://www.youtube.com/watch?v=rLxnEV4MLps",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 5
+        },
+        "112106419": {
+          "week": 1,
+          "lesson": 5
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 6,
+      "id": "f714NjxTB8A",
+      "title": "Tutorial 1 -  Entropy change of a control volume - Part 1",
+      "availability": "public",
+      "duration_seconds": 2009,
+      "url": "https://www.youtube.com/watch?v=f714NjxTB8A",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 1,
+          "lesson": 6
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 7,
+      "id": "R7ovrLScZ8k",
+      "title": "Tutorial 1 -  Entropy change of a control volume - Part 2",
+      "availability": "public",
+      "duration_seconds": 1664,
+      "url": "https://www.youtube.com/watch?v=R7ovrLScZ8k",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 1,
+          "lesson": 7
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 8,
+      "id": "-lDtRFxhCuM",
+      "title": "Tutorial 2 -  Entropy change of a control volume - Part 3",
+      "availability": "public",
+      "duration_seconds": 1641,
+      "url": "https://www.youtube.com/watch?v=-lDtRFxhCuM",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 8
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 9,
+      "id": "TukTqhqnfR4",
+      "title": "Tutorial 2 -  Entropy change of a control volume - Part 4",
+      "availability": "public",
+      "duration_seconds": 1461,
+      "url": "https://www.youtube.com/watch?v=TukTqhqnfR4",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 9
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 10,
+      "id": "LYDBQr1m8Mk",
+      "title": "Tutorial 2 -  Entropy change of a control volume - Part 5",
+      "availability": "public",
+      "duration_seconds": 1422,
+      "url": "https://www.youtube.com/watch?v=LYDBQr1m8Mk",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 10
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 11,
+      "id": "L3pg5PPob_I",
+      "title": "Tutorial 3 - Entropy change of a control volume, Work interaction of internally reversible  - Part 1",
+      "availability": "public",
+      "duration_seconds": 1871,
+      "url": "https://www.youtube.com/watch?v=L3pg5PPob_I",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 11
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 12,
+      "id": "gRmtexDJWQk",
+      "title": "Tutorial 3 -  Entropy change of a control volume, Work interaction of internally reversible - Part 2",
+      "availability": "public",
+      "duration_seconds": 1189,
+      "url": "https://www.youtube.com/watch?v=gRmtexDJWQk",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 12
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 13,
+      "id": "14RBJj3gido",
+      "title": "Tutorial 3 -  Entropy change of a control volume, Work interaction of internally reversible - Part 3",
+      "availability": "public",
+      "duration_seconds": 1509,
+      "url": "https://www.youtube.com/watch?v=14RBJj3gido",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 2,
+          "lesson": 13
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 14,
+      "id": "vvBkCJtw1rI",
+      "title": "Exergy - Part 1",
+      "availability": "public",
+      "duration_seconds": 1205,
+      "url": "https://www.youtube.com/watch?v=vvBkCJtw1rI",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 6
+        },
+        "112106419": {
+          "week": 3,
+          "lesson": 14
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 15,
+      "id": "Q4M_IjgkyL0",
+      "title": "Exergy - Part 2",
+      "availability": "public",
+      "duration_seconds": 1795,
+      "url": "https://www.youtube.com/watch?v=Q4M_IjgkyL0",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 3,
+          "lesson": 15
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 16,
+      "id": "ovsdDMvXmPw",
+      "title": "Exergy - Part 3",
+      "availability": "public",
+      "duration_seconds": 1891,
+      "url": "https://www.youtube.com/watch?v=ovsdDMvXmPw",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 3,
+          "lesson": 16
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 17,
+      "id": "M2PWao2pvsI",
+      "title": "Exergy - Part 4",
+      "availability": "public",
+      "duration_seconds": 968,
+      "url": "https://www.youtube.com/watch?v=M2PWao2pvsI",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 9
+        },
+        "112106419": {
+          "week": 3,
+          "lesson": 17
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 18,
+      "id": "vfdk8-Eiajc",
+      "title": "Exergy - Part 5",
+      "availability": "public",
+      "duration_seconds": 1313,
+      "url": "https://www.youtube.com/watch?v=vfdk8-Eiajc",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 9
+        },
+        "112106419": {
+          "week": 3,
+          "lesson": 18
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 19,
+      "id": "8unoXVZtbdg",
+      "title": "Tutorial 4 - Exergy transfer and exergy change of a system - Part 1",
+      "availability": "public",
+      "duration_seconds": 1798,
+      "url": "https://www.youtube.com/watch?v=8unoXVZtbdg",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 3,
+          "lesson": 19
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 20,
+      "id": "IN2KY5Ke79Y",
+      "title": "Tutorial 4 - Exergy transfer and exergy change of a system - Part 2",
+      "availability": "public",
+      "duration_seconds": 1156,
+      "url": "https://www.youtube.com/watch?v=IN2KY5Ke79Y",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 3,
+          "lesson": 20
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 21,
+      "id": "5A8W-PzwdEw",
+      "title": "Tutorial 5 - Exergy transfer and exergy change of a system - Part 3",
+      "availability": "public",
+      "duration_seconds": 1858,
+      "url": "https://www.youtube.com/watch?v=5A8W-PzwdEw",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 21
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 22,
+      "id": "4HL1SnuKMQc",
+      "title": "Tutorial 5 - Exergy transfer and exergy change of a system - Part 4",
+      "availability": "public",
+      "duration_seconds": 1194,
+      "url": "https://www.youtube.com/watch?v=4HL1SnuKMQc",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 22
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 23,
+      "id": "9JiZniMAnt0",
+      "title": "Tutorial 5 - Exergy transfer and exergy change of a system - Part 5",
+      "availability": "public",
+      "duration_seconds": 1495,
+      "url": "https://www.youtube.com/watch?v=9JiZniMAnt0",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 23
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 24,
+      "id": "Y2AbiUZc4wg",
+      "title": "Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 1",
+      "availability": "public",
+      "duration_seconds": 1938,
+      "url": "https://www.youtube.com/watch?v=Y2AbiUZc4wg",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 24
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 25,
+      "id": "1m_uNUjAfjk",
+      "title": "Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 2",
+      "availability": "public",
+      "duration_seconds": 1493,
+      "url": "https://www.youtube.com/watch?v=1m_uNUjAfjk",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 25
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 26,
+      "id": "C4BzJiZvh5s",
+      "title": "Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 3",
+      "availability": "public",
+      "duration_seconds": 1553,
+      "url": "https://www.youtube.com/watch?v=C4BzJiZvh5s",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 4,
+          "lesson": 26
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 27,
+      "id": "TJVk37kchOA",
+      "title": "Thermodynamic cycles -- Rankine cycle - Part 1",
+      "availability": "public",
+      "duration_seconds": 1859,
+      "url": "https://www.youtube.com/watch?v=TJVk37kchOA",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 10
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 27
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 28,
+      "id": "yE58JznEXT0",
+      "title": "Thermodynamic cycles -- Rankine cycle - Part 2",
+      "availability": "public",
+      "duration_seconds": 914,
+      "url": "https://www.youtube.com/watch?v=yE58JznEXT0",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 11
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 28
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 29,
+      "id": "BI8wXzaq1C0",
+      "title": "Thermodynamic cycles -- Rankine cycle - Part 3",
+      "availability": "public",
+      "duration_seconds": 1823,
+      "url": "https://www.youtube.com/watch?v=BI8wXzaq1C0",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 12
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 29
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 30,
+      "id": "0HNZF9aFC1o",
+      "title": "Thermodynamic cycles -- Air standard Brayton cycle - Part 1",
+      "availability": "public",
+      "duration_seconds": 1643,
+      "url": "https://www.youtube.com/watch?v=0HNZF9aFC1o",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 13
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 30
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 31,
+      "id": "WUT-cjnWgNs",
+      "title": "Thermodynamic cycles -- Air standard Brayton cycle - Part 2",
+      "availability": "public",
+      "duration_seconds": 1203,
+      "url": "https://www.youtube.com/watch?v=WUT-cjnWgNs",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 14
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 31
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 32,
+      "id": "XgrDwGKL1FU",
+      "title": "Thermodynamic cycles -- Air standard Brayton cycle - Part 3",
+      "availability": "public",
+      "duration_seconds": 1523,
+      "url": "https://www.youtube.com/watch?v=XgrDwGKL1FU",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 15
+        },
+        "112106419": {
+          "week": 5,
+          "lesson": 32
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 33,
+      "id": "tbbWu9G-9MY",
+      "title": "Thermodynamic cycles -- Air standard Brayton cycle - Part 4",
+      "availability": "public",
+      "duration_seconds": 990,
+      "url": "https://www.youtube.com/watch?v=tbbWu9G-9MY",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 16
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 33
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 34,
+      "id": "2EDD3tBhzcI",
+      "title": "Thermodynamic cycles -- Air standard Brayton cycle - Part 5",
+      "availability": "public",
+      "duration_seconds": 1266,
+      "url": "https://www.youtube.com/watch?v=2EDD3tBhzcI",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 17
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 34
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 35,
+      "id": "RPXchZmvO0A",
+      "title": "Thermodynamic cycles -- Air standard Otto cycle",
+      "availability": "public",
+      "duration_seconds": 2485,
+      "url": "https://www.youtube.com/watch?v=RPXchZmvO0A",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 18
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 35
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 36,
+      "id": "iLSkaG0b-Ts",
+      "title": "Thermodynamic cycles -- Air standard Diesel cycle - Part 1",
+      "availability": "public",
+      "duration_seconds": 1661,
+      "url": "https://www.youtube.com/watch?v=iLSkaG0b-Ts",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 19
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 36
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 37,
+      "id": "e2Savvr_Za8",
+      "title": "Thermodynamic cycles -- Air standard Diesel cycle - Part 2",
+      "availability": "public",
+      "duration_seconds": 1101,
+      "url": "https://www.youtube.com/watch?v=e2Savvr_Za8",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 20
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 37
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 38,
+      "id": "zl-D7nlr_NY",
+      "title": "Thermodynamic cycles -- Vapor compression refrigeration cycle",
+      "availability": "public",
+      "duration_seconds": 2009,
+      "url": "https://www.youtube.com/watch?v=zl-D7nlr_NY",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 21
+        },
+        "112106419": {
+          "week": 6,
+          "lesson": 38
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 39,
+      "id": "es-2LA2bsu4",
+      "title": "Psychrometry - Part 1",
+      "availability": "public",
+      "duration_seconds": 1774,
+      "url": "https://www.youtube.com/watch?v=es-2LA2bsu4",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 22
+        },
+        "112106419": {
+          "week": 7,
+          "lesson": 39
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 40,
+      "id": "ewtFkNDw-5c",
+      "title": "Psychrometry - Part 2",
+      "availability": "public",
+      "duration_seconds": 1019,
+      "url": "https://www.youtube.com/watch?v=ewtFkNDw-5c",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 23
+        },
+        "112106419": {
+          "week": 7,
+          "lesson": 40
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 41,
+      "id": "xyJWx-HbXyI",
+      "title": "Psychrometry - Part 3",
+      "availability": "public",
+      "duration_seconds": 1477,
+      "url": "https://www.youtube.com/watch?v=xyJWx-HbXyI",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 24
+        },
+        "112106419": {
+          "week": 7,
+          "lesson": 41
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 42,
+      "id": "kSMMgwBP11c",
+      "title": "Psychrometry - Part 4",
+      "availability": "public",
+      "duration_seconds": 2135,
+      "url": "https://www.youtube.com/watch?v=kSMMgwBP11c",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 25
+        },
+        "112106419": {
+          "week": 7,
+          "lesson": 42
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 43,
+      "id": "Pj9QmXxexKE",
+      "title": "Psychrometry - Part 5",
+      "availability": "unavailable",
+      "duration_seconds": null,
+      "url": null,
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 26
+        }
+      },
+      "catalog_title": "Psychrometry - Part 5",
+      "replacement_playlist_index": 73,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 44,
+      "id": "689t3mWiPy0",
+      "title": "Psychrometry - Part 6",
+      "availability": "public",
+      "duration_seconds": 1143,
+      "url": "https://www.youtube.com/watch?v=689t3mWiPy0",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 27
+        },
+        "112106419": {
+          "week": 7,
+          "lesson": 44
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 45,
+      "id": "32NLJlrLtTQ",
+      "title": "Psychrometry - Part 7",
+      "availability": "public",
+      "duration_seconds": 2162,
+      "url": "https://www.youtube.com/watch?v=32NLJlrLtTQ",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 28
+        },
+        "112106419": {
+          "week": 8,
+          "lesson": 45
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 46,
+      "id": "srqc4eXwM8Y",
+      "title": "Tutorial 7 - Psychrometry and Air conditioning processes - Part 1",
+      "availability": "public",
+      "duration_seconds": 2562,
+      "url": "https://www.youtube.com/watch?v=srqc4eXwM8Y",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 8,
+          "lesson": 46
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 47,
+      "id": "Wu0Td5nzcs8",
+      "title": "Tutorial 7 - Psychrometry and Air conditioning processes - Part 2",
+      "availability": "public",
+      "duration_seconds": 1754,
+      "url": "https://www.youtube.com/watch?v=Wu0Td5nzcs8",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 8,
+          "lesson": 47
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 48,
+      "id": "Jd3gLOTJ9fw",
+      "title": "Tutorial 8 - Psychometry and Air conditioning processes - Part 3",
+      "availability": "public",
+      "duration_seconds": 1963,
+      "url": "https://www.youtube.com/watch?v=Jd3gLOTJ9fw",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 8,
+          "lesson": 48
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 49,
+      "id": "oJgpYsLNJh0",
+      "title": "Tutorial 8 - Psychometry and Air conditioning processes - Part 4",
+      "availability": "public",
+      "duration_seconds": 2585,
+      "url": "https://www.youtube.com/watch?v=oJgpYsLNJh0",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 8,
+          "lesson": 49
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 50,
+      "id": "zn4DDSNWeUA",
+      "title": "Combustion thermodynamics - Part 1",
+      "availability": "public",
+      "duration_seconds": 1923,
+      "url": "https://www.youtube.com/watch?v=zn4DDSNWeUA",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 29
+        },
+        "112106419": {
+          "week": 9,
+          "lesson": 50
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 51,
+      "id": "0TUCq-D4hRw",
+      "title": "Combustion thermodynamics - Part 2",
+      "availability": "public",
+      "duration_seconds": 1276,
+      "url": "https://www.youtube.com/watch?v=0TUCq-D4hRw",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 30
+        },
+        "112106419": {
+          "week": 9,
+          "lesson": 51
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 52,
+      "id": "6GW8hiVuf2o",
+      "title": "Combustion Thermodynamics - Part 3",
+      "availability": "public",
+      "duration_seconds": 1466,
+      "url": "https://www.youtube.com/watch?v=6GW8hiVuf2o",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 31
+        },
+        "112106419": {
+          "week": 9,
+          "lesson": 52
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 53,
+      "id": "F14AY9ge4F0",
+      "title": "Combustion thermodynamics - Part 4",
+      "availability": "public",
+      "duration_seconds": 1676,
+      "url": "https://www.youtube.com/watch?v=F14AY9ge4F0",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 32
+        },
+        "112106419": {
+          "week": 9,
+          "lesson": 53
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 54,
+      "id": "ml1fhdGuMc0",
+      "title": "Tutorial 9 - Stoichiometry - Part 1",
+      "availability": "public",
+      "duration_seconds": 1881,
+      "url": "https://www.youtube.com/watch?v=ml1fhdGuMc0",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 9,
+          "lesson": 54
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 55,
+      "id": "ZLa9RnWKEsc",
+      "title": "Tutorial 9 - Stoichiometry - Part 2",
+      "availability": "public",
+      "duration_seconds": 1211,
+      "url": "https://www.youtube.com/watch?v=ZLa9RnWKEsc",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 9,
+          "lesson": 55
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 56,
+      "id": "32K6nWIdvwc",
+      "title": "Tutorial 10 - Heat and temperature calculations in combustion - Part 1",
+      "availability": "public",
+      "duration_seconds": 2853,
+      "url": "https://www.youtube.com/watch?v=32K6nWIdvwc",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 10,
+          "lesson": 56
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 57,
+      "id": "lJIyU7cwtQ8",
+      "title": "Tutorial 10 - Heat and temperature calculations in combustion - Part 2",
+      "availability": "public",
+      "duration_seconds": 1401,
+      "url": "https://www.youtube.com/watch?v=lJIyU7cwtQ8",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 10,
+          "lesson": 57
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 58,
+      "id": "kXMpQ7zVwvw",
+      "title": "Tutorial 10 - Heat and temperature calculations in combustion - Part 3",
+      "availability": "public",
+      "duration_seconds": 2003,
+      "url": "https://www.youtube.com/watch?v=kXMpQ7zVwvw",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 10,
+          "lesson": 58
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 59,
+      "id": "TZAhb1KaZPs",
+      "title": "Tutorial 10 - Heat and temperature calculations in combustion - Part 4",
+      "availability": "public",
+      "duration_seconds": 2755,
+      "url": "https://www.youtube.com/watch?v=TZAhb1KaZPs",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 10,
+          "lesson": 59
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 60,
+      "id": "dW7RnzgzEi0",
+      "title": "Tutorial 10 - Heat and temperature calculations in combustion - Part 5",
+      "availability": "public",
+      "duration_seconds": 941,
+      "url": "https://www.youtube.com/watch?v=dW7RnzgzEi0",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 10,
+          "lesson": 60
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 61,
+      "id": "QC2PLN5D3wo",
+      "title": "Compressible flow through nozzles - Part 1",
+      "availability": "public",
+      "duration_seconds": 1542,
+      "url": "https://www.youtube.com/watch?v=QC2PLN5D3wo",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 33
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 61
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 62,
+      "id": "sYF4Kb647mY",
+      "title": "Compressible flow through nozzles - Part 2",
+      "availability": "public",
+      "duration_seconds": 1009,
+      "url": "https://www.youtube.com/watch?v=sYF4Kb647mY",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 34
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 62
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 63,
+      "id": "tCt7uXNYhzg",
+      "title": "Compressible flow through nozzles - Part 3",
+      "availability": "public",
+      "duration_seconds": 1608,
+      "url": "https://www.youtube.com/watch?v=tCt7uXNYhzg",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 35
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 63
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 64,
+      "id": "PNRiUi9Brtw",
+      "title": "Compressible flow through nozzles - Part 4",
+      "availability": "public",
+      "duration_seconds": 1506,
+      "url": "https://www.youtube.com/watch?v=PNRiUi9Brtw",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 36
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 64
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 65,
+      "id": "6lq2dfFuQ0Q",
+      "title": "Compressible flow through nozzles - Part 5",
+      "availability": "public",
+      "duration_seconds": 1480,
+      "url": "https://www.youtube.com/watch?v=6lq2dfFuQ0Q",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 37
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 65
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 66,
+      "id": "P6HLJKGw2SI",
+      "title": "Compressible flow through nozzles - Part 6",
+      "availability": "public",
+      "duration_seconds": 906,
+      "url": "https://www.youtube.com/watch?v=P6HLJKGw2SI",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 38
+        },
+        "112106419": {
+          "week": 11,
+          "lesson": 66
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 67,
+      "id": "ttqqNQSlHZU",
+      "title": "Compressible flow through nozzles - Part 7",
+      "availability": "public",
+      "duration_seconds": 2232,
+      "url": "https://www.youtube.com/watch?v=ttqqNQSlHZU",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 39
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 67
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 68,
+      "id": "YnNOu_jKw0U",
+      "title": "Compressible flow through nozzles - Part 8",
+      "availability": "public",
+      "duration_seconds": 1204,
+      "url": "https://www.youtube.com/watch?v=YnNOu_jKw0U",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 40
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 68
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 69,
+      "id": "YdRVgLekod8",
+      "title": "Compressible flow through nozzles - Part 9",
+      "availability": "public",
+      "duration_seconds": 1459,
+      "url": "https://www.youtube.com/watch?v=YdRVgLekod8",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 41
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 69
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 70,
+      "id": "HqYbWMEqE-4",
+      "title": "Compressible flow through nozzles - Part 10",
+      "availability": "public",
+      "duration_seconds": 1273,
+      "url": "https://www.youtube.com/watch?v=HqYbWMEqE-4",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 42
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 70
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 71,
+      "id": "xffwQnnoLQw",
+      "title": "Compressible flow through nozzles - Part 11",
+      "availability": "public",
+      "duration_seconds": 1008,
+      "url": "https://www.youtube.com/watch?v=xffwQnnoLQw",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 43
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 71
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 72,
+      "id": "rHRLM_Zpz4E",
+      "title": "Compressible flow through nozzles - Part 12",
+      "availability": "public",
+      "duration_seconds": 1610,
+      "url": "https://www.youtube.com/watch?v=rHRLM_Zpz4E",
+      "catalog_lessons": {
+        "112106314": {
+          "week": 1,
+          "lesson": 44
+        },
+        "112106419": {
+          "week": 12,
+          "lesson": 72
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": null
+    },
+    {
+      "number": 73,
+      "id": "IVz3N68fF1c",
+      "title": "Psychrometry - Part 5",
+      "availability": "public",
+      "duration_seconds": 1273,
+      "url": "https://www.youtube.com/watch?v=IVz3N68fF1c",
+      "catalog_lessons": {
+        "112106419": {
+          "week": 7,
+          "lesson": 43
+        }
+      },
+      "catalog_title": null,
+      "replacement_playlist_index": null,
+      "replaces_playlist_index": 43
+    }
+  ]
+}

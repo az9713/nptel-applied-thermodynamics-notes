@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Apply the closed-system exergy balance to compression, phase changes, internal equilibration, and moving pistons, then compare the flow tutorial cases.">
+  <meta name="color-scheme" content="dark light">
+  <title>Exergy of closed systems · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#the-reversible-comparison-uses-useful-work">The reversible comparison uses useful work</a></li>
+<li><a href="#state-properties-and-process-heat-play-different-roles">State properties and process heat play different roles</a></li>
+<li><a href="#internal-heating-and-fixed-composition-mixtures">Internal heating and fixed-composition mixtures</a></li>
+<li><a href="#transfer-the-same-reasoning-to-flow-devices">Transfer the same reasoning to flow devices</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#ambient-work-in-compression">Ambient work in compression</a></li>
+<li><a href="#thermal-equilibration">Thermal equilibration</a></li>
+<li><a href="#valve-benchmark">Valve benchmark</a></li>
+<li><a href="#heater-potential-and-work-benchmark">Heater potential and work benchmark</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html" aria-current="page"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 07 · Lectures 19–23</p>
+        <h1>Exergy of closed systems</h1>
+        <p class="lead">Apply the closed-system exergy balance to compression, phase changes, internal equilibration, and moving pistons, then compare the flow tutorial cases.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=8unoXVZtbdg">19. Tutorial 4 - Exergy transfer and exergy change of a system - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=IN2KY5Ke79Y">20. Tutorial 4 - Exergy transfer and exergy change of a system - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=5A8W-PzwdEw">21. Tutorial 5 - Exergy transfer and exergy change of a system - Part 3</a></li><li><a href="https://www.youtube.com/watch?v=4HL1SnuKMQc">22. Tutorial 5 - Exergy transfer and exergy change of a system - Part 4</a></li><li><a href="https://www.youtube.com/watch?v=9JiZniMAnt0">23. Tutorial 5 - Exergy transfer and exergy change of a system - Part 5</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <h2 id="the-reversible-comparison-uses-useful-work">The reversible comparison uses useful work</h2>
+<p>Suppose a compressor takes the material inside a sealed piston from state 1 to state 2. Let <span class="math-inline">\(E,S,V\)</span> be its energy, entropy, and volume, and let <span class="math-inline">\(T_0,p_0\)</span> be the environmental temperature and pressure. For a fixed composition and fixed mass, the physical exergy change is <span class="math-inline">\(\Delta B=\Delta E+p_0\Delta V-T_0\Delta S\)</span>. The supplied useful work is the signed negative of <span class="math-inline">\(W-p_0\Delta V\)</span>, where <span class="math-inline">\(W\)</span> is total work by the material. If only ambient heat transfer occurs, <span class="math-inline">\(\Delta B=W_{u,\mathrm{in}}-T_0S_{\mathrm{gen}}\)</span>. For a compression intended to raise exergy, the product is <span class="math-inline">\(\Delta B\)</span> and the actual useful work input is the resource.</p>
+<p>For ideal air with gas constant <span class="math-inline">\(R\)</span> and constant heat capacities <span class="math-inline">\(c_v,c_p\)</span>, the initial mass is <span class="math-inline">\(p_1V_1/(RT_1)\)</span>. Then <span class="math-inline">\(V_2=mRT_2/p_2\)</span>, <span class="math-inline">\(\Delta U=mc_v(T_2-T_1)\)</span> and <span class="math-inline">\(\Delta S=m[c_p\ln(T_2/T_1)-R\ln(p_2/p_1)]\)</span>. Use absolute temperature and pressure. The lab takes the tutorial's piston data and approximate constant-property air, defines the reported <span class="math-inline">\(1.2\,\mathrm{kJ}\)</span> as <strong>useful</strong> work input, and obtains destruction from the balance. <a href="https://www.youtube.com/watch?v=8unoXVZtbdg&amp;t=20s">Tutorial 4, air compression</a></p>
+<h2 id="state-properties-and-process-heat-play-different-roles">State properties and process heat play different roles</h2>
+<p>For a constant-pressure cooling process with only quasistatic pressure work, use <span class="math-inline">\(Q=\Delta H\)</span> and <span class="math-inline">\(W=p\Delta V\)</span>. The change in chemical composition is zero. If refrigerant reaches saturation, compare the pressure with its critical pressure before selecting a two-phase model. Captions can drop decimal points and prefixes. The cooling example requires a subcritical pressure consistent with the stated saturation endpoint. A property-table calculation should use reliable refrigerant data on a consistent reference basis. <a href="https://www.youtube.com/watch?v=8unoXVZtbdg&amp;t=660s">Tutorial 4, refrigerant cooling</a></p>
+<p>When a partition separating two bodies is removed inside a closed, adiabatic, rigid vessel, <span class="math-inline">\(U\)</span> and <span class="math-inline">\(V\)</span> remain fixed if work is negligible. Use conservation of mass, the final common state and the initial compartment energies to solve equilibrium. Then <span class="math-inline">\(B_{\mathrm{dest}}=T_0(S_2-S_1)\)</span> if no heat or useful work crosses the boundary. The initial entropy <span class="math-inline">\(S_1\)</span> is the sum over both compartments. Applying a single initial temperature before equilibration changes the entropy account. <a href="https://www.youtube.com/watch?v=8unoXVZtbdg&amp;t=1280s">Tutorial 4, partitioned water tank</a></p>
+<p>For a piston moving under a specified pressure with stops, divide the process into a fixed-volume segment and a segment at its load pressure. In the fixed-volume segment <span class="math-inline">\(Q_{12}=\Delta U_{12}\)</span> if there is no other work. In the second <span class="math-inline">\(Q_{23}=\Delta U_{23}+p_{\mathrm{load}}(V_3-V_2)\)</span>. The heater's exergy resource is <span class="math-inline">\((1-T_0/T_H)(Q_{12}+Q_{23})\)</span> when a single source reservoir at <span class="math-inline">\(T_H\)</span> supplies all heat and the enlarged boundary reaches it. A reservoir at a temperature different from ambient can supply exergy, even when the piston does little useful work. <a href="https://www.youtube.com/watch?v=IN2KY5Ke79Y&amp;t=20s">Tutorial 4, piston stops</a></p>
+<h2 id="internal-heating-and-fixed-composition-mixtures">Internal heating and fixed-composition mixtures</h2>
+<p>An insulated tank contains a hot iron block and cooler water while a paddle wheel adds work. Let <span class="math-inline">\(C_b,C_w\)</span> be their constant total heat capacities, <span class="math-inline">\(T_b,T_w\)</span> their initial absolute temperatures, <span class="math-inline">\(T_f\)</span> their common final temperature, and <span class="math-inline">\(W_{\mathrm{in}}&gt;0\)</span> the paddle work. With negligible container heat capacity and volume change, first-law and entropy accounts give</p>
+<p><span class="math-display">\[
+C_b(T_f-T_b)+C_w(T_f-T_w)=W_{\mathrm{in}},\qquad
+S_{\mathrm{gen}}=C_b\ln(T_f/T_b)+C_w\ln(T_f/T_w).
+\]</span></p>
+<p>Even if <span class="math-inline">\(W_{\mathrm{in}}=0\)</span>, equilibration through a finite temperature difference generates entropy. When the shaft delivers work as well, its energy adds to final internal energy, and dissipation is included in the generation residual. <a href="https://www.youtube.com/watch?v=5A8W-PzwdEw&amp;t=20s">Tutorial 5, iron block, water and paddle wheel</a></p>
+<p>For the constant-composition neon, oxygen and nitrogen mixture in a piston, use mole fractions <span class="math-inline">\(y_j\)</span> and species molar masses <span class="math-inline">\(M_j\)</span> to obtain mixture molar mass <span class="math-inline">\(M=\sum_jy_jM_j\)</span>. The mass fraction is <span class="math-inline">\(w_j=y_jM_j/M\)</span>, so the mass-specific heat capacity is <span class="math-inline">\(\sum_jw_jc_{p,j}\)</span>. The mass-specific gas constant is <span class="math-inline">\(R_u/M\)</span>. The volume displaced by travel <span class="math-inline">\(\ell\)</span> in a cylinder of diameter <span class="math-inline">\(D\)</span> is <span class="math-inline">\(\pi D^2\ell/4\)</span>. Use the appropriate external pressure history to compute work from that volume change. The piston diameter and travel alone do not fix the pressure history. <a href="https://www.youtube.com/watch?v=5A8W-PzwdEw&amp;t=480s">Tutorial 5, ideal gas mixture</a></p>
+<h2 id="transfer-the-same-reasoning-to-flow-devices">Transfer the same reasoning to flow devices</h2>
+<table>
+<thead>
+<tr>
+<th>Source case</th>
+<th>Exergy balance to apply</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=5A8W-PzwdEw&amp;t=1320s">Tutorial 5, air compressor</a></td>
+<td>Shaft work supplies the stream exergy increase when heat ultimately reaches ambient. The destruction is the difference between the two rates.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=4HL1SnuKMQc&amp;t=20s">R134a throttle</a></td>
+<td>For an insulated steady valve with negligible speed and elevation changes, <span class="math-inline">\(h_e=h_i\)</span> and the physical exergy decrease is <span class="math-inline">\(T_0(s_e-s_i)\)</span>. Zero actual work can coexist with positive reversible work between the endpoints.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=4HL1SnuKMQc&amp;t=700s">Insulated steam turbine</a></td>
+<td>Include inlet and exit speeds in stream exergy. The matched-state reversible power exceeds actual power by <span class="math-inline">\(T_0\dot S_{\mathrm{gen}}\)</span>.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=9JiZniMAnt0&amp;t=20s">Steam turbine losing heat</a></td>
+<td>Recover wet-steam enthalpy and entropy from quality if the outlet is saturated. Use the energy balance to infer mass flow if actual output and heat loss are given. Use the ambient heat term for the extended entropy generation.</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=9JiZniMAnt0&amp;t=580s">Steam nozzle</a></td>
+<td>Kinetic energy increase is the useful product when acceleration is the purpose. Compare it with the thermomechanical stream exergy reduction that supplies it.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="ambient-work-in-compression">Ambient work in compression</h3>
+<p>A load supplies 3.0 kJ of useful work as volume drops by 0.008 m³ in 100 kPa ambient. Find the gas's total work input.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> A piston reduces volume by <span class="math-inline">\(0.008\,\mathrm{m^3}\)</span> against <span class="math-inline">\(100\,\mathrm{kPa}\)</span> ambient while a load supplies <span class="math-inline">\(3.0\,\mathrm{kJ}\)</span> of useful work. The atmosphere supplies another <span class="math-inline">\(0.8\,\mathrm{kJ}\)</span>, so total work input into the gas is <span class="math-inline">\(3.8\,\mathrm{kJ}\)</span>. Use the total in the energy balance and the useful input in the exergy balance.</p>
+</details><h3 id="thermal-equilibration">Thermal equilibration</h3>
+<p>Two rigid bodies at 400 and 300 K equilibrate in an insulated enclosure. Each has heat capacity 1 kJ/K. Find the lost useful work at 300 K ambient.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Two rigid bodies each have heat capacity <span class="math-inline">\(1\,\mathrm{kJ/K}\)</span> and initially sit at <span class="math-inline">\(400\)</span> and <span class="math-inline">\(300\,\mathrm K\)</span>. An insulated enclosure gives <span class="math-inline">\(T_f=350\,\mathrm K\)</span> and <span class="math-inline">\(S_{\mathrm{gen}}=\ln(350/400)+\ln(350/300)=0.02062\,\mathrm{kJ/K}\)</span>. At <span class="math-inline">\(T_0=300\,\mathrm K\)</span>, the lost useful work is about <span class="math-inline">\(6.186\,\mathrm{kJ}\)</span>.</p>
+</details><h3 id="valve-benchmark">Valve benchmark</h3>
+<p>How much physical exergy does an insulated valve destroy per kilogram for an entropy rise of 0.08 kJ/(kg K) at 300 K ambient?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> If an insulated valve forces a stream through a specific entropy rise of <span class="math-inline">\(0.08\,\mathrm{kJ/(kg\,K)}\)</span> at <span class="math-inline">\(T_0=300\,\mathrm K\)</span>, it destroys <span class="math-inline">\(24\,\mathrm{kJ/kg}\)</span> of physical exergy. For the valve alone and negligible kinetic and potential terms, all of the stream exergy decrease is destroyed.</p>
+</details><h3 id="heater-potential-and-work-benchmark">Heater potential and work benchmark</h3>
+<p>A piston receives 60 kJ from a 600 K reservoir and gains 18 kJ of physical exergy. If ambient is 300 K, what useful output would a reversible process deliver at those endpoints and heat input?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The heat brings <span class="math-inline">\(60(1-300/600)=30\,\mathrm{kJ}\)</span> of exergy. The reversible limit sets generation to zero, so the useful work would be <span class="math-inline">\(30-18=12\,\mathrm{kJ}\)</span>. A measured useful work of <span class="math-inline">\(8\,\mathrm{kJ}\)</span> would correspond to <span class="math-inline">\(4\,\mathrm{kJ}\)</span> destroyed.</p>
+<p>The <a href="code/chapter_07.py">standalone lab</a> checks energy conservation in a stirred enclosure and the useful work account for ideal-air compression. The captions anchor each case; the lab states its independent constant-property assumptions.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>Previous</span>Flow exergy and useful output</a><a rel="next" href="chapter-08-exergy-of-control-volumes.html"><span>Next</span>Exergy of steady and transient control volumes</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

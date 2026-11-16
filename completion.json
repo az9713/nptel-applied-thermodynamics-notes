@@ -1,0 +1,51 @@
+{
+  "release_date": "2026-11-16",
+  "reader": {
+    "chapter_count": 23,
+    "html_pages_checked": 27,
+    "internal_links_checked": 1330,
+    "source_positions": 73,
+    "source_positions_mapped": 72,
+    "full_source_coverage_checked": true,
+    "timestamp_links_checked": 172,
+    "public_recordings_with_timestamps": 72,
+    "passed": true,
+    "errors": []
+  },
+  "browser": [
+    {
+      "width_px": 1440,
+      "pages_checked": 27,
+      "equations_checked": 1611,
+      "offline_file_url": true,
+      "reader_controls_checked": true,
+      "passed": true
+    },
+    {
+      "width_px": 390,
+      "pages_checked": 8,
+      "equations_checked": 399,
+      "offline_file_url": true,
+      "reader_controls_checked": true,
+      "passed": true
+    }
+  ],
+  "worked_solutions": 93,
+  "python_labs_passed": 23,
+  "source_free_rebuild": {
+    "byte_identical_generated_files": 29,
+    "pinned_markdown_dependency": "3.8.2",
+    "labs_passed_again": 23
+  },
+  "source_evidence": {
+    "public_timed_english_caption_tracks": 72,
+    "minimum_first_to_last_cue_span_fraction": 0.9905,
+    "recordings_with_sampled_frames": 72,
+    "extracted_sample_frames": 2818,
+    "visual_inspection": "Selected source frames were inspected to verify slide content and numerical readings. Extraction count is not inspection count."
+  },
+  "technical_review": {
+    "coverage": "All chapter groups received a non-author review of selected derivations, assumptions, numerical calculations, and evidence links. Chapter depth and source-visual inspection vary.",
+    "scope_limit": "No full audiovisual or claim-by-claim transcription audit. Some tutorial cases reconstruct the analytical procedure using stated property values or independently constructed examples."
+  }
+}

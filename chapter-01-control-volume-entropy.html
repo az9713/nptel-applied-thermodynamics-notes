@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Track entropy carried by heat and flowing matter, identify irreversibility, and test whether a proposed operating state is admissible.">
+  <meta name="color-scheme" content="dark light">
+  <title>Entropy balances for open systems · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#what-an-energy-balance-leaves-undetermined">What an energy balance leaves undetermined</a></li>
+<li><a href="#choose-the-control-volume-before-writing-a-balance">Choose the control volume before writing a balance</a></li>
+<li><a href="#derive-the-entropy-balance-from-a-moving-material-system">Derive the entropy balance from a moving material system</a></li>
+<li><a href="#locate-irreversibility-in-steady-flow">Locate irreversibility in steady flow</a></li>
+<li><a href="#extend-the-boundary-to-include-the-surroundings">Extend the boundary to include the surroundings</a></li>
+<li><a href="#solve-the-running-mixer-problem">Solve the running mixer problem</a></li>
+<li><a href="#retain-entropy-storage-during-a-transient">Retain entropy storage during a transient</a></li>
+<li><a href="#read-the-captions-against-the-balances">Read the captions against the balances</a></li>
+<li><a href="#numerical-lab">Numerical lab</a></li>
+<li><a href="#problems-with-worked-solutions">Problems with worked solutions</a><ul>
+<li><a href="#1-a-steady-device-with-an-impossible-outlet">1. A steady device with an impossible outlet</a></li>
+<li><a href="#2-heat-transfer-with-zero-net-power">2. Heat transfer with zero net power</a></li>
+<li><a href="#3-an-internally-reversible-isentropic-limit">3. An internally reversible isentropic limit</a></li>
+<li><a href="#4-a-wet-outlet-from-an-isenthalpic-throttle">4. A wet outlet from an isenthalpic throttle</a></li>
+<li><a href="#5-a-falling-entropy-inventory">5. A falling entropy inventory</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html" aria-current="page"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 01 · Lectures 1, 2, 3, 4</p>
+        <h1>Entropy balances for open systems</h1>
+        <p class="lead">Track entropy carried by heat and flowing matter, identify irreversibility, and test whether a proposed operating state is admissible.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=h_LAfSgddUw">01. Introduction</a></li><li><a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss">02. Entropy change of a control volume - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=be69wsZFyuM">03. Entropy change of a control volume - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=bvY3LzTDqMk">04. Entropy change of a control volume - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <h2 id="what-an-energy-balance-leaves-undetermined">What an energy balance leaves undetermined</h2>
+<p>Two insulated air mixers take the same mass flow of hot air and cold air and deliver the same outlet temperature. One mixes streams entering at the same pressure. The other throttles the hot stream before mixing. Under an ideal-gas model the throttle preserves the hot stream's temperature, so both outlet temperatures satisfy the same energy balance. The throttle nevertheless destroys a pressure difference that might have been used to produce work. What quantity records that loss, and where is it generated?</p>
+<p>An <strong>energy balance</strong> tracks energy stored inside a boundary or transferred across it. An <strong>entropy balance</strong> also accounts for entropy generated inside that boundary by irreversible processes such as mixing, friction, or heat transfer through a finite temperature difference. This added term can distinguish models that both conserve energy. It also supplies an admissibility test through its nonnegative sign.</p>
+<p>The course introduction uses this distinction to motivate second-law analysis of practical devices. It previews more detailed Rankine, Brayton, and vapor-compression cycles as well as air-standard engine models, moist-air processes, combustion, and compressible nozzle flow. The course later develops <strong>exergy</strong>, the maximum useful work available under specified environment and interaction constraints, and uses it in second-law efficiency comparisons. Exergy requires a stated reference environment. This chapter establishes the entropy balance on which that analysis rests. <a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=0s">Course introduction</a></p>
+<h2 id="choose-the-control-volume-before-writing-a-balance">Choose the control volume before writing a balance</h2>
+<p>A <strong>material system</strong> follows the same matter through time. A <strong>control volume</strong> is a region selected for analysis, and its boundary is the <strong>control surface</strong>. For this chapter the surface is stationary. A mixer control volume can surround the chamber alone or enclose the upstream throttle too. The chamber-only balance has an inlet downstream of the throttle. Its calculated entropy generation therefore covers mixing inside the chamber. Moving the inlet upstream of the throttle changes the measured inlet state and adds throttling to the generation attributed to the larger region.</p>
+<p>Let <span class="math-inline">\(m_{\mathrm{CV}}\)</span> denote the mass in the region, in kilograms, and <span class="math-inline">\(\dot m\)</span> a nonnegative stream mass flow rate in kilograms per second. Subscripts <span class="math-inline">\(i\)</span> and <span class="math-inline">\(e\)</span> denote an inlet and an exit. Conservation of mass gives</p>
+<p><span class="math-display">\[
+\frac{d m_{\mathrm{CV}}}{dt}
+=\sum_i\dot m_i-\sum_e\dot m_e.
+\]</span></p>
+<p>At steady operation the mass inventory and the thermodynamic fields are time independent, so the sums of the inlet and outlet flow rates agree. An individual parcel can still change temperature or pressure as it moves from its inlet to its outlet.</p>
+<h2 id="derive-the-entropy-balance-from-a-moving-material-system">Derive the entropy balance from a moving material system</h2>
+<p>The derivation below reconstructs the finite-time argument and its differential limit. <a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=3s">Entropy change of a control volume, Part 1</a></p>
+<p>Let <span class="math-inline">\(s\)</span> denote specific entropy, in <span class="math-inline">\(\mathrm{kJ/(kg\,K)}\)</span>. The total entropy <span class="math-inline">\(S_{\mathrm{CV}}\)</span> is the integral of <span class="math-inline">\(s\)</span> over the mass currently inside the control volume. For each heat-transfer patch <span class="math-inline">\(j\)</span>, <span class="math-inline">\(\dot Q_j\)</span> is the rate of heat into the control volume in kilowatts, and <span class="math-inline">\(T_j\)</span> is the absolute local boundary temperature in kelvin. Let <span class="math-inline">\(\dot S_{\mathrm{gen}}\)</span> denote the entropy generated within the boundary in <span class="math-inline">\(\mathrm{kW/K}\)</span>.</p>
+<p>At time <span class="math-inline">\(t\)</span> select the material already in the control volume together with the mass <span class="math-inline">\(\dot m_i dt\)</span> about to enter through each inlet. At <span class="math-inline">\(t+dt\)</span> the same matter consists of the current contents of the region plus the mass <span class="math-inline">\(\dot m_e dt\)</span> that has just departed each exit. Relative to the change in entropy within the control volume, subtract the entering entropy at the initial instant and add the exiting entropy at the final instant. The first-order material entropy change is therefore</p>
+<p><span class="math-display">\[
+dS_{\mathrm{mat}}
+=dS_{\mathrm{CV}}+\sum_e s_e\dot m_e\,dt
+-\sum_i s_i\dot m_i\,dt .
+\]</span></p>
+<p>One-dimensional port values <span class="math-inline">\(s_i\)</span> and <span class="math-inline">\(s_e\)</span> are uniform or mass-flux-weighted averages. The approximation in the moving-system comparison becomes exact in the differential limit under regular transport. The second law for that material system gives <span class="math-inline">\(dS_{\mathrm{mat}}=\sum_j (\dot Q_j/T_j)dt+\dot S_{\mathrm{gen}}dt\)</span>. Rearrange to obtain</p>
+<p><span class="math-display">\[
+\frac{dS_{\mathrm{CV}}}{dt}
+=\sum_j\frac{\dot Q_j}{T_j}
++\sum_i\dot m_i s_i-\sum_e\dot m_es_e
++\dot S_{\mathrm{gen}},
+\qquad \dot S_{\mathrm{gen}}\ge 0 .
+\]</span></p>
+<p>Every term has units of energy per time per kelvin. The heat term can have either sign. Shaft work carries energy without a separate entropy transfer term. Dissipation of that work within the boundary generates entropy. If the temperature or heat flux varies over the surface, replace the patch sum by the surface integral of local inward heat flux divided by local absolute temperature.</p>
+<p>A common change to the entropy reference of one conserved species leaves the balance invariant. For single-component flow, adding a constant <span class="math-inline">\(c\)</span> to every specific entropy increases the storage derivative by <span class="math-inline">\(c\,dm_{\mathrm{CV}}/dt\)</span> and the net transport term by the same quantity through the mass balance. The generation rate is therefore independent of that reference choice. <a href="https://web.mit.edu/snively/www/2_005%20Coursenotes-1.pdf">MIT control-volume derivation, equation 8.41</a></p>
+<h2 id="locate-irreversibility-in-steady-flow">Locate irreversibility in steady flow</h2>
+<p>Under steady conditions the entropy storage term vanishes. For one inlet and one exit with a common mass flow rate <span class="math-inline">\(\dot m\)</span>,</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen}}=
+\dot m(s_e-s_i)-\sum_j\frac{\dot Q_j}{T_j}.
+\]</span></p>
+<p>For an adiabatic device the heat-transfer sum vanishes. In that case the entropy of a single stream rises with generation inside the control volume. If an adiabatic device is internally reversible, generation is zero and the stream's specific entropy is unchanged. In a nonadiabatic device <span class="math-inline">\(s_e=s_i\)</span> can coexist with positive generation when heat rejection exports the generated entropy.</p>
+<p>For a heater that receives steady thermal power <span class="math-inline">\(\dot Q\)</span> from a reservoir at <span class="math-inline">\(T_H\)</span> and transfers it across an interface whose cooler face is at <span class="math-inline">\(T_C&lt;T_H\)</span>, consider the region containing just the intervening wall. Take the wall to be steady with zero mass transfer and no other heat exchange. Its heat terms are <span class="math-inline">\(\dot Q/T_H\)</span> and <span class="math-inline">\(-\dot Q/T_C\)</span>, so</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen,wall}}
+=\dot Q\left(\frac{1}{T_C}-\frac{1}{T_H}\right).
+\]</span></p>
+<p>For <span class="math-inline">\(\dot Q=12\,\mathrm{kW}\)</span>, <span class="math-inline">\(T_H=600\,\mathrm{K}\)</span> and <span class="math-inline">\(T_C=400\,\mathrm{K}\)</span>, the wall generates <span class="math-inline">\(0.010\,\mathrm{kW/K}\)</span>. An analysis of the receiving device alone uses <span class="math-inline">\(T_C\)</span> for its inlet heat transfer. Moving the boundary outward to include the wall changes that temperature to <span class="math-inline">\(T_H\)</span> and adds the computed <span class="math-inline">\(0.010\,\mathrm{kW/K}\)</span> to the entropy generation. <a href="https://ocw.mit.edu/courses/2-43-advanced-thermodynamics-spring-2024/mit2_43_s24_lec05.pdf">MIT heat interactions and boundary temperature</a></p>
+<h2 id="extend-the-boundary-to-include-the-surroundings">Extend the boundary to include the surroundings</h2>
+<p>Part 2 works with both a device boundary and an enclosing balance with an isothermal ambient reservoir. Let <span class="math-inline">\(T_0\)</span> denote that reservoir's absolute temperature. Suppose all heat leaving the device ultimately reaches this reservoir and the connecting region stores neither energy nor entropy during steady operation. The reservoir gains heat at rate <span class="math-inline">\(-\dot Q\)</span> when <span class="math-inline">\(\dot Q\)</span> is the total rate of heat into the device. The entropy generation rate of the device plus heat-transfer path is therefore</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen,total}}
+=\sum_e\dot m_e s_e-\sum_i\dot m_i s_i-\frac{\dot Q}{T_0}.
+\]</span></p>
+<p>The difference from device-only generation is <span class="math-inline">\(\sum_j \dot Q_j/T_j-\dot Q/T_0\)</span>. This replacement is justified by the enlarged boundary. A device with some heat entering through a cold region and other heat leaving through a hot region can have a small net <span class="math-inline">\(\dot Q\)</span> and substantial irreversible heat transfer. Even <span class="math-inline">\(\dot Q=0\)</span> in the aggregate does not make the device adiabatic if local heat flows cancel. With multiple thermal reservoirs, specify each reservoir and its heat transfer separately.</p>
+<p><strong>Original compressor example.</strong> At steady operation an insulated compressor would equate shaft input with the stream's enthalpy rise if kinetic and gravitational energy changes were negligible. Suppose actual shaft input is <span class="math-inline">\(23\,\mathrm{kW}\)</span>, the enthalpy rise of the stream is <span class="math-inline">\(20\,\mathrm{kW}\)</span> on a rate basis, and the outlet stream carries <span class="math-inline">\(0.004\,\mathrm{kW/K}\)</span> more entropy than the inlet stream. Shaft input delivers energy to the region, so <span class="math-inline">\(\dot Q=20-23=-3\,\mathrm{kW}\)</span>. If the rejected heat reaches a <span class="math-inline">\(300\,\mathrm{K}\)</span> reservoir, total generation is <span class="math-inline">\(0.004-(-3/300)=0.014\,\mathrm{kW/K}\)</span>. The device-only value requires the actual boundary heat-flux and temperature distribution or additional assumptions.</p>
+<p>The recording applies the same architecture to a heat exchanger, an insulated steam turbine, a nonadiabatic refrigerant compressor, and a turbine that rejects heat to ambient. Turbine and compressor enthalpies are specific quantities, in <span class="math-inline">\(\mathrm{kJ/kg}\)</span>. Their product with mass flow gives power, in <span class="math-inline">\(\mathrm{kW}\)</span>. The caption track contains questionable transcriptions of some numerical values and units. The worked numbers here are independently constructed. <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=300s">Part 2, heat exchanger and turbine</a> · <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=720s">Part 2, surrounding reservoir and compressor</a> · <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=1200s">Part 2, turbine losing heat</a></p>
+<h2 id="solve-the-running-mixer-problem">Solve the running mixer problem</h2>
+<p>Assume dry air at fixed composition can be modeled as an ideal gas with constant specific heat at constant pressure <span class="math-inline">\(c_p=1.005\,\mathrm{kJ/(kg\,K)}\)</span> and specific gas constant <span class="math-inline">\(R=0.287\,\mathrm{kJ/(kg\,K)}\)</span>. Denote absolute temperature by <span class="math-inline">\(T\)</span>, absolute pressure by <span class="math-inline">\(p\)</span>, specific volume by <span class="math-inline">\(v\)</span>, and specific enthalpy by <span class="math-inline">\(h\)</span>. In this model <span class="math-inline">\(dh=c_p\,dT\)</span> and <span class="math-inline">\(pv=RT\)</span>. The Gibbs relation <span class="math-inline">\(T\,ds=dh-v\,dp\)</span> gives</p>
+<p><span class="math-display">\[
+ds=c_p\frac{dT}{T}-R\frac{dp}{p},
+\qquad s_b-s_a=c_p\ln\frac{T_b}{T_a}-R\ln\frac{p_b}{p_a}.
+\]</span></p>
+<p>Each logarithm has a dimensionless argument formed from absolute values in consistent units. At constant enthalpy, ideal-gas temperature remains fixed, and a pressure drop increases specific entropy. Real-fluid temperature can change in a throttle because real-fluid enthalpy generally depends on pressure as well as temperature.</p>
+<p>Feed the chamber with <span class="math-inline">\(1\,\mathrm{kg/s}\)</span> each at <span class="math-inline">\(400\)</span> and <span class="math-inline">\(300\,\mathrm{K}\)</span>, both at <span class="math-inline">\(100\,\mathrm{kPa}\)</span>. There is no shaft work or heat transfer, and changes in kinetic and gravitational energy are negligible. Conservation of mass gives <span class="math-inline">\(2\,\mathrm{kg/s}\)</span> at the outlet. Conservation of energy gives</p>
+<p><span class="math-display">\[
+2c_p T_e=c_p(400+300),\qquad T_e=350\,\mathrm K .
+\]</span></p>
+<p>Here the numerical factors multiplying enthalpy are mass flow rates in <span class="math-inline">\(\mathrm{kg/s}\)</span>. Take the chamber outlet to be at <span class="math-inline">\(100\,\mathrm{kPa}\)</span>. Adding the stream entropy changes gives</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen,chamber}}
+=(1\,\mathrm{kg/s})c_p
+\left(\ln\frac{350}{400}+\ln\frac{350}{300}\right)
+=0.02072\,\mathrm{kW/K}.
+\]</span></p>
+<p>One stream loses entropy while warming the colder stream. Their sum is positive. For equal flows at the same pressure, this result is the logarithm of the square of the arithmetic mean divided by the product of the temperatures. The arithmetic mean exceeds or equals the geometric mean and equality occurs only when both temperatures coincide.</p>
+<p>Now feed hot air at <span class="math-inline">\(200\,\mathrm{kPa}\)</span> through an upstream adiabatic throttle that drops it to <span class="math-inline">\(100\,\mathrm{kPa}\)</span>. Under the ideal-gas and negligible velocity-change assumptions the throttle leaves its temperature at <span class="math-inline">\(400\,\mathrm K\)</span>. It adds <span class="math-inline">\((1\,\mathrm{kg/s})R\ln(2)=0.19893\,\mathrm{kW/K}\)</span>. The chamber alone still generates <span class="math-inline">\(0.02072\,\mathrm{kW/K}\)</span>. The larger region generates <span class="math-inline">\(0.21966\,\mathrm{kW/K}\)</span> when rounded after addition. One calculation using just the external inlet and exit states reproduces the sum because the internal stream that joins the throttle to the chamber cancels.</p>
+<p>Part 3 begins with a steady mixing chamber in which steam heats liquid water and a small heat leak reaches ambient. The inlet steam flow follows from the enthalpy balance. Total entropy generation then follows from the stream entropy rates and the ambient heat term. Unlike the same-species ideal-gas example, this calculation needs water/steam properties at each pressure and temperature and includes phase change. <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=5s">Part 3, steam and water mixer</a></p>
+<h2 id="retain-entropy-storage-during-a-transient">Retain entropy storage during a transient</h2>
+<p>Part 3 considers an insulated rigid tank that discharges air while an internal electrical heater keeps the gas at constant temperature. Choose the tank boundary upstream of any appreciable pressure drop, and assume the contents stay uniform so the escaping gas crosses the boundary with the tank's instantaneous specific entropy <span class="math-inline">\(s\)</span>. For mass <span class="math-inline">\(m\)</span> in the tank, the entropy inventory is <span class="math-inline">\(ms\)</span>. With no inlet the mass balance gives <span class="math-inline">\(dm/dt=-\dot m_e\)</span>. Because the tank is insulated, the entropy balance reduces to</p>
+<p><span class="math-display">\[
+\frac{d(ms)}{dt}=-\dot m_es+\dot S_{\mathrm{gen}},
+\qquad
+\dot S_{\mathrm{gen}}=m\frac{ds}{dt}.
+\]</span></p>
+<p>The entropy carried out cancels the loss of stored entropy associated simply with the departing mass. For a well-mixed ideal gas at fixed absolute temperature <span class="math-inline">\(T\)</span> and tank volume <span class="math-inline">\(V\)</span>, <span class="math-inline">\(ds=-R\,dp/p\)</span> and <span class="math-inline">\(m=pV/(RT)\)</span>. A pressure drop from <span class="math-inline">\(p_1\)</span> to <span class="math-inline">\(p_2\)</span> therefore generates</p>
+<p><span class="math-display">\[
+S_{\mathrm{gen}}=-\frac{V}{T}\int_{p_1}^{p_2}dp
+=\frac{V(p_1-p_2)}{T}.
+\]</span></p>
+<p>For <span class="math-inline">\(V=1\,\mathrm{m^3}\)</span>, <span class="math-inline">\(T=300\,\mathrm K\)</span>, <span class="math-inline">\(p_1=1000\,\mathrm{kPa}\)</span> and <span class="math-inline">\(p_2=100\,\mathrm{kPa}\)</span>, generation inside this boundary is <span class="math-inline">\(3.00\,\mathrm{kJ/K}\)</span>. Multiplying by <span class="math-inline">\(T\)</span> gives <span class="math-inline">\(900\,\mathrm{kJ}\)</span> of electrical input, also obtained from the first law because each kilogram carries out enthalpy <span class="math-inline">\(h\)</span> while the stored energy decreases by its internal energy <span class="math-inline">\(u\)</span>. Their difference is <span class="math-inline">\(h-u=RT\)</span> per kilogram. The external jet or valve can add entropy outside the chosen boundary. The pressure drop formula applies to this fixed-temperature, internally heated model.</p>
+<p>The lecture's second transient uses a rigid tank at constant pressure, a reservoir that supplies heat, and saturated liquid leaving the outlet. Let <span class="math-inline">\(m_1,m_2\)</span> be the initial and final tank masses, <span class="math-inline">\(u_1,u_2\)</span> the initial and final specific internal energies, <span class="math-inline">\(s_1,s_2\)</span> the initial and final specific entropies of the tank contents, and <span class="math-inline">\(h_f,s_f\)</span> the constant specific enthalpy and entropy of the saturated liquid withdrawn. Take <span class="math-inline">\(Q\)</span> positive for heat supplied to the tank. With no shaft work and negligible bulk kinetic and gravitational energy changes, the integrated energy balance yields <span class="math-inline">\(Q=m_2u_2-m_1u_1+(m_1-m_2)h_f\)</span>. For an expanded boundary reaching the constant-temperature reservoir, the corresponding entropy account gives</p>
+<p><span class="math-display">\[
+S_{\mathrm{gen,total}}
+=m_2s_2-m_1s_1+(m_1-m_2)s_f-\frac{Q}{T_0}.
+\]</span></p>
+<p>Using the final vapor entropy for the discharged liquid would confuse two different streams. The entropy carried across the outlet is a transport term. A transient or a loss of stored mass alone does not establish an irreversible mechanism. The reservoir-to-tank temperature difference can generate entropy even when the fluid bulk stays near equilibrium. <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=300s">Part 3, heated air discharge</a> · <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=540s">Part 3, draining a two-phase tank</a></p>
+<h2 id="read-the-captions-against-the-balances">Read the captions against the balances</h2>
+<table>
+<thead>
+<tr>
+<th>Recording</th>
+<th>Topic locators</th>
+<th>Editorial treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td><a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=3s">00:03</a> prerequisites, <a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=124s">02:04</a> practical devices and efficiencies, <a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=660s">11:00</a> entropy outline, <a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=901s">15:01</a> exergy, <a href="https://www.youtube.com/watch?v=h_LAfSgddUw&amp;t=1081s">18:01</a> application modules</td>
+<td>Motivation and links between energy and entropy analysis</td>
+</tr>
+<tr>
+<td>Entropy, Part 1</td>
+<td><a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=3s">00:03</a> material-system entropy, <a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=240s">04:00</a> internal and external irreversibility, <a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=540s">09:00</a> inlet and outlet parcels, <a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=840s">14:00</a> local-temperature heat transfer, <a href="https://www.youtube.com/watch?v=TnH4Jt-Wyss&amp;t=1028s">17:08</a> steady limit</td>
+<td>Reconstructed equations and independently checked signs</td>
+</tr>
+<tr>
+<td>Entropy, Part 2</td>
+<td><a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=3s">00:03</a> insulated mixer, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=121s">02:01</a> refrigerant throttle, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=302s">05:02</a> intercooler, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=541s">09:01</a> insulated turbine, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=721s">12:01</a> surroundings, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=840s">14:00</a> compressor, <a href="https://www.youtube.com/watch?v=be69wsZFyuM&amp;t=1201s">20:01</a> heat-losing turbine</td>
+<td>Device and expanded boundaries. An adiabatic steady throttle with no shaft work and negligible kinetic and gravitational energy changes is isenthalpic by energy conservation even when specific volume changes appreciably. Positive generation makes it irreversible.</td>
+</tr>
+<tr>
+<td>Entropy, Part 3</td>
+<td><a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=5s">00:05</a> nonadiabatic steam mixer, <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=242s">04:02</a> storage and mass balance, <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=302s">05:02</a> electrically heated air tank, <a href="https://www.youtube.com/watch?v=bvY3LzTDqMk&amp;t=540s">09:00</a> constant-pressure two-phase discharge</td>
+<td>Integrated balances and boundary-specific interpretation</td>
+</tr>
+</tbody>
+</table>
+<p>The timed English captions supplied topic order. Equations were reconstructed and cross-checked against the cited technical references. Caption errors can change signs and transcribe a unit or numerical value incorrectly. A reviewer inspected the introduction's opening title frame and sampled the first entropy lecture's topic and derivation slides. Other board and slide material did not receive complete visual review. The ideal-gas mixer, heater wall and compressor numerical examples are original teaching constructions.</p>
+<h2 id="numerical-lab">Numerical lab</h2>
+<p>Run the <a href="code/chapter_01.py">standalone Python program</a> with Python 3. It checks the first-law residual for the mixer, calculates the steady entropy generation from each boundary, and verifies that removing the internal stream from the combined balance preserves the total.</p>
+<pre><code class="language-text">Outlet temperature: 350.0 K
+Mixer entropy generation: 0.02072 kW/K
+Throttle entropy generation: 0.19893 kW/K
+Combined entropy generation: 0.21966 kW/K
+</code></pre>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<h3 id="1-a-steady-device-with-an-impossible-outlet">1. A steady device with an impossible outlet</h3>
+<p>An adiabatic single-stream device passes <span class="math-inline">\(2\,\mathrm{kg/s}\)</span> of air steadily from <span class="math-inline">\(400\,\mathrm K\)</span>, <span class="math-inline">\(200\,\mathrm{kPa}\)</span> to <span class="math-inline">\(300\,\mathrm K\)</span>, <span class="math-inline">\(200\,\mathrm{kPa}\)</span>. Use the chapter's constant-property air model. Can a shaft alone make the proposed states possible?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The pressure terms cancel, so the stream entropy changes by <span class="math-inline">\(c_p\ln(300/400)=-0.2891\,\mathrm{kJ/(kg\,K)}\)</span>. The required generation is <span class="math-inline">\(2(-0.2891)=-0.5782\,\mathrm{kW/K}\)</span>, which violates the second law. Shaft work cannot export entropy. A heat rejection path or a changed outlet state is required.</p>
+</details><h3 id="2-heat-transfer-with-zero-net-power">2. Heat transfer with zero net power</h3>
+<p>A steady region has no mass flow. It receives <span class="math-inline">\(5\,\mathrm{kW}\)</span> through a <span class="math-inline">\(500\,\mathrm K\)</span> surface and rejects <span class="math-inline">\(5\,\mathrm{kW}\)</span> through a <span class="math-inline">\(300\,\mathrm K\)</span> surface. Calculate entropy generation.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Heat cancels in the energy balance. In the entropy balance it is weighted by reciprocal absolute temperatures. The net entropy transfer into the region is <span class="math-inline">\(5/500-5/300=-0.006667\,\mathrm{kW/K}\)</span>. Steady storage is zero, so entropy generation is <span class="math-inline">\(0.006667\,\mathrm{kW/K}\)</span>.</p>
+</details><h3 id="3-an-internally-reversible-isentropic-limit">3. An internally reversible isentropic limit</h3>
+<p>An ideal gas enters an adiabatic internally reversible device at <span class="math-inline">\(400\,\mathrm K\)</span> and <span class="math-inline">\(200\,\mathrm{kPa}\)</span> and exits at <span class="math-inline">\(100\,\mathrm{kPa}\)</span>. Find its outlet temperature under the same air model and compare the direction of the temperature change with the throttle.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Equal specific entropies require <span class="math-inline">\(c_p\ln(T_e/400)=R\ln(100/200)\)</span>. Thus <span class="math-inline">\(T_e=400(1/2)^{R/c_p}\approx328.2\,\mathrm K\)</span>. The ideal-gas throttle instead stays at <span class="math-inline">\(400\,\mathrm K\)</span> with a positive entropy rise. The isentropic case can realize the temperature drop through shaft work or acceleration, depending on the energy balance and device.</p>
+</details><h3 id="4-a-wet-outlet-from-an-isenthalpic-throttle">4. A wet outlet from an isenthalpic throttle</h3>
+<p>For an illustrative single-component fluid let the inlet have <span class="math-inline">\(h_i=250\,\mathrm{kJ/kg}\)</span> and <span class="math-inline">\(s_i=1.10\,\mathrm{kJ/(kg\,K)}\)</span>. At the outlet pressure the saturated liquid and vapor properties are <span class="math-inline">\(h_f=200\)</span>, <span class="math-inline">\(h_g=400\,\mathrm{kJ/kg}\)</span> and <span class="math-inline">\(s_f=1.00\)</span>, <span class="math-inline">\(s_g=1.80\,\mathrm{kJ/(kg\,K)}\)</span>. The throttle is adiabatic and steady with no shaft work and negligible changes in kinetic and potential energy. Find its outlet quality and specific generation.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Enthalpy is unchanged. The outlet enthalpy lies between the saturation limits. The vapor mass fraction is <span class="math-inline">\(x=(250-200)/(400-200)=0.25\)</span>. The mass-weighted entropy is <span class="math-inline">\(s_e=1.00+0.25(1.80-1.00)=1.20\,\mathrm{kJ/(kg\,K)}\)</span>. Generation per unit mass is <span class="math-inline">\(s_e-s_i=0.10\,\mathrm{kJ/(kg\,K)}\)</span>.</p>
+</details><h3 id="5-a-falling-entropy-inventory">5. A falling entropy inventory</h3>
+<p>For the heated discharge model, compare the initial and final tank masses using <span class="math-inline">\(V=1\,\mathrm{m^3}\)</span>, <span class="math-inline">\(T=300\,\mathrm K\)</span>, and pressures of <span class="math-inline">\(1000\)</span> and <span class="math-inline">\(100\,\mathrm{kPa}\)</span>. Can the stored total entropy decrease even while entropy is generated?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The ideal-gas law gives <span class="math-inline">\(m_1=1000/(0.287\cdot300)=11.61\,\mathrm{kg}\)</span> and <span class="math-inline">\(m_2=1.161\,\mathrm{kg}\)</span>. Use an entropy reference where <span class="math-inline">\(s_1=1\,\mathrm{kJ/(kg\,K)}\)</span>. Then <span class="math-inline">\(s_2=s_1+R\ln(10)\approx1.661\,\mathrm{kJ/(kg\,K)}\)</span>. The tank inventory decreases from <span class="math-inline">\(11.61\)</span> to about <span class="math-inline">\(1.93\,\mathrm{kJ/K}\)</span> while <span class="math-inline">\(3.00\,\mathrm{kJ/K}\)</span> is generated. The difference is explained by the entropy exported with the discharged material. The reference affects the tank inventory change because mass leaves, while the calculated generation is reference invariant.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="next" href="chapter-02-reversible-steady-flow-work.html"><span>Next</span>Reversible Steady-Flow Work</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

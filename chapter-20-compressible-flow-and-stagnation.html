@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Derive the acoustic speed, evaluate density changes, and connect local and stagnation properties.">
+  <meta name="color-scheme" content="dark light">
+  <title>Compressible flow and the stagnation state · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#density-response-and-the-mach-criterion-part-1-340">Density response and the Mach criterion Part 1 · 3:40</a></li>
+<li><a href="#conservation-laws-and-a-weak-pressure-wave-part-2-040">Conservation laws and a weak pressure wave Part 2 · 0:40</a></li>
+<li><a href="#sonic-and-stagnation-states-part-3-520">Sonic and stagnation states Part 3 · 5:20</a></li>
+<li><a href="#change-the-observer-part-3-2420">Change the observer Part 3 · 24:20</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#problems-with-worked-solutions">Problems with worked solutions</a><ul>
+<li><a href="#estimate-the-density-change">Estimate the density change</a></li>
+<li><a href="#one-mach-number-and-two-velocities">One Mach number and two velocities</a></li>
+<li><a href="#recover-the-incompressible-pressure-formula">Recover the incompressible pressure formula</a></li>
+<li><a href="#an-upstream-disturbance-at-the-throat">An upstream disturbance at the throat</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html" aria-current="page"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 20 · Lectures 61–63</p>
+        <h1>Compressible flow and the stagnation state</h1>
+        <p class="lead">Derive the acoustic speed, evaluate density changes, and connect local and stagnation properties.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=QC2PLN5D3wo">61. Compressible flow through nozzles - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=sYF4Kb647mY">62. Compressible flow through nozzles - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=tCt7uXNYhzg">63. Compressible flow through nozzles - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>An air test stand has a pressure tap in the wall and a forward-facing probe. The wall tap reads 100 kPa where the air is at 300 K and travels at 250 m/s. The probe slows a small part of the stream almost to rest. Interpreting its pressure requires an account of the energy in the motion and of how the gas density changes as pressure rises.</p>
+<h2 id="density-response-and-the-mach-criterion-part-1-340">Density response and the Mach criterion <a href="https://www.youtube.com/watch?v=QC2PLN5D3wo&amp;t=220s">Part 1 · 3:40</a></h2>
+<p>Let <span class="math-inline">\(p\)</span> be absolute pressure, <span class="math-inline">\(T\)</span> absolute temperature, <span class="math-inline">\(\rho\)</span> mass per unit volume, and <span class="math-inline">\(s\)</span> entropy per unit mass. The isentropic compressibility <span class="math-inline">\(\kappa_s=(1/\rho)(\partial\rho/\partial p)_s\)</span> is the fractional density response per unit pressure during a fixed-entropy perturbation. The isothermal compressibility <span class="math-inline">\(\kappa_T\)</span> uses a constant-temperature derivative. For an ideal gas with specific gas constant <span class="math-inline">\(R\)</span>, the equation of state <span class="math-inline">\(p=\rho RT\)</span> gives <span class="math-inline">\(\kappa_T=1/p\)</span>. For the calorically perfect gas model, specific heats at constant pressure and volume, <span class="math-inline">\(c_p\)</span> and <span class="math-inline">\(c_v\)</span>, are constants with <span class="math-inline">\(c_p-c_v=R\)</span>. Their ratio <span class="math-inline">\(\gamma=c_p/c_v\)</span> is greater than 1.</p>
+<p>A compressible fluid can flow with small relative density changes if the pressure changes are small and heat or species changes are negligible. Let <span class="math-inline">\(a\)</span> be the acoustic speed and <span class="math-inline">\(C\)</span> the local flow speed. With <span class="math-inline">\(a^2=(\partial p/\partial\rho)_s\)</span>, derived below, we have <span class="math-inline">\(\kappa_s=1/(\rho a^2)\)</span>. A pressure change of order <span class="math-inline">\(\rho C^2/2\)</span> then produces a fractional density change of order <span class="math-inline">\(M^2/2\)</span>, where <span class="math-inline">\(M=C/a\)</span> is the Mach number. The estimate motivates screening near <span class="math-inline">\(M=0.3\)</span>, at which the exact ideal-air isentropic density increase upon stopping is <span class="math-inline">\(4.56\%\)</span>. A flow with low inlet Mach can accelerate above the screening value in a restriction. Heating, composition changes, and pressure variation unrelated to local motion can also change density. <a href="https://www.youtube.com/watch?v=QC2PLN5D3wo&amp;t=1100s">Part 1 · 18:20</a></p>
+<h2 id="conservation-laws-and-a-weak-pressure-wave-part-2-040">Conservation laws and a weak pressure wave <a href="https://www.youtube.com/watch?v=sYF4Kb647mY&amp;t=40s">Part 2 · 0:40</a></h2>
+<p>Consider a steady one-dimensional stream with a constant cross section and negligible friction, heat transfer, shaft work, and gravity. Let <span class="math-inline">\(h\)</span> be enthalpy per unit mass in joules per kilogram. Mass, axial momentum and energy balances give the three constants</p>
+<p><span class="math-display">\[
+\rho C,\qquad p+\rho C^2,\qquad h+C^2/2.
+\]</span></p>
+<p>The first two have units of mass flux and pressure. The third has units of energy per unit mass. A smooth solution obeys the differential balances. A shock obeys the same balances across the entire discontinuity and has additional admissibility requirements.</p>
+<p>Study a pressure disturbance in the frame attached to the wave. Upstream gas enters at speed <span class="math-inline">\(a\)</span>, and <span class="math-inline">\(d\rho\)</span>, <span class="math-inline">\(dp\)</span>, and <span class="math-inline">\(dC\)</span> denote small downstream changes. First-order mass conservation gives <span class="math-inline">\(a\,d\rho+\rho\,dC=0\)</span>. Because <span class="math-inline">\(\rho C\)</span> is constant, first-order momentum conservation can be written <span class="math-inline">\(dp+\rho a\,dC=0\)</span>. Eliminating <span class="math-inline">\(dC\)</span> gives <span class="math-inline">\(dp=a^2d\rho\)</span>. The energy equation gives <span class="math-inline">\(dh+a\,dC=0\)</span>. Substitution into the identity <span class="math-inline">\(dh=T\,ds+dp/\rho\)</span> gives <span class="math-inline">\(T\,ds=0\)</span> at this order. Thus the linear wave samples the isentropic density response.</p>
+<p>For a calorically perfect ideal gas, integration of <span class="math-inline">\(ds=c_p\,dT/T-R\,dp/p=0\)</span> and the equation of state gives <span class="math-inline">\(p/\rho^\gamma\)</span> constant. Differentiation gives</p>
+<p><span class="math-display">\[
+a^2=\left(\frac{\partial p}{\partial\rho}\right)_s
+=\frac{\gamma p}{\rho}=\gamma RT.
+\]</span></p>
+<p>With <span class="math-inline">\(\gamma=1.4\)</span> and <span class="math-inline">\(R=287\)</span> J/(kg K), 300 K air has <span class="math-inline">\(a=347.19\)</span> m/s. The test stand's local Mach number is 0.7201. With a finite-amplitude compression, the differential acoustic derivation has to give way to the jump conditions. <a href="https://www.youtube.com/watch?v=sYF4Kb647mY&amp;t=400s">Part 2 · 6:40</a> · <a href="https://www.nasa.gov/wp-content/uploads/2023/03/equations-tables-charts-compressibleflow-report-1135.pdf">NACA Report 1135, compressible-flow relations</a></p>
+<h2 id="sonic-and-stagnation-states-part-3-520">Sonic and stagnation states <a href="https://www.youtube.com/watch?v=tCt7uXNYhzg&amp;t=320s">Part 3 · 5:20</a></h2>
+<p>The sonic reference state has <span class="math-inline">\(M=1\)</span>. It may exist at a real constriction or be defined by a hypothetical isentropic continuation of a stream. In the tube's stationary frame, a weak upstream-traveling pressure signal moves at axial speed <span class="math-inline">\(C-a\)</span> when the gas moves in the positive direction. The two effects cancel locally at a sonic plane. The nozzle analysis later determines when this condition limits mass flow.</p>
+<p>The stagnation state is defined by slowing a parcel to zero speed reversibly and adiabatically, with no shaft work and no change in elevation. Its specific enthalpy is <span class="math-inline">\(h_t=h+C^2/2\)</span>, and its entropy equals the parcel's static entropy <span class="math-inline">\(s\)</span>. Subscript <span class="math-inline">\(t\)</span> denotes this total state. For constant <span class="math-inline">\(c_p\)</span>, <span class="math-inline">\(h_t-h=c_p(T_t-T)\)</span> and <span class="math-inline">\(C^2=M^2\gamma RT\)</span>. With <span class="math-inline">\(c_p=\gamma R/(\gamma-1)\)</span> this yields</p>
+<p><span class="math-display">\[
+\frac{T_t}{T}=1+\frac{\gamma-1}{2}M^2,\qquad
+\frac{p_t}{p}=\left(\frac{T_t}{T}\right)^{\gamma/(\gamma-1)}.
+\]</span></p>
+<p>The second formula integrates the isentropic entropy relation along the hypothetical path. For real steam, obtain the stagnation state from the pair <span class="math-inline">\((h_t,s)\)</span> with an appropriate property formulation. The constant-<span class="math-inline">\(c_p\)</span> temperature formula only applies to the calorically perfect model. <a href="https://www.youtube.com/watch?v=tCt7uXNYhzg&amp;t=680s">Part 3 · 11:20</a> · <a href="https://iapws.org/technical-guidance/release/IF97-Rev">IAPWS Industrial Formulation 1997</a></p>
+<h2 id="change-the-observer-part-3-2420">Change the observer <a href="https://www.youtube.com/watch?v=tCt7uXNYhzg&amp;t=1460s">Part 3 · 24:20</a></h2>
+<p>For a stationary probe at 250 m/s relative to the stream, the test stand example gives 331.11 K and 141.25 kPa at the stagnation state. For an observer moving downstream at 100 m/s, the relative speed is 150 m/s. The static pressure and temperature are unchanged, while the total values become 311.20 K and 113.69 kPa. Each value refers to stopping the parcel in the named frame. The probe interpretation assumes accurate local sampling and an effectively isentropic stop. A normal shock ahead of a probe used in supersonic flow reduces stagnation pressure before the fluid reaches the port.</p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>The <a href="code/chapter_20.py">Python laboratory</a> accepts static temperature, static pressure, relative velocity, and ideal-gas constants. It evaluates the three states above with a stationary and a moving observer, and verifies the signed-velocity symmetry, energy balance, and zero-speed case. It requires only the Python standard library.</p>
+<h2 id="problems-with-worked-solutions">Problems with worked solutions</h2>
+<h3 id="estimate-the-density-change">Estimate the density change</h3>
+<p>For the test stand at 250 m/s, compute <span class="math-inline">\(\rho_t/\rho\)</span>. Use the measured static and computed stagnation values.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The equation of state gives <span class="math-inline">\(\rho_t/\rho=(p_t/p)/(T_t/T)\)</span>. The test stand ratios give <span class="math-inline">\(1.4125/(331.11/300)\approx1.280\)</span>. The roughly 28% increase is incompatible with retaining constant density through the stop at this speed.</p>
+</details><h3 id="one-mach-number-and-two-velocities">One Mach number and two velocities</h3>
+<p>Compare two ideal-air streams at <span class="math-inline">\(M=0.5\)</span>, one at 300 K and one at 600 K.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> For fixed <span class="math-inline">\(M\)</span> and composition, <span class="math-inline">\(C=M\sqrt{\gamma RT}\)</span>. Doubling temperature increases speed by <span class="math-inline">\(\sqrt{2}\)</span>, from 173.59 to 245.50 m/s. The Mach number measures speed relative to the local acoustic scale. An equal ratio across the two streams permits different speeds.</p>
+</details><h3 id="recover-the-incompressible-pressure-formula">Recover the incompressible pressure formula</h3>
+<p>Obtain the first nonzero term of <span class="math-inline">\(p_t-p\)</span> in the limit of small <span class="math-inline">\(M\)</span>.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Expand <span class="math-inline">\((1+(\gamma-1)M^2/2)^{\gamma/(\gamma-1)}\)</span> about <span class="math-inline">\(M=0\)</span>. The first increment is <span class="math-inline">\(\gamma M^2/2\)</span>. Since <span class="math-inline">\(a^2=\gamma p/\rho\)</span> and <span class="math-inline">\(M^2=C^2/a^2\)</span>, the pressure increment is <span class="math-inline">\(\rho C^2/2\)</span> plus terms of order <span class="math-inline">\(pM^4\)</span>.</p>
+</details><h3 id="an-upstream-disturbance-at-the-throat">An upstream disturbance at the throat</h3>
+<p>A stream moves right at 200 m/s where <span class="math-inline">\(a=350\)</span> m/s. What velocity does a weak pressure wave moving against the fluid have in the laboratory? How does this change at the sonic state?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The wave moves at <span class="math-inline">\(-350\)</span> m/s relative to the gas. Adding the laboratory gas velocity gives <span class="math-inline">\(-150\)</span> m/s, so the wave can reach a location upstream. At a sonic section <span class="math-inline">\(C=a\)</span> and the same characteristic has zero local speed in the laboratory.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-19-combustion-energy-tutorials.html"><span>Previous</span>Combustion Energy Tutorials</a><a rel="next" href="chapter-21-stagnation-pressure-and-shocks.html"><span>Next</span>Stagnation pressure and normal shocks</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

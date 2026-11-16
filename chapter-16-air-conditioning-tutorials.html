@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Infer state from dew point, test if a coil can stay dry, and distinguish liquid make-up from total water circulation.">
+  <meta name="color-scheme" content="dark light">
+  <title>Air-Conditioning Tutorials · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#use-the-dew-point-at-the-actual-pressure">Use the dew point at the actual pressure</a></li>
+<li><a href="#heat-at-fixed-humidity-ratio-or-cool-with-a-drain">Heat at fixed humidity ratio or cool with a drain</a></li>
+<li><a href="#get-mass-flow-from-the-inlet-volume-flow">Get mass flow from the inlet volume flow</a></li>
+<li><a href="#use-the-water-and-energy-requirements-together">Use the water and energy requirements together</a></li>
+<li><a href="#numerical-laboratory">Numerical laboratory</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#force-the-dew-point-test">Force the dew-point test</a></li>
+<li><a href="#include-losses-in-a-tower">Include losses in a tower</a></li>
+<li><a href="#judge-a-partially-bypassed-coil">Judge a partially bypassed coil</a></li>
+<li><a href="#compare-two-equal-volume-flows">Compare two equal volume flows</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html" aria-current="page"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 16 · Lectures 46–49</p>
+        <h1>Air-Conditioning Tutorials</h1>
+        <p class="lead">Infer state from dew point, test if a coil can stay dry, and distinguish liquid make-up from total water circulation.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=srqc4eXwM8Y">46. Tutorial 7 - Psychrometry and Air conditioning processes - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=Wu0Td5nzcs8">47. Tutorial 7 - Psychrometry and Air conditioning processes - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=Jd3gLOTJ9fw">48. Tutorial 8 - Psychometry and Air conditioning processes - Part 3</a></li><li><a href="https://www.youtube.com/watch?v=oJgpYsLNJh0">49. Tutorial 8 - Psychometry and Air conditioning processes - Part 4</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <p>Psychrometric tutorials often give readings in one set of variables and ask for energy in another. Translate the readings into temperature, total pressure, and water-vapor partial pressure before deciding which terms belong in the control-volume balances.</p>
+<h2 id="use-the-dew-point-at-the-actual-pressure">Use the dew point at the actual pressure</h2>
+<p>Suppose air at 30 °C and total pressure 100 kPa has a dew point of 20 °C. From the saturation data take <span class="math-inline">\(p_{\rm sat}(20)=2.339\)</span> kPa and <span class="math-inline">\(p_{\rm sat}(30)=4.246\)</span> kPa. Then <span class="math-inline">\(p_v=2.339\)</span> kPa, <span class="math-inline">\(p_a=97.661\)</span> kPa, <span class="math-inline">\(\phi=55.1\%\)</span>, and <span class="math-inline">\(\omega=0.01490\)</span> kg vapor/kg dry air. The mixture density is <span class="math-inline">\([1+\omega]/v^*\)</span> with <span class="math-inline">\(v^*=R_aT/p_a\)</span>.</p>
+<p>Now repeat with the same readings at 360 kPa. The vapor pressure and relative humidity have the same values under the ideal-mixture model, but <span class="math-inline">\(\omega\)</span> drops to 0.00407 kg/kg dry air. A sea-level psychrometric chart would give the wrong humidity ratio for this pressure. In a rigid heated vessel with liquid initially present, first calculate the vapor mass that saturation would require at the trial temperature. If that mass exceeds the water inventory, evaporate the entire inventory and use the resulting unsaturated vapor pressure. <a href="https://www.youtube.com/watch?v=srqc4eXwM8Y&amp;t=0">Tutorial 7 Part 1 · State and rigid-vessel questions</a></p>
+<h2 id="heat-at-fixed-humidity-ratio-or-cool-with-a-drain">Heat at fixed humidity ratio or cool with a drain</h2>
+<p>In a simple heating duct with no moisture transfer, <span class="math-inline">\(\omega_2=\omega_1\)</span> when all water remains vapor. At essentially constant pressure, <span class="math-inline">\(\phi_2=\phi_1 p_{\rm sat}(t_1)/p_{\rm sat}(t_2)\)</span>. This step differs from cooling below the dew point, in which water separates and leaves as liquid. If moist air enters at <span class="math-inline">\(t_1\)</span> and leaves saturated at <span class="math-inline">\(t_2&lt;t_{\rm dp}\)</span>, the heat entering per unit dry-air mass is <span class="math-inline">\(h_2^*-h_1^*+(\omega_1-\omega_2)h_\ell(t_2)\)</span>. The sign follows the specified control-volume convention. <a href="https://www.youtube.com/watch?v=Wu0Td5nzcs8&amp;t=0">Tutorial 7 Part 2 · Duct heating and dehumidification</a></p>
+<h2 id="get-mass-flow-from-the-inlet-volume-flow">Get mass flow from the inlet volume flow</h2>
+<p>Take the tutorial geometry of a 0.50 m diameter duct with 18 m/s inlet speed. For a uniform inlet profile the volumetric flow is <span class="math-inline">\(\dot V=\pi D^2 U/4=3.534\)</span> m³/s. Let the inlet state be 30 °C, 100 kPa, 30% relative humidity. Then <span class="math-inline">\(p_v=1.274\)</span> kPa, <span class="math-inline">\(\omega=0.00802\)</span>, and <span class="math-inline">\(v^*\approx0.8814\)</span> m³/kg dry air. The dry-air mass rate is about 4.01 kg/s.</p>
+<p>For a teaching variant, let the coil leave the gas at 25 °C at about the same pressure and with negligible velocity change. With the trial <span class="math-inline">\(p_{v,2}=p_{v,1}\)</span>, the relative humidity is <span class="math-inline">\(1.274/3.170=40.2\%\)</span>, so no condensation is needed to reach the bulk outlet state. The inlet dew point is about 10.6 °C. Assume the entire coil surface stays above it to rule out local condensation. The duty is</p>
+<p><span class="math-display">\[
+\dot Q=\dot m_a(1.006+1.86\omega)(25-30)\approx-20.5\ \mathrm{kW}.
+\]</span></p>
+<p>When two streams mix, a volumetric flow rate must be converted separately using its own inlet <span class="math-inline">\(v^*\)</span> before weighting <span class="math-inline">\(\omega\)</span> and <span class="math-inline">\(h^*\)</span>. Equal volume rates of warm and cool air do not generally contain equal dry-air mass rates. <a href="https://www.youtube.com/watch?v=Jd3gLOTJ9fw&amp;t=20">Tutorial 8 Part 3 · Duct and mixer</a></p>
+<h2 id="use-the-water-and-energy-requirements-together">Use the water and energy requirements together</h2>
+<p>An evaporative cooler that adds liquid at temperature <span class="math-inline">\(t_w\)</span> and has negligible external heat transfer obeys</p>
+<p><span class="math-display">\[
+h_2^*-h_1^*=(\omega_2-\omega_1)h_\ell(t_w).
+\]</span></p>
+<p>For water cool enough that the right-side correction is small, treating <span class="math-inline">\(h^*\)</span> as constant is a useful first estimate. At the outlet, check that <span class="math-inline">\(\omega_2\leq\omega_{\rm sat}(t_2,p)\)</span> and that <span class="math-inline">\(\omega_2\geq\omega_1\)</span> for net water addition. A specified outlet cooler than the adiabatic saturation point cannot be obtained by an ideal saturator with its feed water at the outlet temperature.</p>
+<p>For a tower with <span class="math-inline">\(\dot m_a=180\)</span> kg/s and humidity-ratio rise 0.0106 kg/kg dry air, evaporation is 1.91 kg/s. A recirculation rate of hundreds of kg/s would not change that vapor balance. Drift and blowdown add to make-up and must be counted if present. The tower approach temperature is the cold-water temperature above entering-air wet-bulb temperature; it differs from the hot-to-cold water temperature range. <a href="https://www.youtube.com/watch?v=oJgpYsLNJh0&amp;t=1280">Tutorial 8 Part 4 · Evaporative cooler and cooling tower</a></p>
+<h2 id="numerical-laboratory">Numerical laboratory</h2>
+<p>Run the <a href="code/chapter_16.py">Python laboratory</a> to calculate the duct flow, the saturation test at the trial outlet, and heat duty. It also checks that a colder trial outlet crosses the dew point.</p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="force-the-dew-point-test">Force the dew-point test</h3>
+<p>For the duct inlet above, test a 5 °C outlet using <span class="math-inline">\(p_{\rm sat}(5)=0.872\)</span> kPa.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The predicted unchanged vapor pressure 1.274 kPa exceeds 0.872 kPa, so the gas cannot leave at 5 °C with all its initial vapor. For a saturated 5 °C outlet, <span class="math-inline">\(\omega_2=0.622(0.872)/(100-0.872)=0.00547\)</span>. At 4.01 kg/s dry-air flow, about <span class="math-inline">\(4.01(0.00802-0.00547)=0.0102\)</span> kg/s drains.</p>
+</details><h3 id="include-losses-in-a-tower">Include losses in a tower</h3>
+<p>Add drift of 0.10 kg/s and blowdown of 0.30 kg/s to the tower example. Find the make-up rate at steady inventory.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Makeup balances evaporation and both outgoing liquid streams, giving <span class="math-inline">\(1.91+0.10+0.30=2.31\)</span> kg/s. The air-side water measurement identifies the vapor loss and leaves the liquid losses to separate measurements.</p>
+</details><h3 id="judge-a-partially-bypassed-coil">Judge a partially bypassed coil</h3>
+<p>The bulk air outlet in the duct case is 25 °C. Can a coil with surface temperatures as low as 8 °C still yield unsaturated bulk outlet air?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Yes. The surface is below the inlet dew point, so air reaching it can lose vapor. When that colder, drier air mixes with warmer bypassed air, the mixed outlet can be unsaturated. Bulk outlet temperature alone cannot validate the dry-coil energy balance.</p>
+</details><h3 id="compare-two-equal-volume-flows">Compare two equal volume flows</h3>
+<p>Two unsaturated streams each deliver 1.0 m³/s to a mixer. Their volumes per kg dry air are 0.90 and 0.80 m³/kg, and their humidity ratios are 0.018 and 0.006 kg/kg. Find the mixed humidity ratio assuming no condensation.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> The two dry-air rates are <span class="math-inline">\(1/0.90\)</span> and <span class="math-inline">\(1/0.80\)</span> kg/s. Their first-stream fraction is <span class="math-inline">\(8/17\approx0.471\)</span>, giving <span class="math-inline">\(\omega_3\approx0.01165\)</span> kg/kg dry air. Equal weighting would give 0.012 and would overstate the wetter inlet's contribution.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-15-psychrometric-paths.html"><span>Previous</span>Psychrometric Paths</a><a rel="next" href="chapter-17-combustion-thermodynamics.html"><span>Next</span>Combustion Thermodynamics</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

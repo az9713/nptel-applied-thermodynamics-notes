@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Identify the exergy resource and useful product in heaters, turbines, chillers, and changing-mass vessels.">
+  <meta name="color-scheme" content="dark light">
+  <title>Exergy of steady and transient control volumes · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#direct-mixing-and-separated-heat-exchange">Direct mixing and separated heat exchange</a></li>
+<li><a href="#include-latent-heat-and-a-consistent-reference">Include latent heat and a consistent reference</a></li>
+<li><a href="#turbine-work-and-stationary-tank-storage">Turbine work and stationary tank storage</a></li>
+<li><a href="#a-moving-piston-requires-its-own-volume-work-term">A moving piston requires its own volume-work term</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#chilling-below-ambient">Chilling below ambient</a></li>
+<li><a href="#mixture-gas-constant">Mixture gas constant</a></li>
+<li><a href="#work-at-the-piston-stops">Work at the piston stops</a></li>
+<li><a href="#control-volume-entropy-inventory">Control-volume entropy inventory</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html" aria-current="page"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 08 · Lectures 24–26</p>
+        <h1>Exergy of steady and transient control volumes</h1>
+        <p class="lead">Identify the exergy resource and useful product in heaters, turbines, chillers, and changing-mass vessels.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=Y2AbiUZc4wg">24. Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=1m_uNUjAfjk">25. Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=C4BzJiZvh5s">26. Tutorial 6 - Exergy transfer and exergy change of a control volume - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <h2 id="direct-mixing-and-separated-heat-exchange">Direct mixing and separated heat exchange</h2>
+<p>In a feedwater heater, a steam stream directly contacts colder liquid. Let <span class="math-inline">\(\dot m_i\)</span> be its inlet and outlet mass flow rates, <span class="math-inline">\(h_i\)</span> the corresponding enthalpies, and <span class="math-inline">\(\psi_i=h_i-h_0-T_0(s_i-s_0)\)</span> the stream exergy with negligible speed and elevation changes. The insulated mixer satisfies <span class="math-inline">\(\dot m_3=\dot m_1+\dot m_2\)</span> and <span class="math-inline">\(\dot m_3h_3=\dot m_1h_1+\dot m_2h_2\)</span>. If steam pressure is unknown while the feed and mixed-liquid conditions are known, solve this energy equation for the required steam enthalpy. Then use saturation properties to find candidate steam pressures. Accept a solution only if it matches the specified saturation branch and liquid states.</p>
+<p>If inlet 1 is feedwater and inlet 2 steam, assign product <span class="math-inline">\(\dot m_1(\psi_3-\psi_1)\)</span> and resource <span class="math-inline">\(\dot m_2(\psi_2-\psi_3)\)</span>. Their difference in resource-minus-product order is <span class="math-inline">\(\dot m_1\psi_1+\dot m_2\psi_2-\dot m_3\psi_3\)</span>, the destruction for the insulated mixer. The product definition follows the mass originally assigned to feedwater. <a href="https://www.youtube.com/watch?v=Y2AbiUZc4wg&amp;t=20s">Tutorial 6, Problem 12</a></p>
+<p>A gas-to-air preheater keeps the streams separate. When externally insulated, heat leaves the hot stream at the same rate it enters the cold stream. Each temperature can vary substantially along the exchanger. For constant-pressure streams with constant specific heats and unchanged composition,</p>
+<p><span class="math-display">\[
+\dot S_{\mathrm{gen}}
+=\dot m_h c_{p,h}\ln(T_{h,e}/T_{h,i})
++\dot m_c c_{p,c}\ln(T_{c,e}/T_{c,i}).
+\]</span></p>
+<p>Here subscripts <span class="math-inline">\(h,c\)</span> distinguish hot and cold streams and <span class="math-inline">\(i,e\)</span> their inlet and exit. The rate of exergy destruction is <span class="math-inline">\(T_0\dot S_{\mathrm{gen}}\)</span>. Pressure losses introduce further terms in the entropy changes. The lab uses an original counterflow-compatible temperature set, solves for the hot outlet and checks both energy and exergy balance. <a href="https://www.youtube.com/watch?v=Y2AbiUZc4wg&amp;t=820s">Tutorial 6, Problem 13</a></p>
+<h2 id="include-latent-heat-and-a-consistent-reference">Include latent heat and a consistent reference</h2>
+<p>A chilling unit takes a material from <span class="math-inline">\(T_i\)</span> above its freezing point <span class="math-inline">\(T_f\)</span> to <span class="math-inline">\(T_e\)</span> below it at effectively constant pressure. Let <span class="math-inline">\(c_{p,l}\)</span> and <span class="math-inline">\(c_{p,s}\)</span> be the liquid and solid constant heat capacities, and <span class="math-inline">\(L_f&gt;0\)</span> the latent heat of fusion per unit mass. The specific enthalpy and entropy changes are</p>
+<p><span class="math-display">\[
+\Delta h=c_{p,l}(T_f-T_i)-L_f+c_{p,s}(T_e-T_f),
+\]</span></p>
+<p><span class="math-display">\[
+\Delta s=c_{p,l}\ln(T_f/T_i)-L_f/T_f
++c_{p,s}\ln(T_e/T_f).
+\]</span></p>
+<p>This model assumes equilibrium freezing at one temperature rather than a distributed freezing range. The outlet can have higher physical exergy while its enthalpy is lower because its entropy fell. If the inlet is at ambient, the chilled product's minimum reversible work requirement, with heat ultimately exchanged only with ambient, is its rise in flow exergy. A real refrigeration machine can require more. <a href="https://www.youtube.com/watch?v=Y2AbiUZc4wg&amp;t=1440s">Tutorial 6, Problem 14</a></p>
+<h2 id="turbine-work-and-stationary-tank-storage">Turbine work and stationary tank storage</h2>
+<p>For the nitrogen–argon turbine in Problem 15, the specified percentages are mass fractions <span class="math-inline">\(w_j\)</span>. Compute <span class="math-inline">\(R_{\mathrm{mix}}=\sum_j w_jR_u/M_j\)</span> and <span class="math-inline">\(c_{p,\mathrm{mix}}=\sum_j w_jc_{p,j}\)</span>. Here <span class="math-inline">\(R_u\)</span> is the universal gas constant and <span class="math-inline">\(M_j\)</span> the species molar mass. If each species has constant heat capacity ratio <span class="math-inline">\(\gamma_j\)</span>, obtain <span class="math-inline">\(c_{p,j}=\gamma_jR_j/(\gamma_j-1)\)</span> before averaging. For insulated flow with fixed composition, the entropy rise follows the ideal-gas relation using the mixture properties. Shaft output is the product and the decrease in stream exergy the resource. Averaging the two <span class="math-inline">\(\gamma_j\)</span> directly does not give the mixture heat capacity ratio.</p>
+<p>Problem 16 concerns vapor withdrawn from a rigid two-phase tank. Use the specified <strong>phase volumes</strong> to determine the initial and final phase masses via <span class="math-inline">\(m_f=V_f/v_f\)</span> and <span class="math-inline">\(m_g=V_g/v_g\)</span>. Here subscripts <span class="math-inline">\(f,g\)</span> identify saturated liquid and vapor. The entropy carried out is the integral of <span class="math-inline">\(s_{\mathrm{out}}\,dm_{\mathrm{out}}\)</span>. Replacing that term by a single outlet entropy requires a constant outlet state or an independent mass-weighted average. Determine heat from the integrated energy balance and its entropy transfer at the stated reservoir temperature. At an agreed <span class="math-inline">\(T_0\)</span>, apply <span class="math-inline">\(T_0S_{\mathrm{gen}}\)</span> to that boundary. <a href="https://www.youtube.com/watch?v=1m_uNUjAfjk&amp;t=20s">Tutorial 6, Problem 15</a> · <a href="https://www.youtube.com/watch?v=1m_uNUjAfjk&amp;t=500s">Problem 16</a></p>
+<h2 id="a-moving-piston-requires-its-own-volume-work-term">A moving piston requires its own volume-work term</h2>
+<p>For an insulated cylinder admitting mass <span class="math-inline">\(m_i\)</span> with constant <span class="math-inline">\(h_i,s_i\)</span>, the integrated balances with no outflow give <span class="math-inline">\(U_2-U_1=m_i h_i-W\)</span>, with <span class="math-inline">\(W\)</span> the piston work out, and <span class="math-inline">\(S_{\mathrm{gen}}=S_2-S_1-m_i s_i\)</span>. Flow kinetic and elevation terms are neglected here. Problem 17 has a weighted piston moving at constant load pressure, so <span class="math-inline">\(W=p_{\mathrm{load}}(V_2-V_1)\)</span>. If the inlet enters at high enough enthalpy, its energy can evaporate part or all of the initial liquid. Use the final phase condition and the mass balance to close the problem.</p>
+<p>Problem 18 extends this calculation to air filling a cylinder until the piston meets stops and then filling at fixed volume. Solve for the intermediate mass using the volume at the stops, the equation of state, and the energy balance for segment one. The second segment has zero piston work, even though pressure may change. For the whole interval the incoming mass contribution is <span class="math-inline">\(m_i s_i\)</span> only if the entry entropy is constant. Total useful work is <span class="math-inline">\(W-p_0(V_2-V_1)\)</span>. A rigid tank model would omit the mechanical work of the piston. A larger stationary control volume can enclose the cylinder and moving hardware if it tracks the associated changes in energy storage and the mechanical transfer at its boundary. <a href="https://www.youtube.com/watch?v=C4BzJiZvh5s&amp;t=20s">Tutorial 6, Problem 17</a> · <a href="https://www.youtube.com/watch?v=C4BzJiZvh5s&amp;t=760s">Problem 18</a></p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="chilling-below-ambient">Chilling below ambient</h3>
+<p>Compute the flow exergy gain from freezing a body already at its freezing point of 273.15 K with latent heat 334 kJ/kg. Ambient is 300 K.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Suppose freezing occurs at <span class="math-inline">\(273.15\,\mathrm K\)</span>, with <span class="math-inline">\(L_f=334\,\mathrm{kJ/kg}\)</span>, and the material is already at its freezing point. At <span class="math-inline">\(T_0=300\,\mathrm K\)</span>, freezing alone changes flow exergy by <span class="math-inline">\(-334+300(334/273.15)=32.83\,\mathrm{kJ/kg}\)</span>. Under the equilibrium model, the energy required to cool and freeze cannot be inferred from exergy without specifying how the refrigeration machine rejects heat.</p>
+</details><h3 id="mixture-gas-constant">Mixture gas constant</h3>
+<p>Find the gas constant and nitrogen mole fraction of a mixture that contains 30% nitrogen and 70% argon by mass.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> For <span class="math-inline">\(30\%\)</span> nitrogen and <span class="math-inline">\(70\%\)</span> argon by mass, use molar masses 28 and <span class="math-inline">\(40\,\mathrm{kg/kmol}\)</span>. Then <span class="math-inline">\(R_{\mathrm{mix}}=8.314(0.30/28+0.70/40)\approx0.2346\,\mathrm{kJ/(kg\,K)}\)</span>. Dividing the mass fractions by the molar masses and normalizing gives nitrogen mole fraction <span class="math-inline">\((0.30/28)/(0.30/28+0.70/40)\approx0.380\)</span>. The two fractions differ because the molar masses differ.</p>
+</details><h3 id="work-at-the-piston-stops">Work at the piston stops</h3>
+<p>A weighted piston moves from 0.20 to 0.50 m³ at 200 kPa, then rests against stops while filling continues. Find total and useful work at 100 kPa ambient.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> A piston moves from <span class="math-inline">\(0.20\)</span> to <span class="math-inline">\(0.50\,\mathrm{m^3}\)</span> at <span class="math-inline">\(200\,\mathrm{kPa}\)</span> and subsequently remains at the stops as filling continues. Total work is <span class="math-inline">\(60\,\mathrm{kJ}\)</span>. At <span class="math-inline">\(p_0=100\,\mathrm{kPa}\)</span> it delivers <span class="math-inline">\(30\,\mathrm{kJ}\)</span> of useful work. Pressure rise during the second stage contributes no boundary work.</p>
+</details><h3 id="control-volume-entropy-inventory">Control-volume entropy inventory</h3>
+<p>Steam enters an insulated piston cylinder with no exit. It brings 2.0 kg at an entropy of 6.5 kJ/(kg K). The total stored entropy rises by 14.2 kJ/K. Find entropy generation and exergy destruction at ambient temperature 300 K.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Mass brings <span class="math-inline">\(2.0(6.5)=13.0\,\mathrm{kJ/K}\)</span>. The entropy account requires generation <span class="math-inline">\(14.2-13.0=1.2\,\mathrm{kJ/K}\)</span>, so destruction is <span class="math-inline">\(300(1.2)=360\,\mathrm{kJ}\)</span>. The piston can still deliver useful work at the same time.</p>
+<p>Run the <a href="code/chapter_08.py">standalone heat-exchanger and freezing lab</a>. These models test the analytical balances with original inputs. The captions anchor the tutorial cases, and the edition does not report a complete visual review of their property tables.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-07-exergy-of-closed-systems.html"><span>Previous</span>Exergy of closed systems</a><a rel="next" href="chapter-09-rankine-cycles.html"><span>Next</span>Rankine Cycles</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>

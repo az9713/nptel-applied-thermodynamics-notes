@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare actual and reversible reference processes for diffusers, compressors, nozzles, linked shafts, and blowdown.">
+  <meta name="color-scheme" content="dark light">
+  <title>Work and irreversibility in flow equipment · Applied Thermodynamics</title>
+  <link rel="stylesheet" href="assets/book.css">
+  <script defer src="assets/math-config.js"></script>
+<script defer src="assets/vendor/mathjax-tex-svg-full.js"></script>
+<script defer src="assets/book.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">Applied Thermodynamics</a>
+    <nav aria-label="Course">
+      <a href="index.html">Chapters</a>
+      <a href="source-map.html">Source map</a>
+      <a href="references.html">References</a>
+      <a href="code-lab.html">Numerical lab</a>
+    </nav>
+    <div class="controls" hidden>
+      <button type="button" id="theme-toggle">Light theme</button>
+      <button type="button" id="text-toggle" aria-pressed="false">Larger text</button>
+      <button type="button" id="solutions-toggle" hidden>Expand solutions</button>
+      <button type="button" id="print-page">Print / PDF</button>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Reading navigation"><details class="side-panel page-sections" open><summary>On this page</summary><div class="toc">
+<ul>
+<li><a href="#a-diffuser-converts-kinetic-energy-into-enthalpy">A diffuser converts kinetic energy into enthalpy</a></li>
+<li><a href="#a-compressor-or-nozzle-needs-a-defined-reference">A compressor or nozzle needs a defined reference</a></li>
+<li><a href="#couple-devices-at-their-shaft">Couple devices at their shaft</a></li>
+<li><a href="#an-electrically-heated-blowdown-differs-from-liquid-drainage">An electrically heated blowdown differs from liquid drainage</a></li>
+<li><a href="#exercises-and-worked-solutions">Exercises and worked solutions</a><ul>
+<li><a href="#diffuser-limit">Diffuser limit</a></li>
+<li><a href="#entropy-uncertainty">Entropy uncertainty</a></li>
+<li><a href="#two-phase-outlet">Two-phase outlet</a></li>
+<li><a href="#shaft-coupling-loss">Shaft coupling loss</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><details class="side-panel" open><summary>Course contents</summary><ol><li><a href="chapter-01-control-volume-entropy.html"><span>01</span>Entropy balances for open systems</a></li><li><a href="chapter-02-reversible-steady-flow-work.html"><span>02</span>Reversible Steady-Flow Work</a></li><li><a href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>03</span>Entropy balances in thermal equipment</a></li><li><a href="chapter-04-work-and-irreversibility-tutorials.html" aria-current="page"><span>04</span>Work and irreversibility in flow equipment</a></li><li><a href="chapter-05-exergy-and-the-reference-environment.html"><span>05</span>Exergy and the reference environment</a></li><li><a href="chapter-06-flow-exergy-and-the-exergy-balance.html"><span>06</span>Flow exergy and useful output</a></li><li><a href="chapter-07-exergy-of-closed-systems.html"><span>07</span>Exergy of closed systems</a></li><li><a href="chapter-08-exergy-of-control-volumes.html"><span>08</span>Exergy of steady and transient control volumes</a></li><li><a href="chapter-09-rankine-cycles.html"><span>09</span>Rankine Cycles</a></li><li><a href="chapter-10-brayton-cycles.html"><span>10</span>Brayton Cycles</a></li><li><a href="chapter-11-modified-brayton-cycles.html"><span>11</span>Modified Brayton Cycles</a></li><li><a href="chapter-12-otto-and-diesel-cycles.html"><span>12</span>Otto and Diesel Cycles</a></li><li><a href="chapter-13-vapor-compression-refrigeration.html"><span>13</span>Vapor-Compression Refrigeration</a></li><li><a href="chapter-14-properties-of-moist-air.html"><span>14</span>Properties of Moist Air</a></li><li><a href="chapter-15-psychrometric-paths.html"><span>15</span>Psychrometric Paths</a></li><li><a href="chapter-16-air-conditioning-tutorials.html"><span>16</span>Air-Conditioning Tutorials</a></li><li><a href="chapter-17-combustion-thermodynamics.html"><span>17</span>Combustion Thermodynamics</a></li><li><a href="chapter-18-combustion-stoichiometry-tutorials.html"><span>18</span>Combustion Stoichiometry Tutorials</a></li><li><a href="chapter-19-combustion-energy-tutorials.html"><span>19</span>Combustion Energy Tutorials</a></li><li><a href="chapter-20-compressible-flow-and-stagnation.html"><span>20</span>Compressible flow and the stagnation state</a></li><li><a href="chapter-21-stagnation-pressure-and-shocks.html"><span>21</span>Stagnation pressure and normal shocks</a></li><li><a href="chapter-22-nozzle-geometry-and-choking.html"><span>22</span>Nozzle geometry, choking, and back pressure</a></li><li><a href="chapter-23-air-and-steam-nozzle-calculations.html"><span>23</span>Air and steam nozzle calculations</a></li></ol></details></aside>
+  <main id="main">
+
+    <article class="chapter">
+      <header class="opening">
+        <p class="eyebrow">Chapter 04 · Lectures 11–13</p>
+        <h1>Work and irreversibility in flow equipment</h1>
+        <p class="lead">Compare actual and reversible reference processes for diffusers, compressors, nozzles, linked shafts, and blowdown.</p>
+        <details class="recordings"><summary>Source recordings</summary><ol><li><a href="https://www.youtube.com/watch?v=L3pg5PPob_I">11. Tutorial 3 - Entropy change of a control volume, Work interaction of internally reversible  - Part 1</a></li><li><a href="https://www.youtube.com/watch?v=gRmtexDJWQk">12. Tutorial 3 -  Entropy change of a control volume, Work interaction of internally reversible - Part 2</a></li><li><a href="https://www.youtube.com/watch?v=14RBJj3gido">13. Tutorial 3 -  Entropy change of a control volume, Work interaction of internally reversible - Part 3</a></li></ol></details>
+      </header>
+      <div class="prose">
+        <h2 id="a-diffuser-converts-kinetic-energy-into-enthalpy">A diffuser converts kinetic energy into enthalpy</h2>
+<p>An insulated diffuser slows a gas so that pressure can rise without a rotating shaft. Let <span class="math-inline">\(T,p,C,A\)</span> denote temperature, pressure, flow speed and flow area. Subscripts 1 and 2 denote inlet and exit. For steady, one-dimensional dry air with constant specific heat <span class="math-inline">\(c_p\)</span> and gas constant <span class="math-inline">\(R\)</span>, negligible elevation change, no heat and no shaft work, the energy and mass balances give</p>
+<p><span class="math-display">\[
+C_2=\sqrt{C_1^2-2c_p(T_2-T_1)},\qquad
+\frac{A_2}{A_1}=\frac{C_1}{C_2}\frac{p_1T_2}{p_2T_1}.
+\]</span></p>
+<p>Use <span class="math-inline">\(c_p\)</span> in <span class="math-inline">\(\mathrm{J/(kg\,K)}\)</span> in the speed equation. The area ratio eliminates the unknown mass flow through <span class="math-inline">\(\rho=p/(RT)\)</span>, with <span class="math-inline">\(\rho\)</span> the density. The entropy rise is <span class="math-inline">\(c_p\ln(T_2/T_1)-R\ln(p_2/p_1)\)</span>, and must be nonnegative for the insulated device. The root and this inequality impose separate admissibility conditions.</p>
+<p>Problem 13 gives <span class="math-inline">\(p_1=100\,\mathrm{kPa}\)</span>, <span class="math-inline">\(p_2=113\,\mathrm{kPa}\)</span>, <span class="math-inline">\(T_1=330.15\,\mathrm K\)</span>, <span class="math-inline">\(T_2=342.15\,\mathrm K\)</span> and <span class="math-inline">\(C_1=200\,\mathrm{m/s}\)</span>. The lab evaluates these with <span class="math-inline">\(c_p=1005\)</span> and <span class="math-inline">\(R=287\,\mathrm{J/(kg\,K)}\)</span>. The calculated entropy rise is small. Precision matters because two logarithmic terms nearly cancel. <a href="https://www.youtube.com/watch?v=L3pg5PPob_I&amp;t=20s">Tutorial 3, Problem 13</a></p>
+<h2 id="a-compressor-or-nozzle-needs-a-defined-reference">A compressor or nozzle needs a defined reference</h2>
+<p>For Problem 14 use the inlet state and exit pressure to define an isentropic reference. At constant <span class="math-inline">\(c_p\)</span> it has temperature <span class="math-inline">\(T_{2s}=T_1(p_2/p_1)^{R/c_p}\)</span>. For a steady compressor with negligible speed and elevation changes, the actual specific shaft input is <span class="math-inline">\(h_2-h_1-q\)</span>, where <span class="math-inline">\(q\)</span> is heat supplied per unit mass. The isentropic input <span class="math-inline">\(h_{2s}-h_1\)</span> describes an adiabatic reference. A cooled compressor can require less work than that reference while still generating entropy. State which process the comparison holds fixed. Its entropy production per mass is <span class="math-inline">\(s_2-s_1-q/T_b\)</span> for uniform boundary temperature <span class="math-inline">\(T_b\)</span>. With heat eventually exchanged with ambient, use <span class="math-inline">\(T_0\)</span> for the larger region instead.</p>
+<p>Problem 15 starts with superheated steam entering an adiabatic nozzle. Preserve the kinetic terms unless speeds are demonstrably negligible. At a specified exit pressure, use <span class="math-inline">\(s_{2s}=s_1\)</span> to obtain <span class="math-inline">\(h_{2s}\)</span> from water properties, then determine the available isentropic rise in kinetic energy. An actual exit entropy can be tested once pressure and enthalpy are known. A speed computed from an isentropic reference alone describes the reference nozzle. <a href="https://www.youtube.com/watch?v=L3pg5PPob_I&amp;t=500s">Problem 14, air compressor</a> · <a href="https://www.youtube.com/watch?v=L3pg5PPob_I&amp;t=900s">Problem 15, steam nozzle</a></p>
+<h2 id="couple-devices-at-their-shaft">Couple devices at their shaft</h2>
+<p>The steam turbine in Problem 16 drives an air compressor. The steam and air streams stay separate, but their power accounts couple through the shaft. Let <span class="math-inline">\(\dot W_t&gt;0\)</span> be the turbine shaft output, <span class="math-inline">\(\dot W_c&gt;0\)</span> the compressor shaft input, and <span class="math-inline">\(\dot W_{\mathrm{loss}}\)</span> mechanical power dissipated in the coupling. Then <span class="math-inline">\(\dot W_t=\dot W_c+\dot W_{\mathrm{loss}}\)</span> if there is no other load. When the tutorial specifies heat rejected by each machine as a fraction of its shaft power, enter those fractions as thermal terms in the corresponding device energy balances. A shaft loss and surface heat loss describe different terms unless a model explicitly sends the shaft dissipation across that same boundary.</p>
+<p>For example, let a turbine lose heat to ambient at <span class="math-inline">\(5\%\)</span> of its shaft output and let its steam lose enthalpy at <span class="math-inline">\(105\,\mathrm{kW}\)</span>. Neglect kinetic and potential changes. The energy balance is <span class="math-inline">\(105=\dot W_t+0.05\dot W_t\)</span>, so <span class="math-inline">\(\dot W_t=100\,\mathrm{kW}\)</span>. A lossless coupling drives a compressor that rejects <span class="math-inline">\(10\%\)</span> of input, delivering an enthalpy rise of <span class="math-inline">\(90\,\mathrm{kW}\)</span> to the air. Across the combined boundary, <span class="math-inline">\(105=90+5+10\)</span>. The shaft transfer cancels. For entropy generation, keep the separate steam and air entropy changes and add <span class="math-inline">\((5+10)/T_0\)</span> for heat ultimately reaching ambient. <a href="https://www.youtube.com/watch?v=gRmtexDJWQk&amp;t=20s">Tutorial 3, Problem 16</a></p>
+<h2 id="an-electrically-heated-blowdown-differs-from-liquid-drainage">An electrically heated blowdown differs from liquid drainage</h2>
+<p>Problem 17 holds a rigid air tank at constant temperature while it discharges. Enclose both the well-mixed ideal gas and its electrical heater in an insulated boundary. The electrical work crosses this boundary without carrying entropy. If escaping gas crosses with the instantaneous tank specific entropy <span class="math-inline">\(s\)</span> and heater entropy storage is negligible, the only entropy transfer is <span class="math-inline">\(s\,dm_e\)</span> leaving with discharged mass <span class="math-inline">\(dm_e=-dm\)</span>. The generation increment is therefore <span class="math-inline">\(dS_{\mathrm{gen}}=d(ms)+s\,dm_e=m\,ds\)</span>. At fixed absolute temperature <span class="math-inline">\(T\)</span> and volume <span class="math-inline">\(V\)</span>, ideal-gas relations give <span class="math-inline">\(m=pV/(RT)\)</span> and <span class="math-inline">\(ds=-R\,dp/p\)</span>, so <span class="math-inline">\(dS_{\mathrm{gen}}=-V\,dp/T\)</span>. Integration gives <span class="math-inline">\(S_{\mathrm{gen}}=V(p_1-p_2)/T\)</span>. For the <span class="math-inline">\(5\,\mathrm{m^3}\)</span> tank at <span class="math-inline">\(330.15\,\mathrm K\)</span>, dropping from <span class="math-inline">\(500\)</span> to <span class="math-inline">\(200\,\mathrm{kPa}\)</span> gives <span class="math-inline">\(4.543\,\mathrm{kJ/K}\)</span> inside the selected boundary. A boundary around the gas alone would also require modeling the thermal interaction with the heater. <a href="https://www.youtube.com/watch?v=14RBJj3gido&amp;t=20s">Tutorial 3, Problem 17</a></p>
+<p>Problem 18 instead withdraws saturated liquid from a two-phase tank kept at constant pressure by heat input. At that pressure let <span class="math-inline">\(v_f,v_g\)</span> be the saturated liquid and vapor specific volumes, <span class="math-inline">\(V\)</span> the fixed tank volume and <span class="math-inline">\(m\)</span> the current tank mass. Vapor mass fraction is <span class="math-inline">\(x=(V/m-v_f)/(v_g-v_f)\)</span>. The discharged mass has liquid properties even while the remaining material becomes richer in vapor. Compute <span class="math-inline">\(m_e=m_1-m_2\)</span> first, then use <span class="math-inline">\(Q=(m_2u_2-m_1u_1)+m_eh_f\)</span> and <span class="math-inline">\(S_{\mathrm{gen,total}}=m_2s_2-m_1s_1+m_es_f-Q/T_0\)</span> for heat from a reservoir at <span class="math-inline">\(T_0\)</span>. Subscripts <span class="math-inline">\(f\)</span> identify the saturated liquid values. <a href="https://www.youtube.com/watch?v=14RBJj3gido&amp;t=860s">Tutorial 3, Problem 18</a></p>
+<h2 id="exercises-and-worked-solutions">Exercises and worked solutions</h2>
+<h3 id="diffuser-limit">Diffuser limit</h3>
+<p>Can the tutorial diffuser raise air temperature by 25 K without heat or shaft work?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> For the lecture's <span class="math-inline">\(200\,\mathrm{m/s}\)</span> inlet, the greatest stationary-frame enthalpy rise available by complete deceleration is <span class="math-inline">\(200^2/2=20\,\mathrm{kJ/kg}\)</span>. At <span class="math-inline">\(c_p=1.005\,\mathrm{kJ/(kg\,K)}\)</span>, a temperature rise of <span class="math-inline">\(25\,\mathrm K\)</span> would require <span class="math-inline">\(25.125\,\mathrm{kJ/kg}\)</span>. The proposed adiabatic no-work diffuser cannot provide it.</p>
+</details><h3 id="entropy-uncertainty">Entropy uncertainty</h3>
+<p>Estimate how a 0.3 K uncertainty at the diffuser exit affects the entropy balance.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> At fixed <span class="math-inline">\(T_1\)</span> and pressures the entropy-rise sensitivity to exit temperature is <span class="math-inline">\(c_p/T_2\)</span>. At the tutorial exit temperature this is about <span class="math-inline">\(2.94\,\mathrm{J/(kg\,K^2)}\)</span>. An uncertainty of <span class="math-inline">\(0.3\,\mathrm K\)</span> shifts the entropy difference by approximately <span class="math-inline">\(0.88\,\mathrm{J/(kg\,K)}\)</span>, comparable to the computed difference. A measured sign at this scale needs uncertainty accounting.</p>
+</details><h3 id="two-phase-outlet">Two-phase outlet</h3>
+<p>A tank drains saturated liquid until its mass falls from 7.5 to 6.0 kg. If the liquid entropy is 1.8 kJ/(kg K), how much entropy leaves with mass?</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Suppose the tank initially contains <span class="math-inline">\(7.5\,\mathrm{kg}\)</span> and the final measured inventory is <span class="math-inline">\(6.0\,\mathrm{kg}\)</span>. If liquid alone leaves at <span class="math-inline">\(s_f=1.8\,\mathrm{kJ/(kg\,K)}\)</span>, the exported entropy is <span class="math-inline">\(1.5(1.8)=2.7\,\mathrm{kJ/K}\)</span>. The tank entropy inventory can rise or fall depending on the final vapor fraction. Add the exported entropy to the inventory difference before applying the reservoir correction.</p>
+</details><h3 id="shaft-coupling-loss">Shaft coupling loss</h3>
+<p>Repeat the 100 kW turbine example if the shaft loses 4 kW in the coupling and the compressor still rejects 10% of its shaft input. Assume coupling loss reaches ambient.</p>
+<details class="solution"><summary>Show solution</summary><p><strong>Solution.</strong> Only <span class="math-inline">\(96\,\mathrm{kW}\)</span> reaches the compressor, so its air enthalpy rise is <span class="math-inline">\(0.90(96)=86.4\,\mathrm{kW}\)</span>. The surrounding sink receives <span class="math-inline">\(5+4+9.6=18.6\,\mathrm{kW}\)</span>. The combined energy account closes at <span class="math-inline">\(105=86.4+18.6\,\mathrm{kW}\)</span>. The sink contributes <span class="math-inline">\(18.6/T_0\)</span> to the extended entropy account.</p>
+<p>Run the <a href="code/chapter_04.py">standalone diffuser and tank calculations</a>. The timestamps reconstruct the tutorial's problems from automatic captions. The exact steam tables shown on screen were outside the pilot source audit.</p></details>
+      </div>
+    </article>
+    <nav class="chapter-nav" aria-label="Chapter navigation"><a rel="prev" href="chapter-03-entropy-balances-in-thermal-equipment.html"><span>Previous</span>Entropy balances in thermal equipment</a><a rel="next" href="chapter-05-exergy-and-the-reference-environment.html"><span>Next</span>Exergy and the reference environment</a></nav>
+    <footer>Independent study notes for IIT Madras’s NPTEL course, with lectures by Babu Viswanathan and tutorials including V. Raghavan.</footer>
+  </main>
+</div>
+</body>
+</html>
